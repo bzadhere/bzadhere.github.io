@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Posix线程编程指南]]></title>
+    <url>%2F2018%2F10%2F24%2FPosix%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%2F</url>
+    <content type="text"><![CDATA[摘自 IBM developerWorks 图书频道 Posix线程编程指南线程创建与取消 线程私有数据线程同步线程终止杂项 通用线程：POSIX 线程详解一种支持内存共享的简捷工具称作互斥对象的小玩意使用条件变量提高效率 线程池的介绍及简单实现c++ 内存池]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux进程间通信]]></title>
+    <url>%2F2018%2F10%2F24%2FLinux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%2F</url>
+    <content type="text"><![CDATA[摘自 IBM developerworks 郑彦兴 深刻理解Linux进程间通信(IPC) Linux环境进程间通信（一）Linux环境进程间通信（二）信号（上）Linux环境进程间通信（二）信号（下）Linux环境进程间通信（三）消息队列Linux环境进程间通信（四）信号灯Linux环境进程间通信（五）共享内存（上）Linux环境进程间通信（五）共享内存（下）Linux 环境进程间通信（六）套接口]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[zk原理和实践]]></title>
+    <url>%2F2018%2F10%2F24%2Fzk%E5%8E%9F%E7%90%86%E5%92%8C%E5%AE%9E%E8%B7%B5%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[设计模式]]></title>
     <url>%2F2018%2F10%2F24%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F</url>
     <content type="text"></content>
@@ -28,7 +43,7 @@
   <entry>
     <title><![CDATA[Docker实践]]></title>
     <url>%2F2018%2F10%2F24%2FDocker%E5%AE%9E%E8%B7%B5%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[分布式服务框架原理和实践]]></title>
