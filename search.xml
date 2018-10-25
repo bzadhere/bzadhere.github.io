@@ -4,61 +4,100 @@
     <title><![CDATA[Posix线程编程指南]]></title>
     <url>%2F2018%2F10%2F24%2FPosix%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97%2F</url>
     <content type="text"><![CDATA[摘自 IBM developerWorks 图书频道 Posix线程编程指南线程创建与取消 线程私有数据线程同步线程终止杂项 通用线程：POSIX 线程详解一种支持内存共享的简捷工具称作互斥对象的小玩意使用条件变量提高效率 线程池的介绍及简单实现c++ 内存池]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[Linux进程间通信]]></title>
     <url>%2F2018%2F10%2F24%2FLinux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%2F</url>
     <content type="text"><![CDATA[摘自 IBM developerworks 郑彦兴 深刻理解Linux进程间通信(IPC) Linux环境进程间通信（一）Linux环境进程间通信（二）信号（上）Linux环境进程间通信（二）信号（下）Linux环境进程间通信（三）消息队列Linux环境进程间通信（四）信号灯Linux环境进程间通信（五）共享内存（上）Linux环境进程间通信（五）共享内存（下）Linux 环境进程间通信（六）套接口]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[zk原理和实践]]></title>
     <url>%2F2018%2F10%2F24%2Fzk%E5%8E%9F%E7%90%86%E5%92%8C%E5%AE%9E%E8%B7%B5%2F</url>
     <content type="text"></content>
+      <categories>
+        <category>分布式系统</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[设计模式]]></title>
     <url>%2F2018%2F10%2F24%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%2F</url>
     <content type="text"></content>
+      <categories>
+        <category>c++</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[性能之巅 笔记]]></title>
     <url>%2F2018%2F10%2F24%2F%E6%80%A7%E8%83%BD%E4%B9%8B%E5%B7%85-%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[c++ 编程思想 笔记]]></title>
     <url>%2F2018%2F10%2F24%2Fc-%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3-%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"></content>
+      <categories>
+        <category>c++</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[RPC框架原理和实践]]></title>
     <url>%2F2018%2F10%2F24%2FRPC%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86%E5%92%8C%E5%AE%9E%E8%B7%B5%2F</url>
     <content type="text"></content>
+      <categories>
+        <category>分布式系统</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[linux 常用命令]]></title>
     <url>%2F2018%2F10%2F24%2Flinux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[Docker实践]]></title>
     <url>%2F2018%2F10%2F24%2FDocker%E5%AE%9E%E8%B7%B5%2F</url>
     <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[分布式服务框架原理和实践]]></title>
     <url>%2F2018%2F10%2F24%2F%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86%E5%92%8C%E5%AE%9E%E8%B7%B5%2F</url>
     <content type="text"></content>
+      <categories>
+        <category>分布式系统</category>
+      </categories>
   </entry>
   <entry>
-    <title><![CDATA[分布式系系统的CAP理论论]]></title>
-    <url>%2F2018%2F10%2F24%2F%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%B3%BB%E7%BB%9F%E7%9A%84CAP%E7%90%86%E8%AE%BA%E8%AE%BA%2F</url>
+    <title><![CDATA[分布式系系统的CAP理论]]></title>
+    <url>%2F2018%2F10%2F24%2F%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%B3%BB%E7%BB%9F%E7%9A%84CAP%E7%90%86%E8%AE%BA%2F</url>
     <content type="text"><![CDATA[CAP理论2000年7月，加州大学伯克利分校的Eric Brewer教授在ACM PODC会议上提出CAP猜想。2年后，麻省理工学院的Seth Gilbert和Nancy Lynch从理论上证明了CAP。之后，CAP理论正式成为分布式计算领域的公认定理。 CAP理论为：一个分布式系统最多只能同时满足一致性(Consistency)、可用性(Availability)和分区容错性(Partition tolerance)这三项中的两项。 Consistency一致性指“all nodes see the same data at the same time”，即更新操作成功并返回客户端完成后，所有节点在同一时间的数据完全一致。 对于一致性，可以分为从客户端和服务端两个不同的视角。从客户端来看，一致性主要指的是多并发访问时更新过的数据如何获取的问题。从服务端来看，则是更新如何复制分布到整个系统，以保证数据最终一致。 一致性是因为有并发读写才有的问题，因此在理解一致性的问题时，一定要注意结合考虑并发读写的场景。从客户端角度，多进程并发访问时，更新过的数据在不同进程如何获取的不同策略，决定了不同的一致性。 Availability可用性指“Reads and writes always succeed”，即服务一直可用，而且是正常响应时间 对于一个可用性的分布式系统，每一个非故障的节点必须对每一个请求作出响应。所以，一般我们在衡量一个系统的可用性的时候，都是通过停机时间来计算的。 Partition tolerance分区容错性指“the system continues to operate despite arbitrary message lossor failure of part of the system”，即分布式系统在遇到某节点或网络分区故障的时候，仍然能够对外提供满足一致性和可用性的服务。 分区容错性和扩展性紧密相关。在分布式应用中，可能因为一些分布式的原因导致系统无法正常运转。好的分区容错性要求能够使应用虽然是一个分布式系统，而看上去却好像是在一个可以运转正常的整体。比如现在的分布式系统中有某一个或者几个机器宕掉了，其他剩下的机器还能够正常运转满足系统需求，或者是机器之间有网络异常，将分布式系统分隔未独立的几个部分，各个部分还能维持分布式系统的运作，这样就具有好的分区容错性。 简单点说，就是在网络中断，消息丢失的情况下，系统如果还能正常工作，就是有比较好的分区容错性。 CAP理论中的CA和数据库事务中ACID的CA并完全是同一回事儿. 两者之中的A都是C都是一致性(Consistency).CAP中的A指的是可用性 (Availability),而ACID中的A指的是原子性(Atomicity),切勿混为一谈. CAP权衡CA without P分布式系统中几乎是不存在的。首先在分布式环境下，网络分区是一个自然的事实。因为分区是必然的，所以如果舍弃P，意味着要舍弃分布式系统。那也就没有必要再讨论CAP理论了。这也是为什么在前面的CAP证明中，我们以系统满足P为前提论述了无法同时满足C和A。 比如我们熟知的关系型数据库，如My Sql和Oracle就是保证了可用性和数据一致性，但是他并不是个分布式系统。一旦关系型数据库要考虑主备同步、集群部署等就必须要把P也考虑进来。 CP without A如果一个分布式系统不要求强的可用性，即容许系统停机或者长时间无响应的话，就可以在CAP三者中保障CP而舍弃A。 一个保证了CP而一个舍弃了A的分布式系统，一旦发生网络故障或者消息丢失等情况,就要牺牲用户的体验，等待所有数据全部一致了之后再让用户访问系统。 设计成CP的系统其实也不少，其中最典型的就是很多分布式数据库，他们都是设计成CP的。在发生极端情况时，优先保证数据的强一致性，代价就是舍弃系统的可用性。如Redis、HBase等，还有分布式系统中常用的Zookeeper也是在CAP三者之中选择优先保证CP的。 无论是像Redis、HBase这种分布式存储系统，还是像Zookeeper这种分布式协调组件。数据的一致性是他们最最基本的要求。一个连数据一致性都保证不了的分布式存储要他有何用？ 在我的Zookeeper介绍（二）——Zookeeper概述一文中其实介绍过zk关于CAP的思考，这里再简单回顾一下： ZooKeeper是个CP（一致性+分区容错性）的，即任何时刻对ZooKeeper的访问请求能得到一致的数据结果，同时系统对网络分割具备容错性。但是它不能保证每次服务请求的可用性，也就是在极端环境下，ZooKeeper可能会丢弃一些请求，消费者程序需要重新请求才能获得结果。ZooKeeper是分布式协调服务，它的职责是保证数据在其管辖下的所有服务之间保持 同步、一致。所以就不难理解为什么ZooKeeper被设计成CP而不是AP特性的了。 AP without C要高可用并允许分区，则需放弃一致性。一旦网络问题发生，节点之间可能会失去联系。为了保证高可用，需要在用户访问时可以马上得到返回，则每个节点只能用本地数据提供服务，而这样会导致全局数据的不一致性。 这种舍弃强一致性而保证系统的分区容错性和可用性的场景和案例非常多。前面我们介绍可用性的时候说到过，很多系统在可用性方面会做很多事情来保证系统的全年可用性可以达到N个9，所以，对于很多业务系统来说，比如淘宝的购物，12306的买票。都是在可用性和一致性之间舍弃了一致性而选择可用性。 你在12306买票的时候肯定遇到过这种场景，当你购买的时候提示你是有票的(但是可能实际已经没票了)，你也正常的去输入验证码，下单了。但是过了一会系统提示你下单失败，余票不足。这其实就是先在可用性方面保证系统可以正常的服务，然后在数据的一致性方面做了些牺牲，会影响一些用户体验，但是也不至于造成用户流程的严重阻塞。 但是，我们说很多网站牺牲了一致性，选择了可用性，这其实也不准确的。就比如上面的买票的例子，其实舍弃的只是强一致性。退而求其次保证了最终一致性。也就是说，虽然下单的瞬间，关于车票的库存可能存在数据不一致的情况，但是过了一段时间，还是要保证最终一致性的。 对于多数大型互联网应用的场景，主机众多、部署分散，而且现在的集群规模越来越大，所以节点故障、网络故障是常态，而且要保证服务可用性达到N个9，即保证P和A，舍弃C（退而求其次保证最终一致性）。虽然某些地方会影响客户体验，但没达到造成用户流程的严重程度。]]></content>
+      <categories>
+        <category>分布式系统</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[数据库事务及锁]]></title>
     <url>%2F2018%2F10%2F23%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1%E5%8F%8A%E9%94%81%2F</url>
     <content type="text"><![CDATA[事务的四个特性 原子性(Atomicity) 一致性(Consistency) 隔离性(Isolation) 持久性(Durability) 原子性一个事务中的全部操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会回滚到事务开始前的状态，不会对数据库有任何影响。 一致性在事务开始之前和事务结束以后，数据库的完整性没有被破坏。拿转账来说，假设用户A和用户B两者的钱加起来一共是5000，那么不管A和B之间如何转账，转几次账，事务结束后两个用户的钱相加起来应该还得是5000，这就是事务的一致性。 隔离性数据库允许多个并发事务对数据进行读写和修改，防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括读未提交(Read uncommitted)、读提交(read committed)、可重复读(repeatable read)和串行化（Serializable）。即要达到这么一种效果：对于任意两个并发的事务T1和T2，在事务T1看来，T2要么在T1开始之前就已经结束，要么在T1结束之后才开始，这样每个事务都感觉不到有其他事务在并发地执行。 持久性事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。 事务隔离级别如果不考虑事务的隔离性，会发生的几种问题: 脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据。(读未提交) 不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。不可重复读和脏读的区别是，脏读是某一事务读取了另一个事务未提交的脏数据，而不可重复读则是读取了前一事务提交的数据。 虚读(幻读)幻读是事务非独立执行时发生的一种现象。例如事务T1对一个表中所有的行的某个数据项做了从“1”修改为“2”的操作，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值还是为“1”并且提交给数据库。而操作事务T1的用户, 如果再查看刚刚修改的数据，会发现还有一行没有修改，其实这行是从事务T2中添加的，就好像产生幻觉一样，这就是发生了幻读。幻读和不可重复读都是读取了另一条已经提交的事务(这点就脏读不同)，所不同的是不可重复读查询的都是同一个数据项，而幻读针对的是一批数据整体(比如数据的个数)。 串行化(Serializable)在串行化隔离模式下，消除了脏读，幻象，但事务并发度急剧下降，事务的隔离级别与事务的并发度成反比，隔离级别越高，事务的并发度越低。实际生产环境下，dba会在并发和满足业务需求之间作权衡，选择合适的隔离级别 现在来看看MySQL数据库为我们提供的四种隔离级别： ① Serializable (串行化)：可避免脏读、不可重复读、幻读的发生。 ② Repeatable read (可重复读)：可避免脏读、不可重复读的发生。 ③ Read committed (读已提交)：可避免脏读的发生。 ④ Read uncommitted (读未提交)：最低级别，任何情况都无法保证。 在MySQL数据库中，支持上面四种隔离级别，默认的为Repeatable read (可重复读)；而在Oracle数据库中，只支持Serializable (串行化)级别和Read committed (读已提交)这两种级别，其中默认的为Read committed级别]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
       <tags>
         <tag>ACID</tag>
       </tags>
@@ -67,16 +106,25 @@
     <title><![CDATA[linux知识体系]]></title>
     <url>%2F2018%2F10%2F19%2Flinux%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%2F</url>
     <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[c++知识体系]]></title>
     <url>%2F2018%2F10%2F19%2Fc-%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%2F</url>
     <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>c++</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[gdb多线程调试]]></title>
     <url>%2F2018%2F10%2F15%2Fgdb%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%B0%83%E8%AF%95-1%2F</url>
     <content type="text"><![CDATA[all-stop mode: 默认模式, 有一个线程在断点处停止，其他所有线程也会停止 non-stop mode: 某一个线程停止时，其他线程会继续运行 Background Execution：异步运行程序 Thread-Specific Breakpoints: 控制断点 Interrupted System Calls: gdb会干扰系统调用 Observer Mode：gdb不影响程序执行 all-stop mode当进程在gdb下停止时，所有的线程都停止运行。当用单步调试命令“step或next”，所有的线程开始执行。由于执行线程调度的是操作系统不是gdb，单步调试命令不能让所有的线程都单步。当前线程执行了一步，其他线程可能执行了N步。当执行next/step/continue时，当前线程完成单步运行前，其他线程运行遇到断点/信号/异常，gdb会选择一个遇到短信或信号中断的线程，切换线程时会提示“[Switching to Thread n]” set scheduler-locking设置调度锁定模式，在一些系统中，gdb可以通过锁定操作系统线程调度，只允许一个线程运行。如果是on,单步调试命令会阻止其他线程抢占, 其他线程不会运行。如果是off，所有线程线程都会运行。当执行continue/util/finish 时，其他进程会恢复运行. show scheduler-locking显示当前线程调度锁定状态 set schedule-multiple当执行continue/next/step时，gdb只允许当前进程下的线程恢复运行(fork出过个进程)。on: 所有进程下的线程恢复运行off: 当前进程下的线程恢复运行 show schedule-multiple显示多进程恢复模式 non-stop mode在一些多线程的应用中，gdb支持只停止需要调试的线程，其他线程可运行不受影响。例如某些线程具有实时约束或必须继续响应外部事件，这是最小化的实时调试。称为不间断模式。在non-stop mode中，当一个线程因为断点停止时，其他线程正常运行，continue/step 只适用于当前线程。一般情况下在gdb启动或attach 一个进程时设置non-stop mode, 顺序执行如下命令，进入non-stop mode: Enable the async interface. set target-async 1 If using the CLI, pagination breaks non-stop. set pagination off Finally, turn it on! set non-stop on continue -a, 让所有线程都继续执行, continue 只能让当前线程继续执行interrupt -a, 停止整个程序, interrupt/Ctrl-c 只能让当前线程挂起, 其他命令不支持-a. Background Execution基本上用不到 Thread-Specific Breakpointsbreak linespec thread threadnobreak linespec thread threadno if ..threadno 从 info threads 中得到.比如(gdb) break frik.c:13 thread 28 if bartab &gt; lim [ ] Interrupted System Calls在使用gdb调试多线程程序时，有一个副作用。如果一个线程因断点或其他原因而停止，而另一个线程在系统调用中被阻塞，那么系统调用可能会提前返回。这是多线程和gdb用来实现断点和其他停止执行的事件的信号之间交互的结果。例如： sleep (10); 如果不同的线程在断点处或出于其他原因停止，则调用sleep将提前返回。 int unslept = 10; while (unslept &gt; 0) unslept = sleep (unslept); 允许系统调用提前返回，因此系统仍然符合其规范。但是gdb确实会导致多线程程序的行为与没有gdb时不同。另外，gdb在线程库中使用内部断点来监视某些事件，例如线程创建和线程销毁。当这样的事件发生时，另一个线程中的系统调用可能会提前返回，即使您的程序似乎没有停止. Observer Mode略]]></content>
+      <categories>
+        <category>gdb</category>
+      </categories>
       <tags>
         <tag>gdb</tag>
       </tags>
