@@ -88,7 +88,7 @@
 <meta property="og:description" content="简单的RPC框架有三部分组成： 1 服务提供者，运行在服务端，负责提供服务接口定义和服务实现类2 服务发布者，运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用3 本地服务代理，运行在RPC客户端，通过代理调研远程服务提供者，然后将结果进行封返回给本地消费者">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/10/24/RPC框架原理和实践/RPC调用原理.png">
-<meta property="og:updated_time" content="2018-10-25T10:24:03.518Z">
+<meta property="og:updated_time" content="2018-10-25T10:53:51.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RPC框架原理和实践">
 <meta name="twitter:description" content="简单的RPC框架有三部分组成： 1 服务提供者，运行在服务端，负责提供服务接口定义和服务实现类2 服务发布者，运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用3 本地服务代理，运行在RPC客户端，通过代理调研远程服务提供者，然后将结果进行封返回给本地消费者">
@@ -502,7 +502,18 @@
 </tr>
 </tbody>
 </table>
-<h3 id="RPC服务端模型设计"><a href="#RPC服务端模型设计" class="headerlink" title="RPC服务端模型设计"></a>RPC服务端模型设计</h3><p>1 纯粹单线程模型<br>2 独立事件轮询线程+工作线程组模型<br>3 独立端口监听+I/O及工作线程组模型<br>4 独立端口监听+I/O线程/BIZ线程分组模型</p>
+<h3 id="RPC服务端模型设计"><a href="#RPC服务端模型设计" class="headerlink" title="RPC服务端模型设计"></a>RPC服务端模型设计</h3><h4 id="1-纯粹单线程模型"><a href="#1-纯粹单线程模型" class="headerlink" title="1 纯粹单线程模型"></a>1 纯粹单线程模型</h4><blockquote>
+<p>所有工作在一个线程里实现<br>采用非阻塞I/O<br>实现单线程处理能力最大化，但没有扩展能力<br>适用于连接数少、负载轻的服务场景</p>
+</blockquote>
+<h4 id="2-独立事件轮询线程-工作线程组模型"><a href="#2-独立事件轮询线程-工作线程组模型" class="headerlink" title="2 独立事件轮询线程 + 工作线程组模型"></a>2 独立事件轮询线程 + 工作线程组模型</h4><blockquote>
+<p>独立的事件轮询线程<br>工作线程可水平扩展（性能非线性扩展）<br>线程间频繁数据交换需要同步机制影响性能<br>工作线程一次只处理一个连接的任务，对于慢速连接效率不高（可能会被阻塞）<br>适用于任务量不大但业务处理耗时较大、网速快且稳定等场景</p>
+</blockquote>
+<h4 id="3-独立端口监听-I-O及工作线程组模型"><a href="#3-独立端口监听-I-O及工作线程组模型" class="headerlink" title="3 独立端口监听 + I/O及工作线程组模型"></a>3 独立端口监听 + I/O及工作线程组模型</h4><blockquote>
+<p>独立端口监听线程，获取的新连接转发给指定的工作线程<br>工作线程负责socket连接的I/O时间轮询，以及后续的消息I/O和业务处理<br>采用非阻塞I/O，处理能力随工作线程的扩展而线性扩展<br>适用于连接数大、任务量大但业务处理耗时较小的场景</p>
+</blockquote>
+<h4 id="4-独立端口监听-I-O线程-BIZ线程分组模型"><a href="#4-独立端口监听-I-O线程-BIZ线程分组模型" class="headerlink" title="4 独立端口监听 + I/O线程 + BIZ线程分组模型"></a>4 独立端口监听 + I/O线程 + BIZ线程分组模型</h4><blockquote>
+<p>I/O事件轮询和消息收发由独立I/O线程执行<br>业务处理由独立线程执行并可扩展<br>一个I/O线程和若干和BIZ线程组成一个线程组，并可按组横向扩展<br>适用于连接数多，任务量大，任务处理耗时大的场景</p>
+</blockquote>
 
       
     </div>
@@ -700,7 +711,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的RPC框架有三部分组成："><span class="nav-number">1.</span> <span class="nav-text">简单的RPC框架有三部分组成：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPC框架的调用原理如图："><span class="nav-number">2.</span> <span class="nav-text">RPC框架的调用原理如图：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务治理问题"><span class="nav-number">3.</span> <span class="nav-text">服务治理问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPC框架实现的几个核心技术点："><span class="nav-number">4.</span> <span class="nav-text">RPC框架实现的几个核心技术点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PRC框架高性能设计"><span class="nav-number">5.</span> <span class="nav-text">PRC框架高性能设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实践"><span class="nav-number">6.</span> <span class="nav-text">实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#消息定义"><span class="nav-number">6.1.</span> <span class="nav-text">消息定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列化"><span class="nav-number">6.2.</span> <span class="nav-text">序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPC服务端模型设计"><span class="nav-number">6.3.</span> <span class="nav-text">RPC服务端模型设计</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的RPC框架有三部分组成："><span class="nav-number">1.</span> <span class="nav-text">简单的RPC框架有三部分组成：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPC框架的调用原理如图："><span class="nav-number">2.</span> <span class="nav-text">RPC框架的调用原理如图：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务治理问题"><span class="nav-number">3.</span> <span class="nav-text">服务治理问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPC框架实现的几个核心技术点："><span class="nav-number">4.</span> <span class="nav-text">RPC框架实现的几个核心技术点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PRC框架高性能设计"><span class="nav-number">5.</span> <span class="nav-text">PRC框架高性能设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实践"><span class="nav-number">6.</span> <span class="nav-text">实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#消息定义"><span class="nav-number">6.1.</span> <span class="nav-text">消息定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列化"><span class="nav-number">6.2.</span> <span class="nav-text">序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPC服务端模型设计"><span class="nav-number">6.3.</span> <span class="nav-text">RPC服务端模型设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-纯粹单线程模型"><span class="nav-number">6.3.1.</span> <span class="nav-text">1 纯粹单线程模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-独立事件轮询线程-工作线程组模型"><span class="nav-number">6.3.2.</span> <span class="nav-text">2 独立事件轮询线程 + 工作线程组模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-独立端口监听-I-O及工作线程组模型"><span class="nav-number">6.3.3.</span> <span class="nav-text">3 独立端口监听 + I/O及工作线程组模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-独立端口监听-I-O线程-BIZ线程分组模型"><span class="nav-number">6.3.4.</span> <span class="nav-text">4 独立端口监听 + I/O线程 + BIZ线程分组模型</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
