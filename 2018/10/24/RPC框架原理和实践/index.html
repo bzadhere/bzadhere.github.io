@@ -88,7 +88,7 @@
 <meta property="og:description" content="简单的RPC框架有三部分组成： 1 服务提供者，运行在服务端，负责提供服务接口定义和服务实现类2 服务发布者，运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用3 本地服务代理，运行在RPC客户端，通过代理调研远程服务提供者，然后将结果进行封返回给本地消费者">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/10/24/RPC框架原理和实践/RPC调用原理.png">
-<meta property="og:updated_time" content="2018-10-25T10:53:51.725Z">
+<meta property="og:updated_time" content="2018-10-25T11:00:06.722Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RPC框架原理和实践">
 <meta name="twitter:description" content="简单的RPC框架有三部分组成： 1 服务提供者，运行在服务端，负责提供服务接口定义和服务实现类2 服务发布者，运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用3 本地服务代理，运行在RPC客户端，通过代理调研远程服务提供者，然后将结果进行封返回给本地消费者">
@@ -423,7 +423,7 @@
 </ul>
 <hr>
 <h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><h3 id="消息定义"><a href="#消息定义" class="headerlink" title="消息定义"></a>消息定义</h3><p>Header: TaskCreateTime/TaskTimeOut/SessionId/Tenantld<br>Body: Session String/SDL stream/ErrorInfo</p>
-<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><p>protobuf,json,xml,binary,Thrift 根据实际消息做比对测试</p>
+<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><p>根据不同的序列化框架做比对测试</p>
 <table>
 <thead>
 <tr>
