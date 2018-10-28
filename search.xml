@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[c++智能指针]]></title>
+    <url>%2F2018%2F10%2F28%2Fc-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[gstack]]></title>
     <url>%2F2018%2F10%2F25%2Fgstack%2F</url>
     <content type="text"><![CDATA[123456#!bin/shwhile( true )do gstack $1&gt;&gt;gstack_$1.txtsleep 1done]]></content>
