@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[准备好吹牛B]]></title>
     <url>%2F2018%2F10%2F29%2F%E5%87%86%E5%A4%87%E5%A5%BD%E5%90%B9%E7%89%9BB%2F</url>
-    <content type="text"><![CDATA[BOSS系统介绍 整体功能架构计费功能架构计费技术架构计费对外接口设计部署方案(接入/应用/数据)高可用及容灾设计和测试]]></content>
+    <content type="text"><![CDATA[BOSS系统介绍 整体功能架构计费功能架构计费技术架构计费对外接口设计部署方案(接入/应用/数据)高可用及容灾设计和测试 解决过的问题 网络粘包, errno死锁binlog乱序, 索引优化内存泄漏(lua,new/del)性能优化 最得意的事]]></content>
   </entry>
   <entry>
     <title><![CDATA[分布式系统之事务]]></title>
