@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="简单的RPC框架有三部分组成： 1 服务提供者，运行在服务端，负责提供服务接口定义和服务实现类2 服务发布者，运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用3 本地服务代理，运行在RPC客户端，通过代理调研远程服务提供者，然后将结果进行封返回给本地消费者">
+<meta name="description" content="简单的RPC框架有三部分组成： 1 服务提供者，运行在服务端，负责提供服务接口定义和服务实现类2 服务发布者，运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用3 本地服务代理，运行在RPC客户端，通过代理调用远程服务提供者，然后将结果进行封返回给本地消费者">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RPC框架原理和实践">
 <meta property="og:url" content="http://yoursite.com/2018/10/24/RPC框架原理和实践/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="简单的RPC框架有三部分组成： 1 服务提供者，运行在服务端，负责提供服务接口定义和服务实现类2 服务发布者，运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用3 本地服务代理，运行在RPC客户端，通过代理调研远程服务提供者，然后将结果进行封返回给本地消费者">
+<meta property="og:description" content="简单的RPC框架有三部分组成： 1 服务提供者，运行在服务端，负责提供服务接口定义和服务实现类2 服务发布者，运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用3 本地服务代理，运行在RPC客户端，通过代理调用远程服务提供者，然后将结果进行封返回给本地消费者">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/10/24/RPC框架原理和实践/RPC调用原理.png">
-<meta property="og:updated_time" content="2018-10-25T11:00:06.722Z">
+<meta property="og:updated_time" content="2018-10-29T14:46:51.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RPC框架原理和实践">
-<meta name="twitter:description" content="简单的RPC框架有三部分组成： 1 服务提供者，运行在服务端，负责提供服务接口定义和服务实现类2 服务发布者，运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用3 本地服务代理，运行在RPC客户端，通过代理调研远程服务提供者，然后将结果进行封返回给本地消费者">
+<meta name="twitter:description" content="简单的RPC框架有三部分组成： 1 服务提供者，运行在服务端，负责提供服务接口定义和服务实现类2 服务发布者，运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用3 本地服务代理，运行在RPC客户端，通过代理调用远程服务提供者，然后将结果进行封返回给本地消费者">
 <meta name="twitter:image" content="http://yoursite.com/2018/10/24/RPC框架原理和实践/RPC调用原理.png">
 
 
@@ -400,7 +400,7 @@
       
         <hr>
 <h2 id="简单的RPC框架有三部分组成："><a href="#简单的RPC框架有三部分组成：" class="headerlink" title="简单的RPC框架有三部分组成："></a>简单的RPC框架有三部分组成：</h2><blockquote>
-<p>1 服务提供者，运行在服务端，负责提供服务接口定义和服务实现类<br>2 服务发布者，运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用<br>3 本地服务代理，运行在RPC客户端，通过代理调研远程服务提供者，然后将结果进行封<br>返回给本地消费者</p>
+<p>1 服务提供者，运行在服务端，负责提供服务接口定义和服务实现类<br>2 服务发布者，运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用<br>3 本地服务代理，运行在RPC客户端，通过代理调用远程服务提供者，然后将结果进行封<br>返回给本地消费者</p>
 </blockquote>
 <a id="more"></a>
 <h2 id="RPC框架的调用原理如图："><a href="#RPC框架的调用原理如图：" class="headerlink" title="RPC框架的调用原理如图："></a>RPC框架的调用原理如图：</h2><p><img src="/2018/10/24/RPC框架原理和实践/RPC调用原理.png" alt="RPC框架原理图"></p>
