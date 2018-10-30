@@ -23,7 +23,10 @@
   <entry>
     <title><![CDATA[c++类型转换]]></title>
     <url>%2F2018%2F10%2F28%2Fc-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[四种类型转换 const_cast 修改类型的const或volatile属性 static_cast 通常用于转换数值类型, 进行非多态的类型转换, 编译时检查 dynamic_cast 基类转换成子类, 基类必须要有虚函数 reinterpret_cast 比较底层的转换, 在非相关的类型之间转换; 操作结果只是简单的从一个指针到别的指针的值的二进制拷贝;在类型之间指向的内容不做任何类型的检查和转换 语法 xxx_cast (expression)]]></content>
+      <tags>
+        <tag>c++</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[c++智能指针]]></title>

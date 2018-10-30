@@ -858,7 +858,18 @@
       
         
           
-            
+            <h1 id="四种类型转换"><a href="#四种类型转换" class="headerlink" title="四种类型转换"></a>四种类型转换</h1><blockquote>
+<ul>
+<li>const_cast 修改类型的const或volatile属性</li>
+<li>static_cast 通常用于转换数值类型, 进行非多态的类型转换, 编译时检查</li>
+<li>dynamic_cast 基类转换成子类, 基类必须要有虚函数</li>
+<li>reinterpret_cast 比较底层的转换, 在非相关的类型之间转换; 操作结果只<br>是简单的从一个指针到别的指针的值的二进制拷贝;在类型之间指向的内容不做任<br>何类型的检查和转换</li>
+</ul>
+</blockquote>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><blockquote>
+<p>xxx_cast <type-id> (expression)</type-id></p>
+</blockquote>
+
           
         
       
