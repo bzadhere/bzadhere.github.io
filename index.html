@@ -976,9 +976,21 @@
 
       
         
-          
-            
-          
+          <h1 id="智能指针-头文件memory"><a href="#智能指针-头文件memory" class="headerlink" title="智能指针 (头文件memory)"></a><a href="https://msdn.microsoft.com/zh-cn/library/hh279674.aspx" target="_blank" rel="noopener">智能指针</a> (头文件memory)</h1><blockquote>
+<ul>
+<li>unique_ptr 只允许基础指针的一个所有者, 可移动, 但不可复制; 大小等同于一<br>个指针且支持 rvalue 引用</li>
+<li>shared_ptr 采用引用计数, 将一个原始指针分配给多个所有者; 大小为两个指针,<br>一个用于对象，另一个用于包含引用计数的共享控制块</li>
+<li>weak_ptr 提供对一个或多个shared_ptr实例拥有的对象的访问, 但不参与引用<br>计数; 用于观察某个对象但不需要其保持活动状态</li>
+<li>auto_ptr c++11已摒弃, 所有权控制不够严格, 没有避免潜在的内存崩溃问题</li>
+</ul>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/28/c-智能指针/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

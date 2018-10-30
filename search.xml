@@ -28,7 +28,10 @@
   <entry>
     <title><![CDATA[c++智能指针]]></title>
     <url>%2F2018%2F10%2F28%2Fc-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[智能指针 (头文件memory) unique_ptr 只允许基础指针的一个所有者, 可移动, 但不可复制; 大小等同于一个指针且支持 rvalue 引用 shared_ptr 采用引用计数, 将一个原始指针分配给多个所有者; 大小为两个指针,一个用于对象，另一个用于包含引用计数的共享控制块 weak_ptr 提供对一个或多个shared_ptr实例拥有的对象的访问, 但不参与引用计数; 用于观察某个对象但不需要其保持活动状态 auto_ptr c++11已摒弃, 所有权控制不够严格, 没有避免潜在的内存崩溃问题 #]]></content>
+      <tags>
+        <tag>c++</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[gstack]]></title>
