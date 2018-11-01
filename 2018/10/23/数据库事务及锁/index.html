@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="事务的四个特性  原子性(Atomicity) 一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-25T06:02:51.462Z">
+<meta property="og:updated_time" content="2018-11-01T12:30:26.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库事务及锁">
 <meta name="twitter:description" content="事务的四个特性  原子性(Atomicity) 一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
@@ -432,6 +432,24 @@
 <p>　　③ Read committed (读已提交)：可避免脏读的发生。</p>
 <p>　　④ Read uncommitted (读未提交)：最低级别，任何情况都无法保证。  </p>
 <p>在MySQL数据库中，支持上面四种隔离级别，默认的为Repeatable read (可重复读)；而在Oracle数据库中，<br>只支持Serializable (串行化)级别和Read committed (读已提交)这两种级别，其中默认的为Read committed级别</p>
+<h1 id="事务隔离的实现——锁"><a href="#事务隔离的实现——锁" class="headerlink" title="事务隔离的实现——锁"></a>事务隔离的实现——锁</h1><ol>
+<li>共享锁(S锁)<blockquote>
+<p>[] 用于只读操作(SELECT)，锁定共享的资源。共享锁不会阻止其他用户读，但是阻止其他的用户写和修改。</p>
+</blockquote>
+</li>
+<li>更新锁(U锁)<blockquote>
+<p>[] 用于可更新的资源中。防止当多个会话在读取、锁定以及随后可能进行的资源更新时发生常见形式的死锁。</p>
+</blockquote>
+</li>
+<li>独占锁(X锁，也叫排他锁)<blockquote>
+<p>[] 一次只能有一个独占锁用在一个资源上，并且阻止其他所有的锁包括共享缩。写是独占锁，可以有效的防止“脏读”。</p>
+</blockquote>
+</li>
+</ol>
+<p>Read Uncommited 如果一个事务已经开始写数据，则另外一个数据则不允许同时进行写操作，但允许其他事务读此行数据。该隔离级别可以通过“排他写锁”实现。</p>
+<p>Read Committed 读取数据的事务允许其他事务继续访问该行数据，但是未提交的写事务将会禁止其他事务访问该行。可以通过“瞬间共享读锁”和“排他写锁”实现。</p>
+<p>Repeatable Read 读取数据的事务将会禁止写事务（但允许读事务），写事务则禁止任何其他事务。可以通过“共享读锁”和“排他写锁”实现。</p>
+<p>Serializable 读加共享锁，写加排他锁，读写互斥。</p>
 
       
     </div>
@@ -580,7 +598,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -635,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事务的四个特性"><span class="nav-number">1.</span> <span class="nav-text">事务的四个特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">2.</span> <span class="nav-text">事务隔离级别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事务的四个特性"><span class="nav-number">1.</span> <span class="nav-text">事务的四个特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">2.</span> <span class="nav-text">事务隔离级别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离的实现——锁"><span class="nav-number">3.</span> <span class="nav-text">事务隔离的实现——锁</span></a></li></ol></div>
             
 
           </div>
