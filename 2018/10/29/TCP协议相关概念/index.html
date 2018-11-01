@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/同时关闭.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/同时打开.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/tcp状态转换.jpg">
-<meta property="og:updated_time" content="2018-11-01T08:56:39.626Z">
+<meta property="og:updated_time" content="2018-11-01T09:16:37.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP协议相关概念">
 <meta name="twitter:description" content="1. TCP协议头部格式 DNS在应用层, TCP/UDP/PORT在传输层, IP在网络层,  ARP在数据链路层">
@@ -385,8 +385,18 @@
 <p>DNS在应用层, TCP/UDP/PORT在传输层, IP在网络层,  ARP在数据链路层<br><a id="more"></a></p>
 <p><img src="/2018/10/29/TCP协议相关概念/tcp协议头部格式.png" alt="tcp协议头部格式"></p>
 <p>为什么需要2MSL？</p>
+<blockquote>
+<p>Maximum Segment Lifetime 报文最大生存时间, 保证最后发送的ACK报文<br>对端可以收到, 不然对端会重发FIN. 所以TIME_WAIT用来重发可能丢失的ACK</p>
+</blockquote>
 <h1 id="2-三次握手四次分手"><a href="#2-三次握手四次分手" class="headerlink" title="2. 三次握手四次分手"></a>2. 三次握手四次分手</h1><p><img src="/2018/10/29/TCP协议相关概念/握手分手.jpg" alt="三次握手四次分手"></p>
-<p>为什么需要三次分手？<br>为什么需要四次分手？</p>
+<p>为什么需要三次握手？</p>
+<blockquote>
+<p>为了防止已经失效的连接请求报文段突然又传到服务端，因而产生错误<br>比如A发送sync给B, 在网络延迟N时间后B才收到, B回复ack, 此时A可能已经关闭,<br>B浪费了这个链接的资源</p>
+</blockquote>
+<p>为什么需要四次分手？</p>
+<blockquote>
+<p>为了确保数据能够完成传输(确保对端收完数据)</p>
+</blockquote>
 <p><img src="/2018/10/29/TCP协议相关概念/同时关闭.jpg" alt="同时关闭"><br><img src="/2018/10/29/TCP协议相关概念/同时打开.jpg" alt="同时打开"></p>
 <h1 id="3-TCP状态转换"><a href="#3-TCP状态转换" class="headerlink" title="3. TCP状态转换"></a>3. TCP状态转换</h1><p><img src="/2018/10/29/TCP协议相关概念/tcp状态转换.jpg" alt="TCP状态转换"></p>
 <h1 id="4-TCP如何保证可靠传输"><a href="#4-TCP如何保证可靠传输" class="headerlink" title="4. TCP如何保证可靠传输"></a>4. TCP如何保证可靠传输</h1><p>三次握手, seq+ack, 超时重传, 流量控制, 拥塞控制</p>
