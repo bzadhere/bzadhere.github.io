@@ -79,15 +79,25 @@
 
 
 
+<meta name="description" content="1. TCP协议头部格式 DNS在应用层, TCP/UDP/PORT在传输层, IP在网络层,  ARP在数据链路层">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP协议相关概念">
 <meta property="og:url" content="http://yoursite.com/2018/10/29/TCP协议相关概念/index.html">
 <meta property="og:site_name" content="扫地小道童">
+<meta property="og:description" content="1. TCP协议头部格式 DNS在应用层, TCP/UDP/PORT在传输层, IP在网络层,  ARP在数据链路层">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-29T14:54:44.829Z">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/OSI七层模型.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/tcp协议头部格式.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/握手分手.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/同时关闭.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/同时打开.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/tcp状态转换.jpg">
+<meta property="og:updated_time" content="2018-11-01T08:56:39.626Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP协议相关概念">
+<meta name="twitter:description" content="1. TCP协议头部格式 DNS在应用层, TCP/UDP/PORT在传输层, IP在网络层,  ARP在数据链路层">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/OSI七层模型.png">
 
 
 
@@ -371,7 +381,26 @@
       
 
       
-        
+        <h1 id="1-TCP协议头部格式"><a href="#1-TCP协议头部格式" class="headerlink" title="1. TCP协议头部格式"></a>1. TCP协议头部格式</h1><p><img src="/2018/10/29/TCP协议相关概念/OSI七层模型.png" alt="OSI七层模型"></p>
+<p>DNS在应用层, TCP/UDP/PORT在传输层, IP在网络层,  ARP在数据链路层<br><a id="more"></a></p>
+<p><img src="/2018/10/29/TCP协议相关概念/tcp协议头部格式.png" alt="tcp协议头部格式"></p>
+<p>为什么需要2MSL？</p>
+<h1 id="2-三次握手四次分手"><a href="#2-三次握手四次分手" class="headerlink" title="2. 三次握手四次分手"></a>2. 三次握手四次分手</h1><p><img src="/2018/10/29/TCP协议相关概念/握手分手.jpg" alt="三次握手四次分手"></p>
+<p>为什么需要三次分手？<br>为什么需要四次分手？</p>
+<p><img src="/2018/10/29/TCP协议相关概念/同时关闭.jpg" alt="同时关闭"><br><img src="/2018/10/29/TCP协议相关概念/同时打开.jpg" alt="同时打开"></p>
+<h1 id="3-TCP状态转换"><a href="#3-TCP状态转换" class="headerlink" title="3. TCP状态转换"></a>3. TCP状态转换</h1><p><img src="/2018/10/29/TCP协议相关概念/tcp状态转换.jpg" alt="TCP状态转换"></p>
+<h1 id="4-TCP如何保证可靠传输"><a href="#4-TCP如何保证可靠传输" class="headerlink" title="4. TCP如何保证可靠传输"></a>4. TCP如何保证可靠传输</h1><p>三次握手, seq+ack, 超时重传, 流量控制, 拥塞控制</p>
+<h3 id="超时重传"><a href="#超时重传" class="headerlink" title="超时重传"></a>超时重传</h3><h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h3><h3 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h3><h1 id="5-TCP粘包"><a href="#5-TCP粘包" class="headerlink" title="5. TCP粘包"></a>5. TCP粘包</h1><p>TCP粘包是指发送方发送的若干包数据到接收方接收时粘成一包, 从接收缓冲区看,<br>后一包数据的头紧接着前一包数据的尾</p>
+<h3 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h3><blockquote>
+<p>发送方 TCP默认会使用Nagle算法:<br>1 只有上一个分组得到确认，才会发送下一个分组<br>2 收集多个小分组，在一个确认到来时一起发送<br>接受方 没有立即处理, TCP将收到的分组保存至接收缓存里, 缓冲区会存在多个包</p>
+</blockquote>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><blockquote>
+<p>发送发关闭Nagle算法, TCP_NODELAY选项<br>接受方 TCP协议没有处理机制, 通过应用层来处理<br>应用层 定义消息包头(len+type)和包体(data), 收包时循环处理</p>
+</blockquote>
+<h1 id="6-TCP的四种定时器"><a href="#6-TCP的四种定时器" class="headerlink" title="6. TCP的四种定时器"></a>6. TCP的四种定时器</h1><blockquote>
+<p>重传计时器：Retransmission Timer<br>坚持计时器：Persistent Timer<br>保活计时器：Keeplive Timer<br>时间等待计时器：Timer_Wait Timer</p>
+</blockquote>
+
       
     </div>
     
@@ -488,8 +517,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -549,6 +587,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-TCP协议头部格式"><span class="nav-number">1.</span> <span class="nav-text">1. TCP协议头部格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-三次握手四次分手"><span class="nav-number">2.</span> <span class="nav-text">2. 三次握手四次分手</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-TCP状态转换"><span class="nav-number">3.</span> <span class="nav-text">3. TCP状态转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-TCP如何保证可靠传输"><span class="nav-number">4.</span> <span class="nav-text">4. TCP如何保证可靠传输</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#超时重传"><span class="nav-number">4.0.1.</span> <span class="nav-text">超时重传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流量控制"><span class="nav-number">4.0.2.</span> <span class="nav-text">流量控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拥塞控制"><span class="nav-number">4.0.3.</span> <span class="nav-text">拥塞控制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-TCP粘包"><span class="nav-number">5.</span> <span class="nav-text">5. TCP粘包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#产生原因"><span class="nav-number">5.0.1.</span> <span class="nav-text">产生原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决办法"><span class="nav-number">5.0.2.</span> <span class="nav-text">解决办法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-TCP的四种定时器"><span class="nav-number">6.</span> <span class="nav-text">6. TCP的四种定时器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
