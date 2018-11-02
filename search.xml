@@ -23,7 +23,7 @@
   <entry>
     <title><![CDATA[准备好吹牛B]]></title>
     <url>%2F2018%2F10%2F29%2F%E5%87%86%E5%A4%87%E5%A5%BD%E5%90%B9%E7%89%9BB%2F</url>
-    <content type="text"><![CDATA[BOSS系统介绍 整体功能架构计费功能架构计费技术架构计费对外接口设计部署方案(接入/应用/数据)高可用及容灾设计和测试 解决过的问题 网络粘包, errno死锁binlog乱序, 索引优化内存泄漏(lua,new/del)性能优化, 主机问题(linux时钟源, ssd调度方式cfq) 最得意的事]]></content>
+    <content type="text"><![CDATA[BOSS系统介绍 整体功能架构计费功能架构计费技术架构计费对外接口设计部署方案(接入/应用/数据)高可用及容灾设计和测试 遇到过的问题 网络粘包, errno死锁binlog乱序, 索引优化内存泄漏(lua,new/del)性能优化, 主机问题(linux时钟源, ssd调度方式cfq/deadline, ck和binglog文件rename) 最得意的事]]></content>
   </entry>
   <entry>
     <title><![CDATA[分布式系统之事务]]></title>
@@ -121,7 +121,7 @@
   <entry>
     <title><![CDATA[linux 常用命令]]></title>
     <url>%2F2018%2F10%2F24%2Flinux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[系统级计数器vmstat虚拟内存和物理内存的统计 iostat每个磁盘 I/O 的使用情况，由块设备接口报告 mpstat每个CPU的使用情况 freesar进程级计数器top按一个统计数据排序，显示排名高的进程 ps进程状态，显示进程的各种统计信息，包括内存和CPU的使用 pmap将进程的内存和使用统计一起列出 iotop进程的I/O速度 pidstat查看进程I/O , 内存, CPU 网络工具netstatssiftopnethogstpcdump其他命令tarfinddugrep]]></content>
+    <content type="text"><![CDATA[系统级计数器vmstat虚拟内存和物理内存的统计 iostat每个磁盘 I/O 的使用情况，由块设备接口报告 mpstat每个CPU的使用情况 freesar 进程级计数器top按一个统计数据排序，显示排名高的进程 ps进程状态，显示进程的各种统计信息，包括内存和CPU的使用 pmap将进程的内存和使用统计一起列出 iotop进程的I/O速度 pidstat查看进程I/O , 内存, CPU 网络工具netstatssiftopnethogstpcdump 其他命令tarfinddugrepddlsof]]></content>
       <categories>
         <category>linux</category>
       </categories>
