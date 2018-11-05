@@ -8,7 +8,7 @@
   <entry>
     <title><![CDATA[数据结构笔记]]></title>
     <url>%2F2018%2F11%2F05%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[第一章 绪论冒泡排序 遍历A[0, n] 依次比较相邻两个数, 若A[i-1]小于A[i], 则交换, 并设置循环遍历标记; 一次循环必然可确定一个最大值, n递减; 1234567891011121314151617void bubble_sort(int A[], n)&#123; bool bSort = false; while(bSort) &#123; bSort = false; for(int i=1; i&lt;n; i++) &#123; if(A[i-1]&gt;A[i]) &#123; swap(A[i-1], A[i]); bSort = true; &#125; &#125; n--; &#125;&#125; 复杂度度量大O记号性质a) 对于任意常数c&gt;0, 有$ O(f(n)) = O(c*f(n)) $b) 对于任意常数a&gt;b&gt;0, $ 有O(n^a + n^b) = O(n^a) $冒泡时间复杂度: $ T(n)=O(2(n-1)^2) = O(2n^2 + 4n + 2) = O(2n^2) = O(n^2) $ 复杂度分析递归ADT]]></content>
+    <content type="text"><![CDATA[第一章 绪论冒泡排序 遍历A[0, n] 依次比较相邻两个数, 若A[i-1]小于A[i], 则交换, 并设置循环遍历标记; 一次循环必然可确定一个最大值, n递减; 1234567891011121314151617void bubble_sort(int A[], n)&#123; bool bSort = false; while(bSort) &#123; bSort = false; for(int i=1; i&lt;n; i++) &#123; if(A[i-1]&gt;A[i]) &#123; swap(A[i-1], A[i]); bSort = true; &#125; &#125; n--; &#125;&#125; 复杂度度量大O记号性质a) 对于任意常数c&gt;0, 有$ O(f(n)) = O(c*f(n)) $b) 对于任意常数a&gt;b&gt;0, $ 有O(n^a + n^b) = O(n^a) $冒泡时间复杂度: $ T(n)=O(2(n-1)^2) = O(2n^2 + 4n + 2) = O(2n^2) = O(n^2) $ $ \Omega $ 复杂度分析递归ADT]]></content>
   </entry>
   <entry>
     <title><![CDATA[失败是成功他妈]]></title>
