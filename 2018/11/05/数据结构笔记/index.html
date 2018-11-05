@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="123456#!bin/shwhile( true )do gstack $1&amp;gt;&amp;gt;gstack_$1.txtsleep 1done">
+<meta name="description" content="第一章 绪论冒泡排序  遍历A[0, n] 依次比较相邻两个数, 若A[i-1]小于A[i], 则交换, 并设置循环遍历标记;  一次循环必然可确定一个最大值, n递减;">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gstack">
-<meta property="og:url" content="http://yoursite.com/2018/10/25/gstack/index.html">
+<meta property="og:title" content="数据结构笔记">
+<meta property="og:url" content="http://yoursite.com/2018/11/05/数据结构笔记/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="123456#!bin/shwhile( true )do gstack $1&amp;gt;&amp;gt;gstack_$1.txtsleep 1done">
+<meta property="og:description" content="第一章 绪论冒泡排序  遍历A[0, n] 依次比较相邻两个数, 若A[i-1]小于A[i], 则交换, 并设置循环遍历标记;  一次循环必然可确定一个最大值, n递减;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-25T06:26:02.462Z">
+<meta property="og:updated_time" content="2018-11-05T12:48:50.631Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gstack">
-<meta name="twitter:description" content="123456#!bin/shwhile( true )do gstack $1&amp;gt;&amp;gt;gstack_$1.txtsleep 1done">
+<meta name="twitter:title" content="数据结构笔记">
+<meta name="twitter:description" content="第一章 绪论冒泡排序  遍历A[0, n] 依次比较相邻两个数, 若A[i-1]小于A[i], 则交换, 并设置循环遍历标记;  一次循环必然可确定一个最大值, n递减;">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/25/gstack/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/05/数据结构笔记/"/>
 
 
 
 
 
-  <title>gstack | 扫地小道童</title>
+  <title>数据结构笔记 | 扫地小道童</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/25/gstack/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/数据结构笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">gstack</h1>
+          <h1 class="post-title" itemprop="name headline">数据结构笔记</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-25T14:23:49+08:00">
-                2018-10-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-05T18:54:22+08:00">
+                2018-11-05
               </time>
             
 
@@ -337,28 +337,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/gdb/" itemprop="url" rel="index">
-                    <span itemprop="name">gdb</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -366,7 +344,7 @@
 
           
           
-             <span id="/2018/10/25/gstack/" class="leancloud_visitors" data-flag-title="gstack">
+             <span id="/2018/11/05/数据结构笔记/" class="leancloud_visitors" data-flag-title="数据结构笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -397,7 +375,17 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!bin/sh</span><br><span class="line">while( true )</span><br><span class="line">do </span><br><span class="line">gstack $1&gt;&gt;gstack_$1.txt</span><br><span class="line">sleep 1</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+        <h1 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><blockquote>
+<ol>
+<li>遍历A[0, n]</li>
+<li>依次比较相邻两个数, 若A[i-1]小于A[i], 则交换, 并设置循环遍历标记; </li>
+<li>一次循环必然可确定一个最大值, n递减;</li>
+</ol>
+</blockquote>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void bubble_sort(int A[], n)</span><br><span class="line">&#123;</span><br><span class="line">	bool bSort = false;</span><br><span class="line">	while(bSort)</span><br><span class="line">	&#123;</span><br><span class="line">	  bSort = false;</span><br><span class="line">	  for(int i=1; i&lt;n; i++)</span><br><span class="line">	  &#123;</span><br><span class="line">	    if(A[i-1]&gt;A[i])</span><br><span class="line">		&#123;</span><br><span class="line">		  swap(A[i-1], A[i]);</span><br><span class="line">		  bSort = true;</span><br><span class="line">		&#125;</span><br><span class="line">	  &#125;</span><br><span class="line">	  n--;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="复杂度度量"><a href="#复杂度度量" class="headerlink" title="复杂度度量"></a>复杂度度量</h2><h3 id="大O记号性质"><a href="#大O记号性质" class="headerlink" title="大O记号性质"></a>大O记号性质</h3><p>a) 对于任意常数c&gt;0, 有$ O(f(n)) = O(c*f(n)) $<br>b) 对于任意常数a&gt;b&gt;0, $ 有O(n^a + n^b) = O(n^a) $<br>例如冒泡: $ T(n)=O(2(n-1)^2) = O(2n^2 + 4n + 2) = O(2n^2) = O(n^2) $</p>
+<h3 id="1-时间复杂度"><a href="#1-时间复杂度" class="headerlink" title="1.时间复杂度"></a>1.时间复杂度</h3><h3 id="2-渐进复杂度"><a href="#2-渐进复杂度" class="headerlink" title="2.渐进复杂度"></a>2.渐进复杂度</h3><h3 id="3-空间复杂度"><a href="#3-空间复杂度" class="headerlink" title="3.空间复杂度"></a>3.空间复杂度</h3><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><h2 id="ADT"><a href="#ADT" class="headerlink" title="ADT"></a>ADT</h2>
       
     </div>
     
@@ -450,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/24/Posix线程编程指南/" rel="next" title="Posix线程编程指南">
-                <i class="fa fa-chevron-left"></i> Posix线程编程指南
+              <a href="/2018/11/01/失败是成功他妈/" rel="next" title="失败是成功他妈">
+                <i class="fa fa-chevron-left"></i> 失败是成功他妈
               </a>
             
           </div>
@@ -460,8 +448,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/28/c-智能指针/" rel="prev" title="c++智能指针">
-                c++智能指针 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/05/算法图解笔记/" rel="prev" title="算法图解笔记">
+                算法图解笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -514,8 +502,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -575,6 +572,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-绪论"><span class="nav-number">1.</span> <span class="nav-text">第一章 绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂度度量"><span class="nav-number">1.2.</span> <span class="nav-text">复杂度度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#大O记号性质"><span class="nav-number">1.2.1.</span> <span class="nav-text">大O记号性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-时间复杂度"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.时间复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-渐进复杂度"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.渐进复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-空间复杂度"><span class="nav-number">1.2.4.</span> <span class="nav-text">3.空间复杂度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归"><span class="nav-number">1.3.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ADT"><span class="nav-number">1.4.</span> <span class="nav-text">ADT</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1187,6 +1200,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
