@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ACID," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="事务的四个特性  原子性(Atomicity) 一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
-<meta name="keywords" content="ACID">
+<meta name="description" content="分布式事务2PC3PC一致性算法Paxos分布式锁">
+<meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库事务及锁">
-<meta property="og:url" content="http://yoursite.com/2018/10/23/数据库事务及锁/index.html">
+<meta property="og:title" content="分布式系统理论">
+<meta property="og:url" content="http://yoursite.com/2018/10/29/分布式系统理论/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="事务的四个特性  原子性(Atomicity) 一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
+<meta property="og:description" content="分布式事务2PC3PC一致性算法Paxos分布式锁">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-01T12:30:26.296Z">
+<meta property="og:updated_time" content="2018-11-06T09:20:05.669Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库事务及锁">
-<meta name="twitter:description" content="事务的四个特性  原子性(Atomicity) 一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
+<meta name="twitter:title" content="分布式系统理论">
+<meta name="twitter:description" content="分布式事务2PC3PC一致性算法Paxos分布式锁">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/23/数据库事务及锁/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/29/分布式系统理论/"/>
 
 
 
 
 
-  <title>数据库事务及锁 | 扫地小道童</title>
+  <title>分布式系统理论 | 扫地小道童</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/数据库事务及锁/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/29/分布式系统理论/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据库事务及锁</h1>
+          <h1 class="post-title" itemprop="name headline">分布式系统理论</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-23T19:00:26+08:00">
-                2018-10-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T22:59:06+08:00">
+                2018-10-29
               </time>
             
 
@@ -337,28 +337,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -366,7 +344,7 @@
 
           
           
-             <span id="/2018/10/23/数据库事务及锁/" class="leancloud_visitors" data-flag-title="数据库事务及锁">
+             <span id="/2018/10/29/分布式系统理论/" class="leancloud_visitors" data-flag-title="分布式系统理论">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -397,61 +375,7 @@
       
 
       
-        <h1 id="事务的四个特性"><a href="#事务的四个特性" class="headerlink" title="事务的四个特性"></a>事务的四个特性</h1><blockquote>
-<ul>
-<li>原子性(Atomicity)</li>
-<li>一致性(Consistency)</li>
-<li>隔离性(Isolation)</li>
-<li>持久性(Durability)</li>
-</ul>
-</blockquote>
-<a id="more"></a>
-<ul>
-<li><p>原子性<br>一个事务中的全部操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。<br>事务在执行过程中发生错误，会回滚到事务开始前的状态，不会对数据库有任何影响。</p>
-</li>
-<li><p>一致性<br>在事务开始之前和事务结束以后，数据库的完整性没有被破坏。<br>拿转账来说，假设用户A和用户B两者的钱加起来一共是5000，那么不管A和B之间如何转账，<br>转几次账，事务结束后两个用户的钱相加起来应该还得是5000，这就是事务的一致性。</p>
-</li>
-<li><p>隔离性<br>数据库允许多个并发事务对数据进行读写和修改，防止多个事务并发执行时由于交叉执行而导致数据的不一致。<br>事务隔离分为不同级别，包括读未提交(Read uncommitted)、读提交(read committed)、可重复读(repeatable read)<br>和串行化（Serializable）。<br>即要达到这么一种效果：对于任意两个并发的事务T1和T2，在事务T1看来，T2要么在T1开始之前就已经结束，<br>要么在T1结束之后才开始，这样每个事务都感觉不到有其他事务在并发地执行。</p>
-</li>
-<li><p>持久性<br>事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</p>
-</li>
-</ul>
-<h1 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h1><p>如果不考虑事务的隔离性，会发生的几种问题:</p>
-<ol>
-<li><p>脏读是指在一个事务处理过程里读取了另一个未提交的事务中的数据。(读未提交)</p>
-</li>
-<li><p>不可重复读是指在对于数据库中的某个数据，一个事务范围内多次查询却返回了<br>不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了。<br>不可重复读和脏读的区别是，脏读是某一事务读取了另一个事务未提交的脏数据，而不<br>可重复读则是读取了前一事务提交的数据。</p>
-</li>
-<li><p>虚读(幻读)<br>幻读是事务非独立执行时发生的一种现象。例如事务T1对一个表中所有的行的某个数据项做<br>了从“1”修改为“2”的操作，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值<br>还是为“1”并且提交给数据库。而操作事务T1的用户, 如果再查看刚刚修改的数据，会发现还<br>有一行没有修改，其实这行是从事务T2中添加的，就好像产生幻觉一样，这就是发生了幻读。<br>幻读和不可重复读都是读取了另一条已经提交的事务(这点就脏读不同)，所不同的是不可重复<br>读查询的都是同一个数据项，而幻读针对的是一批数据整体(比如数据的个数)。</p>
-</li>
-<li><p>串行化(Serializable)<br>在串行化隔离模式下，消除了脏读，幻象，但事务并发度急剧下降，事务的隔离级别与事务的并发度成<br>反比，隔离级别越高，事务的并发度越低。实际生产环境下，dba会在并发和满足业务需求之间作权衡，<br>选择合适的隔离级别  </p>
-</li>
-</ol>
-<p>现在来看看MySQL数据库为我们提供的四种隔离级别：</p>
-<p>　　① Serializable (串行化)：可避免脏读、不可重复读、幻读的发生。</p>
-<p>　　② Repeatable read (可重复读)：可避免脏读、不可重复读的发生。</p>
-<p>　　③ Read committed (读已提交)：可避免脏读的发生。</p>
-<p>　　④ Read uncommitted (读未提交)：最低级别，任何情况都无法保证。  </p>
-<p>在MySQL数据库中，支持上面四种隔离级别，默认的为Repeatable read (可重复读)；而在Oracle数据库中，<br>只支持Serializable (串行化)级别和Read committed (读已提交)这两种级别，其中默认的为Read committed级别</p>
-<h1 id="事务隔离的实现——锁"><a href="#事务隔离的实现——锁" class="headerlink" title="事务隔离的实现——锁"></a>事务隔离的实现——锁</h1><ol>
-<li>共享锁(S锁)<blockquote>
-<p>[] 用于只读操作(SELECT)，锁定共享的资源。共享锁不会阻止其他用户读，但是阻止其他的用户写和修改。</p>
-</blockquote>
-</li>
-<li>更新锁(U锁)<blockquote>
-<p>[] 用于可更新的资源中。防止当多个会话在读取、锁定以及随后可能进行的资源更新时发生常见形式的死锁。</p>
-</blockquote>
-</li>
-<li>独占锁(X锁，也叫排他锁)<blockquote>
-<p>[] 一次只能有一个独占锁用在一个资源上，并且阻止其他所有的锁包括共享缩。写是独占锁，可以有效的防止“脏读”。</p>
-</blockquote>
-</li>
-</ol>
-<p>Read Uncommited 如果一个事务已经开始写数据，则另外一个数据则不允许同时进行写操作，但允许其他事务读此行数据。该隔离级别可以通过“排他写锁”实现。</p>
-<p>Read Committed 读取数据的事务允许其他事务继续访问该行数据，但是未提交的写事务将会禁止其他事务访问该行。可以通过“瞬间共享读锁”和“排他写锁”实现。</p>
-<p>Repeatable Read 读取数据的事务将会禁止写事务（但允许读事务），写事务则禁止任何其他事务。可以通过“共享读锁”和“排他写锁”实现。</p>
-<p>Serializable 读加共享锁，写加排他锁，读写互斥。</p>
-
+        <h1 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h1><h1 id="2PC"><a href="#2PC" class="headerlink" title="2PC"></a>2PC</h1><h1 id="3PC"><a href="#3PC" class="headerlink" title="3PC"></a>3PC</h1><h1 id="一致性算法Paxos"><a href="#一致性算法Paxos" class="headerlink" title="一致性算法Paxos"></a>一致性算法Paxos</h1><h1 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a><a href="https://blog.csdn.net/xlgen157387/article/details/79036337" target="_blank" rel="noopener">分布式锁</a></h1>
       
     </div>
     
@@ -495,12 +419,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/ACID/" rel="tag"># ACID</a>
-          
-        </div>
-      
 
       
       
@@ -510,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/19/linux知识体系/" rel="next" title="linux知识体系">
-                <i class="fa fa-chevron-left"></i> linux知识体系
+              <a href="/2018/10/29/TCP协议相关概念/" rel="next" title="TCP协议相关概念">
+                <i class="fa fa-chevron-left"></i> TCP协议相关概念
               </a>
             
           </div>
@@ -520,8 +438,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/24/分布式系系统之CAP理论/" rel="prev" title="分布式系系统之CAP理论">
-                分布式系系统之CAP理论 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/29/准备好吹牛B/" rel="prev" title="准备好吹牛B">
+                准备好吹牛B <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -654,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事务的四个特性"><span class="nav-number">1.</span> <span class="nav-text">事务的四个特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">2.</span> <span class="nav-text">事务隔离级别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离的实现——锁"><span class="nav-number">3.</span> <span class="nav-text">事务隔离的实现——锁</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式事务"><span class="nav-number">1.</span> <span class="nav-text">分布式事务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2PC"><span class="nav-number">2.</span> <span class="nav-text">2PC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3PC"><span class="nav-number">3.</span> <span class="nav-text">3PC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一致性算法Paxos"><span class="nav-number">4.</span> <span class="nav-text">一致性算法Paxos</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式锁"><span class="nav-number">5.</span> <span class="nav-text">分布式锁</span></a></li></ol></div>
             
 
           </div>
