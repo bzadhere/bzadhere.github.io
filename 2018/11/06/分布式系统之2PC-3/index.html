@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="前言由于BASE理论需要在一致性和可用性方面做出权衡，因此涌现了很多关于一致性的算法和协议。其中比较著名的有二阶提交协议（2 Phase Commitment Protocol），三阶提交协议（3 PhaseCommitment Protocol）和Paxos算法。 本文要介绍的2PC协议，分为两个阶段提交一个事务。并通过协调者和各个参与者的配合，实现分布式一致性。    角色 XA概念 作用">
+<meta name="description" content="前言由于BASE理论需要在一致性和可用性方面做出权衡，因此涌现了很多关于一致性的算法和协议。其中比较著名的有二阶提交协议（2 Phase Commitment Protocol），三阶提交协议（3 PhaseCommitment Protocol）和Paxos算法。 本文要介绍的2PC协议，分为两个阶段提交一个事务。并通过协调者和各个参与者的配合，实现分布式一致性。">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式系统之2PC(3)">
 <meta property="og:url" content="http://yoursite.com/2018/11/06/分布式系统之2PC-3/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="前言由于BASE理论需要在一致性和可用性方面做出权衡，因此涌现了很多关于一致性的算法和协议。其中比较著名的有二阶提交协议（2 Phase Commitment Protocol），三阶提交协议（3 PhaseCommitment Protocol）和Paxos算法。 本文要介绍的2PC协议，分为两个阶段提交一个事务。并通过协调者和各个参与者的配合，实现分布式一致性。    角色 XA概念 作用">
+<meta property="og:description" content="前言由于BASE理论需要在一致性和可用性方面做出权衡，因此涌现了很多关于一致性的算法和协议。其中比较著名的有二阶提交协议（2 Phase Commitment Protocol），三阶提交协议（3 PhaseCommitment Protocol）和Paxos算法。 本文要介绍的2PC协议，分为两个阶段提交一个事务。并通过协调者和各个参与者的配合，实现分布式一致性。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之2PC-3/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之2PC-3/2.png">
-<meta property="og:updated_time" content="2018-11-06T12:51:47.221Z">
+<meta property="og:updated_time" content="2018-11-07T02:40:15.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式系统之2PC(3)">
-<meta name="twitter:description" content="前言由于BASE理论需要在一致性和可用性方面做出权衡，因此涌现了很多关于一致性的算法和协议。其中比较著名的有二阶提交协议（2 Phase Commitment Protocol），三阶提交协议（3 PhaseCommitment Protocol）和Paxos算法。 本文要介绍的2PC协议，分为两个阶段提交一个事务。并通过协调者和各个参与者的配合，实现分布式一致性。    角色 XA概念 作用">
+<meta name="twitter:description" content="前言由于BASE理论需要在一致性和可用性方面做出权衡，因此涌现了很多关于一致性的算法和协议。其中比较著名的有二阶提交协议（2 Phase Commitment Protocol），三阶提交协议（3 PhaseCommitment Protocol）和Paxos算法。 本文要介绍的2PC协议，分为两个阶段提交一个事务。并通过协调者和各个参与者的配合，实现分布式一致性。">
 <meta name="twitter:image" content="http://yoursite.com/2018/11/06/分布式系统之2PC-3/1.png">
 
 
@@ -402,6 +402,7 @@
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于BASE理论需要在一致性和可用性方面做出权衡，因此涌现了很多关于一致性的算法和协议。<br>其中比较著名的有二阶提交协议（2 Phase Commitment Protocol），三阶提交协议（3 Phase<br>Commitment Protocol）和Paxos算法。</p>
 <p>本文要介绍的2PC协议，分为两个阶段提交一个事务。并通过协调者和各个参与者的配合，实现<br>分布式一致性。</p>
+<a id="more"></a>
 <table>
 <thead>
 <tr>
@@ -471,7 +472,11 @@
 <li>缺点：同步阻塞，单点问题，数据不一致，容错性不好。</li>
 </ul>
 </blockquote>
-<h3 id="同步阻塞"><a href="#同步阻塞" class="headerlink" title="同步阻塞"></a>同步阻塞</h3><h3 id="单点问题"><a href="#单点问题" class="headerlink" title="单点问题"></a>单点问题</h3><h3 id="数据不一致"><a href="#数据不一致" class="headerlink" title="数据不一致"></a>数据不一致</h3><h3 id="容错性不好"><a href="#容错性不好" class="headerlink" title="容错性不好"></a>容错性不好</h3>
+<h3 id="同步阻塞"><a href="#同步阻塞" class="headerlink" title="同步阻塞"></a>同步阻塞</h3><p>所有的节点都在等待其他节点的响应，无法进行其他操作。这种同步阻塞极大的限制了分布式<br>系统的性能。(mapreduce里面是顺序执行)</p>
+<h3 id="单点问题"><a href="#单点问题" class="headerlink" title="单点问题"></a>单点问题</h3><p>协调者是个单点, 如果协调者在提交阶段出现问题，那么整个流程将无法运转</p>
+<h3 id="数据不一致"><a href="#数据不一致" class="headerlink" title="数据不一致"></a>数据不一致</h3><p>协调者向所有的参与者发送commit请求之后，发生了局部网络异常，或者是协调者在尚未发送<br>完所有 commit请求之前自身发生了崩溃，导致最终只有部分参与者收到了commit请求。</p>
+<h3 id="容错性不好"><a href="#容错性不好" class="headerlink" title="容错性不好"></a>容错性不好</h3><p>如果在二阶段提交的提交询问阶段中，参与者出现故障，导致协调者始终无法获取到所有参与<br>者的确认信息，这时协调者只能依靠其自身的超时机制，判断是否需要中断事务。显然，这种<br>策略过于保守。换句话说，二阶段提交协议没有设计较为完善的容错机制，任意一个节点是失<br>败都会导致整个事务的失败。</p>
+
       
     </div>
     
