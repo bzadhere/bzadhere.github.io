@@ -79,23 +79,23 @@
 
 
 
-<meta name="description" content="前言Raft 也是一个 易于理解一致性算法，和 Paxos 目标相同, 区别在于选举的 具体过程 不同。 什么是Raft协议Raft 协议组织的集群中有三类角色：   Leader（领袖） Follower（群众） Candidate（候选人）   一个 Server 进程在某一时刻，只能是其中 一种类型，但这不是固定的。不同的时刻，它可能拥有不同的类型，一个 Server 进程的类型是如何改变的">
+<meta name="description" content="前言Raft 也是一个 易于理解一致性算法，和 Paxos 目标相同, 区别在于选举的 具体过程 不同。 什么是Raft协议Raft 协议组织的集群中有三类角色：   Leader（领袖） Follower（群众） Candidate（候选人）">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式系统之一致性算法Raft(6)">
 <meta property="og:url" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Raft-6/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="前言Raft 也是一个 易于理解一致性算法，和 Paxos 目标相同, 区别在于选举的 具体过程 不同。 什么是Raft协议Raft 协议组织的集群中有三类角色：   Leader（领袖） Follower（群众） Candidate（候选人）   一个 Server 进程在某一时刻，只能是其中 一种类型，但这不是固定的。不同的时刻，它可能拥有不同的类型，一个 Server 进程的类型是如何改变的">
+<meta property="og:description" content="前言Raft 也是一个 易于理解一致性算法，和 Paxos 目标相同, 区别在于选举的 具体过程 不同。 什么是Raft协议Raft 协议组织的集群中有三类角色：   Leader（领袖） Follower（群众） Candidate（候选人）">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Raft-6/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Raft-6/2.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Raft-6/3.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Raft-6/4.png">
 <meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Raft-6/5.png">
-<meta property="og:updated_time" content="2018-11-08T12:53:18.908Z">
+<meta property="og:updated_time" content="2018-11-08T12:55:41.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式系统之一致性算法Raft(6)">
-<meta name="twitter:description" content="前言Raft 也是一个 易于理解一致性算法，和 Paxos 目标相同, 区别在于选举的 具体过程 不同。 什么是Raft协议Raft 协议组织的集群中有三类角色：   Leader（领袖） Follower（群众） Candidate（候选人）   一个 Server 进程在某一时刻，只能是其中 一种类型，但这不是固定的。不同的时刻，它可能拥有不同的类型，一个 Server 进程的类型是如何改变的">
+<meta name="twitter:description" content="前言Raft 也是一个 易于理解一致性算法，和 Paxos 目标相同, 区别在于选举的 具体过程 不同。 什么是Raft协议Raft 协议组织的集群中有三类角色：   Leader（领袖） Follower（群众） Candidate（候选人）">
 <meta name="twitter:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Raft-6/1.png">
 
 
@@ -409,7 +409,8 @@
 <ul>
 <li>Leader（领袖）</li>
 <li>Follower（群众）</li>
-<li>Candidate（候选人）</li>
+<li>Candidate（候选人）<a id="more"></a>
+</li>
 </ul>
 </blockquote>
 <p>一个 Server 进程在某一时刻，只能是其中 一种类型，但这不是固定的。不同的时刻，它可能拥有不同的类型，<br>一个 Server 进程的类型是如何改变的，后面会有解释。</p>
