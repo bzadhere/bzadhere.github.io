@@ -79,15 +79,21 @@
 
 
 
+<meta name="description" content="Docker 简介Docker 是什么 Docker 最初是dotCloud公司的一个内部项目 Docker 使用go语言开发实现 Docker 是操作系统层面的虚拟化技术  Docker 是在操作系统层面进行虚拟化, 直接复用本地主机操作系统; 而传统方式是在硬件层面实现。  为什么用 Docker优势  1更高效的利用系统资源(额外系统消耗忽略不计) 2更快速的启动时间(秒级启动, 比传统虚拟">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker实践">
 <meta property="og:url" content="http://yoursite.com/2018/10/24/Docker实践/index.html">
 <meta property="og:site_name" content="扫地小道童">
+<meta property="og:description" content="Docker 简介Docker 是什么 Docker 最初是dotCloud公司的一个内部项目 Docker 使用go语言开发实现 Docker 是操作系统层面的虚拟化技术  Docker 是在操作系统层面进行虚拟化, 直接复用本地主机操作系统; 而传统方式是在硬件层面实现。  为什么用 Docker优势  1更高效的利用系统资源(额外系统消耗忽略不计) 2更快速的启动时间(秒级启动, 比传统虚拟">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-09T01:29:59.852Z">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/Docker实践/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/Docker实践/2.png">
+<meta property="og:updated_time" content="2018-11-09T08:25:23.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker实践">
+<meta name="twitter:description" content="Docker 简介Docker 是什么 Docker 最初是dotCloud公司的一个内部项目 Docker 使用go语言开发实现 Docker 是操作系统层面的虚拟化技术  Docker 是在操作系统层面进行虚拟化, 直接复用本地主机操作系统; 而传统方式是在硬件层面实现。  为什么用 Docker优势  1更高效的利用系统资源(额外系统消耗忽略不计) 2更快速的启动时间(秒级启动, 比传统虚拟">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/24/Docker实践/1.png">
 
 
 
@@ -394,8 +400,43 @@
       
 
       
-        <hr>
-
+        <h1 id="Docker-简介"><a href="#Docker-简介" class="headerlink" title="Docker 简介"></a>Docker 简介</h1><h2 id="Docker-是什么"><a href="#Docker-是什么" class="headerlink" title="Docker 是什么"></a>Docker 是什么</h2><ul>
+<li>Docker 最初是dotCloud公司的一个内部项目</li>
+<li>Docker 使用go语言开发实现</li>
+<li>Docker 是操作系统层面的虚拟化技术</li>
+</ul>
+<p>Docker 是在操作系统层面进行虚拟化, 直接复用本地主机操作系统; 而传统方式是在硬件层面实现。</p>
+<p><img src="/2018/10/24/Docker实践/1.png" alt="1"><br><img src="/2018/10/24/Docker实践/2.png" alt="2"></p>
+<h2 id="为什么用-Docker"><a href="#为什么用-Docker" class="headerlink" title="为什么用 Docker"></a>为什么用 Docker</h2><p>优势</p>
+<ul>
+<li>1更高效的利用系统资源(额外系统消耗忽略不计)</li>
+<li>2更快速的启动时间(秒级启动, 比传统虚拟机快)</li>
+<li>3一致的运行环境(开发、测试、生产环境一样)</li>
+<li>4持续交付和部署(Docker构建镜像, 快速部署)</li>
+<li>5更轻松的迁移(平台迁移方便)</li>
+<li>6更轻松的维护和扩展(分层存储以及镜像技术, 复用和维护简单)</li>
+</ul>
+<p>容器基本不消化额外的系统资源, 秒级启动, 性能很高. 启动十个进程, 需要启动10台虚拟机, 但Docker<br>只需要启动十个隔离的应用即可。</p>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ul>
+<li>镜像(Image)<ul>
+<li>一个特殊的文件系统, 包含程序,库,配置文件</li>
+<li>利用Union FS技术分层存储, 由多层文件系统联合组成, Dockerfile会一层层的构建</li>
+</ul>
+</li>
+<li>容器(Container)<ul>
+<li>容器是从镜像运行时的实例, 会在镜像基础上创建一个存储层用于读写, 生命周期和容器一样 </li>
+<li>可以启、停止、删除、暂停等。容器内的进程是隔离的, 容器有自己的网络,文件系统, 进程空间, 用户空间</li>
+</ul>
+</li>
+<li>仓库(Registy)<ul>
+<li>存放镜像的场所, 可以是公有仓库或者私有仓库</li>
+<li>官方<a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a> , 用阿里云加速, DaoCloud 等加速器下载更快</li>
+</ul>
+</li>
+</ul>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>将Docker的用户加入到Docker用户组</p>
+<p>$ groupadd docker<br>$ usermod -aG docker $USER</p>
+<h1 id="使用镜像"><a href="#使用镜像" class="headerlink" title="使用镜像"></a>使用镜像</h1><h1 id="操作容器"><a href="#操作容器" class="headerlink" title="操作容器"></a>操作容器</h1><h1 id="访问仓库"><a href="#访问仓库" class="headerlink" title="访问仓库"></a>访问仓库</h1><h1 id="数据管理"><a href="#数据管理" class="headerlink" title="数据管理"></a>数据管理</h1><h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1>
       
     </div>
     
@@ -512,8 +553,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -573,6 +623,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-简介"><span class="nav-number">1.</span> <span class="nav-text">Docker 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-是什么"><span class="nav-number">1.1.</span> <span class="nav-text">Docker 是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么用-Docker"><span class="nav-number">1.2.</span> <span class="nav-text">为什么用 Docker</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">2.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用镜像"><span class="nav-number">4.</span> <span class="nav-text">使用镜像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作容器"><span class="nav-number">5.</span> <span class="nav-text">操作容器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问仓库"><span class="nav-number">6.</span> <span class="nav-text">访问仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据管理"><span class="nav-number">7.</span> <span class="nav-text">数据管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络"><span class="nav-number">8.</span> <span class="nav-text">网络</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

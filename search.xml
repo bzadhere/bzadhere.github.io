@@ -206,7 +206,7 @@
   <entry>
     <title><![CDATA[Docker实践]]></title>
     <url>%2F2018%2F10%2F24%2FDocker%E5%AE%9E%E8%B7%B5%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <content type="text"><![CDATA[Docker 简介Docker 是什么 Docker 最初是dotCloud公司的一个内部项目 Docker 使用go语言开发实现 Docker 是操作系统层面的虚拟化技术 Docker 是在操作系统层面进行虚拟化, 直接复用本地主机操作系统; 而传统方式是在硬件层面实现。 为什么用 Docker优势 1更高效的利用系统资源(额外系统消耗忽略不计) 2更快速的启动时间(秒级启动, 比传统虚拟机快) 3一致的运行环境(开发、测试、生产环境一样) 4持续交付和部署(Docker构建镜像, 快速部署) 5更轻松的迁移(平台迁移方便) 6更轻松的维护和扩展(分层存储以及镜像技术, 复用和维护简单) 容器基本不消化额外的系统资源, 秒级启动, 性能很高. 启动十个进程, 需要启动10台虚拟机, 但Docker只需要启动十个隔离的应用即可。 基本概念 镜像(Image) 一个特殊的文件系统, 包含程序,库,配置文件 利用Union FS技术分层存储, 由多层文件系统联合组成, Dockerfile会一层层的构建 容器(Container) 容器是从镜像运行时的实例, 会在镜像基础上创建一个存储层用于读写, 生命周期和容器一样 可以启、停止、删除、暂停等。容器内的进程是隔离的, 容器有自己的网络,文件系统, 进程空间, 用户空间 仓库(Registy) 存放镜像的场所, 可以是公有仓库或者私有仓库 官方Docker Hub , 用阿里云加速, DaoCloud 等加速器下载更快 安装将Docker的用户加入到Docker用户组 $ groupadd docker$ usermod -aG docker $USER 使用镜像操作容器访问仓库数据管理网络]]></content>
       <categories>
         <category>分布式系统</category>
       </categories>
