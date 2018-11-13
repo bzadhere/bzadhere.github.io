@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="前言BASE理论是由eBay架构师提出的. BASE是对CAP中一致性和可用性权衡的结果，其来源于对大规模互联网分布式系统实践的总结, 是基于CAP定律逐步演化而来. 其核心思想是即使无法做到强一致性, 但每个应用都可以根据自身业务特点，才用适当的方式来使系统达到最终一致性">
+<meta name="description" content="数据库设计三范式为了建立冗余小、结构合理的数据库，设计数据库必须遵循一定的原则。实际工最常用的三范式： 第一范式(确保每列保持原子性)第一范式是最基本的范式，表中的所有字段都是不可分割的原子值。 例如将“地址”这个属性重新拆分为省份、城市、详细地址等多个部分进行存储，这样在对地址中某一部分操作的时候将非常方便。这样设计才算满足了数据库的第一范式 第二范式(确保表中每列都和主键相关)第二范式在第一范">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分布式系统之BASE理论(2)">
-<meta property="og:url" content="http://yoursite.com/2018/11/06/分布式系统之BASE理论-2/index.html">
+<meta property="og:title" content="数据库设计三范式">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/数据库设计三范式/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="前言BASE理论是由eBay架构师提出的. BASE是对CAP中一致性和可用性权衡的结果，其来源于对大规模互联网分布式系统实践的总结, 是基于CAP定律逐步演化而来. 其核心思想是即使无法做到强一致性, 但每个应用都可以根据自身业务特点，才用适当的方式来使系统达到最终一致性">
+<meta property="og:description" content="数据库设计三范式为了建立冗余小、结构合理的数据库，设计数据库必须遵循一定的原则。实际工最常用的三范式： 第一范式(确保每列保持原子性)第一范式是最基本的范式，表中的所有字段都是不可分割的原子值。 例如将“地址”这个属性重新拆分为省份、城市、详细地址等多个部分进行存储，这样在对地址中某一部分操作的时候将非常方便。这样设计才算满足了数据库的第一范式 第二范式(确保表中每列都和主键相关)第二范式在第一范">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-06T12:02:34.409Z">
+<meta property="og:updated_time" content="2018-11-13T09:07:54.594Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分布式系统之BASE理论(2)">
-<meta name="twitter:description" content="前言BASE理论是由eBay架构师提出的. BASE是对CAP中一致性和可用性权衡的结果，其来源于对大规模互联网分布式系统实践的总结, 是基于CAP定律逐步演化而来. 其核心思想是即使无法做到强一致性, 但每个应用都可以根据自身业务特点，才用适当的方式来使系统达到最终一致性">
+<meta name="twitter:title" content="数据库设计三范式">
+<meta name="twitter:description" content="数据库设计三范式为了建立冗余小、结构合理的数据库，设计数据库必须遵循一定的原则。实际工最常用的三范式： 第一范式(确保每列保持原子性)第一范式是最基本的范式，表中的所有字段都是不可分割的原子值。 例如将“地址”这个属性重新拆分为省份、城市、详细地址等多个部分进行存储，这样在对地址中某一部分操作的时候将非常方便。这样设计才算满足了数据库的第一范式 第二范式(确保表中每列都和主键相关)第二范式在第一范">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/06/分布式系统之BASE理论-2/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/数据库设计三范式/"/>
 
 
 
 
 
-  <title>分布式系统之BASE理论(2) | 扫地小道童</title>
+  <title>数据库设计三范式 | 扫地小道童</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/分布式系统之BASE理论-2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/数据库设计三范式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">分布式系统之BASE理论(2)</h1>
+          <h1 class="post-title" itemprop="name headline">数据库设计三范式</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T19:00:31+08:00">
-                2018-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T15:04:28+08:00">
+                2018-11-13
               </time>
             
 
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/分布式系统/" itemprop="url" rel="index">
-                    <span itemprop="name">分布式系统</span>
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -366,7 +366,7 @@
 
           
           
-             <span id="/2018/11/06/分布式系统之BASE理论-2/" class="leancloud_visitors" data-flag-title="分布式系统之BASE理论(2)">
+             <span id="/2018/11/13/数据库设计三范式/" class="leancloud_visitors" data-flag-title="数据库设计三范式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -397,32 +397,118 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>BASE理论是由eBay架构师提出的. BASE是对CAP中一致性和可用性权衡的结果，其来<br>源于对大规模互联网分布式系统实践的总结, 是基于CAP定律逐步演化而来. 其核心思<br>想是即使无法做到强一致性, 但每个应用都可以根据自身业务特点，才用适当的方式<br>来使系统达到最终一致性</p>
-<a id="more"></a>
-<h1 id="BASE理论简介"><a href="#BASE理论简介" class="headerlink" title="BASE理论简介"></a>BASE理论简介</h1><p>BASE理论是Basically Available(基本可用), Soft State(软状态), Eventually Consistent<br>(最终一致性)三个短语的缩写</p>
-<p>其核心思想是：</p>
-<blockquote>
-<p>既是无法做到强一致性, 但每个应用可以根据自身的业务特点, 采用适当的方式来是系统达到<br>最终一致性</p>
+        <h1 id="数据库设计三范式"><a href="#数据库设计三范式" class="headerlink" title="数据库设计三范式"></a>数据库设计三范式</h1><p>为了建立冗余小、结构合理的数据库，设计数据库必须遵循一定的原则。实际工最常用的三范式：</p>
+<h2 id="第一范式-确保每列保持原子性"><a href="#第一范式-确保每列保持原子性" class="headerlink" title="第一范式(确保每列保持原子性)"></a>第一范式(确保每列保持原子性)</h2><p>第一范式是最基本的范式，表中的所有字段都是不可分割的原子值。</p>
+<p>例如将“地址”这个属性重新拆分为省份、城市、详细地址等多个部分进行存储，这样在对地址中某一部分<br>操作的时候将非常方便。这样设计才算满足了数据库的第一范式</p>
+<h2 id="第二范式-确保表中每列都和主键相关"><a href="#第二范式-确保表中每列都和主键相关" class="headerlink" title="第二范式(确保表中每列都和主键相关)"></a>第二范式(确保表中每列都和主键相关)</h2><p>第二范式在第一范式的基础上，确保表中每一列都与主键相关，而不能与主键的某一部分相关(主要针对联合主键)。</p>
+<p>比如要设计一个订单信息表，因为订单中可能会有多种商品，所以要将订单编号和商品编号作为数据库表的联合<br>主键，如下表所示:</p>
+<table>
+<thead>
+<tr>
+<th>订单编号</th>
+<th>商品编号</th>
+<th>商品名称</th>
+<th>价格</th>
+<th>客户</th>
+<th>联系方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>1</td>
+<td>车</td>
+<td>10000</td>
+<td>张三</td>
+<td>88888888</td>
+</tr>
+<tr>
+<td>002</td>
+<td>2</td>
+<td>帽子</td>
+<td>5</td>
+<td>李四</td>
+<td>99999999</td>
+</tr>
+</tbody>
+</table>
+<p>这个表中是以订单编号和商品编号作为联合主键。在该表中商品名称、单位、商品价格等信息不与该表的主键相<br>关，而仅仅是与商品编号相关, 所以在这里违反了第二范式的设计原则。</p>
+<p>如果把这个订单信息表进行拆分，把商品信息分离到另一个表中，把订单项目表也分离到另一个表中，就非常完美<br>订单信息表</p>
+<table>
+<thead>
+<tr>
+<th>订单编号</th>
+<th>客户</th>
+<th>联系方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>张三</td>
+<td>88888888</td>
+</tr>
+<tr>
+<td>002</td>
+<td>李四</td>
+<td>99999999</td>
+</tr>
+</tbody>
+</table>
+<p>订单项目表</p>
+<table>
+<thead>
+<tr>
+<th>订单编号</th>
+<th>商品编号</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>001</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>002</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>商品信息表</p>
+<table>
+<thead>
+<tr>
+<th>商品编号</th>
+<th>商品名称</th>
+<th>价格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>车</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>帽子</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>这样设计，在很大程度上减小了数据库的冗余。</p>
+<h2 id="第三范式-确保每列都是和主键直接相关，而不是间接相关"><a href="#第三范式-确保每列都是和主键直接相关，而不是间接相关" class="headerlink" title="第三范式(确保每列都是和主键直接相关，而不是间接相关)"></a>第三范式(确保每列都是和主键直接相关，而不是间接相关)</h2><p>第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。</p>
+<p>传递函数依赖：假设A、B和C是关系R的三个属性，如果A-〉B且B-〉C，则从这些函数依赖中，可以得出A-〉C，<br>如上所述，依赖A-〉C是传递依赖。第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。</p>
+<h2 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h2><blockquote>
+<ul>
+<li>1NF是对属性的原子性约束，要求属性具有原子性，不可再分解。通俗的理解是，字段还可以再分吗？<br>如过不能，则是符合1NF的设计</li>
+<li>2NF是对记录的惟一性约束，要求记录有惟一标识，即实体的惟一性。数据记录不重复冗余</li>
+<li>3NF是对字段冗余性的约束，即任何字段不能由其他字段派生出来，它要求字段没有冗余</li>
+</ul>
 </blockquote>
-<h1 id="BASE理论的内容"><a href="#BASE理论的内容" class="headerlink" title="BASE理论的内容"></a>BASE理论的内容</h1><h2 id="基本可用"><a href="#基本可用" class="headerlink" title="基本可用"></a>基本可用</h2><p>当系统出现了不可预知故障, 但还是能用, 就是基本可用。。。</p>
-<ol>
-<li>响应时间的止损失：正常情况下的搜索引擎0.5秒即返回给用户结果，而基本可用的搜索引<br>擎可以在2秒作用返回结果</li>
-<li>功能上的损失：在一个电商网站上，正常情况下，用户可以顺利完成每一笔订单。但是到<br>了大促期间，为了保护购物系统的稳定性，部分消费者可能会被引导到一个降级页面。</li>
-</ol>
-<h2 id="软状态"><a href="#软状态" class="headerlink" title="软状态"></a>软状态</h2><p>相对于原子性而言，要求多个节点的数据副本都是一致的，这是一种“硬状态”。 </p>
-<p>软状态指的是：允许系统中的数据存在中间状态，并认为该状态不影响系统的整体可用性，即允许<br>系统在多个不同节点的数据副本存在数据延时。</p>
-<h2 id="最终一致性"><a href="#最终一致性" class="headerlink" title="最终一致性"></a>最终一致性</h2><p>在一定期限后，应当保证所有副本数据一致性，从而达到数据的最终一致性。时间期限取决于网络<br>延迟、系统负载、数据复制方案设计等</p>
-<p>在实际工程实践中，最终一致性分为5种：</p>
-<h3 id="因果一致性（Causal-consistency）"><a href="#因果一致性（Causal-consistency）" class="headerlink" title="因果一致性（Causal consistency）"></a>因果一致性（Causal consistency）</h3><p>如果节点A在更新了数据后通知了B，那么B对该数据的访问都是基于A更新修改后的值。与此同时,<br>和节点A无因果关系的节点C的数据访问没有这样的限制</p>
-<h3 id="读己之所写（Read-your-writes）"><a href="#读己之所写（Read-your-writes）" class="headerlink" title="读己之所写（Read your writes）"></a>读己之所写（Read your writes）</h3><p>节点A更新一个数据后，它自身总是能访问到自身更新过的最新值，而不会看到旧值。其实也算一<br>种因果一致性</p>
-<h3 id="会话一致性（Session-consistency）"><a href="#会话一致性（Session-consistency）" class="headerlink" title="会话一致性（Session consistency）"></a>会话一致性（Session consistency）</h3><p>对系统数据的访问过程框定在了一个会话当中：系统能保证在同一个有效的会话中实现 “读己之所写”<br>的一致性，也就是说，执行更新操作之后，客户端能够在同一个会话中始终读取到该数据项的最新值。</p>
-<h3 id="单调读一致性（Monotonic-read-consistency）"><a href="#单调读一致性（Monotonic-read-consistency）" class="headerlink" title="单调读一致性（Monotonic read consistency）"></a>单调读一致性（Monotonic read consistency）</h3><p>如果一个节点从系统中读取出一个数据项的某个值后，那么系统对于该节点后续的任何数据访问都不应<br>该返回更旧的值。</p>
-<h3 id="单调写一致性（Monotonic-write-consistency）"><a href="#单调写一致性（Monotonic-write-consistency）" class="headerlink" title="单调写一致性（Monotonic write consistency）"></a>单调写一致性（Monotonic write consistency）</h3><p>一个系统要能够保证来自同一个节点的写操作被顺序的执行。</p>
-<blockquote>
-<p>在实际的实践中，这5种系统往往会结合使用，以构建一个具有最终一致性的分布式系统。</p>
-</blockquote>
-<p>实际上，不只是分布式系统使用最终一致性，关系型数据库在某个功能上，也是使用最终一致性的。比<br>如备份，数据库的复制过程是需要时间的，这个复制过程中，业务读取到的值就是旧的。当然，最终还<br>是达成了数据一致性。这也算是一个最终一致性的经典案例。</p>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>总体来说BASE理论面向的是大型高可用、可扩展的分布式系统。与传统ACID特性相反，不同于ACID的强<br>一致性模型，BASE提出通过牺牲强一致性来获得可用性，并允许数据段时间内的不一致，但是最终达到<br>一致状态。同时，在实际分布式场景中，不同业务对数据的一致性要求不一样。因此在设计中，ACID和<br>BASE理论往往又会结合使用。</p>
 
       
     </div>
@@ -476,8 +562,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/05/算法图解笔记/" rel="next" title="算法图解笔记">
-                <i class="fa fa-chevron-left"></i> 算法图解笔记
+              <a href="/2018/11/12/开源协议区别/" rel="next" title="开源协议区别">
+                <i class="fa fa-chevron-left"></i> 开源协议区别
               </a>
             
           </div>
@@ -485,10 +571,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/06/分布式系统之2PC-3/" rel="prev" title="分布式系统之2PC(3)">
-                分布式系统之2PC(3) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -620,7 +702,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BASE理论简介"><span class="nav-number">2.</span> <span class="nav-text">BASE理论简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BASE理论的内容"><span class="nav-number">3.</span> <span class="nav-text">BASE理论的内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本可用"><span class="nav-number">3.1.</span> <span class="nav-text">基本可用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软状态"><span class="nav-number">3.2.</span> <span class="nav-text">软状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终一致性"><span class="nav-number">3.3.</span> <span class="nav-text">最终一致性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#因果一致性（Causal-consistency）"><span class="nav-number">3.3.1.</span> <span class="nav-text">因果一致性（Causal consistency）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读己之所写（Read-your-writes）"><span class="nav-number">3.3.2.</span> <span class="nav-text">读己之所写（Read your writes）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#会话一致性（Session-consistency）"><span class="nav-number">3.3.3.</span> <span class="nav-text">会话一致性（Session consistency）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单调读一致性（Monotonic-read-consistency）"><span class="nav-number">3.3.4.</span> <span class="nav-text">单调读一致性（Monotonic read consistency）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单调写一致性（Monotonic-write-consistency）"><span class="nav-number">3.3.5.</span> <span class="nav-text">单调写一致性（Monotonic write consistency）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库设计三范式"><span class="nav-number">1.</span> <span class="nav-text">数据库设计三范式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一范式-确保每列保持原子性"><span class="nav-number">1.1.</span> <span class="nav-text">第一范式(确保每列保持原子性)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二范式-确保表中每列都和主键相关"><span class="nav-number">1.2.</span> <span class="nav-text">第二范式(确保表中每列都和主键相关)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三范式-确保每列都是和主键直接相关，而不是间接相关"><span class="nav-number">1.3.</span> <span class="nav-text">第三范式(确保每列都是和主键直接相关，而不是间接相关)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解"><span class="nav-number">1.4.</span> <span class="nav-text">理解</span></a></li></ol></li></ol></div>
             
 
           </div>
