@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[缓存算法]]></title>
     <url>%2F2018%2F11%2F14%2F%E7%BC%93%E5%AD%98%E7%AE%97%E6%B3%95%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[LRU]]></content>
       <categories>
         <category>分布式系统</category>
       </categories>
