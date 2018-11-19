@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[c++关键字]]></title>
     <url>%2F2018%2F11%2F19%2Fc-%E5%85%B3%E9%94%AE%E5%AD%97%2F</url>
-    <content type="text"><![CDATA[volatileexplicitexterntypedefconst]]></content>
+    <content type="text"><![CDATA[volatile作用每次从内存中取值，不是从编译器优化的寄存器中取值 应用场景并行设备的硬件寄存器（如状态寄存器）12 一个中断服务子程序中访问到的变量12 多线程共享变量12 其他12 explicitexterntypedefconst]]></content>
       <categories>
         <category>c++</category>
       </categories>
