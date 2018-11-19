@@ -11,7 +11,10 @@
   <entry>
     <title><![CDATA[c++函数指针]]></title>
     <url>%2F2018%2F11%2F19%2Fc-%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[函数名到底是什么东西呢？ 常用函数调用1234567891011121314#include &lt;iostream&gt;using namespace std;void Func(int a); // void Func(int); 声明int main()&#123; Func(5); return 0;&#125;void Func(int a)&#123; cout&lt;&lt; &quot;a=&quot; &lt;&lt; a &lt;&lt;endl;&#125; 函数指针变量的声明和使用1234567891011121314151617181920212223242526#include &lt;iostream&gt;using namespace std;void Func(int a); // 或void Func(int);void (*FuncP)(int); // 或void (*FuncP)(int a);int main()&#123; Func(5); (*Func)(5); // 一般不这样写 FuncP = &amp;Func; (*FuncP)(5); FuncP(5); FuncP = Func; FuncP(5); return 0;&#125;void Func(int a)&#123; cout&lt;&lt; &quot;a=&quot; &lt;&lt; a &lt;&lt;endl;&#125; 为了书写与数学函数形式一样方便, C语言的设计者允许如下操作: FuncP 和 Func是一样的，都是函数指针 (*Func)(5) = Func(5), 与数学函数形式一样 FunP函数指针变量也可以FunP(10)的形式来调用 赋值时，即可FunP=&amp;Func形式，也可FunP=MyFun 定义函数的指针类型1234567891011121314151617#include &lt;iostream&gt;using namespace std;typedef int* INTP; // 定义一个类型void Func(int a); // 声明一个函数typedef void (*FuncType)(int); // 定义一个函数指针类型FuncType FuncP; // 声明一个函数指针变量int main()&#123; FuncP = Func; FuncP(5); return 0;&#125;void Func(int a)&#123; cout&lt;&lt; &quot;a=&quot; &lt;&lt; a &lt;&lt;endl;&#125; 函数指针作为参数1234567891011121314151617181920#include &lt;iostream&gt;using namespace std; void Func(int a); typedef void (*FuncType)(int); int int CallFunc(FuncType p, int);(FuncType p, int a);int main()&#123; CallFunc(Func, 5); return 0;&#125;void Func(int a)&#123; cout&lt;&lt; &quot;a=&quot; &lt;&lt; a &lt;&lt;endl;&#125;int CallFunc(FuncType p, int)&#123; p(a);&#125; 地址跳转1(*(void (*)(void))(0x30700000))(); (void ()(void)) 转化为一个函数指针fp, 上面表达式同 (fp)()]]></content>
+      <categories>
+        <category>c++</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[c++实现final]]></title>
