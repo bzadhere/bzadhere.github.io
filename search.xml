@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[nginx功能简介]]></title>
+    <url>%2F2018%2F11%2F20%2Fnginx%E5%8A%9F%E8%83%BD%E7%AE%80%E4%BB%8B%2F</url>
+    <content type="text"><![CDATA[Nginx功能 反向代理 负载均衡 HTTP服务器 正向代理 反向代理负载均衡HTTP服务器正向代理]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[fork/vfork/clone]]></title>
     <url>%2F2018%2F11%2F20%2Ffork-vfork-clone%2F</url>
     <content type="text"></content>
