@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[开源库应用--tcmalloc]]></title>
+    <url>%2F2018%2F11%2F21%2F%E5%BC%80%E6%BA%90%E5%BA%93%E5%BA%94%E7%94%A8-tcmalloc%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>3rd</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[开源库应用--libevent]]></title>
+    <url>%2F2018%2F11%2F21%2F%E5%BC%80%E6%BA%90%E5%BA%93%E5%BA%94%E7%94%A8-libevent%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>3rd</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[开源库应用--boost]]></title>
+    <url>%2F2018%2F11%2F21%2F%E5%BC%80%E6%BA%90%E5%BA%93%E5%BA%94%E7%94%A8-boost%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>3rd</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[分布式存储简介]]></title>
+    <url>%2F2018%2F11%2F21%2F%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%AE%80%E4%BB%8B%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[nginx功能简介]]></title>
     <url>%2F2018%2F11%2F20%2Fnginx%E5%8A%9F%E8%83%BD%E7%AE%80%E4%BB%8B%2F</url>
     <content type="text"><![CDATA[Nginx功能 反向代理 负载均衡 HTTP服务器 正向代理 反向代理负载均衡HTTP服务器正向代理]]></content>
