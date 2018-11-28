@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[c++11特性]]></title>
+    <url>%2F2018%2F11%2F28%2Fc-11%E7%89%B9%E6%80%A7%2F</url>
+    <content type="text"><![CDATA[语法糖关键字auto auto声明的变量必须要初始化，否则编译器不能判断变量的类型auto不能被声明为返回值，auto不能作为形参，auto不能被修饰为模板参数不会影响编译、运行效果 decltype类型指示符123int a = 1;int&amp; b = a;decltype(a) c = 2; nullptr 空指针, 类型是指针, 主要用于重载 function123456789101112131415161718192021222324#include &lt;functional&gt;int add(int a, int b)&#123; return a+b;&#125;class Add&#123; public: int operator()(int x,int y) &#123; return x+y; &#125;&#125;;int main()&#123; function&lt;int(int, int)&gt; f1 = add; // 函数 function&lt;int(int, int)&gt; f2 = Add(); // 类对象 function&lt;int(int, int)&gt; f2 = [](int a, int b)&#123; return a+b; &#125;; //lambda表达式 cout&lt;&lt; f1(a,b) &lt;&lt; f2(a,b) &lt;&lt; f3(a,b) &lt;&lt; endl;&#125; 范围for语句123456789vector&lt;int&gt; vct&#123;1,2,3,4,5&#125;;for(auto &amp;num : vct)&#123; num +1;&#125;for(auto num : vct)&#123; cout&lt;&lt; num &lt;&lt; endl;&#125; lambda表达式 text [ capture ] ( params ) mutable exception attribute -&gt; ret { body } [ capture ] ( params ) -&gt; ret { body } [ capture ] ( params ) { body } [ capture ] { body } [ capture ] desc [a,&amp;b] a变量以值的方式呗捕获，b以引用的方式被捕获 [this] 以值的方式捕获 this 指针 [&amp;] 以引用的方式捕获所有的外部自动变量 [=] 以值的方式捕获所有的外部自动变量 [] 不捕获外部的任何变量 123456int main()&#123; int boys=4, girls=3; auto totalChild = [=]()-&gt;int&#123;return boys+grils;&#125;; cout&lt;&lt; totalChild() &lt;&lt; endl;&#125; 右值引用：移动语义与完美转发有指针成员的类，拷贝构造时，会浪费资源。因此引入了移动语义。1234567891011121314&#123;a = b + c;# 等号左边是左值，等号右边是右值# 可以取地址,有名字的就是左值(&amp;a)，反之就是右值(a+b)&#125;MyString(MyString&amp;&amp; str) &#123; std::cout &lt;&lt; &quot;Move Ctor source from &quot; &lt;&lt; str._data &lt;&lt; endl; _len = str._len; _data = str._data; str._len = 0; str._data = NULL;&#125; std::movestl容器智能指针线程]]></content>
+      <categories>
+        <category>c++</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Big-O]]></title>
     <url>%2F2018%2F11%2F26%2FBig-O%2F</url>
     <content type="text"><![CDATA[from web]]></content>
