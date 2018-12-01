@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="事务的四个特性  原子性(Atomicity) 一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-01T12:30:26.296Z">
+<meta property="og:updated_time" content="2018-12-01T02:24:32.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库事务及锁">
 <meta name="twitter:description" content="事务的四个特性  原子性(Atomicity) 一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
@@ -451,7 +451,7 @@
 <p>Read Committed 读取数据的事务允许其他事务继续访问该行数据，但是未提交的写事务将会禁止其他事务访问该行。可以通过“瞬间共享读锁”和“排他写锁”实现。</p>
 <p>Repeatable Read 读取数据的事务将会禁止写事务（但允许读事务），写事务则禁止任何其他事务。可以通过“共享读锁”和“排他写锁”实现。</p>
 <p>Serializable 读加共享锁，写加排他锁，读写互斥。</p>
-
+<h1 id="三级封锁协议"><a href="#三级封锁协议" class="headerlink" title="三级封锁协议"></a>三级封锁协议</h1><h1 id="mvcc多版本并发控制协议"><a href="#mvcc多版本并发控制协议" class="headerlink" title="mvcc多版本并发控制协议"></a>mvcc多版本并发控制协议</h1><h1 id="间隙锁"><a href="#间隙锁" class="headerlink" title="间隙锁"></a>间隙锁</h1>
       
     </div>
     
@@ -599,7 +599,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -654,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事务的四个特性"><span class="nav-number">1.</span> <span class="nav-text">事务的四个特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">2.</span> <span class="nav-text">事务隔离级别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离的实现——锁"><span class="nav-number">3.</span> <span class="nav-text">事务隔离的实现——锁</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事务的四个特性"><span class="nav-number">1.</span> <span class="nav-text">事务的四个特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">2.</span> <span class="nav-text">事务隔离级别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离的实现——锁"><span class="nav-number">3.</span> <span class="nav-text">事务隔离的实现——锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三级封锁协议"><span class="nav-number">4.</span> <span class="nav-text">三级封锁协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mvcc多版本并发控制协议"><span class="nav-number">5.</span> <span class="nav-text">mvcc多版本并发控制协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#间隙锁"><span class="nav-number">6.</span> <span class="nav-text">间隙锁</span></a></li></ol></div>
             
 
           </div>
