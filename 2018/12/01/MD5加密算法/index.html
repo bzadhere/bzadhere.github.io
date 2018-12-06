@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="什么是MD5加密算法MD5消息摘要算法是一种被广泛使用的密码散列函数, 属Hash算法一类, MD5算法对输入任意长度的消息进行运行，产生一个128位(16字节)的散列值(hash value)。 应用场景文件一致性验证MD5的典型应用是对一段信息（Message）产生信息摘要（Message-Digest），以防止被篡改。   1251_zjdev[/data01/zjgrp/zjdev/use">
+<meta name="description" content="什么是MD5加密算法MD5消息摘要算法是一种被广泛使用的密码散列函数, 属Hash算法一类, MD5算法对输入任意长度的消息进行运行，产生一个128位(16字节)的散列值(hash value)。">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MD5加密算法">
 <meta property="og:url" content="http://yoursite.com/2018/12/01/MD5加密算法/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="什么是MD5加密算法MD5消息摘要算法是一种被广泛使用的密码散列函数, 属Hash算法一类, MD5算法对输入任意长度的消息进行运行，产生一个128位(16字节)的散列值(hash value)。 应用场景文件一致性验证MD5的典型应用是对一段信息（Message）产生信息摘要（Message-Digest），以防止被篡改。   1251_zjdev[/data01/zjgrp/zjdev/use">
+<meta property="og:description" content="什么是MD5加密算法MD5消息摘要算法是一种被广泛使用的密码散列函数, 属Hash算法一类, MD5算法对输入任意长度的消息进行运行，产生一个128位(16字节)的散列值(hash value)。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-06T11:29:11.057Z">
+<meta property="og:updated_time" content="2018-12-06T11:30:21.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MD5加密算法">
-<meta name="twitter:description" content="什么是MD5加密算法MD5消息摘要算法是一种被广泛使用的密码散列函数, 属Hash算法一类, MD5算法对输入任意长度的消息进行运行，产生一个128位(16字节)的散列值(hash value)。 应用场景文件一致性验证MD5的典型应用是对一段信息（Message）产生信息摘要（Message-Digest），以防止被篡改。   1251_zjdev[/data01/zjgrp/zjdev/use">
+<meta name="twitter:description" content="什么是MD5加密算法MD5消息摘要算法是一种被广泛使用的密码散列函数, 属Hash算法一类, MD5算法对输入任意长度的消息进行运行，产生一个128位(16字节)的散列值(hash value)。">
 
 
 
@@ -375,7 +375,7 @@
       
 
       
-        <h1 id="什么是MD5加密算法"><a href="#什么是MD5加密算法" class="headerlink" title="什么是MD5加密算法"></a>什么是MD5加密算法</h1><p>MD5消息摘要算法是一种被广泛使用的密码散列函数, 属Hash算法一类, MD5算法对输入<br>任意长度的消息进行运行，产生一个128位(16字节)的散列值(hash value)。</p>
+        <h1 id="什么是MD5加密算法"><a href="#什么是MD5加密算法" class="headerlink" title="什么是MD5加密算法"></a>什么是MD5加密算法</h1><p>MD5消息摘要算法是一种被广泛使用的密码散列函数, 属Hash算法一类, MD5算法对输入<br>任意长度的消息进行运行，产生一个128位(16字节)的散列值(hash value)。<br><a id="more"></a></p>
 <h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><h2 id="文件一致性验证"><a href="#文件一致性验证" class="headerlink" title="文件一致性验证"></a>文件一致性验证</h2><p>MD5的典型应用是对一段信息（Message）产生信息摘要（Message-Digest），以防止被篡改。  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">51_zjdev[/data01/zjgrp/zjdev/users/zhangbb]%md5sum test.cpp </span><br><span class="line">731b8735653acd4c4cdbd05883fe90d1  test.cpp</span><br></pre></td></tr></table></figure>
 <h2 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h2><p>MD5的典型应用是对一段Message(字节串)产生fingerprint(指纹），以防止被“篡改”。</p>
@@ -385,7 +385,8 @@
 <h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><p>准备需要用到的数据：</p>
 <blockquote>
 <ul>
-<li>4个常数： A = 0x67452301, B = 0x0EFCDAB89, C = 0x98BADCFE, D = 0x10325476;<br>*　4个函数：F(X,Y,Z)=(X &amp; Y) | ((~X) &amp; Z); G(X,Y,Z)=(X &amp; Z) | (Y &amp; (~Z));  H(X,Y,Z)=X ^ Y ^ Z; I(X,Y,Z)=Y ^ (X | (~Z));</li>
+<li>4个常数： A = 0x67452301, B = 0x0EFCDAB89, C = 0x98BADCFE, D = 0x10325476;</li>
+<li>4个函数：F(X,Y,Z)=(X &amp; Y) | ((~X) &amp; Z); G(X,Y,Z)=(X &amp; Z) | (Y &amp; (~Z));  H(X,Y,Z)=X ^ Y ^ Z; I(X,Y,Z)=Y ^ (X | (~Z));</li>
 </ul>
 </blockquote>
 <p>把消息分以512位为一分组进行处理，每一个分组进行4轮变换，以上面所说4个常数为起始变量进行　　<br>计算，重新输出4个变量，以这4个变量再进行下一分组的运算，如果已经是最后一个分组，则这4个　　<br>变量为最后的结果，即MD5值。</p>
