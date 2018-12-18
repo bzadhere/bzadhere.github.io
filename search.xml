@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[算法和数据结构-树]]></title>
+    <url>%2F2018%2F12%2F18%2F%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[树的类别二叉树、二叉搜索树、平衡二叉树、红黑树、B树、B+树、字典树 二叉树二叉树，插入有序的数据，会退化成链表，需要调整数据均匀分布，保证平衡性(搜索效率)书的查找性能取决于树的高度 二叉搜索树(BST)平衡二叉树(AVL)windows对进程地址空间的管理用到了AVL树 红黑树广泛用在C++的STL中, 如map和set. B树多路搜索树，每个节点可以拥有多于两个孩子节点。M路的B树最多有用M个孩子节点。 设计成多路是为了降低树的高度，但是无限多路时退化成有序数组。一般用于文件索引，为什么不用红黑树和有序数组？文件系统和数据库的索引都是存在硬盘上的，并且如果数据量大的话，不一定能一次性加载到内存中。B树索引可以每次加载一个节点，一步一步往下找。在内存中黑红树比B树效率高，但涉及到磁盘，B树更优。 B+树在B树基础上进行改造，数据都在叶子结点，同时叶子结点之间用指针形成链表。 为什么要这样设计？这也是和业务场景相关的，数据库中select数据，不一定只选一条，很多时候会选多条，比如按照id排序后选10条。如果是多条的话，B树需要做局部的中序遍历，可能要跨层访问。而B+树由于所有数据都在叶子结点，不用跨层，同时由于有链表结构，只需要找到首尾，通过链表就能把所有数据取出来了。 选出7~19，在叶子节点中就可以找到。 字典树(Trie)用在统计和排序大量字符串，如自动机一个典型应用是前缀匹配，比如在我们输入时，搜索引擎会给予提示字典树]]></content>
+      <categories>
+        <category>算法和数据结构</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[数据库水平、垂直拆分]]></title>
+    <url>%2F2018%2F12%2F18%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B0%B4%E5%B9%B3%E3%80%81%E5%9E%82%E7%9B%B4%E6%8B%86%E5%88%86%2F</url>
+    <content type="text"><![CDATA[水平、垂直分库]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[死锁和银行家算法]]></title>
     <url>%2F2018%2F12%2F01%2F%E6%AD%BB%E9%94%81%E5%92%8C%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95%2F</url>
     <content type="text"></content>
@@ -220,7 +236,7 @@
   <entry>
     <title><![CDATA[失败是成功他妈]]></title>
     <url>%2F2018%2F11%2F01%2F%E5%A4%B1%E8%B4%A5%E6%98%AF%E6%88%90%E5%8A%9F%E4%BB%96%E5%A6%88%2F</url>
-    <content type="text"><![CDATA[思路清奇小土刀 大海捞针找到的c++面试徐刘根的JAVA面试大杂烩Google的面试Java后端知识体系总结系统设计入门x86-64体系下一个奇怪问题的定位2018/2019/校招/春招/秋招/自然语言处理(NLP)/深度学习(Deep Learning)/机器学习(Machine Learning)/C/C++/Python/面试笔记]]></content>
+    <content type="text"><![CDATA[必须刷一遍思路清奇小土刀 大海捞针找到的c++面试徐刘根的JAVA面试大杂烩Google的面试Java后端知识体系总结系统设计入门x86-64体系下一个奇怪问题的定位2018/2019/校招/春招/秋招/自然语言处理(NLP)/深度学习(Deep Learning)/机器学习(Machine Learning)/C/C++/Python/面试笔记]]></content>
       <categories>
         <category>面试</category>
       </categories>
