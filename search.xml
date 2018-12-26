@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ping的过程]]></title>
+    <url>%2F2018%2F12%2F26%2Fping%E7%9A%84%E8%BF%87%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[对于Ping的过程，你真的了解吗？]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[面试练习]]></title>
     <url>%2F2018%2F12%2F22%2F%E9%9D%A2%E8%AF%95%E7%BB%83%E4%B9%A0%2F</url>
     <content type="text"><![CDATA[http://blog.sina.com.cn/s/blog_aeec1b700102uwqb.html linux tsc 分布式锁 osi七层网络模型，五层网络模型，每次层分别有哪些协议死锁产生的条件， 以及如何避免死锁，银行家算法，产生死锁后如何解决如何判断链表有环虚拟机类加载机制，双亲委派模型，以及为什么要实现双亲委派模型虚拟机调优参数拆箱装箱的原理JVM垃圾回收算法CMS G1hashset和hashmap的区别，haspmap的底层实现put操作，扩容机制，currenthashmap如何解决线程安全,1.7版本以及1.8版本的不同md5加密的原理有多少种方法可以让线程阻塞，能说多少说多少synchronized和reetrantlock锁AQS同步器框架，countdowmlatch，cyclebarrier，semaphore，读写锁 02—二面 B-Tree索引，myisam和innodb中索引的区别BIO和NIO的应用场景讲讲threadlocal数据库隔离级别，每层级别分别用什么方法实现，三级封锁协议,共享锁排它锁，mvcc多版本并发控制协议，间隙锁数据库索引？B+树？为什么要建索引？什么样的字段需要建索引，建索引的时候一般考虑什么？索引会不会使插入、删除作效率变低，怎么解决？数据库表怎么设计的？数据库范式？设计的过程中需要注意什么？共享锁与非共享锁、一个事务锁住了一条数据，另一个事务能查吗？Spring bean的生命周期？默认创建的模式是什么？不想单例怎么办？ 03—三面 高并发时怎么限流线程池的拒接任务策略springboot的启动流程集群、负载均衡、分布式、数据一致性的区别与关系数据库如果让你来垂直和水平拆分，谁先拆分，拆分的原则有哪些(单表数据量多大拆)最后谈谈Redis、Kafka、 Dubbo，各自的设计原理和应用场景 头条一面 1.讲讲jvm运行时数据库区2.讲讲你知道的垃圾回收算法3.jvm内存模型jmm4.内存泄漏与内存溢出的区别 select、epool 的区别？底层的数据结构是什么？6.mysql数据库默认存储引擎，有什么优点7.优化数据库的方法，从sql到缓存到cpu到操作系统，知道多少说多少8.什么情景下做分表，什么情景下做分库9.linkedList与arrayList区别 适用场景10.array list是如何扩容的 volatile 关键字的作用？Java 内存模型？12.java lock的实现，公平锁、非公平锁13.悲观锁和乐观锁，应用中的案例，mysql当中怎么实现，java中的实现 02—头条二面 Java 内存分配策略？多个线程同时请求内存，如何分配？Redis 底层用到了哪些数据结构？使用 Redis 的 set 来做过什么？Redis 使用过程中遇到什么问题？搭建过 Redis 集群吗？如何分析“慢查询”日志进行 SQL/索引 优化？MySQL 索引结构解释一下？（B+ 树）MySQL Hash 索引适用情况？举下例子？ 03—头条三面 如何保证数据库与redis缓存一致的Redis 的并发竞争问题是什么？如何解决这个问题？了解 Redis 事务的 CAS 方案吗？如何保证 Redis 高并发、高可用？Redis 的主从复制原理，以及Redis 的哨兵原理？如果让你写一个消息队列，该如何进行架构设计啊？说一下你的思路。MySQL数据库主从同步怎么实现？秒杀模块怎么设计的，如何压测，抗压手段]]></content>
@@ -241,7 +246,7 @@
   <entry>
     <title><![CDATA[数据结构笔记]]></title>
     <url>%2F2018%2F11%2F05%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[第一章 绪论冒泡排序 遍历A[0, n] 依次比较相邻两个数, 若A[i-1]小于A[i], 则交换, 并设置循环遍历标记; 一次循环必然可确定一个最大值, n递减; 1234567891011121314151617void bubble_sort(int A[], n)&#123; bool bSort = false; while(bSort) &#123; bSort = false; for(int i=1; i&lt;n; i++) &#123; if(A[i-1]&gt;A[i]) &#123; swap(A[i-1], A[i]); bSort = true; &#125; &#125; n--; &#125;&#125; 复杂度度量大O记号性质a) 对于任意常数c&gt;0, 有$ O(f(n)) = O(c*f(n)) $b) 对于任意常数a&gt;b&gt;0, $ 有O(n^a + n^b) = O(n^a) $冒泡时间复杂度: $ T(n)=O(2(n-1)^2) = O(2n^2 + 4n + 2) = O(2n^2) = O(n^2) $ $ \Omega $ 标记为最乐观的下限复杂度, $ \Theta $ 上限复杂度 复杂度分析常数：$ T(n) = O(3) + O(2) + O(1) = O(7) = O(1) $对数：$ O(\log_2 n) = O(\log n) $指数：$ O(a^n) $ 1234567891011// 统计整数n二进制展开中数位1的个数int countOnes(unsigned int n)&#123; int num = 0; while(n&gt;0) &#123; num += (1&amp;n); n &gt;&gt; 1; &#125; return num;&#125; 递归线性递归二分递归多分支递归ADT第二章 向量从数组到向量]]></content>
+    <content type="text"><![CDATA[第一章 绪论冒泡排序 遍历A[0, n] 依次比较相邻两个数, 若A[i-1]小于A[i], 则交换, 并设置循环遍历标记; 一次循环必然可确定一个最大值, n递减; 1234567891011121314151617void bubble_sort(int A[], n)&#123; bool bSort = false; while(bSort) &#123; bSort = false; for(int i=1; i&lt;n; i++) &#123; if(A[i-1]&gt;A[i]) &#123; swap(A[i-1], A[i]); bSort = true; &#125; &#125; n--; &#125;&#125; 复杂度度量大O记号性质a) 对于任意常数c&gt;0, 有$ O(f(n)) = O(c*f(n)) $b) 对于任意常数a&gt;b&gt;0, $ 有O(n^a + n^b) = O(n^a) $冒泡时间复杂度: $ T(n)=O(2(n-1)^2) = O(2n^2 + 4n + 2) = O(2n^2) = O(n^2) $ $ \Omega $ 标记为最乐观的下限复杂度, $ \Theta $ 上限复杂度 复杂度分析常数：$ T(n) = O(3) + O(2) + O(1) = O(7) = O(1) $对数：$ O(\log_2 n) = O(\log n) $指数：$ O(a^n) $ 1234567891011// 统计整数n二进制展开中数位1的个数int countOnes(unsigned int n)&#123; int num = 0; while(n&gt;0) &#123; num += (1&amp;n); n &gt;&gt; 1; &#125; return num;&#125; 递归(recursive)线性递归二分递归多分支递归ADT第二章 向量从数组到向量]]></content>
       <categories>
         <category>读书笔记</category>
       </categories>
