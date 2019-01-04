@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="volatile作用  volatile 关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素（操作系统、硬件、其它线程等）更改。所以使用 volatile 告诉编译器不应对这样的对象进行优化。 volatile 关键字声明的变量，每次访问时都必须从内存中取出值（没有被 volatile 修饰的变量，可能由于编译器的优化，从 CPU 寄存器中取值） const 可以是 vola">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-20T11:16:02.518Z">
+<meta property="og:updated_time" content="2019-01-04T03:25:54.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++关键字">
 <meta name="twitter:description" content="volatile作用  volatile 关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素（操作系统、硬件、其它线程等）更改。所以使用 volatile 告诉编译器不应对这样的对象进行优化。 volatile 关键字声明的变量，每次访问时都必须从内存中取出值（没有被 volatile 修饰的变量，可能由于编译器的优化，从 CPU 寄存器中取值） const 可以是 vola">
@@ -416,6 +416,9 @@
 <li>被 extern “C” 修饰的变量和函数是按照 C 语言方式编译和连接的</li>
 </ul>
 </blockquote>
+<p>extern用在变量声明中常常有这样一个作用，你在<em>.c文件中声明了一个全局的变量，这个全局的变量如果要被引用，<br>就放在</em>.h中并用extern来声明。</p>
+<h2 id="extern-和-static"><a href="#extern-和-static" class="headerlink" title="extern 和 static"></a>extern 和 static</h2><p>(1) extern 表明该变量在别的地方已经定义过了,在这里要使用那个变量.<br>(2) static 表示静态的变量，分配内存的时候, 存储在静态区,不存储在栈上面.</p>
+<p>static 作用范围是内部连接的关系, 和extern有点相反.它和对象本身是分开存储的,extern也是分开存储的,但是extern<br>可以被其他的对象用extern 引用,而static 不可以,只允许对象本身用它. 具体差别首先，static与extern是一对“水火不容”的家伙，<br>也就是说extern和static不能同时修饰一个变量；其次，static修饰的全局变量声明与定义同时进行，也就是说当你在头文件中使用<br>static声明了全局变量后，它也同时被定义了；最后，static修饰全局变量的作用域只能是本身的编译单元，也就是说它的“全局”只<br>对本编译单元有效，其他编译单元则看不到它,如:</p>
 <h1 id="typedef"><a href="#typedef" class="headerlink" title="typedef"></a>typedef</h1><h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1>
       
     </div>
@@ -613,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">1.</span> <span class="nav-text">volatile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景"><span class="nav-number">1.2.</span> <span class="nav-text">应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并行设备的硬件寄存器（如状态寄存器）"><span class="nav-number">1.2.1.</span> <span class="nav-text">并行设备的硬件寄存器（如状态寄存器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个中断服务子程序中访问到的变量"><span class="nav-number">1.2.2.</span> <span class="nav-text">一个中断服务子程序中访问到的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程共享变量"><span class="nav-number">1.2.3.</span> <span class="nav-text">多线程共享变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">1.3.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#explicit"><span class="nav-number">2.</span> <span class="nav-text">explicit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extern"><span class="nav-number">3.</span> <span class="nav-text">extern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typedef"><span class="nav-number">4.</span> <span class="nav-text">typedef</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#const"><span class="nav-number">5.</span> <span class="nav-text">const</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">1.</span> <span class="nav-text">volatile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景"><span class="nav-number">1.2.</span> <span class="nav-text">应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并行设备的硬件寄存器（如状态寄存器）"><span class="nav-number">1.2.1.</span> <span class="nav-text">并行设备的硬件寄存器（如状态寄存器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个中断服务子程序中访问到的变量"><span class="nav-number">1.2.2.</span> <span class="nav-text">一个中断服务子程序中访问到的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程共享变量"><span class="nav-number">1.2.3.</span> <span class="nav-text">多线程共享变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">1.3.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#explicit"><span class="nav-number">2.</span> <span class="nav-text">explicit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extern"><span class="nav-number">3.</span> <span class="nav-text">extern</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#extern-和-static"><span class="nav-number">3.1.</span> <span class="nav-text">extern 和 static</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typedef"><span class="nav-number">4.</span> <span class="nav-text">typedef</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#const"><span class="nav-number">5.</span> <span class="nav-text">const</span></a></li></ol></div>
             
 
           </div>
@@ -633,7 +636,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
