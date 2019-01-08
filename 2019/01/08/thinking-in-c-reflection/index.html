@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="什么是反射Java是原生支持反射机制的，通过Class类可以通过名称获得类对象，进一步操作。Python也支持反射机制，可以通过globals()获取对象map，也可以通过inspect模块，提供了自省的方法。但是C++呢？C++原生不支持反射机制，RTTI（运行时类型识别）也仅仅提供了类型的判断。 开闭原则是设计模式的原则之一，对修改是封闭，对扩展开放。一般来说，需要我们对类进行抽象，针对抽象的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-08T06:25:23.943Z">
+<meta property="og:updated_time" content="2019-01-08T06:26:40.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="thinking in c++ reflection">
 <meta name="twitter:description" content="什么是反射Java是原生支持反射机制的，通过Class类可以通过名称获得类对象，进一步操作。Python也支持反射机制，可以通过globals()获取对象map，也可以通过inspect模块，提供了自省的方法。但是C++呢？C++原生不支持反射机制，RTTI（运行时类型识别）也仅仅提供了类型的判断。 开闭原则是设计模式的原则之一，对修改是封闭，对扩展开放。一般来说，需要我们对类进行抽象，针对抽象的">
@@ -377,6 +377,7 @@
       
         <h1 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h1><p>Java是原生支持反射机制的，通过Class类可以通过名称获得类对象，进一步操作。Python也支持反射机制，<br>可以通过globals()获取对象map，也可以通过inspect模块，提供了自省的方法。但是C++呢？C++原生不支<br>持反射机制，RTTI（运行时类型识别）也仅仅提供了类型的判断。</p>
 <p>开闭原则是设计模式的原则之一，对修改是封闭，对扩展开放。一般来说，需要我们对类进行抽象，针对抽<br>象的类进行编程。许多的设计模式中，为了能够满足这一点，我们常常使用一个配置文件，映射字符串与类<br>型。然后通过反射机制获得字符串对应的对象，然后自动装配已达到易于扩展的目的。</p>
+<a id="more"></a>
 <h1 id="反射作用"><a href="#反射作用" class="headerlink" title="反射作用"></a>反射作用</h1><blockquote>
 <p>获取类型的信息，包括属性、方法<br>动态调用方法<br>动态构造对象<br>从程序集中获得类型</p>
 </blockquote>
