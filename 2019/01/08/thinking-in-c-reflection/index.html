@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="BOSS系统介绍 整体功能架构计费功能架构计费技术架构计费对外接口设计部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系)高可用及容灾设计和测试(mdb)">
+<meta name="description" content="什么是反射Java是原生支持反射机制的，通过Class类可以通过名称获得类对象，进一步操作。Python也支持反射机制，可以通过globals()获取对象map，也可以通过inspect模块，提供了自省的方法。但是C++呢？C++原生不支持反射机制，RTTI（运行时类型识别）也仅仅提供了类型的判断。 开闭原则是设计模式的原则之一，对修改是封闭，对扩展开放。一般来说，需要我们对类进行抽象，针对抽象的">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="准备好吹牛B">
-<meta property="og:url" content="http://yoursite.com/2018/10/29/准备好吹牛B/index.html">
+<meta property="og:title" content="thinking in c++ reflection">
+<meta property="og:url" content="http://yoursite.com/2019/01/08/thinking-in-c-reflection/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="BOSS系统介绍 整体功能架构计费功能架构计费技术架构计费对外接口设计部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系)高可用及容灾设计和测试(mdb)">
+<meta property="og:description" content="什么是反射Java是原生支持反射机制的，通过Class类可以通过名称获得类对象，进一步操作。Python也支持反射机制，可以通过globals()获取对象map，也可以通过inspect模块，提供了自省的方法。但是C++呢？C++原生不支持反射机制，RTTI（运行时类型识别）也仅仅提供了类型的判断。 开闭原则是设计模式的原则之一，对修改是封闭，对扩展开放。一般来说，需要我们对类进行抽象，针对抽象的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-14T08:43:27.963Z">
+<meta property="og:updated_time" content="2019-01-08T06:25:23.943Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="准备好吹牛B">
-<meta name="twitter:description" content="BOSS系统介绍 整体功能架构计费功能架构计费技术架构计费对外接口设计部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系)高可用及容灾设计和测试(mdb)">
+<meta name="twitter:title" content="thinking in c++ reflection">
+<meta name="twitter:description" content="什么是反射Java是原生支持反射机制的，通过Class类可以通过名称获得类对象，进一步操作。Python也支持反射机制，可以通过globals()获取对象map，也可以通过inspect模块，提供了自省的方法。但是C++呢？C++原生不支持反射机制，RTTI（运行时类型识别）也仅仅提供了类型的判断。 开闭原则是设计模式的原则之一，对修改是封闭，对扩展开放。一般来说，需要我们对类进行抽象，针对抽象的">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/29/准备好吹牛B/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/08/thinking-in-c-reflection/"/>
 
 
 
 
 
-  <title>准备好吹牛B | 扫地小道童</title>
+  <title>thinking in c++ reflection | 扫地小道童</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/29/准备好吹牛B/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/08/thinking-in-c-reflection/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">准备好吹牛B</h1>
+          <h1 class="post-title" itemprop="name headline">thinking in c++ reflection</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T23:02:33+08:00">
-                2018-10-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-08T10:31:07+08:00">
+                2019-01-08
               </time>
             
 
@@ -337,28 +337,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/面试/" itemprop="url" rel="index">
-                    <span itemprop="name">面试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -366,7 +344,7 @@
 
           
           
-             <span id="/2018/10/29/准备好吹牛B/" class="leancloud_visitors" data-flag-title="准备好吹牛B">
+             <span id="/2019/01/08/thinking-in-c-reflection/" class="leancloud_visitors" data-flag-title="thinking in c++ reflection">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -397,16 +375,22 @@
       
 
       
-        <h1 id="BOSS系统介绍"><a href="#BOSS系统介绍" class="headerlink" title="BOSS系统介绍"></a>BOSS系统介绍</h1><blockquote>
-<p>整体功能架构<br>计费功能架构<br>计费技术架构<br>计费对外接口设计<br>部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系)<br>高可用及容灾设计和测试(mdb)</p>
+        <h1 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h1><p>Java是原生支持反射机制的，通过Class类可以通过名称获得类对象，进一步操作。Python也支持反射机制，<br>可以通过globals()获取对象map，也可以通过inspect模块，提供了自省的方法。但是C++呢？C++原生不支<br>持反射机制，RTTI（运行时类型识别）也仅仅提供了类型的判断。</p>
+<p>开闭原则是设计模式的原则之一，对修改是封闭，对扩展开放。一般来说，需要我们对类进行抽象，针对抽<br>象的类进行编程。许多的设计模式中，为了能够满足这一点，我们常常使用一个配置文件，映射字符串与类<br>型。然后通过反射机制获得字符串对应的对象，然后自动装配已达到易于扩展的目的。</p>
+<h1 id="反射作用"><a href="#反射作用" class="headerlink" title="反射作用"></a>反射作用</h1><blockquote>
+<p>获取类型的信息，包括属性、方法<br>动态调用方法<br>动态构造对象<br>从程序集中获得类型</p>
 </blockquote>
-<a id="more"></a>
-<h1 id="遇到过的问题"><a href="#遇到过的问题" class="headerlink" title="遇到过的问题"></a>遇到过的问题</h1><blockquote>
-<p>网络粘包, errno<br>死锁<br>binlog乱序, 索引优化<br>内存泄漏(lua,new/del)<br>性能优化, 主机问题(linux时钟源, ssd调度方式cfq/deadline, ck和binglog文件rename, 自旋锁占CPU过高, 存储变为只读)</p>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><blockquote>
+<p>序列化（Serialization 数据写磁盘）和数据绑定（Data Binding）<br>远程方法调用（RMI）<br>对象/关系数据映射（O/R mapping）</p>
 </blockquote>
-<h1 id="最得意的事"><a href="#最得意的事" class="headerlink" title="最得意的事"></a>最得意的事</h1><blockquote>
-<p>　</p>
+<h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><blockquote>
+<p>使用map，映射字符串和生产函数<br>每次构造新类型时，将生产函数注册到map中<br>工厂函数通过map获得生产函数，建造不同的对象</p>
 </blockquote>
+<h1 id="code"><a href="#code" class="headerlink" title="code"></a>code</h1><pre><code>
+</code></pre><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://svn.boost.org/trac10/wiki/LibrariesUnderConstruction#ReflectiveProgramming" target="_blank" rel="noopener">boost</a></p>
+<p><a href="https://www.bbsmax.com/A/6pdDvPyXJw/" target="_blank" rel="noopener">qt</a></p>
+<p><a href="http://www.open-open.com/lib/view/open1326941133530.html" target="_blank" rel="noopener">Mirror C++ reflection library</a></p>
+<p><a href="https://github.com/rttrorg/rttr" target="_blank" rel="noopener">RTTR</a></p>
 
       
     </div>
@@ -460,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/29/TCP协议相关概念/" rel="next" title="TCP协议相关概念">
-                <i class="fa fa-chevron-left"></i> TCP协议相关概念
+              <a href="/2018/12/26/ping的过程/" rel="next" title="ping的过程">
+                <i class="fa fa-chevron-left"></i> ping的过程
               </a>
             
           </div>
@@ -469,10 +453,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/30/一致性hash算法/" rel="prev" title="一致性hash算法">
-                一致性hash算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -604,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BOSS系统介绍"><span class="nav-number">1.</span> <span class="nav-text">BOSS系统介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到过的问题"><span class="nav-number">2.</span> <span class="nav-text">遇到过的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最得意的事"><span class="nav-number">3.</span> <span class="nav-text">最得意的事</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是反射"><span class="nav-number">1.</span> <span class="nav-text">什么是反射</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反射作用"><span class="nav-number">2.</span> <span class="nav-text">反射作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用场景"><span class="nav-number">3.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现思路"><span class="nav-number">4.</span> <span class="nav-text">实现思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code"><span class="nav-number">5.</span> <span class="nav-text">code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
