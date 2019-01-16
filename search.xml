@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux内核情景分析]]></title>
+    <url>%2F2019%2F01%2F16%2Flinux%E5%86%85%E6%A0%B8%E6%83%85%E6%99%AF%E5%88%86%E6%9E%90%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[strace命令]]></title>
     <url>%2F2019%2F01%2F14%2Fstrace%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"></content>
