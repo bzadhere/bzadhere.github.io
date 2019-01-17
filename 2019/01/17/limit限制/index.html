@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="前言由于BASE理论需要在一致性和可用性方面做出权衡，因此涌现了很多关于一致性的算法和协议。其中比较著名的有二阶提交协议（2 Phase Commitment Protocol），三阶提交协议（3 PhaseCommitment Protocol）和Paxos算法。 本文要介绍的2PC协议，分为两个阶段提交一个事务。并通过协调者和各个参与者的配合，实现分布式一致性。">
+<meta name="description" content="系统调用ulimit1234567891011121314151617[root@zhangbb ~]# ulimit -acore file size          (blocks, -c) 0data seg size           (kbytes, -d) unlimitedscheduling priority             (-e) 0file size">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分布式系统之2PC(3)">
-<meta property="og:url" content="http://yoursite.com/2018/11/06/分布式系统之2PC-3/index.html">
+<meta property="og:title" content="limit限制">
+<meta property="og:url" content="http://yoursite.com/2019/01/17/limit限制/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="前言由于BASE理论需要在一致性和可用性方面做出权衡，因此涌现了很多关于一致性的算法和协议。其中比较著名的有二阶提交协议（2 Phase Commitment Protocol），三阶提交协议（3 PhaseCommitment Protocol）和Paxos算法。 本文要介绍的2PC协议，分为两个阶段提交一个事务。并通过协调者和各个参与者的配合，实现分布式一致性。">
+<meta property="og:description" content="系统调用ulimit1234567891011121314151617[root@zhangbb ~]# ulimit -acore file size          (blocks, -c) 0data seg size           (kbytes, -d) unlimitedscheduling priority             (-e) 0file size">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之2PC-3/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之2PC-3/2.png">
-<meta property="og:updated_time" content="2018-11-07T02:40:15.810Z">
+<meta property="og:updated_time" content="2019-01-17T09:02:12.974Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分布式系统之2PC(3)">
-<meta name="twitter:description" content="前言由于BASE理论需要在一致性和可用性方面做出权衡，因此涌现了很多关于一致性的算法和协议。其中比较著名的有二阶提交协议（2 Phase Commitment Protocol），三阶提交协议（3 PhaseCommitment Protocol）和Paxos算法。 本文要介绍的2PC协议，分为两个阶段提交一个事务。并通过协调者和各个参与者的配合，实现分布式一致性。">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/06/分布式系统之2PC-3/1.png">
+<meta name="twitter:title" content="limit限制">
+<meta name="twitter:description" content="系统调用ulimit1234567891011121314151617[root@zhangbb ~]# ulimit -acore file size          (blocks, -c) 0data seg size           (kbytes, -d) unlimitedscheduling priority             (-e) 0file size">
 
 
 
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/06/分布式系统之2PC-3/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/17/limit限制/"/>
 
 
 
 
 
-  <title>分布式系统之2PC(3) | 扫地小道童</title>
+  <title>limit限制 | 扫地小道童</title>
   
 
 
@@ -300,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/分布式系统之2PC-3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/limit限制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -317,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">分布式系统之2PC(3)</h1>
+          <h1 class="post-title" itemprop="name headline">limit限制</h1>
         
 
         <div class="post-meta">
@@ -329,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T19:01:12+08:00">
-                2018-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-17T15:56:10+08:00">
+                2019-01-17
               </time>
             
 
@@ -340,28 +337,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/分布式系统/" itemprop="url" rel="index">
-                    <span itemprop="name">分布式系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -369,7 +344,7 @@
 
           
           
-             <span id="/2018/11/06/分布式系统之2PC-3/" class="leancloud_visitors" data-flag-title="分布式系统之2PC(3)">
+             <span id="/2019/01/17/limit限制/" class="leancloud_visitors" data-flag-title="limit限制">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -400,82 +375,14 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于BASE理论需要在一致性和可用性方面做出权衡，因此涌现了很多关于一致性的算法和协议。<br>其中比较著名的有二阶提交协议（2 Phase Commitment Protocol），三阶提交协议（3 Phase<br>Commitment Protocol）和Paxos算法。</p>
-<p>本文要介绍的2PC协议，分为两个阶段提交一个事务。并通过协调者和各个参与者的配合，实现<br>分布式一致性。</p>
-<a id="more"></a>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">角色</th>
-<th style="text-align:left">XA概念</th>
-<th style="text-align:left">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">协调者</td>
-<td style="text-align:left">事务管理器</td>
-<td style="text-align:left">协调各个参与者,对分布式事务进行提交或回滚</td>
-</tr>
-<tr>
-<td style="text-align:left">参与者</td>
-<td style="text-align:left">资源管理器</td>
-<td style="text-align:left">分布式集群中的节点</td>
-</tr>
-</tbody>
-</table>
-<h1 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h1><p>分布式事务是指会涉及到操作多个数据库的事务。目的是为了保证分布式系统中的数据一致性<br>关键：</p>
-<ol>
-<li>需要记录事务在任何节点所做的所有动作</li>
-<li>事务进行的所有操作要么全部提交，要么全部回滚</li>
-</ol>
-<h1 id="XA规范"><a href="#XA规范" class="headerlink" title="XA规范"></a>XA规范</h1><p>XA规范是由 X/Open组织（即现在的 Open Group ）定义的分布式事务处理模型。 X/Open DTP<br>模型（ 1994 ）包括：</p>
-<blockquote>
-<ul>
-<li>应用程序（ AP ）</li>
-<li>事务管理器（ TM ）：交易中间件等</li>
-<li>资源管理器（ RM ）：关系型数据库等</li>
-<li>通信资源管理器（ CRM ）：消息中间件等</li>
-</ul>
+        <h1 id="系统调用ulimit"><a href="#系统调用ulimit" class="headerlink" title="系统调用ulimit"></a>系统调用ulimit</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@zhangbb ~]# ulimit -a</span><br><span class="line">core file size          (blocks, -c) 0</span><br><span class="line">data seg size           (kbytes, -d) unlimited</span><br><span class="line">scheduling priority             (-e) 0</span><br><span class="line">file size               (blocks, -f) unlimited</span><br><span class="line">pending signals                 (-i) 3893</span><br><span class="line">max locked memory       (kbytes, -l) 64</span><br><span class="line">max memory size         (kbytes, -m) unlimited</span><br><span class="line">open files                      (-n) 65535</span><br><span class="line">pipe size            (512 bytes, -p) 8</span><br><span class="line">POSIX message queues     (bytes, -q) 819200</span><br><span class="line">real-time priority              (-r) 0</span><br><span class="line">stack size              (kbytes, -s) 8192</span><br><span class="line">cpu time               (seconds, -t) unlimited</span><br><span class="line">max user processes              (-u) 65535</span><br><span class="line">virtual memory          (kbytes, -v) unlimited</span><br><span class="line">file locks                      (-x) unlimited</span><br></pre></td></tr></table></figure>
+<h1 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h1><blockquote>
+<p>#include &lt;sys/time.h&gt;  </p>
+<p>#include &lt;sys/resource.h&gt;<br>int getrlimit(int resource, struct rlimit <em>rlim);<br>int setrlimit(int resource, const struct rlimit </em>rlim);</p>
 </blockquote>
-<p>XA规范定义了交易中间件与数据库之间的接口规范（即接口函数），交易中间件用它来通知数据<br>库事务的开始、结束以及提交、回滚等。而XA接口函数由数据库厂商提供</p>
-<blockquote>
-<p>二阶提交协议和三阶提交协议就是基于XA规范提出的其中，二阶段提交就是实现XA分布式事务的关键。</p>
-</blockquote>
-<p>XA规范的流程，大致如图所示：<br><img src="/2018/11/06/分布式系统之2PC-3/1.png" alt="1"></p>
-<h1 id="2PC"><a href="#2PC" class="headerlink" title="2PC"></a>2PC</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>每个参与者将操作成败通知协调者，再由协调者根据所有参与者的反馈情报，决定各参与者是否要提交操<br>作还是中止操作。</p>
-<h2 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h2><p>准备阶段分为三个步骤：<br><img src="/2018/11/06/分布式系统之2PC-3/2.png" alt="2"></p>
-<ol>
-<li><p>事务询问<br>协调者向所有的参与者询问，是否准备好了执行事务，并开始等待各参与者的响应。</p>
-</li>
-<li><p>执行事务<br>各参与者节点执行事务操作。如果本地事务成功，将Undo和Redo信息记入事务日志<br>中，但不提交；否则，直接返回失败，退出执行。</p>
-</li>
-<li><p>各参与者向协调者反馈事务询问响应<br>如果参与者成功执行了事务操作，那么就反馈给协调者 Yes响应，表示事务可以执行<br>提交；如果参与者没有成功执行事务，就返回No给协调者，表示事务不可以执行提交。</p>
-</li>
-</ol>
-<h2 id="提交阶段"><a href="#提交阶段" class="headerlink" title="提交阶段"></a>提交阶段</h2><p>根据准备阶段的投票结果执行2种操作:提交事务或中断事务</p>
-<h3 id="提交事务过程"><a href="#提交事务过程" class="headerlink" title="提交事务过程"></a>提交事务过程</h3><ol>
-<li>发送提交请求<br>协调者向所有参与者发出commit请求。</li>
-<li>事务提交<br>参与者收到commit请求后，会正式执行事务提交操作，并在完成提交之后，释放整个事<br>务执行期间占用的事务资源。</li>
-<li>反馈事务提交结果<br>参与者在完成事务提交之后，向协调者发送Ack信息。</li>
-<li>事务提交确认<br>协调者接收到所有参与者反馈的Ack信息后，完成事务。</li>
-</ol>
-<h3 id="中断事务过程"><a href="#中断事务过程" class="headerlink" title="中断事务过程"></a>中断事务过程</h3><ol>
-<li>发送回滚请求<br>协调者向所有参与者发出Rollback请求。</li>
-<li>反馈事务回滚结果<br>参与者在完成事务回滚之后，想协调者发送Ack信息。</li>
-<li>事务回滚<br>参与者接收到Rollback请求后，会利用其在提交阶段种记录的Undo信息，来执行事务回滚<br>操作。在完成回滚之后，释放在整个事务执行期间占用的资源。</li>
-<li>事务中断确认<br>协调者接收到所有参与者反馈的Ack信息后，完成事务中断。</li>
-</ol>
-<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><blockquote>
-<ul>
-<li>优点：原理简单，实现方便。</li>
-<li>缺点：同步阻塞，单点问题，数据不一致，容错性不好。</li>
-</ul>
-</blockquote>
-<h3 id="同步阻塞"><a href="#同步阻塞" class="headerlink" title="同步阻塞"></a>同步阻塞</h3><p>所有的节点都在等待其他节点的响应，无法进行其他操作。这种同步阻塞极大的限制了分布式<br>系统的性能。(mapreduce里面是顺序执行)</p>
-<h3 id="单点问题"><a href="#单点问题" class="headerlink" title="单点问题"></a>单点问题</h3><p>协调者是个单点, 如果协调者在提交阶段出现问题，那么整个流程将无法运转</p>
-<h3 id="数据不一致"><a href="#数据不一致" class="headerlink" title="数据不一致"></a>数据不一致</h3><p>协调者向所有的参与者发送commit请求之后，发生了局部网络异常，或者是协调者在尚未发送<br>完所有 commit请求之前自身发生了崩溃，导致最终只有部分参与者收到了commit请求。</p>
-<h3 id="容错性不好"><a href="#容错性不好" class="headerlink" title="容错性不好"></a>容错性不好</h3><p>如果在二阶段提交的提交询问阶段中，参与者出现故障，导致协调者始终无法获取到所有参与<br>者的确认信息，这时协调者只能依靠其自身的超时机制，判断是否需要中断事务。显然，这种<br>策略过于保守。换句话说，二阶段提交协议没有设计较为完善的容错机制，任意一个节点是失<br>败都会导致整个事务的失败。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;sys/resource.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">        struct rlimit r;</span><br><span class="line">    if(getrlimit(RLIMIT_AS, &amp;r) &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;getrlimit error&quot;);</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;RLIMIT_AS cur %d, max %d\n&quot;, r.rlim_cur, r.rlim_max);</span><br><span class="line"></span><br><span class="line">    if(getrlimit(RLIMIT_STACK, &amp;r) &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;getrlimit error&quot;);</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;RLIMIT_STACK cur %d, max %d\n&quot;, r.rlim_cur, r.rlim_max);</span><br><span class="line"></span><br><span class="line">    if(getrlimit(RLIMIT_MEMLOCK , &amp;r) &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;getrlimit error&quot;);</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;RLIMIT_MEMLOCK cur %d, max %d\n&quot;, r.rlim_cur, r.rlim_max);</span><br><span class="line">        return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">52_zjdev[/data01/zjgrp/zjdev/users/zhangbb]%./test</span><br><span class="line">RLIMIT_AS cur -1, max -1</span><br><span class="line">RLIMIT_STACK cur -1, max -1</span><br><span class="line">RLIMIT_MEMLOCK cur 65536, max 65536</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/Royecode/article/details/48738681" target="_blank" rel="noopener">参考</a></p>
+<h1 id="getrusage"><a href="#getrusage" class="headerlink" title="getrusage"></a>getrusage</h1><p>获取运行进程使用资源</p>
 
       
     </div>
@@ -529,8 +436,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/06/分布式系统之BASE理论-2/" rel="next" title="分布式系统之BASE理论(2)">
-                <i class="fa fa-chevron-left"></i> 分布式系统之BASE理论(2)
+              <a href="/2019/01/16/linux内核情景分析/" rel="next" title="linux内核情景分析">
+                <i class="fa fa-chevron-left"></i> linux内核情景分析
               </a>
             
           </div>
@@ -538,10 +445,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/06/分布式系统之3PC-4/" rel="prev" title="分布式系统之3PC(4)">
-                分布式系统之3PC(4) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -673,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式事务"><span class="nav-number">2.</span> <span class="nav-text">分布式事务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XA规范"><span class="nav-number">3.</span> <span class="nav-text">XA规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2PC"><span class="nav-number">4.</span> <span class="nav-text">2PC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备阶段"><span class="nav-number">4.2.</span> <span class="nav-text">准备阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交阶段"><span class="nav-number">4.3.</span> <span class="nav-text">提交阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提交事务过程"><span class="nav-number">4.3.1.</span> <span class="nav-text">提交事务过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断事务过程"><span class="nav-number">4.3.2.</span> <span class="nav-text">中断事务过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优缺点"><span class="nav-number">4.4.</span> <span class="nav-text">优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同步阻塞"><span class="nav-number">4.4.1.</span> <span class="nav-text">同步阻塞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单点问题"><span class="nav-number">4.4.2.</span> <span class="nav-text">单点问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据不一致"><span class="nav-number">4.4.3.</span> <span class="nav-text">数据不一致</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容错性不好"><span class="nav-number">4.4.4.</span> <span class="nav-text">容错性不好</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#系统调用ulimit"><span class="nav-number">1.</span> <span class="nav-text">系统调用ulimit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#库函数"><span class="nav-number">2.</span> <span class="nav-text">库函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#getrusage"><span class="nav-number">3.</span> <span class="nav-text">getrusage</span></a></li></ol></div>
             
 
           </div>
