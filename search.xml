@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[excel数据处理]]></title>
+    <url>%2F2019%2F01%2F21%2Fexcel%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%2F</url>
+    <content type="text"><![CDATA[Sqlite 简介使用菜鸟教程网站 桌面工具下载安装SQLite Database Browser, 免费开源，支持简单的创建/打开/修改/删除 SQL 数据库。不懂SQL小白也支持操作. 下载地址 右键解压到当前文件夹，解压后如下(可以剪切或复制到其他目录): 进入”DB Browser for SQLite”, 找到如下*.exe，右键创建桌面快捷方式(方便使用) Python脚本python for windows download 第三放库安装：1234win + rcmdpip install openpyxlpip install lxml openpyxl官方手册]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[malloc死锁]]></title>
+    <url>%2F2019%2F01%2F18%2Fmalloc%E6%AD%BB%E9%94%81%2F</url>
+    <content type="text"><![CDATA[进程bt信息12345```# malloc原理分析## libc库版本和源码 52_zjdev[/data01/zjgrp/zjdev]%ls -ltr /lib64/libc.so.6lrwxrwxrwx 1 root root 12 1月 23 2018 /lib64/libc.so.6 -&gt; libc-2.19.so` glibc源码下载 API手册 malloc MT-Safe Multi Thread 多线程安全AS-Safe Async Singal 异步信号不安全AC-Safe Async Cancel 异步取消不安全 ##]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[limit限制]]></title>
     <url>%2F2019%2F01%2F17%2Flimit%E9%99%90%E5%88%B6%2F</url>
     <content type="text"><![CDATA[系统调用ulimit1234567891011121314151617[root@zhangbb ~]# ulimit -acore file size (blocks, -c) 0data seg size (kbytes, -d) unlimitedscheduling priority (-e) 0file size (blocks, -f) unlimitedpending signals (-i) 3893max locked memory (kbytes, -l) 64max memory size (kbytes, -m) unlimitedopen files (-n) 65535pipe size (512 bytes, -p) 8POSIX message queues (bytes, -q) 819200real-time priority (-r) 0stack size (kbytes, -s) 8192cpu time (seconds, -t) unlimitedmax user processes (-u) 65535virtual memory (kbytes, -v) unlimitedfile locks (-x) unlimited 库函数 #include &lt;sys/time.h&gt; #include &lt;sys/resource.h&gt;int getrlimit(int resource, struct rlimit rlim);int setrlimit(int resource, const struct rlimit rlim); 12345678910111213141516171819202122232425262728293031323334#include &lt;sys/resource.h&gt;#include &lt;stdio.h&gt;#include &lt;iostream&gt;int main()&#123; struct rlimit r; if(getrlimit(RLIMIT_AS, &amp;r) &lt; 0) &#123; perror(&quot;getrlimit error&quot;); return 0; &#125; printf(&quot;RLIMIT_AS cur %d, max %d\n&quot;, r.rlim_cur, r.rlim_max); if(getrlimit(RLIMIT_STACK, &amp;r) &lt; 0) &#123; perror(&quot;getrlimit error&quot;); return 0; &#125; printf(&quot;RLIMIT_STACK cur %d, max %d\n&quot;, r.rlim_cur, r.rlim_max); if(getrlimit(RLIMIT_MEMLOCK , &amp;r) &lt; 0) &#123; perror(&quot;getrlimit error&quot;); return 0; &#125; printf(&quot;RLIMIT_MEMLOCK cur %d, max %d\n&quot;, r.rlim_cur, r.rlim_max); return 0;&#125;52_zjdev[/data01/zjgrp/zjdev/users/zhangbb]%./testRLIMIT_AS cur -1, max -1RLIMIT_STACK cur -1, max -1RLIMIT_MEMLOCK cur 65536, max 65536 参考 getrusage获取运行进程使用资源]]></content>
