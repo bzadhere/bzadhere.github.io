@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[excel数据处理]]></title>
     <url>%2F2019%2F01%2F21%2Fexcel%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%2F</url>
-    <content type="text"><![CDATA[Sqlite 简介使用菜鸟教程网站 桌面工具下载安装SQLite Database Browser, 免费开源，支持简单的创建/打开/修改/删除 SQL 数据库。不懂SQL小白也支持操作. 下载地址 右键解压到当前文件夹，解压后如下(可以剪切或复制到其他目录): 进入”DB Browser for SQLite”, 找到如下*.exe，右键创建桌面快捷方式(方便使用) Python脚本python for windows download 第三放库安装：1234win + rcmdpip install openpyxlpip install lxml openpyxl官方手册]]></content>
+    <content type="text"><![CDATA[Sqlite 简介使用菜鸟教程网站 桌面工具下载安装SQLite Database Browser, 免费开源，支持简单的创建/打开/修改/删除 SQL 数据库。不懂SQL小白也支持操作. 下载地址 右键解压到当前文件夹，解压后如下(可以剪切或复制到其他目录): 进入”DB Browser for SQLite”, 找到如下*.exe，右键创建桌面快捷方式(方便使用) Python脚本python for windows download 第三放库安装：1234win + rcmdpip install openpyxlpip install lxml openpyxl官方手册 1#!/usr/bin/python3]]></content>
   </entry>
   <entry>
     <title><![CDATA[malloc死锁]]></title>
