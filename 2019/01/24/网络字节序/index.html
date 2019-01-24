@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="理解字节序 大端字节序：高位字节在前, 低位字节在后, 这是人类读取字节的方法。小端字节序：低位字节在前, 高位字节在后    0x1234567的大端字节序和小端字节序的写法如下    地址 0x100 0x101 0x102 0x103     大端 0x01 0x23 0x45 0x67   小端 0x67 0x45 0x23 0x01    网络字节序网络字节顺序是TCP/IP中规定好的一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-24T02:26:37.746Z">
+<meta property="og:updated_time" content="2019-01-24T02:30:48.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络字节序">
 <meta name="twitter:description" content="理解字节序 大端字节序：高位字节在前, 低位字节在后, 这是人类读取字节的方法。小端字节序：低位字节在前, 高位字节在后    0x1234567的大端字节序和小端字节序的写法如下    地址 0x100 0x101 0x102 0x103     大端 0x01 0x23 0x45 0x67   小端 0x67 0x45 0x23 0x01    网络字节序网络字节顺序是TCP/IP中规定好的一">
@@ -428,11 +428,11 @@
 </tr>
 </tbody>
 </table>
-<h1 id="网络字节序"><a href="#网络字节序" class="headerlink" title="网络字节序"></a>网络字节序</h1><p>网络字节顺序是TCP/IP中规定好的一种数据表示格式, 采用大端字节序; 与具体的CPU类型、操作系统等无关，从而可以保证<br>数据在不同主机之间传输时能够被正确解释。</p>
-<h1 id="主机字节序"><a href="#主机字节序" class="headerlink" title="主机字节序"></a>主机字节序</h1><p>计算机电路先处理低位字节，效率比较高，因为计算都是从低位开始的。所以，计算机的内部处理都是小端字节序</p>
-<p>但是，人类还是习惯读写大端字节序。所以，除了计算机的内部处理，其他的场合几乎都是大端字节序，比如网络传输和文件储存。</p>
-<p>计算机处理字节序的时候，不知道什么是高位字节，什么是低位字节。它只知道按顺序读取字节，先读第一个字节，再读第二个字节。<br>如果是大端字节序，先读到的就是高位字节，后读到的就是低位字节。小端字节序正好相反。</p>
-<h1 id="32位整数字节序转换"><a href="#32位整数字节序转换" class="headerlink" title="32位整数字节序转换"></a>32位整数字节序转换</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/* 大端字节序 */</span><br><span class="line">i = (data[0]&lt;&lt;24) | (data[1]&lt;&lt;16) | (data[2]&lt;&lt;8) | (data[3]&lt;&lt;0);</span><br><span class="line"></span><br><span class="line">/* 小端字节序 */</span><br><span class="line">i = (data[0]&lt;&lt;0) | (data[1]&lt;&lt;8) | (data[2]&lt;&lt;16) | (data[3]&lt;&lt;24);</span><br></pre></td></tr></table></figure>
+<h1 id="网络字节序"><a href="#网络字节序" class="headerlink" title="网络字节序"></a>网络字节序</h1><p>网络字节顺序是TCP/IP中规定好的一种数据表示格式, 采用大端字节序; 与具体的CPU类型、操作系统等无关，<br>从而可以保证数据在不同主机之间传输时能够被正确解释。</p>
+<h1 id="主机字节序"><a href="#主机字节序" class="headerlink" title="主机字节序"></a>主机字节序</h1><p>计算机电路先处理低位字节，效率比较高，因为计算都是从低位开始的。所以，计算机的内部处理都是小端<br>字节序</p>
+<p>但是，人类还是习惯读写大端字节序。所以，除了计算机的内部处理，其他的场合几乎都是大端字节序，比<br>如网络传输和文件储存。</p>
+<p>计算机处理字节序的时候，不知道什么是高位字节，什么是低位字节。它只知道按顺序读取字节，先读第一<br>个字节，再读第二个字节。如果是大端字节序，先读到的就是高位字节，后读到的就是低位字节。小端字节<br>序正好相反。</p>
+<h1 id="32位整数转换为网络字节序"><a href="#32位整数转换为网络字节序" class="headerlink" title="32位整数转换为网络字节序"></a>32位整数转换为网络字节序</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/* 大端字节序 */</span><br><span class="line">i = (data[0]&lt;&lt;24) | (data[1]&lt;&lt;16) | (data[2]&lt;&lt;8) | (data[3]&lt;&lt;0);</span><br><span class="line"></span><br><span class="line">/* 小端字节序 */</span><br><span class="line">i = (data[0]&lt;&lt;0) | (data[1]&lt;&lt;8) | (data[2]&lt;&lt;16) | (data[3]&lt;&lt;24);</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -625,7 +625,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#理解字节序"><span class="nav-number">1.</span> <span class="nav-text">理解字节序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络字节序"><span class="nav-number">2.</span> <span class="nav-text">网络字节序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主机字节序"><span class="nav-number">3.</span> <span class="nav-text">主机字节序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#32位整数字节序转换"><span class="nav-number">4.</span> <span class="nav-text">32位整数字节序转换</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#理解字节序"><span class="nav-number">1.</span> <span class="nav-text">理解字节序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络字节序"><span class="nav-number">2.</span> <span class="nav-text">网络字节序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主机字节序"><span class="nav-number">3.</span> <span class="nav-text">主机字节序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#32位整数转换为网络字节序"><span class="nav-number">4.</span> <span class="nav-text">32位整数转换为网络字节序</span></a></li></ol></div>
             
 
           </div>
