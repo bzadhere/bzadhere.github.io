@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[网络字节序]]></title>
     <url>%2F2019%2F01%2F24%2F%E7%BD%91%E7%BB%9C%E5%AD%97%E8%8A%82%E5%BA%8F%2F</url>
-    <content type="text"><![CDATA[理解字节序 大端字节序：高位字节在前, 低位字节在后, 这是人类读取字节的方法。小端字节序：低位字节在前, 高位字节在后 0x1234567的大端字节序和小端字节序的写法如下 地址 0x100 0x101 0x102 0x103 大端 0x01 0x23 0x45 0x67 小端 0x67 0x45 0x23 0x01 网络字节序网络字节顺序是TCP/IP中规定好的一种数据表示格式, 采用大端字节序; 与具体的CPU类型、操作系统等无关，从而可以保证数据在不同主机之间传输时能够被正确解释。 主机字节序计算机电路先处理低位字节，效率比较高，因为计算都是从低位开始的。所以，计算机的内部处理都是小端字节序 但是，人类还是习惯读写大端字节序。所以，除了计算机的内部处理，其他的场合几乎都是大端字节序，比如网络传输和文件储存。 计算机处理字节序的时候，不知道什么是高位字节，什么是低位字节。它只知道按顺序读取字节，先读第一个字节，再读第二个字节。如果是大端字节序，先读到的就是高位字节，后读到的就是低位字节。小端字节序正好相反。 32位整数转换为网络字节序12345/* 大端字节序 */i = (data[0]&lt;&lt;24) | (data[1]&lt;&lt;16) | (data[2]&lt;&lt;8) | (data[3]&lt;&lt;0);/* 小端字节序 */i = (data[0]&lt;&lt;0) | (data[1]&lt;&lt;8) | (data[2]&lt;&lt;16) | (data[3]&lt;&lt;24);]]></content>
+    <content type="text"><![CDATA[理解字节序 大端字节序：高位字节在前, 低位字节在后, 这是人类读取字节的方法。小端字节序：低位字节在前, 高位字节在后 0x1234567的大端字节序和小端字节序的写法如下 地址 0x100 0x101 0x102 0x103 大端 0x01 0x23 0x45 0x67 小端 0x67 0x45 0x23 0x01 网络字节序网络字节顺序是TCP/IP中规定好的一种数据表示格式, 采用大端字节序; 与具体的CPU类型、操作系统等无关，从而可以保证数据在不同主机之间传输时能够被正确解释。 主机字节序 处理器 操作系统 字节排序 Alpha 全部 Little endian HP-PA NT Little endian HP-PA UNIX Big endian Intelx86 全部 Little endian Motorola680x 全部 Big endian MIPS NT Little endian MIPS UNIX Big endian PowerPC NT Little endian PowerPC 非NT Big endian RS/6000 UNIX Big endian SPARC UNIX Big endian IXP1200 ARM核心 Little endian 32位整数转换为网络字节序12345/* 大端字节序 */i = (data[0]&lt;&lt;24) | (data[1]&lt;&lt;16) | (data[2]&lt;&lt;8) | (data[3]&lt;&lt;0);/* 小端字节序 */i = (data[0]&lt;&lt;0) | (data[1]&lt;&lt;8) | (data[2]&lt;&lt;16) | (data[3]&lt;&lt;24);]]></content>
       <categories>
         <category>网络</category>
       </categories>
