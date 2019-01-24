@@ -294,6 +294,345 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/网络字节序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/24/网络字节序/" itemprop="url">网络字节序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T09:24:04+08:00">
+                2019-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络/" itemprop="url" rel="index">
+                    <span itemprop="name">网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/24/网络字节序/" class="leancloud_visitors" data-flag-title="网络字节序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="理解字节序"><a href="#理解字节序" class="headerlink" title="理解字节序"></a>理解字节序</h1><blockquote>
+<p>大端字节序：高位字节在前, 低位字节在后, 这是人类读取字节的方法。<br>小端字节序：低位字节在前, 高位字节在后  </p>
+</blockquote>
+<p>0x1234567的大端字节序和小端字节序的写法如下</p>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th style="text-align:left">0x100</th>
+<th style="text-align:left">0x101</th>
+<th style="text-align:left">0x102</th>
+<th style="text-align:left">0x103</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大端</td>
+<td style="text-align:left">0x01</td>
+<td style="text-align:left">0x23</td>
+<td style="text-align:left">0x45</td>
+<td style="text-align:left">0x67</td>
+</tr>
+<tr>
+<td>小端</td>
+<td style="text-align:left">0x67</td>
+<td style="text-align:left">0x45</td>
+<td style="text-align:left">0x23</td>
+<td style="text-align:left">0x01</td>
+</tr>
+</tbody>
+</table>
+<h1 id="网络字节序"><a href="#网络字节序" class="headerlink" title="网络字节序"></a>网络字节序</h1><p>网络字节顺序是TCP/IP中规定好的一种数据表示格式, 采用大端字节序; 与具体的CPU类型、操作系统等无关，从而可以保证<br>数据在不同主机之间传输时能够被正确解释。</p>
+<h1 id="主机字节序"><a href="#主机字节序" class="headerlink" title="主机字节序"></a>主机字节序</h1><p>计算机电路先处理低位字节，效率比较高，因为计算都是从低位开始的。所以，计算机的内部处理都是小端字节序</p>
+<p>但是，人类还是习惯读写大端字节序。所以，除了计算机的内部处理，其他的场合几乎都是大端字节序，比如网络传输和文件储存。</p>
+<p>计算机处理字节序的时候，不知道什么是高位字节，什么是低位字节。它只知道按顺序读取字节，先读第一个字节，再读第二个字节。<br>如果是大端字节序，先读到的就是高位字节，后读到的就是低位字节。小端字节序正好相反。</p>
+<h1 id="32位整数字节序转换"><a href="#32位整数字节序转换" class="headerlink" title="32位整数字节序转换"></a>32位整数字节序转换</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/* 大端字节序 */</span><br><span class="line">i = (data[0]&lt;&lt;24) | (data[1]&lt;&lt;16) | (data[2]&lt;&lt;8) | (data[3]&lt;&lt;0);</span><br><span class="line"></span><br><span class="line">/* 小端字节序 */</span><br><span class="line">i = (data[0]&lt;&lt;0) | (data[1]&lt;&lt;8) | (data[2]&lt;&lt;16) | (data[3]&lt;&lt;24);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/23/零拷贝/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/23/零拷贝/" itemprop="url">零拷贝</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T10:38:33+08:00">
+                2019-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/23/零拷贝/" class="leancloud_visitors" data-flag-title="零拷贝">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/21/excel数据处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -560,16 +899,15 @@
       
         
           
-            <h1 id="进程bt信息"><a href="#进程bt信息" class="headerlink" title="进程bt信息"></a>进程bt信息</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"># malloc原理分析</span><br><span class="line"></span><br><span class="line">## libc库版本和源码</span><br></pre></td></tr></table></figure>
-<p>52_zjdev[/data01/zjgrp/zjdev]%ls -ltr /lib64/libc.so.6<br>lrwxrwxrwx 1 root root 12 1月  23 2018 /lib64/libc.so.6 -&gt; libc-2.19.so<br><code>`</code></p>
+            <h1 id="进程bt信息"><a href="#进程bt信息" class="headerlink" title="进程bt信息"></a>进程bt信息</h1><p>&lt;! – more –&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">(gdb) bt</span><br><span class="line">#0  0x00007ff5083f65cb in __lll_lock_wait_private () from /lib64/libc.so.6</span><br><span class="line">#1  0x00007ff508382bca in _L_lock_10550 () from /lib64/libc.so.6</span><br><span class="line">#2  0x00007ff508380705 in malloc () from /lib64/libc.so.6</span><br><span class="line">#3  0x00007ff5086bdc47 in start_fde_sort (count=33, accu=0x7ff4cab0b1a0) at ../../../libgcc/unwind-dw2-fde.c:409</span><br><span class="line">#4  init_object (ob=0x7ff4babf1be0 &lt;current_sl&gt;) at ../../../libgcc/unwind-dw2-fde.c:771</span><br><span class="line">#5  search_object (ob=ob@entry=0x7ff4babf1be0 &lt;current_sl&gt;, pc=pc@entry=0x7ff5086bca07 &lt;_Unwind_Backtrace+55&gt;)</span><br><span class="line">    at ../../../libgcc/unwind-dw2-fde.c:961</span><br><span class="line">#6  0x00007ff5086be492 in _Unwind_Find_registered_FDE (bases=0x7ff4cab0b528, </span><br><span class="line">    pc=0x7ff5086bca07 &lt;_Unwind_Backtrace+55&gt;) at ../../../libgcc/unwind-dw2-fde.c:1025</span><br><span class="line">#7  _Unwind_Find_FDE (pc=0x7ff5086bca07 &lt;_Unwind_Backtrace+55&gt;, bases=bases@entry=0x7ff4cab0b528)</span><br><span class="line">    at ../../../libgcc/unwind-dw2-fde-dip.c:448</span><br><span class="line">#8  0x00007ff5086baee6 in uw_frame_state_for (context=context@entry=0x7ff4cab0b480, fs=fs@entry=0x7ff4cab0b2d0)</span><br><span class="line">    at ../../../libgcc/unwind-dw2.c:1241</span><br><span class="line">#9  0x00007ff5086bc130 in uw_init_context_1 (context=context@entry=0x7ff4cab0b480, </span><br><span class="line">    outer_cfa=outer_cfa@entry=0x7ff4cab0b730, outer_ra=0x7ff5083f6f46 &lt;backtrace+86&gt;)</span><br><span class="line">    at ../../../libgcc/unwind-dw2.c:1562</span><br><span class="line">#10 0x00007ff5086bca08 in _Unwind_Backtrace (trace=0x7ff5083f6dd0 &lt;backtrace_helper&gt;, </span><br><span class="line">    trace_argument=0x7ff4cab0b730) at ../../../libgcc/unwind.inc:283</span><br><span class="line">#11 0x00007ff5083f6f46 in backtrace () from /lib64/libc.so.6</span><br><span class="line">#12 0x00007ff508324d52 in backtrace_and_maps () from /lib64/libc.so.6</span><br><span class="line">#13 0x00007ff5083777ff in __libc_message () from /lib64/libc.so.6</span><br><span class="line">#14 0x00007ff50837d06e in malloc_printerr () from /lib64/libc.so.6</span><br><span class="line">#15 0x00007ff50837d32c in malloc_consolidate () from /lib64/libc.so.6</span><br><span class="line">#16 0x00007ff50837e588 in _int_malloc () from /lib64/libc.so.6</span><br><span class="line">#17 0x00007ff508380710 in malloc () from /lib64/libc.so.6</span><br><span class="line">#18 0x00007ff508c59258 in operator new (sz=sz@entry=1024) at ../../../../libstdc++-v3/libsupc++/new_op.cc:50</span><br><span class="line">#19 0x00007ff50a0ccc0d in allocate (this=0x7ff4b085a878, __n=&lt;optimized out&gt;)</span><br><span class="line">    at /usr/local/gcc-5.5.0/include/c++/5.5.0/ext/new_allocator.h:104</span><br><span class="line">#20 allocate (__a=..., __n=&lt;optimized out&gt;) at /usr/local/gcc-5.5.0/include/c++/5.5.0/bits/alloc_traits.h:491</span><br><span class="line">#21 _M_allocate (this=0x7ff4b085a878, __n=&lt;optimized out&gt;)</span><br><span class="line">    at /usr/local/gcc-5.5.0/include/c++/5.5.0/bits/stl_vector.h:170</span><br><span class="line">#22 std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt;::_M_emplace_back_aux&lt;std::__cxx11::b---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---</span><br><span class="line">asic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp;&amp;) (this=0x7ff4b085a878)</span><br><span class="line">    at /usr/local/gcc-5.5.0/include/c++/5.5.0/bits/vector.tcc:412</span><br><span class="line">#23 0x00007ff4fdaab81d in push_back (</span><br><span class="line">    __x=&lt;unknown type in /data01/zjgrp/zjv8cs2/lib/libjsoncppD.so, CU 0x2217a, DIE 0x35d11&gt;, this=0x7ff4b085a878)</span><br><span class="line">    at /usr/local/gcc-5.5.0/include/c++/5.5.0/bits/stl_vector.h:932</span><br><span class="line">#24 Json::Value::resolveReference (this=0x7ff4b085a870, key=0x7ff4c428ca30 &quot;list_12_BONUS_INFO_LIST&quot;, </span><br><span class="line">    isStatic=isStatic@entry=false) at src/lib_json/json_value.cpp:1052</span><br><span class="line">#25 0x00007ff4fdaab947 in Json::Value::operator[] (this=&lt;optimized out&gt;, key=&lt;optimized out&gt;)</span><br><span class="line">    at src/lib_json/json_value.cpp:1034</span><br><span class="line">#26 0x00007ff4fe2f820f in sdl::JsonEncoder::PutListBegin (this=0x7ff4af3479d0, </span><br><span class="line">    szListName=0x7ff4d0880501 &quot;BONUS_INFO_LIST&quot;, iSize=&lt;optimized out&gt;) at src/codec_json.cpp:1054</span><br><span class="line">#27 0x00007ff5012cd013 in sdl::visitor::encode_list_vector (pEncoder=0x7ff4af3479d0, sdltype=&lt;optimized out&gt;, </span><br><span class="line">    pVal=0x7ff4cab0c830, name=0x7ff4d0880501 &quot;BONUS_INFO_LIST&quot;) at src/sdl_stream.cpp:897</span><br><span class="line">#28 0x00007ff5012ccdf5 in sdl::visitor::encode_struct (pEncoder=0x7ff4af3479d0, sdltype=&lt;optimized out&gt;, </span><br><span class="line">    pVal=0x7ff4cab0c710, name=&lt;optimized out&gt;) at src/sdl_stream.cpp:874</span><br><span class="line">#29 0x00007ff4d0fcd31d in visit (p=0x7ff4cab0c710, sdltype=11, this=0x7ff4cab0c530)</span><br><span class="line">    at /data01/zjgrp/zjv8bm/ob_rel/include/public/sdl/sdl_stream.h:311</span><br><span class="line">#30 operator&lt;&lt; (v=..., this=0x7ff4cab0c530) at /data01/zjgrp/zjv8bm/ob_rel/include/public/sdl/sdl_stream.h:365</span><br><span class="line">#31 charging::dump_xdr&lt;MRatmsInterfaceRatingDef::SRatingUpdate&gt; (data=..., level=1) at ../base/dump_xdr.h:16</span><br><span class="line">#32 0x00007ff4d0fdf43d in charging::CMdbOperatorChain::Update (this=0x7ff4c429f130, xdr=..., subXdr=..., </span><br><span class="line">    baseData=...) at mdb_operate_chain.cpp:99</span><br><span class="line">#33 0x00007ff4d274325a in charging::CRevRatingAlgo::risk_addup_charge (this=this@entry=0x7ff4c41feef0, xdr=..., </span><br><span class="line">    subXdr=..., pData=pData@entry=0x7ff4cab0cef0) at RiskRatingAlgo.cpp:336</span><br><span class="line">#34 0x00007ff4d2743b4d in charging::RiskRatingAddupAlgo::DoIt (this=0x7ff4c41feef0, xdr=..., subXdr=..., </span><br><span class="line">    pData=0x7ff4cab0cef0) at RiskRatingAlgo.cpp:443</span><br><span class="line">#35 0x00007ff4d274afca in charging::CRatingInterface::rating_algo (this=this@entry=0x7ff4cab0d787, listXdr=..., </span><br><span class="line">    algoType=algoType@entry=7, pSession=pSession@entry=0x7ff4c4019b90) at ratingInterface.cpp:57</span><br><span class="line">#36 0x00007ff4d27561c7 in MRatingApp::CIRatingAppImp::risk_addup (this=this@entry=0x7ff4cab0d7f0, </span><br><span class="line">    pSession=pSession@entry=0x7ff4c4019b90, listXdr=..., cErrorMsg=...) at rating_sdl_i.cpp:78</span><br><span class="line">#37 0x00007ff4d2752fcf in MRATINGAPP_IRATINGAPP_RISK_ADDUP (pSession=pSession@entry=0x7ff4c4019b90, in=..., </span><br><span class="line">    out=..., pErrorMsg=pErrorMsg@entry=0x1d79c18) at rating_imp.cpp:184</span><br><span class="line">#38 0x00007ff4db5d145f in tp::AppLib::ExecIntf (</span><br><span class="line">---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---</span><br><span class="line">    funcHandle=funcHandle@entry=0x7ff4d2752d60 &lt;MRATINGAPP_IRATINGAPP_RISK_ADDUP(sdl::SdlSession*, sdl::CSdlBasicParamObject&amp;, sdl::CSdlBasicParamObject&amp;, sdl::CSdlErrorMsg*)&gt;, </span><br><span class="line">    pIntfName=pIntfName@entry=0x1a40270 &quot;MRATINGAPP_IRATINGAPP_RISK_ADDUP&quot;, </span><br><span class="line">    pSession=pSession@entry=0x7ff4c4019b90, paramIn=..., paramOut=..., cErrorMsg=...) at tp_interface.cpp:38</span><br><span class="line">#39 0x00007ff4db5d7fad in tp::Service::ExecService (this=this@entry=0x1a38b40, pRet=pRet@entry=0x1d7aec8, </span><br><span class="line">    pAttr=pAttr@entry=0x1d7aef0) at tp_service.cpp:74</span><br><span class="line">#40 0x00007ff4f81a5d1f in tp::RpcReqProcess::ProcessRpcTask (this=this@entry=0x1d79970, </span><br><span class="line">    pReqMsg=pReqMsg@entry=0x7ff4cab0e250, pResMsg=pResMsg@entry=0x7ff4cab0e260, pService=0x1a38b40)</span><br><span class="line">    at rpc_proc.cpp:121</span><br><span class="line">#41 0x00007ff4f81a625f in tp::RpcReqProcess::ProcessRpcReq (this=this@entry=0x1d79970, </span><br><span class="line">    pRpcReq=pRpcReq@entry=0x7ff4cab0e250, pRpcResp=pRpcResp@entry=0x7ff4cab0e260) at rpc_proc.cpp:208</span><br><span class="line">#42 0x00007ff4f81a6aa4 in tp::RpcReqProcess::Run (this=0x1d79970, inMsg=..., outMsg=...) at rpc_proc.cpp:62</span><br><span class="line">#43 0x00007ff4f81a2553 in tp::SCB4DirectProc::OnReadable (this=0x1d8aa10, pChannel=0x7ff4b40020b0)</span><br><span class="line">    at event_proc.cpp:39</span><br><span class="line">#44 0x00007ff506dc1394 in OnChannelEvent (ops=1, pChannel=0x7ff4b40020b0, this=0x1d841e0)</span><br><span class="line">    at src/cdk_rpc_socket_server.cpp:109</span><br><span class="line">#45 cdk::rpc::SocketServer::SocketServerImpl::OnEvent (this=0x1d841e0, hSock=&lt;optimized out&gt;, ops=1, </span><br><span class="line">    pArg=&lt;optimized out&gt;) at src/cdk_rpc_socket_server.cpp:87</span><br><span class="line">#46 0x00007ff507636cc4 in cdk::io::EventLoop2::EventCallback (fd=29, events=&lt;optimized out&gt;, arg=0x1d8a490)</span><br><span class="line">    at src/linux/../cdk_os_io_eventloop2.h:93</span><br><span class="line">#47 0x00007ff50232ecbb in event_persist_closure () from /data01/zjgrp/zjv8cs2/lib/libevent-2.0.so.5</span><br><span class="line">#48 0x00007ff50232ee31 in event_process_active_single_queue () from /data01/zjgrp/zjv8cs2/lib/libevent-2.0.so.5</span><br><span class="line">#49 0x00007ff50232f100 in event_process_active () from /data01/zjgrp/zjv8cs2/lib/libevent-2.0.so.5</span><br><span class="line">#50 0x00007ff50232f79b in event_base_loop () from /data01/zjgrp/zjv8cs2/lib/libevent-2.0.so.5</span><br><span class="line">#51 0x00007ff507635f7a in cdk::io::EventLoop2::Run (this=0x1d8a490, timeout=&lt;optimized out&gt;)</span><br><span class="line">    at src/linux/../cdk_os_io_eventloop2.h:184</span><br><span class="line">#52 0x00007ff506dc044c in cdk::rpc::SocketServer::Run (this=0x1d841c0, iTimeout=iTimeout@entry=5000)</span><br><span class="line">    at src/cdk_rpc_socket_server.cpp:362</span><br><span class="line">#53 0x00007ff4f81a8c0e in tp::RpcServerRunnable::Run (this=0x1d84140) at rpc_server_imp.cpp:357</span><br><span class="line">#54 0x00007ff50a0dbde6 in cdk::Thread::Run (this=0x1d8caa0) at src/cdk_thread.cpp:118</span><br><span class="line">#55 0x00007ff50a0dc719 in cdk::ExecFunc (pData=0x1d8caa0) at src/cdk_thread.cpp:35</span><br><span class="line">#56 0x00007ff509a6f0a4 in start_thread () from /lib64/libpthread.so.0</span><br><span class="line">#57 0x00007ff5083ea04d in clone () from /lib64/libc.so.6</span><br></pre></td></tr></table></figure></p>
+<h1 id="malloc原理分析"><a href="#malloc原理分析" class="headerlink" title="malloc原理分析"></a>malloc原理分析</h1><h2 id="libc库版本和源码"><a href="#libc库版本和源码" class="headerlink" title="libc库版本和源码"></a>libc库版本和源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">52_zjdev[/data01/zjgrp/zjdev]%ls -ltr /lib64/libc.so.6</span><br><span class="line">lrwxrwxrwx 1 root root 12 1月  23 2018 /lib64/libc.so.6 -&gt; libc-2.19.so</span><br></pre></td></tr></table></figure>
 <p><a href="http://www.gnu.org/software/libc/sources.html" target="_blank" rel="noopener">glibc源码下载</a></p>
 <p><a href="http://www.gnu.org/software/libc/manual/" target="_blank" rel="noopener">API手册</a></p>
 <h2 id="malloc"><a href="#malloc" class="headerlink" title="malloc"></a>malloc</h2><p><img src="/2019/01/18/malloc死锁/1.png" alt="函数说明"></p>
 <blockquote>
 <p>MT-Safe Multi Thread 多线程安全<br>AS-Safe Async Singal 异步信号不安全<br>AC-Safe Async Cancel 异步取消不安全</p>
 </blockquote>
-<p>## </p>
-
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2>
           
         
       
@@ -1543,318 +1881,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/26/ping的过程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/26/ping的过程/" itemprop="url">ping的过程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-26T09:56:21+08:00">
-                2018-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网络/" itemprop="url" rel="index">
-                    <span itemprop="name">网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/12/26/ping的过程/" class="leancloud_visitors" data-flag-title="ping的过程">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://juejin.im/post/5c15ec0f6fb9a049ec6af8b2" target="_blank" rel="noopener">对于Ping的过程，你真的了解吗？</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/22/面试练习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/22/面试练习/" itemprop="url">面试练习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-22T11:14:17+08:00">
-                2018-12-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/面试/" itemprop="url" rel="index">
-                    <span itemprop="name">面试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/12/22/面试练习/" class="leancloud_visitors" data-flag-title="面试练习">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="http://blog.sina.com.cn/s/blog_aeec1b700102uwqb.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_aeec1b700102uwqb.html</a></p>
-<p>linux tsc</p>
-<p><a href="https://blog.csdn.net/xlgen157387/article/details/79036337" target="_blank" rel="noopener">分布式锁</a></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/22/面试练习/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1905,7 +1931,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
