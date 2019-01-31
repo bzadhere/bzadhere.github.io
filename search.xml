@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux内核设计与实现]]></title>
+    <url>%2F2019%2F01%2F31%2FLinux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[redis设计原理]]></title>
+    <url>%2F2019%2F01%2F31%2Fredis%E8%AE%BE%E8%AE%A1%E5%8E%9F%E7%90%86%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[网络字节序]]></title>
     <url>%2F2019%2F01%2F24%2F%E7%BD%91%E7%BB%9C%E5%AD%97%E8%8A%82%E5%BA%8F%2F</url>
     <content type="text"><![CDATA[理解字节序 大端字节序：高位字节在前, 低位字节在后, 这是人类读取字节的方法。小端字节序：低位字节在前, 高位字节在后 0x1234567的大端字节序和小端字节序的写法如下 地址 0x100 0x101 0x102 0x103 大端 0x01 0x23 0x45 0x67 小端 0x67 0x45 0x23 0x01 网络字节序网络字节顺序是TCP/IP中规定好的一种数据表示格式, 采用大端字节序; 与具体的CPU类型、操作系统等无关，从而可以保证数据在不同主机之间传输时能够被正确解释。 主机字节序 处理器 操作系统 字节排序 Alpha 全部 Little endian HP-PA NT Little endian HP-PA UNIX Big endian Intelx86 全部 Little endian Motorola680x 全部 Big endian MIPS NT Little endian MIPS UNIX Big endian PowerPC NT Little endian PowerPC 非NT Big endian RS/6000 UNIX Big endian SPARC UNIX Big endian IXP1200 ARM核心 Little endian 32位整数转换为网络字节序12345/* 大端字节序 */i = (data[0]&lt;&lt;24) | (data[1]&lt;&lt;16) | (data[2]&lt;&lt;8) | (data[3]&lt;&lt;0);/* 小端字节序 */i = (data[0]&lt;&lt;0) | (data[1]&lt;&lt;8) | (data[2]&lt;&lt;16) | (data[3]&lt;&lt;24);]]></content>
@@ -38,14 +54,6 @@
     <content type="text"><![CDATA[系统调用ulimit1234567891011121314151617[root@zhangbb ~]# ulimit -acore file size (blocks, -c) 0data seg size (kbytes, -d) unlimitedscheduling priority (-e) 0file size (blocks, -f) unlimitedpending signals (-i) 3893max locked memory (kbytes, -l) 64max memory size (kbytes, -m) unlimitedopen files (-n) 65535pipe size (512 bytes, -p) 8POSIX message queues (bytes, -q) 819200real-time priority (-r) 0stack size (kbytes, -s) 8192cpu time (seconds, -t) unlimitedmax user processes (-u) 65535virtual memory (kbytes, -v) unlimitedfile locks (-x) unlimited 库函数 #include &lt;sys/time.h&gt; #include &lt;sys/resource.h&gt;int getrlimit(int resource, struct rlimit rlim);int setrlimit(int resource, const struct rlimit rlim); 12345678910111213141516171819202122232425262728293031323334#include &lt;sys/resource.h&gt;#include &lt;stdio.h&gt;#include &lt;iostream&gt;int main()&#123; struct rlimit r; if(getrlimit(RLIMIT_AS, &amp;r) &lt; 0) &#123; perror(&quot;getrlimit error&quot;); return 0; &#125; printf(&quot;RLIMIT_AS cur %d, max %d\n&quot;, r.rlim_cur, r.rlim_max); if(getrlimit(RLIMIT_STACK, &amp;r) &lt; 0) &#123; perror(&quot;getrlimit error&quot;); return 0; &#125; printf(&quot;RLIMIT_STACK cur %d, max %d\n&quot;, r.rlim_cur, r.rlim_max); if(getrlimit(RLIMIT_MEMLOCK , &amp;r) &lt; 0) &#123; perror(&quot;getrlimit error&quot;); return 0; &#125; printf(&quot;RLIMIT_MEMLOCK cur %d, max %d\n&quot;, r.rlim_cur, r.rlim_max); return 0;&#125;52_zjdev[/data01/zjgrp/zjdev/users/zhangbb]%./testRLIMIT_AS cur -1, max -1RLIMIT_STACK cur -1, max -1RLIMIT_MEMLOCK cur 65536, max 65536 参考 getrusage获取运行进程使用资源]]></content>
       <categories>
         <category>linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[linux内核情景分析]]></title>
-    <url>%2F2019%2F01%2F16%2Flinux%E5%86%85%E6%A0%B8%E6%83%85%E6%99%AF%E5%88%86%E6%9E%90%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>读书笔记</category>
       </categories>
   </entry>
   <entry>
