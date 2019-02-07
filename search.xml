@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[c++比java快吗]]></title>
+    <url>%2F2019%2F02%2F07%2Fc-%E6%AF%94java%E5%BF%AB%E5%90%97%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>c++</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Linux内核设计与实现]]></title>
     <url>%2F2019%2F01%2F31%2FLinux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%2F</url>
-    <content type="text"><![CDATA[linux内核简介应用程序、内核、硬件关系 linux和unix区别 linux版本号说明 linxu内核开发者社区 #]]></content>
+    <content type="text"><![CDATA[linux内核简介应用程序、内核、硬件关系 linux版本号说明2.6.26.1 = 主板版号.从版本号.修改定版本号.开发版本号(奇数开发，偶数稳定) linxu内核开发者社区 获取内核源码 编译和开发 进程管理进程是处于执行期的程序, 包含打开文件/挂起信号/处理器状态/ 线程]]></content>
       <categories>
         <category>读书笔记</category>
       </categories>
