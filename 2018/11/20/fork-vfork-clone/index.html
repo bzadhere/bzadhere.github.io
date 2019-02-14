@@ -79,15 +79,18 @@
 
 
 
+<meta name="description" content="fork/vfork/clone   系统调用 描述     fork fork创造的子进程是父进程的完整副本，复制了父亲进程的资源，包括内存的内容task_struct内容   vfork vfork创建的子进程与父进程共享数据段,而且由vfork()创建的子进程将先于父进程运行   clone Linux上创建线程一般使用的是pthread库 实际上linux也给我们提供了创建线程的系统调用，">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="fork&#x2F;vfork&#x2F;clone">
 <meta property="og:url" content="http://yoursite.com/2018/11/20/fork-vfork-clone/index.html">
 <meta property="og:site_name" content="扫地小道童">
+<meta property="og:description" content="fork/vfork/clone   系统调用 描述     fork fork创造的子进程是父进程的完整副本，复制了父亲进程的资源，包括内存的内容task_struct内容   vfork vfork创建的子进程与父进程共享数据段,而且由vfork()创建的子进程将先于父进程运行   clone Linux上创建线程一般使用的是pthread库 实际上linux也给我们提供了创建线程的系统调用，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-20T07:53:52.848Z">
+<meta property="og:updated_time" content="2019-02-14T07:56:31.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="fork&#x2F;vfork&#x2F;clone">
+<meta name="twitter:description" content="fork/vfork/clone   系统调用 描述     fork fork创造的子进程是父进程的完整副本，复制了父亲进程的资源，包括内存的内容task_struct内容   vfork vfork创建的子进程与父进程共享数据段,而且由vfork()创建的子进程将先于父进程运行   clone Linux上创建线程一般使用的是pthread库 实际上linux也给我们提供了创建线程的系统调用，">
 
 
 
@@ -394,7 +397,66 @@
       
 
       
-        
+        <h1 id="fork-vfork-clone"><a href="#fork-vfork-clone" class="headerlink" title="fork/vfork/clone"></a>fork/vfork/clone</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">系统调用</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">fork</td>
+<td style="text-align:left">fork创造的子进程是父进程的完整副本，复制了父亲进程的资源，包括内存的内容task_struct内容</td>
+</tr>
+<tr>
+<td style="text-align:left">vfork</td>
+<td style="text-align:left">vfork创建的子进程与父进程共享数据段,而且由vfork()创建的子进程将先于父进程运行</td>
+</tr>
+<tr>
+<td style="text-align:left">clone</td>
+<td style="text-align:left">Linux上创建线程一般使用的是pthread库 实际上linux也给我们提供了创建线程的系统调用，就是clone</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h1 id="fork"><a href="#fork" class="headerlink" title="fork"></a>fork</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    int count = 1;</span><br><span class="line">    int child;</span><br><span class="line"></span><br><span class="line">    child = fork( );</span><br><span class="line"></span><br><span class="line">    if(child &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;fork error : &quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else if(child == 0)     //  fork return 0 in the child process because child can get hid PID by getpid( )</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;This is son, his count is: %d (%p). and his pid is: %d\n&quot;, ++count, &amp;count, getpid());</span><br><span class="line">    &#125;</span><br><span class="line">    else                    //  the PID of the child process is returned in the parent’s thread of execution</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;This is father, his count is: %d (%p), his pid is: %d\n&quot;, count, &amp;count, getpid());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output:</span><br><span class="line">This is father, his count is: 1 (0x7ffe32f99cc8), his pid is: 26649</span><br><span class="line">This is son, his count is: 2 (0x7ffe32f99cc8). and his pid is: 26650</span><br></pre></td></tr></table></figure>
+<p>父子两个进程的pid不同，堆栈和数据资源都是完全的复制<br>子进程改变了count的值，而父进程中的count没有被改变<br>子进程与父进程count的地址（虚拟地址）是相同的（注意他们在内核中被映射的物理地址不同）</p>
+<h2 id="写入时复制-Copy-on-write"><a href="#写入时复制-Copy-on-write" class="headerlink" title="写入时复制(Copy-on-write)"></a>写入时复制(Copy-on-write)</h2><p>完全复制包含4个步骤, 非常耗时</p>
+<blockquote>
+<p>为子进程的页表分配页帧<br>为子进程的页分配页帧<br>初始化子进程的页表<br>把父进程的页复制到子进程相应的页中</p>
+</blockquote>
+<p>写时复制则父进程和子进程共享页帧而不是复制页帧, 页面的访问权限也设成只读, 当发生修改时<br>产生页面出错异常(page_fault int14)中断,此时CPU会执行系统提供的异常处理函数do_wp_page()<br>来解决这个异常. do_wp_page()会对这块导致写入异常中断的物理页面进行取消共享操作,为写进<br>程复制一新的物理页面, 使父进程A和子进程B各自拥有一块内容相同的物理页面.</p>
+<h1 id="vfork"><a href="#vfork" class="headerlink" title="vfork"></a>vfork</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    int count = 1;</span><br><span class="line">    int child;</span><br><span class="line"></span><br><span class="line">   // child = vfork( );</span><br><span class="line"></span><br><span class="line">    printf(&quot;Before create son, the father&apos;s count is:%d\n&quot;, count);</span><br><span class="line"></span><br><span class="line">    if((child = vfork())&lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;fork error : &quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    else if(child == 0)     //  fork return 0 in the child process because child can get hid PID by getpid( )</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;This is son, his count is: %d (%p). and his pid is: %d\n&quot;, ++count, &amp;count, getpid());</span><br><span class="line">        exit(0);</span><br><span class="line">    &#125;</span><br><span class="line">    else                    //  the PID of the child process is returned in the parent’s thread of execution</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;After son, This is father, his count is: %d (%p), his pid is: %d\n&quot;, ++count, &amp;count, getpid());</span><br><span class="line">        exit(0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return EXIT_SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output:</span><br><span class="line">Before create son, the father&apos;s count is:1</span><br><span class="line">This is son, his count is: 2 (0x7ffe635dbc18). and his pid is: 26921</span><br><span class="line">After son, This is father, his count is: 3 (0x7ffe635dbc18), his pid is: 26920</span><br></pre></td></tr></table></figure>
+<p>vfork创建出的子进程（线程）共享了父进程的count变量，2者的count指向了同一个内存</p>
+<p>注意事项：</p>
+<blockquote>
+<p>由vfork创造出来的子进程还会导致父进程挂起，除非子进程exit或者execve才会唤起父进程<br>由vfok创建出来的子进程共享了父进程的所有内存，包括栈地址，直至子进程使用execve启动新的应用程序为止<br>由vfork创建出来得子进程不应该使用return返回调用者，或者使用exit()退出，但是它可以使用_exit()函数来退出</p>
+</blockquote>
+<h2 id="fork-vfork-区别联系"><a href="#fork-vfork-区别联系" class="headerlink" title="fork/vfork 区别联系"></a>fork/vfork 区别联系</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">func</th>
+<th style="text-align:left">copy</th>
+<th style="text-align:left">run</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">fork</td>
+<td style="text-align:left">子进程拷贝父进程的数据段，代码段</td>
+<td style="text-align:left">执行次序不确定</td>
+</tr>
+<tr>
+<td style="text-align:left">vfork</td>
+<td style="text-align:left">子进程与父进程共享数据段</td>
+<td style="text-align:left">保证子进程先运行</td>
+</tr>
+</tbody>
+</table>
+<h1 id="clone"><a href="#clone" class="headerlink" title="clone"></a>clone</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">int clone(int (fn)(void ), void *child_stack, int flags, void *arg); </span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;malloc.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">#include &lt;sched.h&gt;</span><br><span class="line">#include &lt;signal.h&gt;</span><br><span class="line"></span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#define FIBER_STACK 8192</span><br><span class="line">int a;</span><br><span class="line">void * stack;</span><br><span class="line"></span><br><span class="line">int do_something(void*)</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;This is son, the pid is:%d, the a is: %d\n&quot;, getpid(), ++a);</span><br><span class="line">    free(stack); </span><br><span class="line">    exit(1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    void * stack;</span><br><span class="line">    a = 1;</span><br><span class="line">    stack = malloc(FIBER_STACK);//为子进程申请系统堆栈</span><br><span class="line"></span><br><span class="line">    if(!stack)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;The stack failed\n&quot;);</span><br><span class="line">        exit(0);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;creating son thread!!!\n&quot;);</span><br><span class="line"></span><br><span class="line">    clone(&amp;do_something, (char *)stack + FIBER_STACK, CLONE_VM|CLONE_VFORK, 0);//创建子线程</span><br><span class="line"></span><br><span class="line">    printf(&quot;This is father, my pid is: %d, the a is: %d\n&quot;, getpid(), a);</span><br><span class="line">    exit(1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output:</span><br><span class="line">creating son thread!!!</span><br><span class="line">This is son, the pid is:27528, the a is: 2</span><br><span class="line">This is father, my pid is: 27527, the a is: 2</span><br></pre></td></tr></table></figure>
+<h2 id="clone-fork-vfork区别与联系"><a href="#clone-fork-vfork区别与联系" class="headerlink" title="clone/fork/vfork区别与联系"></a>clone/fork/vfork区别与联系</h2><p>最终都是调用do_fork函数完成, 只是参数不同</p>
+
       
     </div>
     
@@ -511,8 +573,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -572,6 +643,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#fork-vfork-clone"><span class="nav-number">1.</span> <span class="nav-text">fork/vfork/clone</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fork"><span class="nav-number">2.</span> <span class="nav-text">fork</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#写入时复制-Copy-on-write"><span class="nav-number">2.1.</span> <span class="nav-text">写入时复制(Copy-on-write)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vfork"><span class="nav-number">3.</span> <span class="nav-text">vfork</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fork-vfork-区别联系"><span class="nav-number">3.1.</span> <span class="nav-text">fork/vfork 区别联系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#clone"><span class="nav-number">4.</span> <span class="nav-text">clone</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#clone-fork-vfork区别与联系"><span class="nav-number">4.1.</span> <span class="nav-text">clone/fork/vfork区别与联系</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
