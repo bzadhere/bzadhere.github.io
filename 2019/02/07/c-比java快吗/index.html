@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/02/07/c-比java快吗/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/07/c-比java快吗/2.png">
-<meta property="og:updated_time" content="2019-02-14T06:20:04.356Z">
+<meta property="og:updated_time" content="2019-02-14T06:40:23.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++比java快吗">
 <meta name="twitter:description" content="参考文章地址 The test suite  Loading Program Executable(加载程序可执行文件) Running Program Instructions(运行程序指令) Allocating Memory(内存分配) Accessing System Resources(访问系统资源)   EnvironmentPlatform: linux/windowsHardwar">
@@ -416,7 +416,7 @@
 <h2 id="selective-loading"><a href="#selective-loading" class="headerlink" title="selective loading"></a>selective loading</h2><p>c++在执行前加载全部可执行文件。链接库加载分为静态和动态加载, 静态加载是指在执行前加载，动态加载<br>是指在运行时调用对应函数。动态加载时没有类型校验, 库变更会导致不可预知的错误。</p>
 <p>java在需要时动态加载</p>
 <h1 id="Running-Program-Instructions-RPI"><a href="#Running-Program-Instructions-RPI" class="headerlink" title="Running Program Instructions(RPI)"></a>Running Program Instructions(RPI)</h1><p>There are two possible methods a JVM uses to do so: a bytecode interpreter or a just-in-time(JIT) compiler.<br>没有JIT(即时编译技术)的JVM在执行每一条指令时都会看到它，因此它不能动态地执行这些类型的优化。但是，JIT可以对整<br>个类文件执行代码优化。因此，与JIT和本地C++应用程序运行的Java程序之间唯一的显著性能差异将是执行<br>类文件的初始翻译所需的时间和执行的优化类型。实际应用中程序多次使用相同的类, JIT智能编译用到次数<br>多的类, 因此翻译过程的开销通常是微不足道的。</p>
-<p>编译器的优化参数也是很关键的, 例如对无效代码(Dead Code)是执行还是直接删除</p>
+<p>编译器的优化参数也是很关键的, 例如对无效代码(Dead Code)是执行还是直接删除<br>c++ RTTI: Run-Time Type Identification, 主要是typeid操作符和4个类型转换关键字</p>
 <table>
 <thead>
 <tr>
