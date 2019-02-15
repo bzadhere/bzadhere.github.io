@@ -79,15 +79,18 @@
 
 
 
+<meta name="description" content="UML关系图   关系 描述 箭头 补充     依赖 use a 虚线+箭头    关联 has a 实线+箭头 一个类作为参数   聚合 has a 实线+空心菱形 例如指针成员   组合 contains a 实线+实心菱形 一个整体   继承 泛化 实线+空心三角 指向基类   接口实现  虚线+空心三角 指向基类   调用  实线+实心三角 指向接口    聚合和组合生命周期不一样: 聚">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式">
 <meta property="og:url" content="http://yoursite.com/2018/10/24/设计模式/index.html">
 <meta property="og:site_name" content="扫地小道童">
+<meta property="og:description" content="UML关系图   关系 描述 箭头 补充     依赖 use a 虚线+箭头    关联 has a 实线+箭头 一个类作为参数   聚合 has a 实线+空心菱形 例如指针成员   组合 contains a 实线+实心菱形 一个整体   继承 泛化 实线+空心三角 指向基类   接口实现  虚线+空心三角 指向基类   调用  实线+实心三角 指向接口    聚合和组合生命周期不一样: 聚">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-25T06:02:40.957Z">
+<meta property="og:updated_time" content="2019-02-15T04:37:51.668Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式">
+<meta name="twitter:description" content="UML关系图   关系 描述 箭头 补充     依赖 use a 虚线+箭头    关联 has a 实线+箭头 一个类作为参数   聚合 has a 实线+空心菱形 例如指针成员   组合 contains a 实线+实心菱形 一个整体   继承 泛化 实线+空心三角 指向基类   接口实现  虚线+空心三角 指向基类   调用  实线+实心三角 指向接口    聚合和组合生命周期不一样: 聚">
 
 
 
@@ -394,7 +397,208 @@
       
 
       
-        
+        <h1 id="UML关系图"><a href="#UML关系图" class="headerlink" title="UML关系图"></a>UML关系图</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">关系</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">箭头</th>
+<th style="text-align:left">补充</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">依赖</td>
+<td style="text-align:left">use a</td>
+<td style="text-align:left">虚线+箭头</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">关联</td>
+<td style="text-align:left">has a</td>
+<td style="text-align:left">实线+箭头</td>
+<td style="text-align:left">一个类作为参数</td>
+</tr>
+<tr>
+<td style="text-align:left">聚合</td>
+<td style="text-align:left">has a</td>
+<td style="text-align:left">实线+空心菱形</td>
+<td style="text-align:left">例如指针成员</td>
+</tr>
+<tr>
+<td style="text-align:left">组合</td>
+<td style="text-align:left">contains a</td>
+<td style="text-align:left">实线+实心菱形</td>
+<td style="text-align:left">一个整体</td>
+</tr>
+<tr>
+<td style="text-align:left">继承</td>
+<td style="text-align:left">泛化</td>
+<td style="text-align:left">实线+空心三角</td>
+<td style="text-align:left">指向基类</td>
+</tr>
+<tr>
+<td style="text-align:left">接口实现</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">虚线+空心三角</td>
+<td style="text-align:left">指向基类</td>
+</tr>
+<tr>
+<td style="text-align:left">调用</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">实线+实心三角</td>
+<td style="text-align:left">指向接口</td>
+</tr>
+</tbody>
+</table>
+<p>聚合和组合生命周期不一样: 聚合对象删除, 部分对象还存在; 组合对象删除, 部分事物对象全部删除</p>
+<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">创建模式</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">factory</td>
+<td style="text-align:left">定义创建一个对象接口,封装对象的创建, 使得具体化类的工作延迟到了子类中</td>
+<td style="text-align:left">新增一个procudct就要新加接口，factory接口永远不封闭</td>
+</tr>
+<tr>
+<td style="text-align:left">abstractFactory</td>
+<td style="text-align:left">将一组对象创建封装到一个类中, abstactFactory是为一组相关或依赖的对象提供创建接口或延迟对象创建到子类中</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">singleton</td>
+<td style="text-align:left">提供一个static的接口instance来获得唯一的实例, 常和factory结合用</td>
+<td style="text-align:left">对象构造函数为private或proctected</td>
+</tr>
+<tr>
+<td style="text-align:left">builder</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">prototype</td>
+<td style="text-align:left">自我复制自己创建的对象</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">结构模式</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">adapter</td>
+<td style="text-align:left">接口的继承和实现</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">bridge</td>
+<td style="text-align:left">使用组合方式将抽象和实现分离</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">composite</td>
+<td style="text-align:left">提供对子类的管理策略，重在对象</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">derecorater</td>
+<td style="text-align:left">添加职责，重在职责</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">flyweight</td>
+<td style="text-align:left">享元模式, 为共享对象提供一个仓库</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">facade</td>
+<td style="text-align:left">外观模式 在高层提供统一的接口</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">proxy</td>
+<td style="text-align:left">请求实际提交给其他类处理，逻辑和实现彻底解构</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">行为模式</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">template</td>
+<td style="text-align:left">算法由子类去实现, 实现和抽象接口解耦</td>
+<td style="text-align:left">继承</td>
+</tr>
+<tr>
+<td style="text-align:left">strategy</td>
+<td style="text-align:left">将算法封装到到一个类中</td>
+<td style="text-align:left">组合</td>
+</tr>
+<tr>
+<td style="text-align:left">state</td>
+<td style="text-align:left">将状态和动作实现分离</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">observe</td>
+<td style="text-align:left">对MVC是该模式的一个实例</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">memento</td>
+<td style="text-align:left">备忘录模式</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Mediator</td>
+<td style="text-align:left">中介者模式</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">command</td>
+<td style="text-align:left">命令模式</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">visitor</td>
+<td style="text-align:left">访问者模式</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">chain of responsibility</td>
+<td style="text-align:left">职责链模式</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Interator</td>
+<td style="text-align:left">迭代器</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Interpreter</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p># </p>
+
       
     </div>
     
@@ -511,8 +715,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -572,6 +785,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UML关系图"><span class="nav-number">1.</span> <span class="nav-text">UML关系图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计模式"><span class="nav-number">2.</span> <span class="nav-text">设计模式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
