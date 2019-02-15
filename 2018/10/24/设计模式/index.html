@@ -79,18 +79,24 @@
 
 
 
-<meta name="description" content="UML关系图   关系 描述 箭头 补充     依赖 use a 虚线+箭头    关联 has a 实线+箭头 一个类作为参数   聚合 has a 实线+空心菱形 例如指针成员   组合 contains a 实线+实心菱形 一个整体   继承 泛化 实线+空心三角 指向基类   接口实现  虚线+空心三角 指向基类   调用  实线+实心三角 指向接口    聚合和组合生命周期不一样: 聚">
+<meta name="description" content="UML关系图   关系 描述 箭头 补充     依赖 use a 虚线+箭头 工厂模式   关联 has a 实线+箭头 一个类作为参数   聚合 has a 实线+空心菱形 例如指针成员   组合 contains a 实线+实心菱形 一个整体   继承 泛化 实线+空心三角 指向基类   接口实现  虚线+空心三角 指向基类   调用  实线+实心三角 指向接口    聚合和组合生命周期不一">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式">
 <meta property="og:url" content="http://yoursite.com/2018/10/24/设计模式/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="UML关系图   关系 描述 箭头 补充     依赖 use a 虚线+箭头    关联 has a 实线+箭头 一个类作为参数   聚合 has a 实线+空心菱形 例如指针成员   组合 contains a 实线+实心菱形 一个整体   继承 泛化 实线+空心三角 指向基类   接口实现  虚线+空心三角 指向基类   调用  实线+实心三角 指向接口    聚合和组合生命周期不一样: 聚">
+<meta property="og:description" content="UML关系图   关系 描述 箭头 补充     依赖 use a 虚线+箭头 工厂模式   关联 has a 实线+箭头 一个类作为参数   聚合 has a 实线+空心菱形 例如指针成员   组合 contains a 实线+实心菱形 一个整体   继承 泛化 实线+空心三角 指向基类   接口实现  虚线+空心三角 指向基类   调用  实线+实心三角 指向接口    聚合和组合生命周期不一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-15T04:37:51.668Z">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/factory.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/abstractFactory.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/singleton.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/builder.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/prototype.png">
+<meta property="og:updated_time" content="2019-02-15T07:20:31.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式">
-<meta name="twitter:description" content="UML关系图   关系 描述 箭头 补充     依赖 use a 虚线+箭头    关联 has a 实线+箭头 一个类作为参数   聚合 has a 实线+空心菱形 例如指针成员   组合 contains a 实线+实心菱形 一个整体   继承 泛化 实线+空心三角 指向基类   接口实现  虚线+空心三角 指向基类   调用  实线+实心三角 指向接口    聚合和组合生命周期不一样: 聚">
+<meta name="twitter:description" content="UML关系图   关系 描述 箭头 补充     依赖 use a 虚线+箭头 工厂模式   关联 has a 实线+箭头 一个类作为参数   聚合 has a 实线+空心菱形 例如指针成员   组合 contains a 实线+实心菱形 一个整体   继承 泛化 实线+空心三角 指向基类   接口实现  虚线+空心三角 指向基类   调用  实线+实心三角 指向接口    聚合和组合生命周期不一">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/24/设计模式/factory.png">
 
 
 
@@ -411,7 +417,7 @@
 <td style="text-align:left">依赖</td>
 <td style="text-align:left">use a</td>
 <td style="text-align:left">虚线+箭头</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">工厂模式</td>
 </tr>
 <tr>
 <td style="text-align:left">关联</td>
@@ -463,30 +469,32 @@
 <tbody>
 <tr>
 <td style="text-align:left">factory</td>
-<td style="text-align:left">定义创建一个对象接口,封装对象的创建, 使得具体化类的工作延迟到了子类中</td>
+<td style="text-align:left">定义创建一个对象接口,封装对象的创建,在子类中创建对象(延迟实例化)</td>
 <td style="text-align:left">新增一个procudct就要新加接口，factory接口永远不封闭</td>
 </tr>
 <tr>
 <td style="text-align:left">abstractFactory</td>
 <td style="text-align:left">将一组对象创建封装到一个类中, abstactFactory是为一组相关或依赖的对象提供创建接口或延迟对象创建到子类中</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">新增一个product对应新增一个concreteFactory类</td>
 </tr>
 <tr>
 <td style="text-align:left">singleton</td>
-<td style="text-align:left">提供一个static的接口instance来获得唯一的实例, 常和factory结合用</td>
+<td style="text-align:left">static成员变量记录实例, 提供一个static的接口Instance()来获得唯一的实例</td>
 <td style="text-align:left">对象构造函数为private或proctected</td>
 </tr>
 <tr>
 <td style="text-align:left">builder</td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
+<td style="text-align:left">将一个复杂对象的构建和表示分离, 同样的构建过程可以创建不同的表示</td>
+<td style="text-align:left">实际也是定义一个创建对象接口</td>
 </tr>
 <tr>
 <td style="text-align:left">prototype</td>
 <td style="text-align:left">自我复制自己创建的对象</td>
+<td style="text-align:left">c++通过拷贝构造实现</td>
 </tr>
 </tbody>
 </table>
+<p><img src="/2018/10/24/设计模式/factory.png" alt=""><br><img src="/2018/10/24/设计模式/abstractFactory.png" alt=""><br><img src="/2018/10/24/设计模式/singleton.png" alt=""><br><img src="/2018/10/24/设计模式/builder.png" alt=""><br><img src="/2018/10/24/设计模式/prototype.png" alt=""></p>
 <table>
 <thead>
 <tr>
