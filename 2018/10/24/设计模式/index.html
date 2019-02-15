@@ -92,7 +92,14 @@
 <meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/singleton.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/builder.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/prototype.png">
-<meta property="og:updated_time" content="2019-02-15T07:20:31.823Z">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/adapter.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/bridge.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/composite.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/derecorater.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/flyweight.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/facade.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/proxy.png">
+<meta property="og:updated_time" content="2019-02-15T08:04:03.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式">
 <meta name="twitter:description" content="UML关系图   关系 描述 箭头 补充     依赖 use a 虚线+箭头 工厂模式   关联 has a 实线+箭头 一个类作为参数   聚合 has a 实线+空心菱形 例如指针成员   组合 contains a 实线+实心菱形 一个整体   继承 泛化 实线+空心三角 指向基类   接口实现  虚线+空心三角 指向基类   调用  实线+实心三角 指向接口    聚合和组合生命周期不一">
@@ -494,8 +501,8 @@
 </tr>
 </tbody>
 </table>
-<p><img src="/2018/10/24/设计模式/factory.png" alt=""><br><img src="/2018/10/24/设计模式/abstractFactory.png" alt=""><br><img src="/2018/10/24/设计模式/singleton.png" alt=""><br><img src="/2018/10/24/设计模式/builder.png" alt=""><br><img src="/2018/10/24/设计模式/prototype.png" alt=""></p>
-<table>
+<p><img src="/2018/10/24/设计模式/factory.png" alt=""><br><img src="/2018/10/24/设计模式/abstractFactory.png" alt=""><br><img src="/2018/10/24/设计模式/singleton.png" alt=""><br><img src="/2018/10/24/设计模式/builder.png" alt=""></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/10/24/设计模式/prototype.png" alt=""></h2><table>
 <thead>
 <tr>
 <th style="text-align:left">结构模式</th>
@@ -506,23 +513,23 @@
 <tbody>
 <tr>
 <td style="text-align:left">adapter</td>
-<td style="text-align:left">接口的继承和实现</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">将一个类的接口变换成客户端期待的, 使原本因接口不匹配无法在一起工作的两个类能够一起工作</td>
+<td style="text-align:left">复用接口或对象实现</td>
 </tr>
 <tr>
 <td style="text-align:left">bridge</td>
 <td style="text-align:left">使用组合方式将抽象和实现分离</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">调整实现逻辑, 外部调用没有变化</td>
 </tr>
 <tr>
 <td style="text-align:left">composite</td>
 <td style="text-align:left">提供对子类的管理策略，重在对象</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">对象管理</td>
 </tr>
 <tr>
 <td style="text-align:left">derecorater</td>
 <td style="text-align:left">添加职责，重在职责</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">职责管理</td>
 </tr>
 <tr>
 <td style="text-align:left">flyweight</td>
@@ -540,6 +547,9 @@
 </tr>
 </tbody>
 </table>
+<p>通过private, 接口继承, 就是派生类只继承函数的接口，也就是声明<br>通过public,  实现继承, 就是派生类同时继承函数的接口和实现</p>
+<p><img src="/2018/10/24/设计模式/adapter.png" alt=""><br><img src="/2018/10/24/设计模式/bridge.png" alt=""><br><img src="/2018/10/24/设计模式/composite.png" alt=""><br><img src="/2018/10/24/设计模式/derecorater.png" alt=""><br><img src="/2018/10/24/设计模式/flyweight.png" alt=""><br><img src="/2018/10/24/设计模式/facade.png" alt=""><br><img src="/2018/10/24/设计模式/proxy.png" alt=""></p>
+<hr>
 <table>
 <thead>
 <tr>
@@ -605,7 +615,6 @@
 </tr>
 </tbody>
 </table>
-<p># </p>
 
       
     </div>
@@ -803,7 +812,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UML关系图"><span class="nav-number">1.</span> <span class="nav-text">UML关系图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计模式"><span class="nav-number">2.</span> <span class="nav-text">设计模式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UML关系图"><span class="nav-number">1.</span> <span class="nav-text">UML关系图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计模式"><span class="nav-number">2.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
             
 
           </div>
