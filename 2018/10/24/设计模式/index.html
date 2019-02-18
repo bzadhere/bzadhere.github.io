@@ -99,11 +99,17 @@
 <meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/flyweight.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/facade.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/proxy.png">
-<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/">
-<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/">
-<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/">
-<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/">
-<meta property="og:updated_time" content="2019-02-18T07:10:22.639Z">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/template.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/strategy.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/state.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/observer.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/memento.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/command.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/visitor.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/chain.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/interator.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/设计模式/interpreter.png">
+<meta property="og:updated_time" content="2019-02-18T09:01:37.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式">
 <meta name="twitter:description" content="UML关系图   关系 描述 箭头 补充     依赖 use a 虚线+箭头 工厂模式   关联 has a 实线+箭头 一个类作为参数   聚合 has a 实线+空心菱形 例如指针成员   组合 contains a 实线+实心菱形 一个整体   继承 泛化 实线+空心三角 指向基类   接口实现  虚线+空心三角 指向基类   调用  实线+实心三角 指向接口    聚合和组合生命周期不一">
@@ -567,60 +573,138 @@
 <tr>
 <td style="text-align:left">template</td>
 <td style="text-align:left">算法由子类去实现, 实现和抽象接口解耦</td>
-<td style="text-align:left">继承</td>
+<td style="text-align:left">继承实现</td>
 </tr>
 <tr>
 <td style="text-align:left">strategy</td>
 <td style="text-align:left">将算法封装到到一个类中</td>
-<td style="text-align:left">组合</td>
+<td style="text-align:left">组合实现</td>
 </tr>
 <tr>
 <td style="text-align:left">state</td>
 <td style="text-align:left">将状态和动作实现分离</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">条件分支语句的代替者</td>
 </tr>
 <tr>
-<td style="text-align:left">observe</td>
+<td style="text-align:left">observer</td>
 <td style="text-align:left">对MVC是该模式的一个实例</td>
 <td style="text-align:left"></td>
 </tr>
 <tr>
 <td style="text-align:left">memento</td>
 <td style="text-align:left">备忘录模式</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">不破坏封装, 获取和保存一个类的内部状态, 用来恢复; 通过friend class实现</td>
 </tr>
 <tr>
 <td style="text-align:left">Mediator</td>
 <td style="text-align:left">中介者模式</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">将对象间的交互和通讯封装到一个类中</td>
 </tr>
 <tr>
 <td style="text-align:left">command</td>
 <td style="text-align:left">命令模式</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">将”行为请求者”与”行为实现者”解耦</td>
 </tr>
 <tr>
 <td style="text-align:left">visitor</td>
-<td style="text-align:left">访问者模式</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">访问者模式,将变更封装到一个类中, 由待更改类提供一个接口</td>
+<td style="text-align:left">符合单一原则,易扩展,但依赖了具体类</td>
 </tr>
 <tr>
 <td style="text-align:left">chain of responsibility</td>
 <td style="text-align:left">职责链模式</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">一个请求指定一组对象处理</td>
 </tr>
 <tr>
 <td style="text-align:left">Interator</td>
 <td style="text-align:left">迭代器</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">将对象遍历封装到一个类中</td>
 </tr>
 <tr>
 <td style="text-align:left">Interpreter</td>
+<td style="text-align:left">解释器</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2018/10/24/设计模式/template.png" alt=""><br><img src="/2018/10/24/设计模式/strategy.png" alt=""><br><img src="/2018/10/24/设计模式/state.png" alt=""><br><img src="/2018/10/24/设计模式/observer.png" alt=""><br><img src="/2018/10/24/设计模式/memento.png" alt=""><br><img src="/2018/10/24/设计模式/command.png" alt=""><br><img src="/2018/10/24/设计模式/visitor.png" alt=""><br><img src="/2018/10/24/设计模式/chain.png" alt=""><br><img src="/2018/10/24/设计模式/interator.png" alt=""><br><img src="/2018/10/24/设计模式/interpreter.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">解决问题</th>
+<th style="text-align:left">优点</th>
+<th style="text-align:left">缺点</th>
+<th>应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
 <td style="text-align:left"></td>
 </tr>
 </tbody>
 </table>
-<p><img src="/2018/10/24/设计模式/" alt=""><br><img src="/2018/10/24/设计模式/" alt=""><br><img src="/2018/10/24/设计模式/" alt=""><br><img src="/2018/10/24/设计模式/" alt=""></p>
 
       
     </div>
