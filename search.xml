@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[vector容器]]></title>
     <url>%2F2019%2F02%2F18%2Fvector%E5%AE%B9%E5%99%A8%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[内存分配 reservesizecapacity 内存释放 cleareraseswapshrink_to_fit 其他 dataemplace_back]]></content>
       <categories>
         <category>c++</category>
       </categories>
