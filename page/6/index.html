@@ -1751,7 +1751,7 @@
 <tr>
 <td style="text-align:left">builder</td>
 <td style="text-align:left">将一个复杂对象的构建和表示分离, 同样的构建过程可以创建不同的表示</td>
-<td style="text-align:left">实际也是定义一个创建对象接口</td>
+<td style="text-align:left">实际也是定义一个创建对象接口, 使用多个简单的对象一步一步构建成一个复杂的对象</td>
 </tr>
 <tr>
 <td style="text-align:left">prototype</td>
@@ -1783,30 +1783,31 @@
 <tr>
 <td style="text-align:left">composite</td>
 <td style="text-align:left">提供对子类的管理策略，重在对象</td>
-<td style="text-align:left">对象管理</td>
+<td style="text-align:left">递归构建树状组织, 组合模式让客户可以一致地使用组合结构和单个对象</td>
 </tr>
 <tr>
 <td style="text-align:left">decorater</td>
 <td style="text-align:left">添加职责，重在职责</td>
-<td style="text-align:left">职责管理</td>
+<td style="text-align:left">职责管理, 例如批价process</td>
 </tr>
 <tr>
 <td style="text-align:left">flyweight</td>
 <td style="text-align:left">享元模式, 为共享对象提供一个仓库</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">对象池</td>
 </tr>
 <tr>
 <td style="text-align:left">facade</td>
 <td style="text-align:left">外观模式 在高层提供统一的接口</td>
-<td style="text-align:left"></td>
+<td style="text-align:left">隐藏系统的复杂性, 并向客户端提供了一个客户端可以访问系统的接口</td>
 </tr>
 <tr>
 <td style="text-align:left">proxy</td>
 <td style="text-align:left">请求实际提交给其他类处理，逻辑和实现彻底解构</td>
+<td style="text-align:left">创建具有现有对象的对象，以便向外界提供功能接口</td>
 </tr>
 </tbody>
 </table>
-<p>通过private, 接口继承, 就是派生类只继承函数的接口，也就是声明<br>通过public,  实现继承, 就是派生类同时继承函数的接口和实现</p>
+<p>通过private, 接口继承, 就是派生类只继承函数的接口，也就是声明<br>通过public,  实现继承, 就是派生类同时继承函数的接口和实现<br>组合和装饰模式在实现上完全不同</p>
 <p><img src="/2018/10/24/设计模式/adapter.png" alt=""><br><img src="/2018/10/24/设计模式/bridge.png" alt=""><br><img src="/2018/10/24/设计模式/composite.png" alt=""><br><img src="/2018/10/24/设计模式/decorater.png" alt=""><br><img src="/2018/10/24/设计模式/flyweight.png" alt=""><br><img src="/2018/10/24/设计模式/facade.png" alt=""><br><img src="/2018/10/24/设计模式/proxy.png" alt=""></p>
 <hr>
 <table>
@@ -1874,7 +1875,7 @@
 </tr>
 </tbody>
 </table>
-<p><img src="/2018/10/24/设计模式/proxy.png" alt=""><br><img src="/2018/10/24/设计模式/proxy.png" alt=""><br><img src="/2018/10/24/设计模式/proxy.png" alt=""><br><img src="/2018/10/24/设计模式/proxy.png" alt=""></p>
+<p><img src="/2018/10/24/设计模式/" alt=""><br><img src="/2018/10/24/设计模式/" alt=""><br><img src="/2018/10/24/设计模式/" alt=""><br><img src="/2018/10/24/设计模式/" alt=""></p>
 
           
         
