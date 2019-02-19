@@ -414,7 +414,7 @@
   <entry>
     <title><![CDATA[准备好吹牛B]]></title>
     <url>%2F2018%2F10%2F29%2F%E5%87%86%E5%A4%87%E5%A5%BD%E5%90%B9%E7%89%9BB%2F</url>
-    <content type="text"><![CDATA[BOSS系统介绍 整体功能架构计费功能架构计费技术架构计费对外接口设计部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系)高可用及容灾设计和测试(mdb) 遇到过的问题 网络粘包, errno死锁binlog乱序, 索引优化内存泄漏(lua,new/del)性能优化, 主机问题(linux时钟源, ssd调度方式cfq/deadline, ck和binglog文件rename, 自旋锁占CPU过高, 存储变为只读) 最得意的事]]></content>
+    <content type="text"><![CDATA[BOSS系统介绍 整体功能架构计费功能架构计费技术架构计费对外接口设计部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系)高可用及容灾设计和测试(mdb) 遇到过的问题 网络粘包, errno死锁binlog乱序, 索引优化内存泄漏(lua,new/del)性能优化, 主机问题(linux时钟源, ssd调度方式cfq/deadline, ck和binglog文件rename, 自旋锁占CPU过高, 存储变为只读)咪咕在线流程超时(kpi数据分析, sock日志, 冲销节点慢，但是在整个批价节点的占比变化不大，因此判断是网络/CPU等原因导致) 最得意的事]]></content>
       <categories>
         <category>面试</category>
       </categories>
