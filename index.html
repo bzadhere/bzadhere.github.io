@@ -470,7 +470,7 @@
 <h2 id="找CPU使用率高的进程"><a href="#找CPU使用率高的进程" class="headerlink" title="找CPU使用率高的进程"></a>找CPU使用率高的进程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. top 看整体CPU，但找不到对应进程</span><br><span class="line"></span><br><span class="line">2. pstree |grep stress 查看进程关系也找不到</span><br><span class="line"></span><br><span class="line">//这个时候perf出场了</span><br><span class="line">3. perf record -g 跑一段时间就可以找到</span><br><span class="line"></span><br><span class="line">4. execsnoop 一段bin/bash脚本监控短时进程</span><br></pre></td></tr></table></figure>
 <p><a href="https://github.com/brendangregg/perf-tools/blob/master/execsnoop" target="_blank" rel="noopener">execsnoop</a></p>
 <h2 id="总结-5"><a href="#总结-5" class="headerlink" title="总结"></a>总结</h2><p>看懂CPU使用率, 短时进程占用CPU需要仔细找</p>
-<h1 id="第七章-大量不可中断和僵尸进程"><a href="#第七章-大量不可中断和僵尸进程" class="headerlink" title="第七章 大量不可中断和僵尸进程"></a>第七章 大量不可中断和僵尸进程</h1>
+<h1 id="第七章-大量不可中断和僵尸进程"><a href="#第七章-大量不可中断和僵尸进程" class="headerlink" title="第七章 大量不可中断和僵尸进程"></a>第七章 大量不可中断和僵尸进程</h1><h2 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h2><h2 id="查看进程状态"><a href="#查看进程状态" class="headerlink" title="查看进程状态"></a>查看进程状态</h2>
           
         
       
