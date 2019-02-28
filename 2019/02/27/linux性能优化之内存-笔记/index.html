@@ -79,18 +79,24 @@
 
 
 
-<meta name="description" content="#">
+<meta name="description" content="linux内存工作原理linux内核给每个进程提供了一个独立的虚拟地址空间, 并且这个地址空间是连续的。 内存映射虚拟地址空间分为内核空间和用户空间, 常见的32位和64位虚拟地址空间如下： 内存映射, 就是将虚拟内存地址映射到物理内存地址。内核为每个进程都维护一张页表, 记录映射关系： 页表实际存储在内存管理单元MMU中, 这样处理器直接通过硬件找出访问的内存。当进程访问虚拟地址在页表中查不到时">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux性能优化之内存 笔记">
 <meta property="og:url" content="http://yoursite.com/2019/02/27/linux性能优化之内存-笔记/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="#">
+<meta property="og:description" content="linux内存工作原理linux内核给每个进程提供了一个独立的虚拟地址空间, 并且这个地址空间是连续的。 内存映射虚拟地址空间分为内核空间和用户空间, 常见的32位和64位虚拟地址空间如下： 内存映射, 就是将虚拟内存地址映射到物理内存地址。内核为每个进程都维护一张页表, 记录映射关系： 页表实际存储在内存管理单元MMU中, 这样处理器直接通过硬件找出访问的内存。当进程访问虚拟地址在页表中查不到时">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-28T01:39:05.142Z">
+<meta property="og:image" content="http://yoursite.com/2019/02/27/linux性能优化之内存-笔记/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/27/linux性能优化之内存-笔记/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/27/linux性能优化之内存-笔记/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/27/linux性能优化之内存-笔记/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/27/linux性能优化之内存-笔记/5.png">
+<meta property="og:updated_time" content="2019-02-28T03:11:03.510Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux性能优化之内存 笔记">
-<meta name="twitter:description" content="#">
+<meta name="twitter:description" content="linux内存工作原理linux内核给每个进程提供了一个独立的虚拟地址空间, 并且这个地址空间是连续的。 内存映射虚拟地址空间分为内核空间和用户空间, 常见的32位和64位虚拟地址空间如下： 内存映射, 就是将虚拟内存地址映射到物理内存地址。内核为每个进程都维护一张页表, 记录映射关系： 页表实际存储在内存管理单元MMU中, 这样处理器直接通过硬件找出访问的内存。当进程访问虚拟地址在页表中查不到时">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/27/linux性能优化之内存-笔记/1.png">
 
 
 
@@ -397,8 +403,19 @@
       
 
       
-        <p># </p>
-
+        <h1 id="linux内存工作原理"><a href="#linux内存工作原理" class="headerlink" title="linux内存工作原理"></a>linux内存工作原理</h1><p>linux内核给每个进程提供了一个独立的虚拟地址空间, 并且这个地址空间是连续的。</p>
+<h2 id="内存映射"><a href="#内存映射" class="headerlink" title="内存映射"></a>内存映射</h2><p>虚拟地址空间分为内核空间和用户空间, 常见的32位和64位虚拟地址空间如下：<br><img src="/2019/02/27/linux性能优化之内存-笔记/1.png" alt=""></p>
+<p>内存映射, 就是将虚拟内存地址映射到物理内存地址。内核为每个进程都维护一张<br>页表, 记录映射关系：<br><img src="/2019/02/27/linux性能优化之内存-笔记/2.png" alt=""></p>
+<p>页表实际存储在内存管理单元MMU中, 这样处理器直接通过硬件找出访问的内存。<br>当进程访问虚拟地址在页表中查不到时, 会产生缺页异常, 进入内核空间分配物理<br>内存, 更新进程页表, 最后返回用户空间, 恢复进程。</p>
+<p>MMU最小单位4KB, 每次内存映射4KB或4KB的整数倍。</p>
+<p>linux通过多级页表和大页两种机制来管理页表。<br><img src="/2019/02/27/linux性能优化之内存-笔记/3.png" alt=""></p>
+<h2 id="虚拟内存空间分布"><a href="#虚拟内存空间分布" class="headerlink" title="虚拟内存空间分布"></a>虚拟内存空间分布</h2><p><img src="/2019/02/27/linux性能优化之内存-笔记/4.png" alt=""></p>
+<p>C程序内存分布：<br><img src="/2019/02/27/linux性能优化之内存-笔记/5.png" alt=""><br>1.程序段:程序段为程序代码在内存中的映射.一个程序可以在内存中多有个副本.<br>2.初始化过的数据:在程序运行值初已经对变量进行初始化的<br>3.未初始化过的数据:在程序运行初未对变量进行初始化的数据<br>4.堆(stack):存储局部,临时变量,在程序块开始时自动分配内存,结束时自动释放内存.存储函数的返回指针.<br>5.栈(heap):存储动态内存分配,需要程序员手工分配,手工释放.</p>
+<h2 id="内存分配和回收"><a href="#内存分配和回收" class="headerlink" title="内存分配和回收"></a>内存分配和回收</h2><p>小于128K用brk()分配, 否则用mmap()在文件映射段找一块内存分配。brk在释放时不会还给系统,<br>缓存起来重复利用, 会产生内存碎片。mmap频繁会产生大量缺页异常, 内核管理负担增大。</p>
+<p>系统在内存紧张时回收机制, LRU/SWAP/OOM</p>
+<h2 id="查看内存"><a href="#查看内存" class="headerlink" title="查看内存"></a>查看内存</h2><p>free/top/ps</p>
+<p>SHR 并不一定是共享的, 包括程序代码段, 非共享链接库</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h1 id="内存中的Buffer和cache"><a href="#内存中的Buffer和cache" class="headerlink" title="内存中的Buffer和cache"></a>内存中的Buffer和cache</h1>
       
     </div>
     
@@ -511,8 +528,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -572,6 +598,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux内存工作原理"><span class="nav-number">1.</span> <span class="nav-text">linux内存工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存映射"><span class="nav-number">1.1.</span> <span class="nav-text">内存映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟内存空间分布"><span class="nav-number">1.2.</span> <span class="nav-text">虚拟内存空间分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存分配和回收"><span class="nav-number">1.3.</span> <span class="nav-text">内存分配和回收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看内存"><span class="nav-number">1.4.</span> <span class="nav-text">查看内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存中的Buffer和cache"><span class="nav-number">2.</span> <span class="nav-text">内存中的Buffer和cache</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
