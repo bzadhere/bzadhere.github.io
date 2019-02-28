@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/02/27/linux性能优化之内存-笔记/6.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/27/linux性能优化之内存-笔记/7.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/27/linux性能优化之内存-笔记/8.png">
-<meta property="og:updated_time" content="2019-02-28T09:13:38.963Z">
+<meta property="og:updated_time" content="2019-02-28T11:21:18.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux性能优化之内存 笔记">
 <meta name="twitter:description" content="linux内存工作原理linux内核给每个进程提供了一个独立的虚拟地址空间, 并且这个地址空间是连续的。 内存映射虚拟地址空间分为内核空间和用户空间, 常见的32位和64位虚拟地址空间如下： 内存映射, 就是将虚拟内存地址映射到物理内存地址。内核为每个进程都维护一张页表, 记录映射关系： 页表实际存储在内存管理单元MMU中, 这样处理器直接通过硬件找出访问的内存。当进程访问虚拟地址在页表中查不到时">
@@ -417,6 +417,7 @@
 <p><img src="/2019/02/27/linux性能优化之内存-笔记/6.png" alt=""></p>
 <h2 id="内存分配和回收"><a href="#内存分配和回收" class="headerlink" title="内存分配和回收"></a>内存分配和回收</h2><p>小于128K用brk()分配, 否则用mmap()在文件映射段找一块内存分配。brk在释放时不会还给系统,<br>缓存起来重复利用, 会产生内存碎片。mmap频繁会产生大量缺页异常, 内核管理负担增大。</p>
 <p>系统在内存紧张时回收机制, LRU/SWAP/OOM</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ dmesg | grep -i &quot;Out of memory&quot;</span><br><span class="line">Out of memory: Kill process 9329 (java) score 321 or sacrifice child</span><br></pre></td></tr></table></figure>
 <h2 id="查看内存"><a href="#查看内存" class="headerlink" title="查看内存"></a>查看内存</h2><p>free/top/ps</p>
 <p>SHR 并不一定是共享的, 包括程序代码段, 非共享链接库</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h1 id="内存中的Buffer和cache"><a href="#内存中的Buffer和cache" class="headerlink" title="内存中的Buffer和cache"></a>内存中的Buffer和cache</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Buffer-&gt;磁盘数据缓冲区, cache-&gt;文件数据缓存</p>
@@ -500,6 +501,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/02/28/linux性能优化之磁盘文件-笔记/" rel="prev" title="linux性能优化之磁盘文件 笔记">
+                linux性能优化之磁盘文件 笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -575,7 +580,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
