@@ -406,11 +406,13 @@
 <p>linux通过多级页表和大页两种机制来管理页表。<br><img src="/2019/02/27/linux性能优化之内存-笔记/3.png" alt=""></p>
 <h2 id="虚拟内存空间分布"><a href="#虚拟内存空间分布" class="headerlink" title="虚拟内存空间分布"></a>虚拟内存空间分布</h2><p><img src="/2019/02/27/linux性能优化之内存-笔记/4.png" alt=""></p>
 <p>C程序内存分布：<br><img src="/2019/02/27/linux性能优化之内存-笔记/5.png" alt=""><br>1.程序段:程序段为程序代码在内存中的映射.一个程序可以在内存中多有个副本.<br>2.初始化过的数据:在程序运行值初已经对变量进行初始化的<br>3.未初始化过的数据:在程序运行初未对变量进行初始化的数据<br>4.堆(stack):存储局部,临时变量,在程序块开始时自动分配内存,结束时自动释放内存.存储函数的返回指针.<br>5.栈(heap):存储动态内存分配,需要程序员手工分配,手工释放.</p>
+<p><img src="/2019/02/27/linux性能优化之内存-笔记/6.png" alt=""></p>
 <h2 id="内存分配和回收"><a href="#内存分配和回收" class="headerlink" title="内存分配和回收"></a>内存分配和回收</h2><p>小于128K用brk()分配, 否则用mmap()在文件映射段找一块内存分配。brk在释放时不会还给系统,<br>缓存起来重复利用, 会产生内存碎片。mmap频繁会产生大量缺页异常, 内核管理负担增大。</p>
 <p>系统在内存紧张时回收机制, LRU/SWAP/OOM</p>
 <h2 id="查看内存"><a href="#查看内存" class="headerlink" title="查看内存"></a>查看内存</h2><p>free/top/ps</p>
 <p>SHR 并不一定是共享的, 包括程序代码段, 非共享链接库</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h1 id="内存中的Buffer和cache"><a href="#内存中的Buffer和cache" class="headerlink" title="内存中的Buffer和cache"></a>内存中的Buffer和cache</h1>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h1 id="内存中的Buffer和cache"><a href="#内存中的Buffer和cache" class="headerlink" title="内存中的Buffer和cache"></a>内存中的Buffer和cache</h1><p>Buffer-&gt;缓冲区, cache-&gt;缓存</p>
+
           
         
       
