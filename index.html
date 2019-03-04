@@ -472,7 +472,32 @@
 <h1 id="系统I-O瓶颈分析套路"><a href="#系统I-O瓶颈分析套路" class="headerlink" title="系统I/O瓶颈分析套路"></a>系统I/O瓶颈分析套路</h1><p>linux系统I/O栈<br><img src="/2019/02/28/linux性能优化之磁盘文件-笔记/3.png" alt=""></p>
 <p><img src="/2019/02/28/linux性能优化之磁盘文件-笔记/4.png" alt=""></p>
 <p>iostat 发现磁盘IO瓶颈-&gt;pidstat确认进程, 分析读写-&gt;strace/lsof分析应用程序</p>
-<h1 id="I-O性能优化"><a href="#I-O性能优化" class="headerlink" title="I/O性能优化"></a>I/O性能优化</h1>
+<h1 id="I-O性能优化"><a href="#I-O性能优化" class="headerlink" title="I/O性能优化"></a>I/O性能优化</h1><h2 id="应用程序优化"><a href="#应用程序优化" class="headerlink" title="应用程序优化"></a>应用程序优化</h2><ul>
+<li>1.用追加写代替随机写, 减少寻址开销, 加快I/O写的速度</li>
+<li>2.借助缓存I/O, 充分利用系统缓存, 降低实际I/O的次数(mysql查询索引)</li>
+<li>3.在应用程序内部构建自己的缓存, 控制缓存数据和生命周期(批价mdb_cache)</li>
+<li>4.频繁读写同一块磁盘, mmap代替, 减少读写次数(直接I/O)</li>
+<li>5.在需要同步写的场景中, 尽量将写请求合并, fsync()代替O_SYNC(mdb一次提交N条数据)</li>
+<li>6.在多个应用程序共享磁盘时, 为保证I/O不被一个进程独占, 可以使用cgroups的I/O子系统来限制<br>进程/进程组的IOPS和吞吐量</li>
+<li>7.在使用CFQ调度器时, ionice调整进程I/O优先级, 提高核心应用的优先级</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ionice -p 25089 -c 2 -n 7</span><br><span class="line">使用 ionice 之前查一下帮助文件，-c 是指定调度类型，这里选择的是 2，best-effort； </span><br><span class="line">-n 指定调度优先级，0 最高，7最低；-p 是指定进程号</span><br><span class="line"></span><br><span class="line">OPTIONS</span><br><span class="line">-c The scheduling class. 1 for real time, 2 for best-effort, 3 for</span><br><span class="line">idle....</span><br></pre></td></tr></table></figure>
+<h2 id="文件系统优化"><a href="#文件系统优化" class="headerlink" title="文件系统优化"></a>文件系统优化</h2><ul>
+<li>1.选择合适的文件系统, 如xfs比ext4支持更大的磁盘分区和文件数, 支持大于16T的磁盘</li>
+<li>2.优化文件系统的配置, 文件系统特性/日志模式/挂载选项(tune2fs 查看文件系统超级块)</li>
+<li>3.优化文件系统缓存, /proc/sys/vm/vfs_cache_pressure 优化内核回收目录项缓存和索引节点缓存</li>
+<li>4.利用tmpfs内存文件系统, 获得更好的I/O性能</li>
+</ul>
+<h2 id="磁盘优化"><a href="#磁盘优化" class="headerlink" title="磁盘优化"></a>磁盘优化</h2><ul>
+<li>1.SSD替代HDD</li>
+<li>2.利用RAID磁盘阵列</li>
+<li>3.选择合适的I/O调度算法, SSD和虚拟机的磁盘一般用noop算法, 数据库一般使用deadline算法</li>
+<li>4.磁盘隔离, 为I/O压力重的应用配置单独磁盘, 如数据库,日志</li>
+<li>5.在顺序读较多的场景中, 增大磁盘的预读数据配置</li>
+<li>6.优化内核设备I/O选项, 例如增加队列长度, 提高吞吐(I/O延迟可能增大)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">查看当前系统的I/O调度方法:</span><br><span class="line">cat /sys/block/sda/queue/scheduler</span><br><span class="line">noop anticipatory deadline [cfq]</span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -640,6 +665,7 @@
 <p>SHR 并不一定是共享的, 包括程序代码段, 非共享链接库</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h1 id="内存中的Buffer和cache"><a href="#内存中的Buffer和cache" class="headerlink" title="内存中的Buffer和cache"></a>内存中的Buffer和cache</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Buffer-&gt;磁盘数据缓冲区, cache-&gt;文件数据缓存</p>
 <p>用以下案例, vmstat 观察<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 首先清理缓存</span><br><span class="line">$ echo 3 &gt; /proc/sys/vm/drop_caches</span><br><span class="line"></span><br><span class="line">// 写文件</span><br><span class="line">$ dd if=/dev/urandom of=/tmp/file bs=1M count=500</span><br><span class="line"></span><br><span class="line">// 写磁盘, 相当于清磁盘</span><br><span class="line">// 然后运行 dd 命令向磁盘分区 /dev/sdb1 写入 2G 数据</span><br><span class="line">$ dd if=/dev/urandom of=/dev/sdb1 bs=1M count=2048</span><br><span class="line"></span><br><span class="line">// 读文件</span><br><span class="line">// 运行 dd 命令读取文件数据</span><br><span class="line">$ dd if=/tmp/file of=/dev/null</span><br><span class="line"></span><br><span class="line">// 读磁盘</span><br><span class="line">// 运行 dd 命令读取文件</span><br><span class="line">$ dd if=/dev/sda1 of=/dev/null bs=1M count=1024</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">手动释放缓存区内存的方法</span><br><span class="line">1）清理pagecache（页面缓存）</span><br><span class="line">[root@backup ~]# echo 1 &gt; /proc/sys/vm/drop_caches 或者 sysctl -w vm.drop_caches=1</span><br><span class="line"> </span><br><span class="line">2）清理dentries（目录缓存）和inodes</span><br><span class="line">[root@backup ~]# echo 2 &gt; /proc/sys/vm/drop_caches  或者 sysctl -w vm.drop_caches=2</span><br><span class="line"> </span><br><span class="line">3）清理pagecache、dentries和inodes</span><br><span class="line">[root@backup ~]# echo 3 &gt; /proc/sys/vm/drop_caches  或者 sysctl -w vm.drop_caches=3</span><br><span class="line">　</span><br><span class="line">上面三种方式都是临时释放缓存的方法，要想永久释放缓存，需要在/etc/sysctl.conf文件中配置：  </span><br><span class="line">vm.drop_caches=1/2/3，然后sysctl -p生效即可！</span><br><span class="line"> </span><br><span class="line">另外，可以使用sync命令来清理文件系统缓存，还会清理僵尸(zombie)对象和它们占用的内存</span><br><span class="line">[root@backup ~]# sync</span><br></pre></td></tr></table></figure>
 <h2 id="查看工具"><a href="#查看工具" class="headerlink" title="查看工具"></a>查看工具</h2><p><a href="https://github.com/iovisor/bcc" target="_blank" rel="noopener">BCC</a></p>
 <p>cachestat: 系统缓存命中情况<br>cacheop: 进程缓存命中情况</p>
 <p>centos上安装相当不方便</p>
