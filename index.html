@@ -445,7 +445,33 @@
 <li>通用块层, 包括块设备I/O队列和I/O调度器, 对I/O请求排序合并, 然后发送给下一层设备</li>
 <li>设备层, 包括存储设备和相应驱动程序, 负责最终物理设备的I/O操作</li>
 </ul>
-
+<h2 id="磁盘性能指标"><a href="#磁盘性能指标" class="headerlink" title="磁盘性能指标"></a>磁盘性能指标</h2><blockquote>
+<p>使用率, 磁盘处理I/O的时间百分比<br>饱和度, 磁盘I/O的繁忙程度, 100%时无法再接受新的请求<br>IOPS, 每秒I/O请求数<br>吞吐量, 每秒的I/O请求大小<br>响应时间, I/O请求从发出到收到响应的时间间隔</p>
+</blockquote>
+<h2 id="查看工具-1"><a href="#查看工具-1" class="headerlink" title="查看工具"></a>查看工具</h2><p>iostat-&gt;iotop-&gt;pidstat<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# iostat -d -x 1</span><br><span class="line">Linux 3.10.0-693.el7.x86_64 (localhost)         03/04/2019      _x86_64_        (1 CPU)</span><br><span class="line"></span><br><span class="line">Device:         rrqm/s   wrqm/s     r/s     w/s    rkB/s    wkB/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util</span><br><span class="line">sda               0.00     0.01    0.28    0.11    15.38     1.14    83.63     0.00   11.81    8.90   19.28   2.47   0.10</span><br><span class="line">dm-0              0.00     0.00    0.26    0.11    14.69     1.04    84.72     0.00   11.39    7.51   20.90   1.93   0.07</span><br><span class="line">dm-1              0.00     0.00    0.01    0.00     0.19     0.00    55.94     0.00   36.47   36.47    0.00  34.90   0.02</span><br><span class="line"></span><br><span class="line">// await 平均每次设备 I/O 操作的等待时间(毫秒)</span><br><span class="line">// avgqu-sz 平均 I/O 队列长度</span><br><span class="line">// avgrq-sz 平均每次设备 I/O 操作的数据大小(扇区)</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2019/02/28/linux性能优化之磁盘文件-笔记/5.png" alt=""></p>
+<ul>
+<li>util% 磁盘I/O使用率</li>
+<li>r/s+w/s IOPS</li>
+<li>rkB/s+wkB/s 是吞吐量</li>
+<li>r_await+w_await </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# pidstat -d 1</span><br><span class="line">Linux 3.10.0-693.el7.x86_64 (localhost)         03/04/2019      _x86_64_        (1 CPU)</span><br><span class="line"></span><br><span class="line">07:45:24 AM   UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s  Command</span><br><span class="line"></span><br><span class="line">kB_rd/s: 每秒进程从磁盘读取的数据量(以kB为单位)</span><br><span class="line">kB_wr/s: 每秒进程向磁盘写的数据量(以kB为单位)</span><br><span class="line">Command: 拉起进程对应的命令</span><br></pre></td></tr></table></figure>
+<h2 id="案例分析：找出不停打印进程"><a href="#案例分析：找出不停打印进程" class="headerlink" title="案例分析：找出不停打印进程"></a>案例分析：找出不停打印进程</h2><p>top：cpu的wa很高<br>iostat: util% IO使用率高, 请求队列长<br>pidstat -d : 找出进程, 理解应该用iotop<br>strace -pf pid :f 跟踪由fork调用所产生的子进程 , 确认具体调用系统函数<br>lsof -p : 查看打开的文件</p>
+<p>进程I/O高, 直接top+lsof解决</p>
+<h2 id="案例分析：sql执行慢"><a href="#案例分析：sql执行慢" class="headerlink" title="案例分析：sql执行慢"></a>案例分析：sql执行慢</h2><p>/var/lib/mysql/test的4个文件：</p>
+<ul>
+<li>MYD 存储表的数据</li>
+<li>MYI 存储表的索引</li>
+<li>frm 存储表的元信息(表结构)</li>
+<li>opt 存储数据库的元信息(字符集)</li>
+</ul>
+<p>没用索引….(top+strace)</p>
+<h2 id="案例分析-redis慢"><a href="#案例分析-redis慢" class="headerlink" title="案例分析: redis慢"></a>案例分析: redis慢</h2><p>写文件慢(top+strace)</p>
+<h1 id="系统I-O瓶颈分析套路"><a href="#系统I-O瓶颈分析套路" class="headerlink" title="系统I/O瓶颈分析套路"></a>系统I/O瓶颈分析套路</h1><p>linux系统I/O栈<br><img src="/2019/02/28/linux性能优化之磁盘文件-笔记/3.png" alt=""></p>
+<p><img src="/2019/02/28/linux性能优化之磁盘文件-笔记/4.png" alt=""></p>
+<p>iostat 发现磁盘IO瓶颈-&gt;pidstat确认进程, 分析读写-&gt;strace/lsof分析应用程序</p>
+<h1 id="I-O性能优化"><a href="#I-O性能优化" class="headerlink" title="I/O性能优化"></a>I/O性能优化</h1>
           
         
       
