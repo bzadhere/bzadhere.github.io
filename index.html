@@ -416,7 +416,7 @@
 </ul>
 <h2 id="虚拟文件系统"><a href="#虚拟文件系统" class="headerlink" title="虚拟文件系统"></a>虚拟文件系统</h2><p>linux系统文件系统四大基本要素, 目录项/索引节点/超级块/数据块区<br>为支持不同文件系统, linux内核在用户进程和文件系统之间, 抽象出了一层虚拟文件系统(VFS)。<br>VFS定义了一组所有文件系统都支持的数据结构和标准接口。</p>
 <p><img src="/2019/02/28/linux性能优化之磁盘文件-笔记/2.png" alt=""></p>
-<h2 id="文件系统I-O"><a href="#文件系统I-O" class="headerlink" title="文件系统I/O"></a>文件系统I/O</h2><p>VFS提供了一组文件访问接口。</p>
+<h2 id="文件系统I-O"><a href="#文件系统I-O" class="headerlink" title="文件系统I/O"></a>文件系统I/O</h2><p>VFS提供了一组文件访问接口。文件读写I/O的四种方式分类, 缓冲/非缓冲, 直接/非直接, 阻塞/非阻塞, 同步/异步</p>
 <h1 id="磁盘I-O"><a href="#磁盘I-O" class="headerlink" title="磁盘I/O"></a>磁盘I/O</h1><p># </p>
 
           
@@ -2848,5 +2848,8 @@
 
   
 
+  
+  <script type="text/javascript" src= "/js/src/instantclick.min.js" data-no-instant></script>
+  <script data-no-instant>InstantClick.init();</script>
 </body>
 </html>
