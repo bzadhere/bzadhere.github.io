@@ -294,6 +294,233 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/05/linux性能优化之网络-笔记/" itemprop="url">linux性能优化之网络 笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T10:23:34+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/05/linux性能优化之网络-笔记/" class="leancloud_visitors" data-flag-title="linux性能优化之网络 笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="linux网络"><a href="#linux网络" class="headerlink" title="linux网络"></a>linux网络</h1><h2 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">OSI七层</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">应用层</td>
+<td style="text-align:left">负责为程序提供统一的接口</td>
+<td style="text-align:left">ftp telnet http dns</td>
+</tr>
+<tr>
+<td style="text-align:left">表示层</td>
+<td style="text-align:left">负责把数据转换成兼容接收系统的格式</td>
+<td style="text-align:left">NULL</td>
+</tr>
+<tr>
+<td style="text-align:left">会话层</td>
+<td style="text-align:left">负责维护计算机之间的通信连接</td>
+<td style="text-align:left">NULL</td>
+</tr>
+<tr>
+<td style="text-align:left">传输层</td>
+<td style="text-align:left">负责为数据加上传输表头, 形成数据包</td>
+<td style="text-align:left">TCP UDP</td>
+</tr>
+<tr>
+<td style="text-align:left">网路层</td>
+<td style="text-align:left">负责数据的路由和转发</td>
+<td style="text-align:left">IP ICMP IGMP RIP</td>
+</tr>
+<tr>
+<td style="text-align:left">数据链路层</td>
+<td style="text-align:left">负责MAC寻址, 错误侦测和改错</td>
+<td style="text-align:left">ARP RARP MTU PPP</td>
+</tr>
+<tr>
+<td style="text-align:left">物理层</td>
+<td style="text-align:left">负责在物理网络中传输数据帧</td>
+<td style="text-align:left">IEEE802</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">TCP/IP四层</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">应用层</td>
+<td style="text-align:left">负责向用户提供一组应用程序, 比如HTTP/DNS/FTP</td>
+</tr>
+<tr>
+<td style="text-align:left">传输层</td>
+<td style="text-align:left">负责端到端的通信, 比如TCP/UDP</td>
+</tr>
+<tr>
+<td style="text-align:left">网络层</td>
+<td style="text-align:left">负责网络包的封装、寻址和路哟, 比如IP/ICMP</td>
+</tr>
+<tr>
+<td style="text-align:left">网络接口层</td>
+<td style="text-align:left">负责在物理网络中传输数据帧, 比如MAC寻址, 错误侦测和改错</td>
+</tr>
+</tbody>
+</table>
+<h2 id="OSI和TCP-IP关系"><a href="#OSI和TCP-IP关系" class="headerlink" title="OSI和TCP/IP关系"></a>OSI和TCP/IP关系</h2><p><img src="/2019/03/05/linux性能优化之网络-笔记/1.png" alt=""></p>
+<h2 id="linux网络栈"><a href="#linux网络栈" class="headerlink" title="linux网络栈"></a>linux网络栈</h2><p><img src="/2019/03/05/linux性能优化之网络-笔记/2.png" alt=""></p>
+<h2 id="Linux-通用-IP-网络栈的示意图"><a href="#Linux-通用-IP-网络栈的示意图" class="headerlink" title="Linux 通用 IP 网络栈的示意图"></a>Linux 通用 IP 网络栈的示意图</h2><p><img src="/2019/03/05/linux性能优化之网络-笔记/3.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/深入理解计算机系统-笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -812,12 +1039,13 @@
 <h2 id="虚拟内存空间分布"><a href="#虚拟内存空间分布" class="headerlink" title="虚拟内存空间分布"></a>虚拟内存空间分布</h2><p><img src="/2019/02/27/linux性能优化之内存-笔记/4.png" alt=""></p>
 <p>C程序内存分布：<br><img src="/2019/02/27/linux性能优化之内存-笔记/5.png" alt=""><br>1.程序段:程序段为程序代码在内存中的映射.一个程序可以在内存中多有个副本.<br>2.初始化过的数据:在程序运行值初已经对变量进行初始化的<br>3.未初始化过的数据:在程序运行初未对变量进行初始化的数据<br>4.堆(stack):存储局部,临时变量,在程序块开始时自动分配内存,结束时自动释放内存.存储函数的返回指针.<br>5.栈(heap):存储动态内存分配,需要程序员手工分配,手工释放.</p>
 <p><img src="/2019/02/27/linux性能优化之内存-笔记/6.png" alt=""></p>
+<p><a href="https://blog.holbertonschool.com/hack-the-virtual-memory-malloc-the-heap-the-program-break/" target="_blank" rel="noopener">虚拟内存参考</a></p>
 <h2 id="内存分配和回收"><a href="#内存分配和回收" class="headerlink" title="内存分配和回收"></a>内存分配和回收</h2><p>小于128K用brk()分配, 否则用mmap()在文件映射段找一块内存分配。brk在释放时不会还给系统,<br>缓存起来重复利用, 会产生内存碎片。mmap频繁会产生大量缺页异常, 内核管理负担增大。</p>
 <p>系统在内存紧张时回收机制, LRU/SWAP/OOM</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ dmesg | grep -i &quot;Out of memory&quot;</span><br><span class="line">Out of memory: Kill process 9329 (java) score 321 or sacrifice child</span><br></pre></td></tr></table></figure>
 <h2 id="查看内存"><a href="#查看内存" class="headerlink" title="查看内存"></a>查看内存</h2><p>free/top/ps</p>
 <p>SHR 并不一定是共享的, 包括程序代码段, 非共享链接库</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h1 id="内存中的Buffer和cache"><a href="#内存中的Buffer和cache" class="headerlink" title="内存中的Buffer和cache"></a>内存中的Buffer和cache</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Buffer-&gt;磁盘数据缓冲区, cache-&gt;文件数据缓存</p>
+<h1 id="内存中的Buffer和cache"><a href="#内存中的Buffer和cache" class="headerlink" title="内存中的Buffer和cache"></a>内存中的Buffer和cache</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Buffer-&gt;磁盘数据缓冲区, cache-&gt;文件数据缓存</p>
 <p>用以下案例, vmstat 观察<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 首先清理缓存</span><br><span class="line">$ echo 3 &gt; /proc/sys/vm/drop_caches</span><br><span class="line"></span><br><span class="line">// 写文件</span><br><span class="line">$ dd if=/dev/urandom of=/tmp/file bs=1M count=500</span><br><span class="line"></span><br><span class="line">// 写磁盘, 相当于清磁盘</span><br><span class="line">// 然后运行 dd 命令向磁盘分区 /dev/sdb1 写入 2G 数据</span><br><span class="line">$ dd if=/dev/urandom of=/dev/sdb1 bs=1M count=2048</span><br><span class="line"></span><br><span class="line">// 读文件</span><br><span class="line">// 运行 dd 命令读取文件数据</span><br><span class="line">$ dd if=/tmp/file of=/dev/null</span><br><span class="line"></span><br><span class="line">// 读磁盘</span><br><span class="line">// 运行 dd 命令读取文件</span><br><span class="line">$ dd if=/dev/sda1 of=/dev/null bs=1M count=1024</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">手动释放缓存区内存的方法</span><br><span class="line">1）清理pagecache（页面缓存）</span><br><span class="line">[root@backup ~]# echo 1 &gt; /proc/sys/vm/drop_caches 或者 sysctl -w vm.drop_caches=1</span><br><span class="line"> </span><br><span class="line">2）清理dentries（目录缓存）和inodes</span><br><span class="line">[root@backup ~]# echo 2 &gt; /proc/sys/vm/drop_caches  或者 sysctl -w vm.drop_caches=2</span><br><span class="line"> </span><br><span class="line">3）清理pagecache、dentries和inodes</span><br><span class="line">[root@backup ~]# echo 3 &gt; /proc/sys/vm/drop_caches  或者 sysctl -w vm.drop_caches=3</span><br><span class="line">　</span><br><span class="line">上面三种方式都是临时释放缓存的方法，要想永久释放缓存，需要在/etc/sysctl.conf文件中配置：  </span><br><span class="line">vm.drop_caches=1/2/3，然后sysctl -p生效即可！</span><br><span class="line"> </span><br><span class="line">另外，可以使用sync命令来清理文件系统缓存，还会清理僵尸(zombie)对象和它们占用的内存</span><br><span class="line">[root@backup ~]# sync</span><br></pre></td></tr></table></figure>
 <h2 id="查看工具"><a href="#查看工具" class="headerlink" title="查看工具"></a>查看工具</h2><p><a href="https://github.com/iovisor/bcc" target="_blank" rel="noopener">BCC</a></p>
@@ -1928,261 +2156,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/网络字节序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/24/网络字节序/" itemprop="url">网络字节序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T09:24:04+08:00">
-                2019-01-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网络/" itemprop="url" rel="index">
-                    <span itemprop="name">网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/01/24/网络字节序/" class="leancloud_visitors" data-flag-title="网络字节序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="理解字节序"><a href="#理解字节序" class="headerlink" title="理解字节序"></a>理解字节序</h1><blockquote>
-<p>大端字节序：高位字节在前, 低位字节在后, 这是人类读取字节的方法。<br>小端字节序：低位字节在前, 高位字节在后  </p>
-</blockquote>
-<p>0x1234567的大端字节序和小端字节序的写法如下</p>
-<table>
-<thead>
-<tr>
-<th>地址</th>
-<th style="text-align:left">0x100</th>
-<th style="text-align:left">0x101</th>
-<th style="text-align:left">0x102</th>
-<th style="text-align:left">0x103</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>大端</td>
-<td style="text-align:left">0x01</td>
-<td style="text-align:left">0x23</td>
-<td style="text-align:left">0x45</td>
-<td style="text-align:left">0x67</td>
-</tr>
-<tr>
-<td>小端</td>
-<td style="text-align:left">0x67</td>
-<td style="text-align:left">0x45</td>
-<td style="text-align:left">0x23</td>
-<td style="text-align:left">0x01</td>
-</tr>
-</tbody>
-</table>
-<h1 id="网络字节序"><a href="#网络字节序" class="headerlink" title="网络字节序"></a>网络字节序</h1><p>网络字节顺序是TCP/IP中规定好的一种数据表示格式, 采用大端字节序; 与具体的CPU类型、操作系统等无关，<br>从而可以保证数据在不同主机之间传输时能够被正确解释。</p>
-<h1 id="主机字节序"><a href="#主机字节序" class="headerlink" title="主机字节序"></a>主机字节序</h1><table>
-<thead>
-<tr>
-<th style="text-align:left">处理器</th>
-<th style="text-align:left">操作系统</th>
-<th style="text-align:left">字节排序</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Alpha</td>
-<td style="text-align:left">全部</td>
-<td style="text-align:left">Little endian</td>
-</tr>
-<tr>
-<td style="text-align:left">HP-PA</td>
-<td style="text-align:left">NT</td>
-<td style="text-align:left">Little endian</td>
-</tr>
-<tr>
-<td style="text-align:left">HP-PA</td>
-<td style="text-align:left">UNIX</td>
-<td style="text-align:left">Big endian</td>
-</tr>
-<tr>
-<td style="text-align:left">Intelx86</td>
-<td style="text-align:left">全部</td>
-<td style="text-align:left">Little endian</td>
-</tr>
-<tr>
-<td style="text-align:left">Motorola680x</td>
-<td style="text-align:left">全部</td>
-<td style="text-align:left">Big endian</td>
-</tr>
-<tr>
-<td style="text-align:left">MIPS</td>
-<td style="text-align:left">NT</td>
-<td style="text-align:left">Little endian</td>
-</tr>
-<tr>
-<td style="text-align:left">MIPS</td>
-<td style="text-align:left">UNIX</td>
-<td style="text-align:left">Big endian</td>
-</tr>
-<tr>
-<td style="text-align:left">PowerPC</td>
-<td style="text-align:left">NT</td>
-<td style="text-align:left">Little endian</td>
-</tr>
-<tr>
-<td style="text-align:left">PowerPC</td>
-<td style="text-align:left">非NT</td>
-<td style="text-align:left">Big endian</td>
-</tr>
-<tr>
-<td style="text-align:left">RS/6000</td>
-<td style="text-align:left">UNIX</td>
-<td style="text-align:left">Big endian</td>
-</tr>
-<tr>
-<td style="text-align:left">SPARC</td>
-<td style="text-align:left">UNIX</td>
-<td style="text-align:left">Big endian</td>
-</tr>
-<tr>
-<td style="text-align:left">IXP1200</td>
-<td style="text-align:left">ARM核心</td>
-<td style="text-align:left">Little endian</td>
-</tr>
-</tbody>
-</table>
-<h1 id="32位整数转换为网络字节序"><a href="#32位整数转换为网络字节序" class="headerlink" title="32位整数转换为网络字节序"></a>32位整数转换为网络字节序</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/* 大端字节序 */</span><br><span class="line">i = (data[0]&lt;&lt;24) | (data[1]&lt;&lt;16) | (data[2]&lt;&lt;8) | (data[3]&lt;&lt;0);</span><br><span class="line"></span><br><span class="line">/* 小端字节序 */</span><br><span class="line">i = (data[0]&lt;&lt;0) | (data[1]&lt;&lt;8) | (data[2]&lt;&lt;16) | (data[3]&lt;&lt;24);</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2233,7 +2206,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
