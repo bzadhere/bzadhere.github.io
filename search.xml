@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[linux性能优化之网络 笔记]]></title>
     <url>%2F2019%2F03%2F05%2Flinux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[linux网络网络模型 OSI七层 功能 协议 应用层 负责为程序提供统一的接口 ftp telnet http dns 表示层 负责把数据转换成兼容接收系统的格式 NULL 会话层 负责维护计算机之间的通信连接 NULL 传输层 负责为数据加上传输表头, 形成数据包 TCP UDP 网路层 负责数据的路由和转发 IP ICMP IGMP RIP 数据链路层 负责MAC寻址, 错误侦测和改错 ARP RARP MTU PPP 物理层 负责在物理网络中传输数据帧 IEEE802 TCP/IP四层 功能 应用层 负责向用户提供一组应用程序, 比如HTTP/DNS/FTP 传输层 负责端到端的通信, 比如TCP/UDP 网络层 负责网络包的封装、寻址和路哟, 比如IP/ICMP 网络接口层 负责在物理网络中传输数据帧, 比如MAC寻址, 错误侦测和改错 OSI和TCP/IP关系 linux网络栈 Linux 通用 IP 网络栈的示意图]]></content>
+    <content type="text"><![CDATA[linux网络网络模型 OSI七层 功能 协议 应用层 负责为程序提供统一的接口 ftp telnet http dns 表示层 负责把数据转换成兼容接收系统的格式 NULL 会话层 负责维护计算机之间的通信连接 NULL 传输层 负责为数据加上传输表头, 形成数据包 TCP UDP 网路层 负责数据的路由和转发 IP ICMP IGMP RIP 数据链路层 负责MAC寻址, 错误侦测和改错 ARP RARP MTU PPP 物理层 负责在物理网络中传输数据帧 IEEE802 TCP/IP四层 功能 应用层 负责向用户提供一组应用程序, 比如HTTP/DNS/FTP 传输层 负责端到端的通信, 比如TCP/UDP 网络层 负责网络包的封装、寻址和路哟, 比如IP/ICMP 网络接口层 负责在物理网络中传输数据帧, 比如MAC寻址, 错误侦测和改错 tcp/udp/ip头协议格式 OSI和TCP/IP关系 linux网络栈 Linux 通用 IP 网络栈的示意图]]></content>
       <categories>
         <category>读书笔记</category>
       </categories>

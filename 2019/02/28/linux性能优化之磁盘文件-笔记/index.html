@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/02/28/linux性能优化之磁盘文件-笔记/5.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/28/linux性能优化之磁盘文件-笔记/3.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/28/linux性能优化之磁盘文件-笔记/4.png">
-<meta property="og:updated_time" content="2019-03-05T02:17:09.067Z">
+<meta property="og:updated_time" content="2019-03-05T07:17:01.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux性能优化之磁盘文件 笔记">
 <meta name="twitter:description" content="文件系统 磁盘为系统提供了最基本的持久化存储文件系统则在磁盘的基础上, 提供了一个用来管理文件的树状结构  索引节点和目录 索引节点(inode), 用来记录文件的元数据, 比如inode编号, 文件大小, 访问权限修改日期, 数据位置等。它和文件一一对应, 跟文件内容一样, 会被持久化到磁盘, 也会占磁盘空间   目录项(dentry), 用来记录文件名字, 索引节点指针以及和其他目录项的关系。">
@@ -412,8 +412,7 @@
 <blockquote>
 <p>目录项(dentry), 用来记录文件名字, 索引节点指针以及和其他目录项的关系。<br>多个关联目录项构成文件系统的目录结构, 由内存维护的内存数据结构, 也叫目录缓存</p>
 </blockquote>
-<p><img src="/2019/02/28/linux性能优化之磁盘文件-笔记/1.png" alt=""></p>
-<p>磁盘格式化时被分为三个区</p>
+<p><img src="/2019/02/28/linux性能优化之磁盘文件-笔记/1.png" alt=""><br><a id="more"></a><br>磁盘格式化时被分为三个区</p>
 <ul>
 <li>超级块, 存储整个文件系统的状态</li>
 <li>索引节点区, 存储inode</li>
