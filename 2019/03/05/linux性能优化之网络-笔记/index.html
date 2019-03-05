@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/3.png">
-<meta property="og:updated_time" content="2019-03-05T07:16:37.194Z">
+<meta property="og:updated_time" content="2019-03-05T08:51:30.384Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux性能优化之网络 笔记">
 <meta name="twitter:description" content="linux网络网络模型   OSI七层 功能 协议     应用层 负责为程序提供统一的接口 ftp telnet http dns   表示层 负责把数据转换成兼容接收系统的格式 NULL   会话层 负责维护计算机之间的通信连接 NULL   传输层 负责为数据加上传输表头, 形成数据包 TCP UDP   网路层 负责数据的路由和转发 IP ICMP IGMP RIP   数据链路层 负责M">
@@ -482,6 +482,62 @@
 <h2 id="OSI和TCP-IP关系"><a href="#OSI和TCP-IP关系" class="headerlink" title="OSI和TCP/IP关系"></a>OSI和TCP/IP关系</h2><p><img src="/2019/03/05/linux性能优化之网络-笔记/1.png" alt=""></p>
 <h2 id="linux网络栈"><a href="#linux网络栈" class="headerlink" title="linux网络栈"></a>linux网络栈</h2><p><img src="/2019/03/05/linux性能优化之网络-笔记/2.png" alt=""></p>
 <h2 id="Linux-通用-IP-网络栈的示意图"><a href="#Linux-通用-IP-网络栈的示意图" class="headerlink" title="Linux 通用 IP 网络栈的示意图"></a>Linux 通用 IP 网络栈的示意图</h2><p><img src="/2019/03/05/linux性能优化之网络-笔记/3.png" alt=""></p>
+<h2 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">带宽</th>
+<th style="text-align:left">表示链路的最大传输,单位为b/s(比特/秒)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">吞吐量</td>
+<td style="text-align:left">单位时间内成功传输的数据量b/s(比特/秒)或B/s(字节/秒), 网络使用率=吞吐量/带宽</td>
+</tr>
+<tr>
+<td style="text-align:left">延时</td>
+<td style="text-align:left">网络请求发出后, 收到远端回复包的延迟</td>
+</tr>
+<tr>
+<td style="text-align:left">PPS</td>
+<td style="text-align:left">packet per second(包/秒), 以网络包为单位的传输速率, 通常用来评估网络转发能力如硬件交换机</td>
+</tr>
+</tbody>
+</table>
+<p>另外还有网络的可用性, 并发连接数, 丢包率, 重传率等指标</p>
+<h2 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ifconfig enp0s3</span><br><span class="line">enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.137.20  netmask 255.0.0.0  broadcast 192.255.255.255</span><br><span class="line">        inet6 fe80::a00:27ff:fe41:f483  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 08:00:27:41:f4:83  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 1190  bytes 124844 (121.9 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 1004  bytes 123892 (120.9 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line">		</span><br><span class="line">[root@localhost ~]# ip -s addr show dev enp0s3</span><br><span class="line">2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000</span><br><span class="line">    link/ether 08:00:27:41:f4:83 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 192.168.137.20/8 brd 192.255.255.255 scope global enp0s3</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 fe80::a00:27ff:fe41:f483/64 scope link </span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    RX: bytes  packets  errors  dropped overrun mcast   </span><br><span class="line">    137456     1311     0       0       0       0       </span><br><span class="line">    TX: bytes  packets  errors  dropped carrier collsns </span><br><span class="line">    134854     1070     0       0       0       0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>ifconfig中的RUNNING 和 ip中的LOWER_UP 表示网络物理层是连通的, 即网线插好了</li>
+<li>MTU 的大小</li>
+<li>网络收发字节数、包数、错误数及丢包情况。详细指标如下</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">errors</th>
+<th style="text-align:left">发生错误的数据包数, 比如校验错误, 帧同步错误等</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">dropped</td>
+<td style="text-align:left">丢弃的数据包, 数据包已经收到了Ring Buffer, 但内存资源不足原因丢包</td>
+</tr>
+<tr>
+<td style="text-align:left">overrun</td>
+<td style="text-align:left">超限数据包数, 网络I/O速度过快, 导致Ring Buffer来不及处理(队列满)</td>
+</tr>
+<tr>
+<td style="text-align:left">carrier</td>
+<td style="text-align:left">发送carrier错误的数据包数, 比如双工模式不匹配, 物理电缆线出问题等</td>
+</tr>
+<tr>
+<td style="text-align:left">collsns</td>
+<td style="text-align:left">碰撞数据包数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="套接字信息"><a href="#套接字信息" class="headerlink" title="套接字信息"></a>套接字信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -675,7 +731,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux网络"><span class="nav-number">1.</span> <span class="nav-text">linux网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络模型"><span class="nav-number">1.1.</span> <span class="nav-text">网络模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI和TCP-IP关系"><span class="nav-number">1.2.</span> <span class="nav-text">OSI和TCP/IP关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux网络栈"><span class="nav-number">1.3.</span> <span class="nav-text">linux网络栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-通用-IP-网络栈的示意图"><span class="nav-number">1.4.</span> <span class="nav-text">Linux 通用 IP 网络栈的示意图</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux网络"><span class="nav-number">1.</span> <span class="nav-text">linux网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络模型"><span class="nav-number">1.1.</span> <span class="nav-text">网络模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI和TCP-IP关系"><span class="nav-number">1.2.</span> <span class="nav-text">OSI和TCP/IP关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux网络栈"><span class="nav-number">1.3.</span> <span class="nav-text">linux网络栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-通用-IP-网络栈的示意图"><span class="nav-number">1.4.</span> <span class="nav-text">Linux 通用 IP 网络栈的示意图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能指标"><span class="nav-number">1.5.</span> <span class="nav-text">性能指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络配置"><span class="nav-number">1.6.</span> <span class="nav-text">网络配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#套接字信息"><span class="nav-number">1.7.</span> <span class="nav-text">套接字信息</span></a></li></ol></li></ol></div>
             
 
           </div>
