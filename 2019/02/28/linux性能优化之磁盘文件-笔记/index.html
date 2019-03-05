@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/02/28/linux性能优化之磁盘文件-笔记/5.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/28/linux性能优化之磁盘文件-笔记/3.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/28/linux性能优化之磁盘文件-笔记/4.png">
-<meta property="og:updated_time" content="2019-03-04T15:49:50.455Z">
+<meta property="og:updated_time" content="2019-03-05T02:17:09.067Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux性能优化之磁盘文件 笔记">
 <meta name="twitter:description" content="文件系统 磁盘为系统提供了最基本的持久化存储文件系统则在磁盘的基础上, 提供了一个用来管理文件的树状结构  索引节点和目录 索引节点(inode), 用来记录文件的元数据, 比如inode编号, 文件大小, 访问权限修改日期, 数据位置等。它和文件一一对应, 跟文件内容一样, 会被持久化到磁盘, 也会占磁盘空间   目录项(dentry), 用来记录文件名字, 索引节点指针以及和其他目录项的关系。">
@@ -465,7 +465,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# pidstat -d 1</span><br><span class="line">Linux 3.10.0-693.el7.x86_64 (localhost)         03/04/2019      _x86_64_        (1 CPU)</span><br><span class="line"></span><br><span class="line">07:45:24 AM   UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s  Command</span><br><span class="line"></span><br><span class="line">kB_rd/s: 每秒进程从磁盘读取的数据量(以kB为单位)</span><br><span class="line">kB_wr/s: 每秒进程向磁盘写的数据量(以kB为单位)</span><br><span class="line">Command: 拉起进程对应的命令</span><br></pre></td></tr></table></figure>
 <h2 id="案例分析：找出不停打印进程"><a href="#案例分析：找出不停打印进程" class="headerlink" title="案例分析：找出不停打印进程"></a>案例分析：找出不停打印进程</h2><p>top：cpu的wa很高<br>iostat: util% IO使用率高, 请求队列长<br>pidstat -d : 找出进程, 理解应该用iotop<br>strace -pf pid :f 跟踪由fork调用所产生的子进程 , 确认具体调用系统函数<br>lsof -p : 查看打开的文件</p>
 <p>进程I/O高, 直接top+lsof解决</p>
-<h2 id="案例分析：sql执行慢"><a href="#案例分析：sql执行慢" class="headerlink" title="案例分析：sql执行慢"></a>案例分析：sql执行慢</h2><p>/var/lib/mysql/test的4个文件：</p>
+<h2 id="案例分析：sql执行慢"><a href="#案例分析：sql执行慢" class="headerlink" title="案例分析：sql执行慢"></a>案例分析：sql执行慢</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">top+ iostat+ pidstat 确定mysql慢</span><br><span class="line"></span><br><span class="line">$ lsof -p 28014</span><br><span class="line"></span><br><span class="line">// 上一条命令退出时的返回值, 0表示成功, 1表示失败</span><br><span class="line">$ echo $?</span><br><span class="line">1</span><br><span class="line"></span><br><span class="line">// -t 表示显示线程，-a 表示显示命令行参数</span><br><span class="line">$ pstree -t -a -p 27458</span><br><span class="line">mysqld,27458 --log_bin=on --sync_binlog=1</span><br><span class="line">...</span><br><span class="line">  ├─&#123;mysqld&#125;,27922</span><br><span class="line">  ├─&#123;mysqld&#125;,27923</span><br><span class="line">  └─&#123;mysqld&#125;,28014</span><br><span class="line"></span><br><span class="line">// lsof 需要进程号</span><br><span class="line">$ lsof -p 27458</span><br><span class="line">COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME</span><br><span class="line">...</span><br><span class="line">​mysqld  27458      999   38u   REG    8,1 512440000 2601895 /var/lib/mysql/test/products.MYD</span><br><span class="line"></span><br><span class="line">// strace 确定在做什么</span><br><span class="line">$ strace -f -p 27458</span><br><span class="line">[pid 28014] read(38, &quot;934EiwT363aak7VtqF1mHGa4LL4Dhbks&quot;..., 131072) = 131072</span><br><span class="line">[pid 28014] read(38, &quot;hSs7KBDepBqA6m4ce6i6iUfFTeG9Ot9z&quot;..., 20480) = 20480</span><br><span class="line">[pid 28014] read(38, &quot;NRhRjCSsLLBjTfdqiBRLvN9K6FRfqqLm&quot;..., 131072) = 131072</span><br><span class="line">[pid 28014] read(38, &quot;AKgsik4BilLb7y6OkwQUjjqGeCTQTaRl&quot;..., 24576) = 24576</span><br><span class="line">[pid 28014] read(38, &quot;hFMHx7FzUSqfFI22fQxWCpSnDmRjamaW&quot;..., 131072) = 131072</span><br><span class="line">[pid 28014] read(38, &quot;ajUzLmKqivcDJSkiw7QWf2ETLgvQIpfC&quot;..., 20480) = 20480</span><br><span class="line"></span><br><span class="line">//  显示mysql使用目录, 只是为了进一步确认</span><br><span class="line">$ docker exec -i -t mysql mysql -e &apos;show global variables like &quot;%datadir%&quot;;&apos;</span><br><span class="line">+---------------+-----------------+</span><br><span class="line">| Variable_name | Value           |</span><br><span class="line">+---------------+-----------------+</span><br><span class="line">| datadir       | /var/lib/mysql/ |</span><br><span class="line">+---------------+-----------------+</span><br><span class="line"></span><br><span class="line">mysql&gt; show full processlist;</span><br><span class="line">+----+------+-----------------+------+---------+------+--------------+-----------------------------------------------------+</span><br><span class="line">| Id | User | Host            | db   | Command | Time | State        | Info                                                |</span><br><span class="line">+----+------+-----------------+------+---------+------+--------------+-----------------------------------------------------+</span><br><span class="line">| 27 | root | localhost       | test | Query   |    0 | init         | show full processlist                               |</span><br><span class="line">| 28 | root | 127.0.0.1:42262 | test | Query   |    1 | Sending data | select * from products where productName=&apos;geektime&apos; |</span><br><span class="line">+----+------+-----------------+------+---------+------+--------------+-----------------------------------------------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"># 切换到 test 库</span><br><span class="line">mysql&gt; use test;</span><br><span class="line"># 执行 explain 命令</span><br><span class="line">mysql&gt; explain select * from products where productName=&apos;geektime&apos;;</span><br><span class="line">+----+-------------+----------+------+---------------+------+---------+------+-------+-------------+</span><br><span class="line">| id | select_type | table    | type | possible_keys | key  | key_len | ref  | rows  | Extra       |</span><br><span class="line">+----+-------------+----------+------+---------------+------+---------+------+-------+-------------+</span><br><span class="line">|  1 | SIMPLE      | products | ALL  | NULL          | NULL | NULL    | NULL | 10000 | Using where |</span><br><span class="line">+----+-------------+----------+------+---------------+------+---------+------+-------+-------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>/var/lib/mysql/test的4个文件：</p>
 <ul>
 <li>MYD 存储表的数据</li>
 <li>MYI 存储表的索引</li>
@@ -473,13 +474,14 @@
 <li>opt 存储数据库的元信息(字符集)</li>
 </ul>
 <p>没用索引….(top+strace)</p>
+<p>另外, <a href="https://github.com/brendangregg/perf-tools/blob/master/opensnoop" target="_blank" rel="noopener">opensnoop</a>监控打开文件</p>
 <h2 id="案例分析-redis慢"><a href="#案例分析-redis慢" class="headerlink" title="案例分析: redis慢"></a>案例分析: redis慢</h2><p>写文件慢(top+strace)</p>
 <h1 id="系统I-O瓶颈分析套路"><a href="#系统I-O瓶颈分析套路" class="headerlink" title="系统I/O瓶颈分析套路"></a>系统I/O瓶颈分析套路</h1><p>linux系统I/O栈<br><img src="/2019/02/28/linux性能优化之磁盘文件-笔记/3.png" alt=""></p>
 <p><img src="/2019/02/28/linux性能优化之磁盘文件-笔记/4.png" alt=""></p>
 <p>iostat 发现磁盘IO瓶颈-&gt;pidstat确认进程, 分析读写-&gt;strace/lsof分析应用程序</p>
 <h1 id="I-O性能优化"><a href="#I-O性能优化" class="headerlink" title="I/O性能优化"></a>I/O性能优化</h1><h2 id="应用程序优化"><a href="#应用程序优化" class="headerlink" title="应用程序优化"></a>应用程序优化</h2><ul>
 <li>1.用追加写代替随机写, 减少寻址开销, 加快I/O写的速度</li>
-<li>2.借助缓存I/O, 充分利用系统缓存, 降低实际I/O的次数(mysql查询索引)</li>
+<li>2.借助缓存I/O, 充分利用系统缓存, 降低实际I/O的次数(mysql的MyISAM,查询依赖缓存)</li>
 <li>3.在应用程序内部构建自己的缓存, 控制缓存数据和生命周期(批价mdb_cache)</li>
 <li>4.频繁读写同一块磁盘, mmap代替, 减少读写次数(直接I/O)</li>
 <li>5.在需要同步写的场景中, 尽量将写请求合并, fsync()代替O_SYNC(mdb一次提交N条数据)</li>
@@ -565,6 +567,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/03/05/深入理解计算机系统-笔记/" rel="prev" title="深入理解计算机系统 笔记">
+                深入理解计算机系统 笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -640,7 +646,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
