@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/同时打开.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/tcp状态转换.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/tcp_queue.png">
-<meta property="og:updated_time" content="2019-03-14T06:19:11.546Z">
+<meta property="og:updated_time" content="2019-03-14T06:46:55.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP协议相关概念">
 <meta name="twitter:description" content="1. TCP协议头部格式 DNS在应用层, TCP/UDP/PORT在传输层, IP在网络层,  ARP在数据链路层去掉没有协议的表示层和会话层，就是TCP/IP五层网络模型OSI是Open System Interconnect的缩写，意为开放式系统互联">
@@ -415,7 +415,7 @@
 <h1 id="2-三次握手四次分手"><a href="#2-三次握手四次分手" class="headerlink" title="2. 三次握手四次分手"></a>2. 三次握手四次分手</h1><p><img src="/2018/10/29/TCP协议相关概念/握手分手.jpg" alt="三次握手四次分手"></p>
 <p>为什么需要三次握手？</p>
 <blockquote>
-<p>为了防止已经失效的连接请求报文段突然又传到服务端，因而产生错误<br>比如A发送sync给B, 在网络延迟N时间后B才收到, B回复ack, 此时A可能已经关闭,<br>B浪费了这个链接的资源<br>全双工, 告诉对方 发送/接受数据 能力OK</p>
+<p>全双工, 告诉对方 发送/接受数据 能力OK</p>
 </blockquote>
 <p>为什么需要四次分手？</p>
 <blockquote>
