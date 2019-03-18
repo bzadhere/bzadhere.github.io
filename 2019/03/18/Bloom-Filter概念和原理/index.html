@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="什么是MD5加密算法MD5消息摘要算法是一种被广泛使用的密码散列函数, 属Hash算法一类, MD5算法对输入任意长度的消息进行运行，产生一个128位(16字节)的散列值(hash value)。">
+<meta name="description" content="概念和原理布隆过滤器">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MD5加密算法">
-<meta property="og:url" content="http://yoursite.com/2018/12/01/MD5加密算法/index.html">
+<meta property="og:title" content="Bloom Filter概念和原理">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/Bloom-Filter概念和原理/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="什么是MD5加密算法MD5消息摘要算法是一种被广泛使用的密码散列函数, 属Hash算法一类, MD5算法对输入任意长度的消息进行运行，产生一个128位(16字节)的散列值(hash value)。">
+<meta property="og:description" content="概念和原理布隆过滤器">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-22T12:25:21.709Z">
+<meta property="og:updated_time" content="2019-03-18T06:18:24.992Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MD5加密算法">
-<meta name="twitter:description" content="什么是MD5加密算法MD5消息摘要算法是一种被广泛使用的密码散列函数, 属Hash算法一类, MD5算法对输入任意长度的消息进行运行，产生一个128位(16字节)的散列值(hash value)。">
+<meta name="twitter:title" content="Bloom Filter概念和原理">
+<meta name="twitter:description" content="概念和原理布隆过滤器">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/01/MD5加密算法/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/18/Bloom-Filter概念和原理/"/>
 
 
 
 
 
-  <title>MD5加密算法 | 扫地小道童</title>
+  <title>Bloom Filter概念和原理 | 扫地小道童</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/01/MD5加密算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/Bloom-Filter概念和原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MD5加密算法</h1>
+          <h1 class="post-title" itemprop="name headline">Bloom Filter概念和原理</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-01T10:12:34+08:00">
-                2018-12-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T10:42:54+08:00">
+                2019-03-18
               </time>
             
 
@@ -366,7 +366,7 @@
 
           
           
-             <span id="/2018/12/01/MD5加密算法/" class="leancloud_visitors" data-flag-title="MD5加密算法">
+             <span id="/2019/03/18/Bloom-Filter概念和原理/" class="leancloud_visitors" data-flag-title="Bloom Filter概念和原理">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -397,25 +397,7 @@
       
 
       
-        <h1 id="什么是MD5加密算法"><a href="#什么是MD5加密算法" class="headerlink" title="什么是MD5加密算法"></a>什么是MD5加密算法</h1><p>MD5消息摘要算法是一种被广泛使用的密码散列函数, 属Hash算法一类, MD5算法对输入<br>任意长度的消息进行运行，产生一个128位(16字节)的散列值(hash value)。<br><a id="more"></a></p>
-<h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><h2 id="文件一致性验证"><a href="#文件一致性验证" class="headerlink" title="文件一致性验证"></a>文件一致性验证</h2><p>MD5的典型应用是对一段信息（Message）产生信息摘要（Message-Digest），以防止被篡改。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">51_zjdev[/data01/zjgrp/zjdev/users/zhangbb]%md5sum test.cpp </span><br><span class="line">731b8735653acd4c4cdbd05883fe90d1  test.cpp</span><br></pre></td></tr></table></figure>
-<h2 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h2><p>MD5的典型应用是对一段Message(字节串)产生fingerprint(指纹），以防止被“篡改”。</p>
-<h1 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h1><p>以下所描述的消息长度、填充数据都以位(Bit)为单位，字节序为小端字节。</p>
-<h2 id="数据填充"><a href="#数据填充" class="headerlink" title="数据填充"></a>数据填充</h2><p>对消息进行数据填充，使消息的长度对512取模得448，设消息长度为X，即满足X mod 512=448。<br>根据此公式得出需要填充的数据长度。<br>填充方法：在消息后面进行填充，填充第一位为1，其余为0。</p>
-<h2 id="添加消息长度"><a href="#添加消息长度" class="headerlink" title="添加消息长度"></a>添加消息长度</h2><p>在第一步结果之后再填充上原消息的长度，可用来进行的存储长度为64位。如果消息长度大于264，<br>则只使用其低64位的值，即（消息长度 对 264取模）。<br>在此步骤进行完毕后，最终消息长度就是512的整数倍</p>
-<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><p>准备需要用到的数据：</p>
-<blockquote>
-<ul>
-<li>4个常数： A = 0x67452301, B = 0x0EFCDAB89, C = 0x98BADCFE, D = 0x10325476;</li>
-<li>4个函数：F(X,Y,Z)=(X &amp; Y) | ((~X) &amp; Z); G(X,Y,Z)=(X &amp; Z) | (Y &amp; (~Z));  H(X,Y,Z)=X ^ Y ^ Z; I(X,Y,Z)=Y ^ (X | (~Z));</li>
-</ul>
-</blockquote>
-<p>把消息分以512位为一分组进行处理，每一个分组进行4轮变换，以上面所说4个常数为起始变量进行　　<br>计算，重新输出4个变量，以这4个变量再进行下一分组的运算，如果已经是最后一个分组，则这4个　　<br>变量为最后的结果，即MD5值。</p>
-<p>具体计算的实现较为复杂，建议查阅相关书籍，下面给出在C++上的实现代码。</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line">#ifndef MD5H</span><br><span class="line">#define MD5H</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line"></span><br><span class="line">void ROL(unsigned int &amp;s, unsigned short cx); //32位数循环左移实现函数</span><br><span class="line">void ltob(unsigned int &amp;i); //B\L互转，接受UINT类型</span><br><span class="line">unsigned int* MD5(const char* mStr); //接口函数，并执行数据填充，计算MD5时调用此函数</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#include &quot;MD5.h&quot;</span><br><span class="line"></span><br><span class="line">/*4组计算函数*/</span><br><span class="line">inline unsigned int F(unsigned int X, unsigned int Y, unsigned int Z)</span><br><span class="line">&#123;</span><br><span class="line">    return (X &amp; Y) | ((~X) &amp; Z);</span><br><span class="line">&#125;</span><br><span class="line">inline unsigned int G(unsigned int X, unsigned int Y, unsigned int Z)</span><br><span class="line">&#123;</span><br><span class="line">    return (X &amp; Z) | (Y &amp; (~Z));</span><br><span class="line">&#125;</span><br><span class="line">inline unsigned int H(unsigned int X, unsigned int Y, unsigned int Z)</span><br><span class="line">&#123;</span><br><span class="line">    return X ^ Y ^ Z;</span><br><span class="line">&#125;</span><br><span class="line">inline unsigned int I(unsigned int X, unsigned int Y, unsigned int Z)</span><br><span class="line">&#123;</span><br><span class="line">    return Y ^ (X | (~Z));</span><br><span class="line">&#125;</span><br><span class="line">/*4组计算函数结束*/</span><br><span class="line"></span><br><span class="line">/*32位数循环左移实现函数*/</span><br><span class="line">void ROL(unsigned int &amp;s, unsigned short cx)</span><br><span class="line">&#123;</span><br><span class="line">    if (cx &gt; 32)cx %= 32;</span><br><span class="line">    s = (s &lt;&lt; cx) | (s &gt;&gt; (32 - cx));</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*B\L互转，接收UINT类型*/</span><br><span class="line">void ltob(unsigned int &amp;i)</span><br><span class="line">&#123;</span><br><span class="line">    unsigned int tmp = i;//保存副本</span><br><span class="line">    byte *psour = (byte*)&amp;tmp, *pdes = (byte*)&amp;i;</span><br><span class="line">    pdes += 3;//调整指针，准备左右调转</span><br><span class="line">    for (short i = 3; i &gt;= 0; --i)</span><br><span class="line">    &#123;</span><br><span class="line">        CopyMemory(pdes - i, psour + i, 1);</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">MD5循环计算函数，label=第几轮循环（1&lt;=label&lt;=4），lGroup数组=4个种子副本，M=数据（16组32位数指针）</span><br><span class="line">种子数组排列方式: --A--D--C--B--，即 lGroup[0]=A; lGroup[1]=D; lGroup[2]=C; lGroup[3]=B;</span><br><span class="line">*/</span><br><span class="line">void AccLoop(unsigned short label, unsigned int *lGroup, void *M)</span><br><span class="line">&#123;</span><br><span class="line">    unsigned int *i1, *i2, *i3, *i4, TAcc, tmpi = 0; //定义:4个指针； T表累加器； 局部变量</span><br><span class="line">    typedef unsigned int(*clac)(unsigned int X, unsigned int Y, unsigned int Z); //定义函数类型</span><br><span class="line">    const unsigned int rolarray[4][4] = &#123;</span><br><span class="line">        &#123; 7, 12, 17, 22 &#125;,</span><br><span class="line">        &#123; 5, 9, 14, 20 &#125;,</span><br><span class="line">        &#123; 4, 11, 16, 23 &#125;,</span><br><span class="line">        &#123; 6, 10, 15, 21 &#125;</span><br><span class="line">    &#125;;//循环左移-位数表</span><br><span class="line">    const unsigned short mN[4][16] = &#123;</span><br><span class="line">        &#123; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 &#125;,</span><br><span class="line">        &#123; 1, 6, 11, 0, 5, 10, 15, 4, 9, 14, 3, 8, 13, 2, 7, 12 &#125;,</span><br><span class="line">        &#123; 5, 8, 11, 14, 1, 4, 7, 10, 13, 0, 3, 6, 9, 12, 15, 2 &#125;,</span><br><span class="line">        &#123; 0, 7, 14, 5, 12, 3, 10, 1, 8, 15, 6, 13, 4, 11, 2, 9 &#125;</span><br><span class="line">    &#125;;//数据坐标表</span><br><span class="line">    const unsigned int *pM = static_cast&lt;unsigned int*&gt;(M);//转换类型为32位的Uint</span><br><span class="line">    TAcc = ((label - 1) * 16) + 1; //根据第几轮循环初始化T表累加器</span><br><span class="line">    clac clacArr[4] = &#123; F, G, H, I &#125;; //定义并初始化计算函数指针数组</span><br><span class="line"></span><br><span class="line">    /*一轮循环开始（16组-&gt;16次）*/</span><br><span class="line">    for (short i = 0; i &lt; 16; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        /*进行指针自变换*/</span><br><span class="line">        i1 = lGroup + ((0 + i) % 4);</span><br><span class="line">        i2 = lGroup + ((3 + i) % 4);</span><br><span class="line">        i3 = lGroup + ((2 + i) % 4);</span><br><span class="line">        i4 = lGroup + ((1 + i) % 4);</span><br><span class="line"></span><br><span class="line">        /*第一步计算开始: A+F(B,C,D)+M[i]+T[i+1] 注:第一步中直接计算T表*/</span><br><span class="line">        tmpi = (*i1 + clacArr[label - 1](*i2, *i3, *i4) + pM[(mN[label - 1][i])] + (unsigned int)(0x100000000UL * abs(sin((double)(TAcc + i)))));</span><br><span class="line">        ROL(tmpi, rolarray[label - 1][i % 4]);//第二步:循环左移</span><br><span class="line">        *i1 = *i2 + tmpi;//第三步:相加并赋值到种子</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*接口函数，并执行数据填充*/</span><br><span class="line">unsigned int* MD5(const char* mStr)</span><br><span class="line">&#123;</span><br><span class="line">    unsigned int mLen = strlen(mStr); //计算字符串长度</span><br><span class="line">    if (mLen &lt; 0) return 0;</span><br><span class="line">    unsigned int FillSize = 448 - ((mLen * 8) % 512); //计算需填充的bit数</span><br><span class="line">    unsigned int FSbyte = FillSize / 8; //以字节表示的填充数</span><br><span class="line">    unsigned int BuffLen = mLen + 8 + FSbyte; //缓冲区长度或者说填充后的长度</span><br><span class="line">    unsigned char *md5Buff = new unsigned char[BuffLen]; //分配缓冲区</span><br><span class="line">    CopyMemory(md5Buff, mStr, mLen); //复制字符串到缓冲区</span><br><span class="line"></span><br><span class="line">    /*数据填充开始*/</span><br><span class="line">    md5Buff[mLen] = 0x80; //第一个bit填充1</span><br><span class="line">    ZeroMemory(&amp;md5Buff[mLen + 1], FSbyte - 1); //其它bit填充0，另一可用函数为FillMemory</span><br><span class="line">    unsigned long long lenBit = mLen * 8ULL; //计算字符串长度，准备填充</span><br><span class="line">    CopyMemory(&amp;md5Buff[mLen + FSbyte], &amp;lenBit, 8); //填充长度</span><br><span class="line">    /*数据填充结束*/</span><br><span class="line"></span><br><span class="line">    /*运算开始*/</span><br><span class="line">    unsigned int LoopNumber = BuffLen / 64; //以16个字为一分组，计算分组数量</span><br><span class="line">    unsigned int A = 0x67452301, B = 0x0EFCDAB89, C = 0x98BADCFE, D = 0x10325476;//初始4个种子，小端类型</span><br><span class="line">    unsigned int *lGroup = new unsigned int[4]&#123; A, D, C, B&#125;; //种子副本数组,并作为返回值返回</span><br><span class="line">    for (unsigned int Bcount = 0; Bcount &lt; LoopNumber; ++Bcount) //分组大循环开始</span><br><span class="line">    &#123;</span><br><span class="line">        /*进入4次计算的小循环*/</span><br><span class="line">        for (unsigned short Lcount = 0; Lcount &lt; 4;)</span><br><span class="line">        &#123;</span><br><span class="line">            AccLoop(++Lcount, lGroup, &amp;md5Buff[Bcount * 64]);</span><br><span class="line">        &#125;</span><br><span class="line">        /*数据相加作为下一轮的种子或者最终输出*/</span><br><span class="line">        A = (lGroup[0] += A);</span><br><span class="line">        B = (lGroup[3] += B);</span><br><span class="line">        C = (lGroup[2] += C);</span><br><span class="line">        D = (lGroup[1] += D);</span><br><span class="line">    &#125;</span><br><span class="line">    /*转换内存中的布局后才能正常显示*/</span><br><span class="line">    ltob(lGroup[0]);</span><br><span class="line">    ltob(lGroup[1]);</span><br><span class="line">    ltob(lGroup[2]);</span><br><span class="line">    ltob(lGroup[3]);</span><br><span class="line">    delete[] md5Buff; //清除内存并返回</span><br><span class="line">    return lGroup;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &quot;MD5.h&quot;</span><br><span class="line"></span><br><span class="line">int main(int argc, char **argv)</span><br><span class="line">&#123;</span><br><span class="line">    char tmpstr[256], buf[4][10];</span><br><span class="line">    std::cout &lt;&lt; &quot;请输入要加密的字符串：&quot;;</span><br><span class="line">    std::cin &gt;&gt; tmpstr;</span><br><span class="line">    unsigned int* tmpGroup = MD5(tmpstr);</span><br><span class="line">    sprintf_s(buf[0], &quot;%8X&quot;, tmpGroup[0]);</span><br><span class="line">    sprintf_s(buf[1], &quot;%8X&quot;, tmpGroup[3]);</span><br><span class="line">    sprintf_s(buf[2], &quot;%8X&quot;, tmpGroup[2]);</span><br><span class="line">    sprintf_s(buf[3], &quot;%8X&quot;, tmpGroup[1]);</span><br><span class="line">    std::cout &lt;&lt;&quot;MD5:&quot;&lt;&lt; buf[0] &lt;&lt; buf[1] &lt;&lt; buf[2] &lt;&lt; buf[3] &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    delete[] tmpGroup;</span><br><span class="line">    return 0; //在此下断点才能看到输出的值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <h1 id="概念和原理"><a href="#概念和原理" class="headerlink" title="概念和原理"></a><a href="https://blog.csdn.net/lvsaixia/article/details/51503231" target="_blank" rel="noopener">概念和原理</a></h1><h1 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a><a href="https://blog.csdn.net/lvsaixia/article/details/51503231" target="_blank" rel="noopener">布隆过滤器</a></h1>
       
     </div>
     
@@ -468,8 +450,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/28/c-11特性/" rel="next" title="c++11特性">
-                <i class="fa fa-chevron-left"></i> c++11特性
+              <a href="/2019/03/13/数据结构和算法之美之线性表-笔记/" rel="next" title="数据结构和算法之美之线性表 笔记">
+                <i class="fa fa-chevron-left"></i> 数据结构和算法之美之线性表 笔记
               </a>
             
           </div>
@@ -477,10 +459,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/01/死锁和银行家算法/" rel="prev" title="死锁和银行家算法">
-                死锁和银行家算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -612,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是MD5加密算法"><span class="nav-number">1.</span> <span class="nav-text">什么是MD5加密算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用场景"><span class="nav-number">2.</span> <span class="nav-text">应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件一致性验证"><span class="nav-number">2.1.</span> <span class="nav-text">文件一致性验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字签名"><span class="nav-number">2.2.</span> <span class="nav-text">数字签名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法原理"><span class="nav-number">3.</span> <span class="nav-text">算法原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据填充"><span class="nav-number">3.1.</span> <span class="nav-text">数据填充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加消息长度"><span class="nav-number">3.2.</span> <span class="nav-text">添加消息长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据处理"><span class="nav-number">3.3.</span> <span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">3.4.</span> <span class="nav-text">代码实现</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念和原理"><span class="nav-number">1.</span> <span class="nav-text">概念和原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#布隆过滤器"><span class="nav-number">2.</span> <span class="nav-text">布隆过滤器</span></a></li></ol></div>
             
 
           </div>
