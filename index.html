@@ -550,25 +550,25 @@
       
         
           
-            <p>ʹ��CPU profiler��������: ������, ���д���, ���������<br>CPU profiler�������ļ��е�����˵���ĵ�…</p>
-<h1 id="������"><a href="#������" class="headerlink" title="������"></a>������</h1><ol>
-<li>����ʱ���� -lprofiler</li>
-<li>����ȫ�ֻ�������, setenv LD_PRELOAD /usr/lib/libprofiler.so(���Ƽ�, �û�����û������)</li>
+            <p>使用CPU profiler有三部分: 库连接, 运行代码, 分析输出。<br>CPU profiler的数据文件有单独的说明文档…</p>
+<h1 id="库连接"><a href="#库连接" class="headerlink" title="库连接"></a>库连接</h1><ol>
+<li>编译时连接 -lprofiler</li>
+<li>设置全局环境变量, setenv LD_PRELOAD /usr/lib/libprofiler.so(不推荐, 用户设置没有限制)</li>
 </ol>
-<p>�������ַ�ʽ��û�д�CPU profiler,����ֻ���ڴ����в������ӷ���.</p>
+<p>以上两种方式并没有打开CPU profiler,仅仅只是在代码中插入链接符号.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ test.cpp -o test -lprofiler</span><br></pre></td></tr></table></figure>
-<h1 id="���д���"><a href="#���д���" class="headerlink" title="���д���"></a>���д���</h1><p>�����ַ�ʽ���Դ�CPU profiler:</p>
+<h1 id="运行代码"><a href="#运行代码" class="headerlink" title="运行代码"></a>运行代码</h1><p>有三种方式可以打开CPU profiler:</p>
 <ol>
-<li><p>����CPUPROFILE��������, ����setenv CPUPROFILE ~/data/prof/decode.prof</p>
+<li><p>设置CPUPROFILE环境变量, 例如setenv CPUPROFILE ~/data/prof/decode.prof</p>
 </li>
-<li><p>����CPUPROFILESIGNAL, ����δʹ�õ��źſ������</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">setenv CPUPROFILE ~/data/prof/test.prof</span><br><span class="line">setenv CPUPROFILESIGNAL 60</span><br><span class="line">// ��ʼ</span><br><span class="line">kill -60 pid</span><br><span class="line">// ֹͣ</span><br><span class="line">kill -60 pid</span><br></pre></td></tr></table></figure>
+<li><p>设置CPUPROFILESIGNAL, 定义未使用的信号控制输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">setenv CPUPROFILE ~/data/prof/test.prof</span><br><span class="line">setenv CPUPROFILESIGNAL 60</span><br><span class="line">// 开始</span><br><span class="line">kill -60 pid</span><br><span class="line">// 停止</span><br><span class="line">kill -60 pid</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>include ͷ�ļ�&lt;gperftools/profiler.h&gt;, ʹ��ProfilerStart(char* filename) �� ProfilerStop()<br>����ProfilerFlush() and ProfilerStartWithOptions()</p>
+<li><p>include 头文件&lt;gperftools/profiler.h&gt;, 使用ProfilerStart(char* filename) 和 ProfilerStop()<br>还有ProfilerFlush() and ProfilerStartWithOptions()</p>
 </li>
 </ol>
-<p>���ڰ�ȫ����, CPU��������д���ļ���, ����Ӧ����setuid����</p>
-<h2 id="��������"><a href="#��������" class="headerlink" title="��������"></a>��������</h2><table>
+<p>出于安全考虑, CPU分析不会写到文件中, 不能应用于setuid程序。</p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><table>
 <thead>
 <tr>
 <th style="text-align:left">name</th>
@@ -578,17 +578,17 @@
 <tbody>
 <tr>
 <td style="text-align:left">CPUPROFILE_FREQUENCY</td>
-<td style="text-align:left">Ĭ��100samples/second, �൱��һ������10ms</td>
+<td style="text-align:left">默认100samples/second, 相当于一个样本10ms</td>
 </tr>
 <tr>
 <td style="text-align:left">CPUPROFILE_REALTIME</td>
-<td style="text-align:left">Ĭ�ϲ�����, ֻҪ������(��ʹ��0���), ��ITIMER_REAL���� ITIMER_PROF, һ�㲻����</td>
+<td style="text-align:left">默认不设置, 只要设置了(即使是0或空), 用ITIMER_REAL代替 ITIMER_PROF, 一般不设置</td>
 </tr>
 </tbody>
 </table>
-<h1 id="�������"><a href="#�������" class="headerlink" title="�������"></a>�������</h1><p>pprof�����ڷ���profile�Ľű����ж������ģʽ, ������gcc -pg �����(gprof)��<br>pprof����dot/gv��</p>
+<h1 id="分析输出"><a href="#分析输出" class="headerlink" title="分析输出"></a>分析输出</h1><p>pprof是用于分析profile的脚本。有多种输出模式, 有类似gcc -pg 的输出(gprof)。<br>pprof依赖dot/gv。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">pprof &lt;format&gt; [options] [binary] &lt;source&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">% pprof /bin/ls ls.prof</span><br><span class="line">                       Enters &quot;interactive&quot; mode</span><br><span class="line">% pprof --text /bin/ls ls.prof</span><br><span class="line">                       Outputs one line per procedure</span><br><span class="line">% pprof --gv /bin/ls ls.prof</span><br><span class="line">                       Displays annotated call-graph via &apos;gv&apos;</span><br><span class="line">% pprof --gv --focus=Mutex /bin/ls ls.prof</span><br><span class="line">                       Restricts to code paths including a .*Mutex.* entry</span><br><span class="line">% pprof --gv --focus=Mutex --ignore=string /bin/ls ls.prof</span><br><span class="line">                       Code paths including Mutex but not string</span><br><span class="line">% pprof --list=getdir /bin/ls ls.prof</span><br><span class="line">                       (Per-line) annotated source listing for getdir()</span><br><span class="line">% pprof --disasm=getdir /bin/ls ls.prof</span><br><span class="line">                       (Per-PC) annotated disassembly for getdir()</span><br><span class="line">% pprof --text localhost:1234</span><br><span class="line">                       Outputs one line per procedure for localhost:1234</span><br><span class="line">% pprof --callgrind /bin/ls ls.prof</span><br><span class="line">                       Outputs the call information in callgrind format</span><br></pre></td></tr></table></figure>
-<h2 id="����text���"><a href="#����text���" class="headerlink" title="����text���"></a>����text���</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eg.</span><br><span class="line">  14   2.1%  17.2%       58   8.7% std::_Rb_tree::find</span><br></pre></td></tr></table></figure>
+<h2 id="分析text输出"><a href="#分析text输出" class="headerlink" title="分析text输出"></a>分析text输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eg.</span><br><span class="line">  14   2.1%  17.2%       58   8.7% std::_Rb_tree::find</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -603,27 +603,27 @@
 </tr>
 <tr>
 <td style="text-align:left">2.1%</td>
-<td style="text-align:left">����samples�ı���</td>
+<td style="text-align:left">在总samples的比例</td>
 </tr>
 <tr>
 <td style="text-align:left">17.2%</td>
-<td style="text-align:left">���ú���Ϊֹ, �Ѿ����еĺ���ռ��samples�ı���</td>
+<td style="text-align:left">到该函数为止, 已经运行的函数占总samples的比例</td>
 </tr>
 <tr>
 <td style="text-align:left">58</td>
-<td style="text-align:left">�������Ϻ����ﱻ�����ߵ���samples</td>
+<td style="text-align:left">函数加上函数里被调用者的总samples</td>
 </tr>
 <tr>
 <td style="text-align:left">8.7%</td>
-<td style="text-align:left">�������Ϻ����ﱻ�����ߵ���samples ����samples����</td>
+<td style="text-align:left">函数加上函数里被调用者的总samples 在总samples比例</td>
 </tr>
 <tr>
 <td style="text-align:left">std::_Rb_tree::find</td>
-<td style="text-align:left">������</td>
+<td style="text-align:left">函数名</td>
 </tr>
 </tbody>
 </table>
-<h2 id="����Callgrind���"><a href="#����Callgrind���" class="headerlink" title="����Callgrind���"></a>����Callgrind���</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">% pprof --callgrind /bin/ls ls.prof &gt; ls.callgrind</span><br><span class="line">% kcachegrind ls.callgrind</span><br></pre></td></tr></table></figure>
+<h2 id="分析Callgrind输出"><a href="#分析Callgrind输出" class="headerlink" title="分析Callgrind输出"></a>分析Callgrind输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">% pprof --callgrind /bin/ls ls.prof &gt; ls.callgrind</span><br><span class="line">% kcachegrind ls.callgrind</span><br></pre></td></tr></table></figure>
 <p>## </p>
 
           
