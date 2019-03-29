@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="volatile作用  volatile 关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素（操作系统、硬件、其它线程等）更改。所以使用 volatile 告诉编译器不应对这样的对象进行优化。 volatile 关键字声明的变量，每次访问时都必须从内存中取出值（没有被 volatile 修饰的变量，可能由于编译器的优化，从 CPU 寄存器中取值） const 可以是 vola">
+<meta name="description" content="volatile 阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回阻止编译器操作volatile变量的指令顺序  123456volatile int i=10; int a = i; ... //其他代码，并未明确告诉编译器，对i进行过操作 //编译器发现两次从i读数据的代码之间的代码没有对i进行过操作，它会自动把上次读的数据放在b中int b = i;">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c++关键字">
 <meta property="og:url" content="http://yoursite.com/2018/11/19/c-关键字/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="volatile作用  volatile 关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素（操作系统、硬件、其它线程等）更改。所以使用 volatile 告诉编译器不应对这样的对象进行优化。 volatile 关键字声明的变量，每次访问时都必须从内存中取出值（没有被 volatile 修饰的变量，可能由于编译器的优化，从 CPU 寄存器中取值） const 可以是 vola">
+<meta property="og:description" content="volatile 阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回阻止编译器操作volatile变量的指令顺序  123456volatile int i=10; int a = i; ... //其他代码，并未明确告诉编译器，对i进行过操作 //编译器发现两次从i读数据的代码之间的代码没有对i进行过操作，它会自动把上次读的数据放在b中int b = i;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-17T08:04:42.096Z">
+<meta property="og:updated_time" content="2019-03-29T07:13:42.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++关键字">
-<meta name="twitter:description" content="volatile作用  volatile 关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素（操作系统、硬件、其它线程等）更改。所以使用 volatile 告诉编译器不应对这样的对象进行优化。 volatile 关键字声明的变量，每次访问时都必须从内存中取出值（没有被 volatile 修饰的变量，可能由于编译器的优化，从 CPU 寄存器中取值） const 可以是 vola">
+<meta name="twitter:description" content="volatile 阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回阻止编译器操作volatile变量的指令顺序  123456volatile int i=10; int a = i; ... //其他代码，并未明确告诉编译器，对i进行过操作 //编译器发现两次从i读数据的代码之间的代码没有对i进行过操作，它会自动把上次读的数据放在b中int b = i;">
 
 
 
@@ -397,30 +397,23 @@
       
 
       
-        <h1 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><blockquote>
-<ul>
-<li>volatile 关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素（操作<br>系统、硬件、其它线程等）更改。所以使用 volatile 告诉编译器不应对这样的对象进行优化。</li>
-<li>volatile 关键字声明的变量，每次访问时都必须从内存中取出值（没有被 volatile 修饰的变量，<br>可能由于编译器的优化，从 CPU 寄存器中取值）</li>
-<li>const 可以是 volatile （如只读的状态寄存器）</li>
-<li>指针可以是 volatile<a id="more"></a>
-</li>
-</ul>
+        <h1 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h1><blockquote>
+<p>阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回<br>阻止编译器操作volatile变量的指令顺序</p>
 </blockquote>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><h3 id="并行设备的硬件寄存器（如状态寄存器）"><a href="#并行设备的硬件寄存器（如状态寄存器）" class="headerlink" title="并行设备的硬件寄存器（如状态寄存器）"></a>并行设备的硬件寄存器（如状态寄存器）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="一个中断服务子程序中访问到的变量"><a href="#一个中断服务子程序中访问到的变量" class="headerlink" title="一个中断服务子程序中访问到的变量"></a>一个中断服务子程序中访问到的变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="多线程共享变量"><a href="#多线程共享变量" class="headerlink" title="多线程共享变量"></a>多线程共享变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="explicit"><a href="#explicit" class="headerlink" title="explicit"></a>explicit</h1><h1 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h1><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">volatile int i=10; </span><br><span class="line">int a = i; </span><br><span class="line">... </span><br><span class="line">//其他代码，并未明确告诉编译器，对i进行过操作 </span><br><span class="line">//编译器发现两次从i读数据的代码之间的代码没有对i进行过操作，它会自动把上次读的数据放在b中</span><br><span class="line">int b = i;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="explicit"><a href="#explicit" class="headerlink" title="explicit"></a>explicit</h1><blockquote>
+<p>防止由构造函数定义的隐式转换</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class things</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	explicit things(const std::string&amp;name =&quot;&quot;):</span><br><span class="line">		  m_name(name),height(0),weight(0)&#123;&#125;</span><br><span class="line">	int CompareTo(const things &amp; other);</span><br><span class="line">	std::string m_name;</span><br><span class="line">	int height;</span><br><span class="line">	int weight;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">things a;</span><br><span class="line">std::string nm =&quot;book_1&quot;;</span><br><span class="line">int result = a.CompareTo(things(nm));//必须显示使用构造函数</span><br></pre></td></tr></table></figure>
+<h1 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h1><blockquote>
 <ul>
 <li>被 extern 限定的函数或变量是 extern 类型的</li>
 <li>被 extern “C” 修饰的变量和函数是按照 C 语言方式编译和连接的</li>
 </ul>
 </blockquote>
-<p>extern用在变量声明中常常有这样一个作用，你在<em>.c文件中声明了一个全局的变量，这个全局的变量如果要被引用，<br>就放在</em>.h中并用extern来声明。</p>
-<h2 id="extern-和-static"><a href="#extern-和-static" class="headerlink" title="extern 和 static"></a>extern 和 static</h2><p>(1) extern 表明该变量在别的地方已经定义过了,在这里要使用那个变量.<br>(2) static 表示静态的变量，分配内存的时候, 存储在静态区,不存储在栈上面.</p>
-<p>static 作用范围是内部连接的关系, 和extern有点相反.它和对象本身是分开存储的,extern也是分开存储的,<br>但是extern可以被其他的对象用extern 引用,而static 不可以,只允许对象本身用它. 具体差别首先，static<br>与extern是一对“水火不容”的家伙, 也就是说extern和static不能同时修饰一个变量；其次，static修饰的全<br>局变量声明与定义同时进行，也就是说当你在头文件中使用static声明了全局变量后，它也同时被定义了</p>
-<p>static 修改是全局和局部变量只是作用域不同, 生命周期是一样的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>extern用在变量声明中常常有这样一个作用，你在<em>.c文件中声明了一个全局的变量，这个全局的变量如果要被引用，<br>就放在</em>.h中并用extern来声明。不能和static同时修饰</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot; &#123;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">NAMESPACE_BILLING40_FRAME CThread* create_instanceRating();</span><br><span class="line"></span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
 <h1 id="typedef"><a href="#typedef" class="headerlink" title="typedef"></a>typedef</h1><h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1>
       
     </div>
@@ -618,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">1.</span> <span class="nav-text">volatile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">1.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景"><span class="nav-number">1.2.</span> <span class="nav-text">应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并行设备的硬件寄存器（如状态寄存器）"><span class="nav-number">1.2.1.</span> <span class="nav-text">并行设备的硬件寄存器（如状态寄存器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个中断服务子程序中访问到的变量"><span class="nav-number">1.2.2.</span> <span class="nav-text">一个中断服务子程序中访问到的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程共享变量"><span class="nav-number">1.2.3.</span> <span class="nav-text">多线程共享变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">1.3.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#explicit"><span class="nav-number">2.</span> <span class="nav-text">explicit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extern"><span class="nav-number">3.</span> <span class="nav-text">extern</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#extern-和-static"><span class="nav-number">3.1.</span> <span class="nav-text">extern 和 static</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typedef"><span class="nav-number">4.</span> <span class="nav-text">typedef</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#const"><span class="nav-number">5.</span> <span class="nav-text">const</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">1.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#explicit"><span class="nav-number">2.</span> <span class="nav-text">explicit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extern"><span class="nav-number">3.</span> <span class="nav-text">extern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typedef"><span class="nav-number">4.</span> <span class="nav-text">typedef</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#const"><span class="nav-number">5.</span> <span class="nav-text">const</span></a></li></ol></div>
             
 
           </div>

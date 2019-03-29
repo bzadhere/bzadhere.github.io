@@ -1195,12 +1195,10 @@
 
       
         
-          <h1 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><blockquote>
-<ul>
-<li>volatile 关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素（操作<br>系统、硬件、其它线程等）更改。所以使用 volatile 告诉编译器不应对这样的对象进行优化。</li>
-<li>volatile 关键字声明的变量，每次访问时都必须从内存中取出值（没有被 volatile 修饰的变量，<br>可能由于编译器的优化，从 CPU 寄存器中取值）</li>
-<li>const 可以是 volatile （如只读的状态寄存器）</li>
-<li>指针可以是 volatile</li></ul></blockquote>
+          <h1 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h1><blockquote>
+<p>阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回<br>阻止编译器操作volatile变量的指令顺序</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">volatile int i=10; </span><br><span class="line">int a = i; </span><br><span class="line">... </span><br><span class="line">//其他代码，并未明确告诉编译器，对i进行过操作 </span><br><span class="line">//编译器发现两次从i读数据的代码之间的代码没有对i进行过操作，它会自动把上次读的数据放在b中</span><br><span class="line">int b = i;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/19/c-关键字/#more" rel="contents">
