@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="前言三阶段提交对二阶段提交存在的问题进行了改进：  引入超时机制 - 同时在协调者和参与者中都引入超时机制。 在第一阶段和第二阶段中插入一个准备阶段，保证了在最后提交阶段之前各参与节点的状态是一致的。  3PC定义三阶段提交(Three-phase commit), 是二阶段提交的改进版本。所谓的三个阶段分别是：询问，然后再锁资源，最后真正提交。   第一阶段：CanCommit 第二阶段：Pre">
+<meta name="description" content="第一章 温故而知新计算机软硬件结构1) 硬件架构SMP与多核SMP, Symmetrical Multi-Processing, 多个CPU, 理论上会跑的快, 实际应用在数据库, 网络服务器处理独立请求多核, 共享贵的缓存部件, 保留多个核心; 实际上就是SMP的简化版, 一般理解成同一个概念">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分布式系统之3PC(4)">
-<meta property="og:url" content="http://yoursite.com/2018/11/06/分布式系统之3PC-4/index.html">
+<meta property="og:title" content="程序员的自我修养 笔记">
+<meta property="og:url" content="http://yoursite.com/2019/03/28/程序员的自我修养-笔记/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="前言三阶段提交对二阶段提交存在的问题进行了改进：  引入超时机制 - 同时在协调者和参与者中都引入超时机制。 在第一阶段和第二阶段中插入一个准备阶段，保证了在最后提交阶段之前各参与节点的状态是一致的。  3PC定义三阶段提交(Three-phase commit), 是二阶段提交的改进版本。所谓的三个阶段分别是：询问，然后再锁资源，最后真正提交。   第一阶段：CanCommit 第二阶段：Pre">
+<meta property="og:description" content="第一章 温故而知新计算机软硬件结构1) 硬件架构SMP与多核SMP, Symmetrical Multi-Processing, 多个CPU, 理论上会跑的快, 实际应用在数据库, 网络服务器处理独立请求多核, 共享贵的缓存部件, 保留多个核心; 实际上就是SMP的简化版, 一般理解成同一个概念">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-07T02:54:48.634Z">
+<meta property="og:updated_time" content="2019-03-29T06:43:14.100Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分布式系统之3PC(4)">
-<meta name="twitter:description" content="前言三阶段提交对二阶段提交存在的问题进行了改进：  引入超时机制 - 同时在协调者和参与者中都引入超时机制。 在第一阶段和第二阶段中插入一个准备阶段，保证了在最后提交阶段之前各参与节点的状态是一致的。  3PC定义三阶段提交(Three-phase commit), 是二阶段提交的改进版本。所谓的三个阶段分别是：询问，然后再锁资源，最后真正提交。   第一阶段：CanCommit 第二阶段：Pre">
+<meta name="twitter:title" content="程序员的自我修养 笔记">
+<meta name="twitter:description" content="第一章 温故而知新计算机软硬件结构1) 硬件架构SMP与多核SMP, Symmetrical Multi-Processing, 多个CPU, 理论上会跑的快, 实际应用在数据库, 网络服务器处理独立请求多核, 共享贵的缓存部件, 保留多个核心; 实际上就是SMP的简化版, 一般理解成同一个概念">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/06/分布式系统之3PC-4/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/28/程序员的自我修养-笔记/"/>
 
 
 
 
 
-  <title>分布式系统之3PC(4) | 扫地小道童</title>
+  <title>程序员的自我修养 笔记 | 扫地小道童</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/分布式系统之3PC-4/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/28/程序员的自我修养-笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">分布式系统之3PC(4)</h1>
+          <h1 class="post-title" itemprop="name headline">程序员的自我修养 笔记</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T19:01:27+08:00">
-                2018-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-28T10:03:38+08:00">
+                2019-03-28
               </time>
             
 
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/分布式系统/" itemprop="url" rel="index">
-                    <span itemprop="name">分布式系统</span>
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
                   </a>
                 </span>
 
@@ -366,7 +366,7 @@
 
           
           
-             <span id="/2018/11/06/分布式系统之3PC-4/" class="leancloud_visitors" data-flag-title="分布式系统之3PC(4)">
+             <span id="/2019/03/28/程序员的自我修养-笔记/" class="leancloud_visitors" data-flag-title="程序员的自我修养 笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -397,54 +397,15 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>三阶段提交对二阶段提交存在的问题进行了改进：</p>
-<ol>
-<li>引入超时机制 - 同时在协调者和参与者中都引入超时机制。</li>
-<li>在第一阶段和第二阶段中插入一个准备阶段，保证了在最后提交阶段之前各参与节点的状态是一致的。</li>
-</ol>
-<h2 id="3PC定义"><a href="#3PC定义" class="headerlink" title="3PC定义"></a>3PC定义</h2><p>三阶段提交(Three-phase commit), 是二阶段提交的改进版本。<br>所谓的三个阶段分别是：询问，然后再锁资源，最后真正提交。</p>
-<blockquote>
-<ul>
-<li>第一阶段：CanCommit</li>
-<li>第二阶段：PreCommit</li>
-<li>第三阶段：Do Commit</li>
-</ul>
-</blockquote>
-<a id="more"></a>
-<h2 id="3PC过程"><a href="#3PC过程" class="headerlink" title="3PC过程"></a>3PC过程</h2><h3 id="一、CanCommit"><a href="#一、CanCommit" class="headerlink" title="一、CanCommit"></a>一、CanCommit</h3><p>协调者向参与者发送commit请求，参与者如果可以提交就返回Yes响应，否则返回No响应。</p>
-<ol>
-<li>事务询问 协调者向参与者发送CanCommit请求。询问是否可以执行事务提交操作。然<br>后开始等待参与者的响应。</li>
-<li>响应反馈 参与者接到CanCommit请求之后，正常情况下，如果其自身认为可以顺利执<br>行事务，则返回Yes响应，并进入预备状态；否则反馈No。</li>
-</ol>
-<h3 id="二、PreCommit"><a href="#二、PreCommit" class="headerlink" title="二、PreCommit"></a>二、PreCommit</h3><p>协调者在得到所有参与者的响应之后，会根据结果执行2种操作：执行事务预提交，或者中断事务。</p>
-<h4 id="执行事务预提交"><a href="#执行事务预提交" class="headerlink" title="执行事务预提交"></a>执行事务预提交</h4><ol>
-<li>发送预提交请求 协调者向所有参与者节点发出 preCommit 的请求，并进入 prepared 状态</li>
-<li>事务预提交 参与者受到 preCommit 请求后，会执行事务操作，对应 2PC 准备阶段中的<br>“执行事务”，也会 Undo 和 Redo 信息记录到事务日志中</li>
-<li>各参与者响应反馈 如果参与者成功执行了事务，就反馈 ACK 响应，同时等待指令：提交<br>（commit） 或终止（abort）。</li>
-</ol>
-<h4 id="中断事务"><a href="#中断事务" class="headerlink" title="中断事务"></a>中断事务</h4><ol>
-<li>发送中断请求 协调者向所有参与者节点发出 abort 请求</li>
-<li>中断事务 参与者如果收到 abort 请求或者超时了，都会中断事务</li>
-</ol>
-<h3 id="三、DoCommit"><a href="#三、DoCommit" class="headerlink" title="三、DoCommit"></a>三、DoCommit</h3><p>该阶段进行真正的事务提交，分为执行提交，或中断事务。</p>
-<h4 id="执行提交"><a href="#执行提交" class="headerlink" title="执行提交"></a>执行提交</h4><ol>
-<li>发送提交请求 协调者接收到各参与者发送的ACK响应，那么他将从预提交状态进入到提交状态。<br>并向所有参与者发送 doCommit 请求。</li>
-<li>事务提交 参与者接收到 doCommit 请求之后，执行正式的事务提交。并在完成事务提交之后释<br>放所有事务资源。</li>
-<li>响应反馈 事务提交完之后，向协调者发送 ACK 响应</li>
-<li>完成事务 协调者接收到所有参与者的 ACK 响应之后，完成事务</li>
-</ol>
-<h4 id="中断事务-1"><a href="#中断事务-1" class="headerlink" title="中断事务"></a>中断事务</h4><p>协调者没有接收到参与者发送的 ACK 响应（可能是接受者发送的不是ACK响应，也可能响应超时），<br>那么就会执行中断事务。</p>
-<ol>
-<li>发送中断请求 协调者向所有参与者发送 abort 请求。</li>
-<li>事务回滚 参与者接收到 abort 请求之后，利用其在阶段二记录的 undo 信息来执行事务的回滚<br>操作，并在完成回滚之后释放所有的事务资源。</li>
-<li>反馈结果 参与者完成事务回滚之后，向协调者发送 ACK 消息。</li>
-<li>中断事务 协调者接收到参与者反馈的 ACK 消息之后，完成事务的中断。</li>
-</ol>
-<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ol>
-<li>优点<br>相对于二阶段提交，三阶段提交主要解决的单点故障问题，并减少了阻塞的时间。<br>因为一旦参与者无法及时收到来自协调者的信息之后，他会默认执行 commit。而不会一直持有事务<br>资源并处于阻塞状态。</li>
-<li>缺点<br>三阶段提交也会导致数据一致性问题。由于网络原因，协调者发送的 abort 响应没有及时被参与者<br>接收到，那么参与者在等待超时之后执行了 commit 操作。<br>这样就和其他接到 abort 命令并执行回滚的参与者之间存在数据不一致的情况</li>
-</ol>
-
+        <h1 id="第一章-温故而知新"><a href="#第一章-温故而知新" class="headerlink" title="第一章 温故而知新"></a>第一章 温故而知新</h1><h2 id="计算机软硬件结构"><a href="#计算机软硬件结构" class="headerlink" title="计算机软硬件结构"></a>计算机软硬件结构</h2><p>1) <strong>硬件架构</strong><br>SMP与多核<br>SMP, Symmetrical Multi-Processing, 多个CPU, 理论上会跑的快, 实际应用在数据库, 网络服务器处理独立请求<br>多核, 共享贵的缓存部件, 保留多个核心; 实际上就是SMP的简化版, 一般理解成同一个概念<br><a id="more"></a><br>2) <strong>软件架构</strong><br>操作系统功能对上提供抽象接口, 对下管理硬件资源</p>
+<h2 id="不让CPU打盹"><a href="#不让CPU打盹" class="headerlink" title="不让CPU打盹"></a>不让CPU打盹</h2><p>多道程序: 监控程序来调度分配CPU使用<br>分时系统: 每个程序运行一段时间, 死循环霸占CPU就没办法了<br>多任务系统: 进程隔离/优先级, CPU在多个进程间切换</p>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p>虚拟内存实现需要硬件支持, 一般通过集成在CPU里部件MMU(memory manager uint)来管理内存页映射</p>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>轻量级进程LWP(Lightweight Process), 由线程ID、当前指令指针、寄存器集合和堆栈组成<br>1) <strong>访问权限</strong><br>私有数据：局部变量, 函数参数, TLS数据<br>共享数据：全局变量, 堆数据, 函数里的静态变量, 打开的文件<br>2) <strong>调度与优先级</strong><br>线程至少有三种状态<br>运行(正在执行), 就绪(可以执行, 但CPU被占用), 等待(等待I/O或同步事件发生, 无法执行)<br>3) <strong>线程安全</strong><br>可重入函数条件：<br>不使用或返回(局部)静态或全局的非const变量(指针)<br>仅依赖调用方提供的参数<br>不依赖任何单个资源锁<br>不调用不可重入函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x=y=0</span><br><span class="line">thread1 thread2</span><br><span class="line">x=1;     y=1;</span><br><span class="line">r1=y;    r2=x;</span><br><span class="line"></span><br><span class="line">编译优化后</span><br><span class="line">x=y=0</span><br><span class="line">thread1 thread2</span><br><span class="line">r1=y;    y=1;</span><br><span class="line">x=1;     r2=x;</span><br></pre></td></tr></table></figure>
+<p>volatile基本可以做到两件事：<br>1) 阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回<br>2) 阻止编译器操作volatile变量的指令顺序</p>
+<p>其中singleton模式加锁位置必须在if判断前, 保证只构造一次<br>4) <strong>多线程</strong><br>用户线程和内核线程可以是一对一, 一对多, 多对多</p>
+<hr>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1>
       
     </div>
     
@@ -497,8 +458,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/06/分布式系统之2PC-3/" rel="next" title="分布式系统之2PC(3)">
-                <i class="fa fa-chevron-left"></i> 分布式系统之2PC(3)
+              <a href="/2019/03/25/高性能Linux服务器构建实战-笔记/" rel="next" title="高性能Linux服务器构建实战  笔记">
+                <i class="fa fa-chevron-left"></i> 高性能Linux服务器构建实战  笔记
               </a>
             
           </div>
@@ -506,10 +467,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/06/分布式系统之一致性算法Paxos-5/" rel="prev" title="分布式系统之一致性算法Paxos(5)">
-                分布式系统之一致性算法Paxos(5) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -641,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3PC定义"><span class="nav-number">1.1.</span> <span class="nav-text">3PC定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3PC过程"><span class="nav-number">1.2.</span> <span class="nav-text">3PC过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、CanCommit"><span class="nav-number">1.2.1.</span> <span class="nav-text">一、CanCommit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、PreCommit"><span class="nav-number">1.2.2.</span> <span class="nav-text">二、PreCommit</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行事务预提交"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">执行事务预提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中断事务"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">中断事务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、DoCommit"><span class="nav-number">1.2.3.</span> <span class="nav-text">三、DoCommit</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#执行提交"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">执行提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中断事务-1"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">中断事务</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优缺点"><span class="nav-number">1.3.</span> <span class="nav-text">优缺点</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-温故而知新"><span class="nav-number">1.</span> <span class="nav-text">第一章 温故而知新</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机软硬件结构"><span class="nav-number">1.1.</span> <span class="nav-text">计算机软硬件结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不让CPU打盹"><span class="nav-number">1.2.</span> <span class="nav-text">不让CPU打盹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存"><span class="nav-number">1.3.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程"><span class="nav-number">1.4.</span> <span class="nav-text">线程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章"><span class="nav-number">2.</span> <span class="nav-text">第二章</span></a></li></ol></div>
             
 
           </div>
