@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="第一章 温故而知新计算机软硬件结构 硬件架构  SMP与多核SMP, Symmetrical Multi-Processing, 多个CPU, 理论上会跑的快, 实际应用在数据库, 网络服务器处理独立请求多核, 共享贵的缓存部件, 保留多个核心; 实际上就是SMP的简化版, 一般理解成同一个概念  软件架构   操作系统功能对上提供抽象接口, 对下管理硬件资源 不让CPU打盹多道程序: 监控程序来">
+<meta name="description" content="第一章 温故而知新计算机软硬件结构 硬件架构  SMP与多核SMP, Symmetrical Multi-Processing, 多个CPU, 理论上会跑的快, 实际应用在数据库, 网络服务器处理独立请求多核, 共享贵的缓存部件, 保留多个核心; 实际上就是SMP的简化版, 一般理解成同一个概念">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="程序员的自我修养 读书笔记">
 <meta property="og:url" content="http://yoursite.com/2019/03/28/程序员的自我修养-读书笔记/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="第一章 温故而知新计算机软硬件结构 硬件架构  SMP与多核SMP, Symmetrical Multi-Processing, 多个CPU, 理论上会跑的快, 实际应用在数据库, 网络服务器处理独立请求多核, 共享贵的缓存部件, 保留多个核心; 实际上就是SMP的简化版, 一般理解成同一个概念  软件架构   操作系统功能对上提供抽象接口, 对下管理硬件资源 不让CPU打盹多道程序: 监控程序来">
+<meta property="og:description" content="第一章 温故而知新计算机软硬件结构 硬件架构  SMP与多核SMP, Symmetrical Multi-Processing, 多个CPU, 理论上会跑的快, 实际应用在数据库, 网络服务器处理独立请求多核, 共享贵的缓存部件, 保留多个核心; 实际上就是SMP的简化版, 一般理解成同一个概念">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-29T04:21:45.169Z">
+<meta property="og:updated_time" content="2019-03-29T04:23:14.985Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="程序员的自我修养 读书笔记">
-<meta name="twitter:description" content="第一章 温故而知新计算机软硬件结构 硬件架构  SMP与多核SMP, Symmetrical Multi-Processing, 多个CPU, 理论上会跑的快, 实际应用在数据库, 网络服务器处理独立请求多核, 共享贵的缓存部件, 保留多个核心; 实际上就是SMP的简化版, 一般理解成同一个概念  软件架构   操作系统功能对上提供抽象接口, 对下管理硬件资源 不让CPU打盹多道程序: 监控程序来">
+<meta name="twitter:description" content="第一章 温故而知新计算机软硬件结构 硬件架构  SMP与多核SMP, Symmetrical Multi-Processing, 多个CPU, 理论上会跑的快, 实际应用在数据库, 网络服务器处理独立请求多核, 共享贵的缓存部件, 保留多个核心; 实际上就是SMP的简化版, 一般理解成同一个概念">
 
 
 
@@ -401,9 +401,8 @@
 <li><p>硬件架构</p>
 </li>
 <li><p>SMP与多核<br>SMP, Symmetrical Multi-Processing, 多个CPU, 理论上会跑的快, 实际应用在数据库, 网络服务器处理独立请求<br>多核, 共享贵的缓存部件, 保留多个核心; 实际上就是SMP的简化版, 一般理解成同一个概念</p>
-</li>
-<li><p>软件架构</p>
-</li>
+<a id="more"></a></li>
+<li>软件架构</li>
 </ul>
 <p>操作系统功能对上提供抽象接口, 对下管理硬件资源</p>
 <h2 id="不让CPU打盹"><a href="#不让CPU打盹" class="headerlink" title="不让CPU打盹"></a>不让CPU打盹</h2><p>多道程序: 监控程序来调度分配CPU使用<br>分时系统: 每个程序运行一段时间, 死循环霸占CPU就没办法了<br>多任务系统: 进程隔离/优先级, CPU在多个进程间切换</p>

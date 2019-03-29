@@ -397,36 +397,17 @@
 
       
         
-          
-            <h1 id="第一章-温故而知新"><a href="#第一章-温故而知新" class="headerlink" title="第一章 温故而知新"></a>第一章 温故而知新</h1><h2 id="计算机软硬件结构"><a href="#计算机软硬件结构" class="headerlink" title="计算机软硬件结构"></a>计算机软硬件结构</h2><ul>
+          <h1 id="第一章-温故而知新"><a href="#第一章-温故而知新" class="headerlink" title="第一章 温故而知新"></a>第一章 温故而知新</h1><h2 id="计算机软硬件结构"><a href="#计算机软硬件结构" class="headerlink" title="计算机软硬件结构"></a>计算机软硬件结构</h2><ul>
 <li><p>硬件架构</p>
 </li>
-<li><p>SMP与多核<br>SMP, Symmetrical Multi-Processing, 多个CPU, 理论上会跑的快, 实际应用在数据库, 网络服务器处理独立请求<br>多核, 共享贵的缓存部件, 保留多个核心; 实际上就是SMP的简化版, 一般理解成同一个概念</p>
-</li>
-<li><p>软件架构</p>
-</li>
-</ul>
-<p>操作系统功能对上提供抽象接口, 对下管理硬件资源</p>
-<h2 id="不让CPU打盹"><a href="#不让CPU打盹" class="headerlink" title="不让CPU打盹"></a>不让CPU打盹</h2><p>多道程序: 监控程序来调度分配CPU使用<br>分时系统: 每个程序运行一段时间, 死循环霸占CPU就没办法了<br>多任务系统: 进程隔离/优先级, CPU在多个进程间切换</p>
-<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p>虚拟内存实现需要硬件支持, 一般通过集成在CPU里部件MMU(memory manager uint)来管理内存页映射</p>
-<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>轻量级进程LWP(Lightweight Process), 由线程ID、当前指令指针、寄存器集合和堆栈组成</p>
-<ul>
-<li><p>访问权限<br>私有数据：局部变量, 函数参数, TLS数据<br>共享数据：全局变量, 堆数据, 函数里的静态变量, 打开的文件</p>
-</li>
-<li><p>调度与优先级<br>线程至少有三种状态<br>运行(正在执行), 就绪(可以执行, 但CPU被占用), 等待(等待I/O或同步事件发生, 无法执行)</p>
-</li>
-<li><p>线程安全<br>可重入函数条件：<br>不使用或返回(局部)静态或全局的非const变量(指针)<br>仅依赖调用方提供的参数<br>不依赖任何单个资源锁<br>不调用不可重入函数</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x=y=0</span><br><span class="line">thread1 thread2</span><br><span class="line">x=1;     y=1;</span><br><span class="line">r1=y;    r2=x;</span><br><span class="line"></span><br><span class="line">编译优化后</span><br><span class="line">x=y=0</span><br><span class="line">thread1 thread2</span><br><span class="line">r1=y;    y=1;</span><br><span class="line">x=1;     r2=x;</span><br></pre></td></tr></table></figure>
-<p>volatile基本可以做到两件事：<br>1) 阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回<br>2) 阻止编译器操作volatile变量的指令顺序</p>
-<p>其中singleton模式加锁位置必须在if判断前, 保证只构造一次</p>
-<ul>
-<li>多线程<br>用户线程和内核线程可以是一对一, 一对多, 多对多</li>
-</ul>
-<hr>
-<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1>
-          
+<li><p>SMP与多核<br>SMP, Symmetrical Multi-Processing, 多个CPU, 理论上会跑的快, 实际应用在数据库, 网络服务器处理独立请求<br>多核, 共享贵的缓存部件, 保留多个核心; 实际上就是SMP的简化版, 一般理解成同一个概念</p></li></ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/28/程序员的自我修养-读书笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
