@@ -243,7 +243,7 @@
   <entry>
     <title><![CDATA[Makefile]]></title>
     <url>%2F2018%2F12%2F19%2FMakefile%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[���������ж�12345ifeq ($(CXX), gcc)$(CXX) -o test $(object) $(lib_gcc)else$(CXX) -o test $(object) $(lib_others)endif ����$(function ) �� ${function } �ַ������� ���� ���� ���� ���� $(subst ,,) �ַ����滻 ��text��from�滻��to �滻����ַ��� $(patsubst ,,) ģʽ�ַ����滻 text���Կո񡢻س���TAB�Ƿ����pattern, �����, ��replacement�滻 �滻����ַ��� �ļ������� ���� ���� ���� ���� ���ƺ͵���]]></content>
       <categories>
         <category>Makefile</category>
       </categories>
