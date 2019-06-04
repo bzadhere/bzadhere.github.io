@@ -705,7 +705,34 @@
         
           
             <h1 id="glibc"><a href="#glibc" class="headerlink" title="glibc"></a>glibc</h1><p>每一种分配器都宣称自己快（fast）、可拓展（scalable）、效率高（memory efficient）</p>
-<p><strong>数据结构</strong><br>|:-|:-|:-|<br>Arena header|malloc_state | 包括bins、top chunk、last remainder chunk等|<br>Heap Header|heap_info | 每个thread arena 维护一个或多个堆|<br>Chunk header|malloc_chunk|每个堆被分为若干 chunk, 每个都有自己的 chunk header|</p>
+<p><strong>数据结构</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">头部</th>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Arena header</td>
+<td style="text-align:left">malloc_state</td>
+<td style="text-align:left">包括bins、top chunk、last remainder chunk等</td>
+</tr>
+<tr>
+<td style="text-align:left">Heap Header</td>
+<td style="text-align:left">heap_info</td>
+<td style="text-align:left">每个thread arena 维护一个或多个堆</td>
+</tr>
+<tr>
+<td style="text-align:left">Chunk header</td>
+<td style="text-align:left">malloc_chunk</td>
+<td style="text-align:left">每个堆被分为若干 chunk, 每个都有自己的 chunk header</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2018/11/21/开源库应用-tcmalloc/1.png" alt=""><br><img src="/2018/11/21/开源库应用-tcmalloc/2.png" alt=""></p>
 <h1 id="tcmalloc"><a href="#tcmalloc" class="headerlink" title="tcmalloc"></a>tcmalloc</h1><p>tcmalloc是一个内存分配器，管理堆内存，主要影响malloc和free，用于降低频繁分配、释放内存造成的损耗,<br>并且有效的控制内存碎片。</p>
 <h1 id="解决了什么问题"><a href="#解决了什么问题" class="headerlink" title="解决了什么问题"></a>解决了什么问题</h1><h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1>
           
