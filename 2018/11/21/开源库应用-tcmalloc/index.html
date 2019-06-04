@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="tcmalloctcmalloc是一个内存分配器，管理堆内存，主要影响malloc和free，用于降低频繁分配、释放内存造成的损耗,并且有效的控制内存碎片。 解决了什么问题实现原理">
+<meta name="description" content="glibc每一种分配器都宣称自己快（fast）、可拓展（scalable）、效率高（memory efficient） 数据结构|:-|:-|:-|Arena header|malloc_state | 包括bins、top chunk、last remainder chunk等|Heap Header|heap_info | 每个thread arena 维护一个或多个堆|Chunk heade">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="开源库应用--tcmalloc">
 <meta property="og:url" content="http://yoursite.com/2018/11/21/开源库应用-tcmalloc/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="tcmalloctcmalloc是一个内存分配器，管理堆内存，主要影响malloc和free，用于降低频繁分配、释放内存造成的损耗,并且有效的控制内存碎片。 解决了什么问题实现原理">
+<meta property="og:description" content="glibc每一种分配器都宣称自己快（fast）、可拓展（scalable）、效率高（memory efficient） 数据结构|:-|:-|:-|Arena header|malloc_state | 包括bins、top chunk、last remainder chunk等|Heap Header|heap_info | 每个thread arena 维护一个或多个堆|Chunk heade">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-17T12:33:21.931Z">
+<meta property="og:updated_time" content="2019-06-04T07:43:15.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开源库应用--tcmalloc">
-<meta name="twitter:description" content="tcmalloctcmalloc是一个内存分配器，管理堆内存，主要影响malloc和free，用于降低频繁分配、释放内存造成的损耗,并且有效的控制内存碎片。 解决了什么问题实现原理">
+<meta name="twitter:description" content="glibc每一种分配器都宣称自己快（fast）、可拓展（scalable）、效率高（memory efficient） 数据结构|:-|:-|:-|Arena header|malloc_state | 包括bins、top chunk、last remainder chunk等|Heap Header|heap_info | 每个thread arena 维护一个或多个堆|Chunk heade">
 
 
 
@@ -397,7 +397,9 @@
       
 
       
-        <h1 id="tcmalloc"><a href="#tcmalloc" class="headerlink" title="tcmalloc"></a>tcmalloc</h1><p>tcmalloc是一个内存分配器，管理堆内存，主要影响malloc和free，用于降低频繁分配、释放内存造成的损耗,<br>并且有效的控制内存碎片。</p>
+        <h1 id="glibc"><a href="#glibc" class="headerlink" title="glibc"></a>glibc</h1><p>每一种分配器都宣称自己快（fast）、可拓展（scalable）、效率高（memory efficient）</p>
+<p><strong>数据结构</strong><br>|:-|:-|:-|<br>Arena header|malloc_state | 包括bins、top chunk、last remainder chunk等|<br>Heap Header|heap_info | 每个thread arena 维护一个或多个堆|<br>Chunk header|malloc_chunk|每个堆被分为若干 chunk, 每个都有自己的 chunk header|</p>
+<h1 id="tcmalloc"><a href="#tcmalloc" class="headerlink" title="tcmalloc"></a>tcmalloc</h1><p>tcmalloc是一个内存分配器，管理堆内存，主要影响malloc和free，用于降低频繁分配、释放内存造成的损耗,<br>并且有效的控制内存碎片。</p>
 <h1 id="解决了什么问题"><a href="#解决了什么问题" class="headerlink" title="解决了什么问题"></a>解决了什么问题</h1><h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1>
       
     </div>
@@ -540,7 +542,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-count">88</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -595,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tcmalloc"><span class="nav-number">1.</span> <span class="nav-text">tcmalloc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决了什么问题"><span class="nav-number">2.</span> <span class="nav-text">解决了什么问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现原理"><span class="nav-number">3.</span> <span class="nav-text">实现原理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#glibc"><span class="nav-number">1.</span> <span class="nav-text">glibc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tcmalloc"><span class="nav-number">2.</span> <span class="nav-text">tcmalloc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决了什么问题"><span class="nav-number">3.</span> <span class="nav-text">解决了什么问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现原理"><span class="nav-number">4.</span> <span class="nav-text">实现原理</span></a></li></ol></div>
             
 
           </div>
