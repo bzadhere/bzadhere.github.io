@@ -402,10 +402,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//链接数据库</span><br><span class="line">mysql -h$ip -P$port -u$user -p  </span><br><span class="line">//显示数据库连接情况</span><br><span class="line">show processlist</span><br><span class="line">//一般不使用缓存, 更新表数据后就会失效</span><br><span class="line">query_cache_type</span><br></pre></td></tr></table></figure>
 <h1 id="日志系统"><a href="#日志系统" class="headerlink" title="日志系统"></a>日志系统</h1><p>binlog（归档日志）是Server层的，所有引擎都可用; 追加写, 文件写到一定大小切换下一个; 逻辑日志记录原始语句;主要用于备份</p>
 <p>redo log（重做日志）InnoDB引擎特有的日志; 循环写, 固定空间; 物理日志记录在某个数据页上的修改;主要用户crash恢复</p>
-<p>redo log 为了支持crash-safe, WAL技术, Write-Ahead Logging, 关键点是先写日志再写磁盘</p>
+<p>redo log 为了支持crash-safe, WAL技术, Write-Ahead Logging, 关键点是先写日志再写磁盘, 还没写磁盘查询怎么办？</p>
 <p>redo log 二阶段提交, 包含prepare/commit, 保证两个日志都写完整</p>
 <p>innodb_flush_log_at_trx_commit = 1 , sync_binlog = 1 每次事务日志都持久化到磁盘;</p>
 <p>Binlog有两种模式, statement 格式的话是记sql语句， row格式会记录行的内容，记两条，更新前和更新后都有.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 数据库</span><br><span class="line">1 prepare阶段 2 写binlog 3 commit</span><br><span class="line">当在2之前崩溃时</span><br><span class="line">重启恢复：后发现没有commit，回滚。备份恢复：没有binlog 。一致</span><br><span class="line">当在3之前崩溃</span><br><span class="line">重启恢复：虽没有commit，但满足prepare和binlog完整，所以重启后会自动commit。备份：有binlog. 一致</span><br></pre></td></tr></table></figure>
+<h1 id="事务隔离"><a href="#事务隔离" class="headerlink" title="事务隔离"></a>事务隔离</h1><p>ACID（Atomicity, Consistency, Isolation, Durability）</p>
+<p>多个事务同时执行, 脏读/幻读/不可重复读</p>
+<p>SQL标准的事务隔离级别：<br>读未提交, 一个事务还没提交时, 变更就能不其他事务看到<br>读提交, 一个事务提交后, 变更才会被其他事务看到<br>可重复读, 一个事务在执行过程中看到的数据, 总是跟这个事务启动时看到的是一致的。<br>串行化, </p>
 <h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="索引模型"><a href="#索引模型" class="headerlink" title="索引模型"></a>索引模型</h2><p><strong>哈希表</strong>, 适用于等值查询<br><strong>有序数组</strong>, 有序数组索引只适用于静态存储引擎, 例如等值查询和范围查询<br><strong>搜索树</strong>, 较少磁盘访问次数</p>
 <p>主键和索引区别, 每个主键都会维护一个索引, 索引字段单独维护一个表</p>
 <p><strong>索引类型</strong><br>1）主键索引(聚簇索引)，值存的是整行内容<br>2）非主键索引(二级索引)，值存的是主键内容</p>
