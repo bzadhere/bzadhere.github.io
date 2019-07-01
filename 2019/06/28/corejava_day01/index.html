@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="Java特点why invent java ?    1995.5.23  sun.发布    简单：抛弃指针、垃圾回收机制 (System.gc() ; )    安全：允许用户使用指针而不允许用户操作指针    跨平台：跨操作系统平台 32位(xp),指总线宽度为32位，存储内存空间的地址值，可以存储2^32个不同的值，每个地址值指向一个字节的地址， 故机器能够识别管理大内存空间为2^32字节">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-28T08:44:07.247Z">
+<meta property="og:updated_time" content="2019-07-01T02:54:20.577Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="corejava_day01">
 <meta name="twitter:description" content="Java特点why invent java ?    1995.5.23  sun.发布    简单：抛弃指针、垃圾回收机制 (System.gc() ; )    安全：允许用户使用指针而不允许用户操作指针    跨平台：跨操作系统平台 32位(xp),指总线宽度为32位，存储内存空间的地址值，可以存储2^32个不同的值，每个地址值指向一个字节的地址， 故机器能够识别管理大内存空间为2^32字节">
@@ -400,7 +400,7 @@
         <h1 id="Java特点"><a href="#Java特点" class="headerlink" title="Java特点"></a>Java特点</h1><p><strong>why invent java ?</strong><br>    1995.5.23  sun.发布<br>    简单：抛弃指针、垃圾回收机制 (System.gc() ; )<br>    安全：允许用户使用指针而不允许用户操作指针<br>    跨平台：跨操作系统平台</p>
 <p>32位(xp),指总线宽度为32位，存储内存空间的地址值，可以存储2^32个不同的值，每个地址值指向一个字节的<br>地址， 故机器能够识别管理大内存空间为2^32字节(4<em>2^10</em>2^10*2^10=4G)</p>
 <p>C++原码跨平台，编译后不跨平台，需不同平台下编译 </p>
-<p>高级语言 =&gt; 编译 =&gt; 操作平台代码 =&gt; OS转化 =&gt; 机器平台代码(cpu指令集)<br>java语言 =&gt; 编译 =&gt; 二进制字节码 =&gt; JVM (不跨平台)=&gt; 转化 =&gt; 操作平台代码 =&gt; OS转化 =&gt; 机器平台代码</p>
+<p>高级语言 =&gt; 编译 =&gt; 操作平台代码 =&gt; OS转化 =&gt; 机器平台代码(cpu指令集)<br>java语言 =&gt; 编译 =&gt; 二进制字节码 =&gt; JVM (不跨平台)=&gt; 转化 =&gt; 操作平台代码 =&gt; OS转化 =&gt; 机器平台代码<br><a id="more"></a></p>
 <h1 id="JDK安装"><a href="#JDK安装" class="headerlink" title="JDK安装"></a>JDK安装</h1><blockquote>
 <p>JDK目录<br>bin java 开发调试等命令<br>jre JDK包含的JRE, bin目录有很多动态链接库文件及运行时所需的命令<br>lib jar文件, rt.jar JDK提供的基础开发类库(字节码文件); src.zip是rt.jar 的源码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.bash_profile</span><br><span class="line">	JAVA_HOME=xxxxx                 #JDK安装目录</span><br><span class="line">	CLASSPATH=.                     #字节码搜索路径</span><br><span class="line">	PATH=$PATH:$JAVA_HOME/bin       #加入jdkXXX/bin目录 (jdk开发调试命令 )</span><br><span class="line">	export JAVA_HOME CLASSPATH PATH</span><br><span class="line"></span><br><span class="line">	vi MyFirstJava.java</span><br><span class="line">	javac MyFirstJava.java</span><br><span class="line">	java MyFirstJava</span><br></pre></td></tr></table></figure></p>
 </blockquote>
@@ -471,6 +471,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/01/corejava_day02/" rel="prev" title="corejava_day02">
+                corejava_day02 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -547,7 +551,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-count">91</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -558,7 +562,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
