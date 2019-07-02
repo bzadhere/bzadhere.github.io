@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="访问控制修饰符public            所有可见protected        同包及子类可见Default            同包可见private            仅当前类可见 Object类中的方法String">
+<meta name="description" content="访问控制修饰符public            所有可见protected        同包及子类可见Default            同包可见private            仅当前类可见 Object类中的方法">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="corejava_day09">
-<meta property="og:url" content="http://yoursite.com/2019/07/01/corejava_day09/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/07/02/corejava_day09/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="访问控制修饰符public            所有可见protected        同包及子类可见Default            同包可见private            仅当前类可见 Object类中的方法String">
+<meta property="og:description" content="访问控制修饰符public            所有可见protected        同包及子类可见Default            同包可见private            仅当前类可见 Object类中的方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-01T09:47:26.942Z">
+<meta property="og:updated_time" content="2019-07-02T04:08:51.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="corejava_day09">
-<meta name="twitter:description" content="访问控制修饰符public            所有可见protected        同包及子类可见Default            同包可见private            仅当前类可见 Object类中的方法String">
+<meta name="twitter:description" content="访问控制修饰符public            所有可见protected        同包及子类可见Default            同包可见private            仅当前类可见 Object类中的方法">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/01/corejava_day09/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/07/02/corejava_day09/"/>
 
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/corejava_day09/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/corejava_day09/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T17:45:44+08:00">
-                2019-07-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-02T09:45:44+08:00">
+                2019-07-02
               </time>
             
 
@@ -366,7 +366,7 @@
 
           
           
-             <span id="/2019/07/01/corejava_day09/" class="leancloud_visitors" data-flag-title="corejava_day09">
+             <span id="/2019/07/02/corejava_day09/" class="leancloud_visitors" data-flag-title="corejava_day09">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -398,7 +398,55 @@
 
       
         <h1 id="访问控制修饰符"><a href="#访问控制修饰符" class="headerlink" title="访问控制修饰符"></a>访问控制修饰符</h1><p>public            所有可见<br>protected        同包及子类可见<br>Default            同包可见<br>private            仅当前类可见</p>
-<h1 id="Object类中的方法"><a href="#Object类中的方法" class="headerlink" title="Object类中的方法"></a>Object类中的方法</h1><h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1>
+<h1 id="Object类中的方法"><a href="#Object类中的方法" class="headerlink" title="Object类中的方法"></a>Object类中的方法</h1><a id="more"></a>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">返回值</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">clone()</td>
+<td style="text-align:left">对象拷贝</td>
+<td style="text-align:left">Animal b = a；只是地址赋值；实现对象拷贝：在类中覆盖clone方法，修饰符改为public，并实现Cloneable接口</td>
+</tr>
+<tr>
+<td style="text-align:left">equals()</td>
+<td style="text-align:left">boolenan</td>
+<td style="text-align:left">实现就是”==”</td>
+</tr>
+<tr>
+<td style="text-align:left">finalize()</td>
+<td style="text-align:left">资源释放</td>
+<td style="text-align:left">垃圾回收前调用这个方法</td>
+</tr>
+<tr>
+<td style="text-align:left">toString()</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">Object中输出包名+类名+@+16进制地址</td>
+</tr>
+</tbody>
+</table>
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><p>对象池（堆、栈空间之外，属于公共空间，由JVM自动管理和维护）, 对象池中存放字符串值（堆中）的引用</p>
+<p>String str1 = “hello”; =&gt;  会在对象池中找”hello”的引用<br>String str2 = new String(“hello”); =&gt;  不会在对象池中找，而且也不会存入对象池，该语句创建了两个对象，一个参数”hello”所代表的字符串对象(会在对象池中找)，一个new出来的字符串对象<br>String s1 = “he”+”llo”; =&gt;编译器先把这条语句优化成String s1 = “hello”;<br>String s2 = “he”;<br>String s3 = s2+”llo”;=&gt;编译器认为相加运算中有变量，不会优化语句，故先得到s2，再得到”llo”，再组合这两个字符串成一个新字符串对象<br>s1==s3 =&gt;false 不是同一个对象<br>s1==str1=&gt;true<br>s3==str1=&gt;false</p>
+<p>字符串对象的值不可改变<br>正是由于这种不可改变的特征，如果对于一个具有String类型属性的对象作一个浅拷贝，相当于深拷贝<br>c++中是写时拷贝</p>
+<h1 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h1><p>线程安全，值可以被修改，默认初始字符长度为16个字符的空间，自动扩容</p>
+<h1 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h1><p>线程不安全，但效率高了</p>
+<h1 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入"></a>静态导入</h1><p>要使用静态成员（方法和变量）我们必须给出提供这个静态成员的类。<br>使用静态导入可以使被导入类的静态变量和静态方法在当前类直接可见，使用这些静态成员无需再给出他们的类名。</p>
+<p>import java.util.Scanner =&gt; Scanner()<br>import static java.lang.System.out; =&gt; out.println()<br>out为System的静态成员</p>
+<h1 id="Integer"><a href="#Integer" class="headerlink" title="Integer"></a>Integer</h1><p>Integer.paresInt(“12”,8) =&gt; 12是八进制的，输出十进制int值 =&gt;10<br>Integer.toString(10,8) =&gt; 10是10进制的，输出八进制字符串=&gt;”12”<br>Integer.valueOf(“12”,8) =&gt; 12是8进制的，输出十进制Integer对象=&gt;10</p>
+<p>自动封箱=&gt;Integer  i =0 &lt;==&gt; Integer i = new Integer(0);<br>自动解封=&gt;int j = i &lt;==&gt; int j = i.intValue();<br>相当于类型隐式转换</p>
+<p>Integer也有对象池，同String的理解，值也不可改变<br>Integer的对象池只能存放-128~127的对象，超出范围的只能重新创建对象，不会再到对象池中找<br>Integer i = 0 ; =&gt; 对象池中找<br>Integer i = Integer.valueOf(0); =&gt; 对象池中找<br>Integer i =new Integer(0); =&gt; 创建新对象</p>
+<h1 id="类型安全的枚举"><a href="#类型安全的枚举" class="headerlink" title="类型安全的枚举"></a>类型安全的枚举</h1><p>1)类型不安全<br>public static final int SPRING = 1;<br>public static final int SUMMER = 2;<br>public static final int AUTUMN = 3;<br>public static final int WINTER = 4;</p>
+<p>switch(int){根据int值判断返回值<br>    case Season.SPRING:return “Spring”;<br>    case Season.SUMMER:return “Summer”;<br>    case Season.AUTUMN:return “Autumn”;<br>    case Season.WINTER:return “Winter”;<br>}</p>
+<p>2)外部调用类型安全<br>class Season{<br>    private Season(){}<br>    public static final Season SPRING = new Season();<br>}</p>
+<p>3)enum构造方法必须是私有的</p>
+<p>所有枚举类默认继承一个父类叫Enum&lt;E extends Enum<e>&gt;，不是Object，且不能指定父类，不能指定abstract和final</e></p>
+<p>enum Color{<br>    RED,GREEN<br>}</p>
+
       
     </div>
     
@@ -460,6 +508,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/02/corejava_day11/" rel="prev" title="corejava_day11">
+                corejava_day11 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -536,7 +588,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-count">96</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -591,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#访问控制修饰符"><span class="nav-number">1.</span> <span class="nav-text">访问控制修饰符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object类中的方法"><span class="nav-number">2.</span> <span class="nav-text">Object类中的方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String"><span class="nav-number">3.</span> <span class="nav-text">String</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#访问控制修饰符"><span class="nav-number">1.</span> <span class="nav-text">访问控制修饰符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object类中的方法"><span class="nav-number">2.</span> <span class="nav-text">Object类中的方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String"><span class="nav-number">3.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#StringBuffer"><span class="nav-number">4.</span> <span class="nav-text">StringBuffer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#StringBuilder"><span class="nav-number">5.</span> <span class="nav-text">StringBuilder</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态导入"><span class="nav-number">6.</span> <span class="nav-text">静态导入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Integer"><span class="nav-number">7.</span> <span class="nav-text">Integer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类型安全的枚举"><span class="nav-number">8.</span> <span class="nav-text">类型安全的枚举</span></a></li></ol></div>
             
 
           </div>

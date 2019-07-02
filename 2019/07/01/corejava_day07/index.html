@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="instanceofinstanceof ：判断给定的某个对象是不是某一个类型的实例boolean : A instanceof AnimalClassCastException 类强转异常 staticstatic修饰属性（类变量/成员变量）静态属性与非静态属性区别    区别点 静态属性 实例态属性     空间分配时机 类加载时分配 生成对象时   空间分配方式 整个类只有一份 同对象的数量">
+<meta name="description" content="instanceofinstanceof ：判断给定的某个对象是不是某一个类型的实例boolean : A instanceof AnimalClassCastException 类强转异常 staticstatic修饰属性（类变量/成员变量）静态属性与非静态属性区别">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="corejava_day07">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/corejava_day07/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="instanceofinstanceof ：判断给定的某个对象是不是某一个类型的实例boolean : A instanceof AnimalClassCastException 类强转异常 staticstatic修饰属性（类变量/成员变量）静态属性与非静态属性区别    区别点 静态属性 实例态属性     空间分配时机 类加载时分配 生成对象时   空间分配方式 整个类只有一份 同对象的数量">
+<meta property="og:description" content="instanceofinstanceof ：判断给定的某个对象是不是某一个类型的实例boolean : A instanceof AnimalClassCastException 类强转异常 staticstatic修饰属性（类变量/成员变量）静态属性与非静态属性区别">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-01T08:27:24.834Z">
+<meta property="og:updated_time" content="2019-07-02T04:09:42.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="corejava_day07">
-<meta name="twitter:description" content="instanceofinstanceof ：判断给定的某个对象是不是某一个类型的实例boolean : A instanceof AnimalClassCastException 类强转异常 staticstatic修饰属性（类变量/成员变量）静态属性与非静态属性区别    区别点 静态属性 实例态属性     空间分配时机 类加载时分配 生成对象时   空间分配方式 整个类只有一份 同对象的数量">
+<meta name="twitter:description" content="instanceofinstanceof ：判断给定的某个对象是不是某一个类型的实例boolean : A instanceof AnimalClassCastException 类强转异常 staticstatic修饰属性（类变量/成员变量）静态属性与非静态属性区别">
 
 
 
@@ -398,33 +398,7 @@
 
       
         <h1 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h1><p>instanceof ：判断给定的某个对象是不是某一个类型的实例<br>boolean : A instanceof Animal<br>ClassCastException 类强转异常</p>
-<h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><p><strong>static修饰属性（类变量/成员变量）</strong><br>静态属性与非静态属性区别</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">区别点</th>
-<th style="text-align:left">静态属性</th>
-<th style="text-align:left">实例态属性</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">空间分配时机</td>
-<td style="text-align:left">类加载时分配</td>
-<td style="text-align:left">生成对象时</td>
-</tr>
-<tr>
-<td style="text-align:left">空间分配方式</td>
-<td style="text-align:left">整个类只有一份</td>
-<td style="text-align:left">同对象的数量</td>
-</tr>
-<tr>
-<td style="text-align:left">访问方式</td>
-<td style="text-align:left">类名.属性名</td>
-<td style="text-align:left">对象名.属性名</td>
-</tr>
-</tbody>
-</table>
+<h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><p><strong>static修饰属性（类变量/成员变量）</strong><br>静态属性与非静态属性区别<br><a id="more"></a><br>|区别点| 静态属性| 实例态属性|<br>|:-|:-|:-|<br>| 空间分配时机| 类加载时分配| 生成对象时|<br>| 空间分配方式| 整个类只有一份| 同对象的数量|<br>| 访问方式| 类名.属性名| 对象名.属性名|</p>
 <p><strong>static修饰方法（静态方法）</strong><br>1 用” 类名.方法名 “访问<br>2 能直接访问本类中的非静态成员, 但本类的非静态方法可以访问本类的静态成员<br>3 在静态方法中不能出现this关键字<br>4 父类中是静态方法, 子类中不能覆盖为非静态方法<br>5 父子类中, 父类中的静态方法可以被子类中的静态方法覆盖, 但是没有多态！（在使用对象调用静态方法时其实是调用编译时类型的静态方法）<br>6 java中的main方法必须写成static的原因：在类加载时无法创建对象, 而静态方法可以不通过对象调用, 所以在类加载时就可以通过main方法入口来运行程序。</p>
 <p><strong>static修饰初始代码块</strong><br>这个代码块只在类加载时被执行一次, 可以用静态初始代码块初始化一个类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class TestStatic &#123;</span><br><span class="line">    public static String str;</span><br><span class="line"></span><br><span class="line">    static &#123;</span><br><span class="line">        str = &quot;i am here&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(TestStatic.str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h1 id="final"><a href="#final" class="headerlink" title="final"></a>final</h1><p>1 修饰类：类不能被继承<br>2 修饰属性：属性的值不可改变(外部不能改变, 所以一般定义成公开）<br>            final static int a = 0 ; 静态常量, 一般这里要赋初始值, 否则就没有机会赋值（只可以这样赋值或则通过构造方法赋值, 而通过构造方法给静态属性赋值没有意义）, 代表整个类的特征<br>            final int a ; 非静态常量, 一般不赋初值, 通过构造方法赋值, 每创建一个对象就有这么一个常量, 属于对象的不可改变的特征<br>3 修饰方法：方法不能被覆盖<br>4 修饰局部变量(or 形参)：值不可变, 为常量</p>
@@ -494,7 +468,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/01/corejava_day09/" rel="prev" title="corejava_day09">
+              <a href="/2019/07/02/corejava_day09/" rel="prev" title="corejava_day09">
                 corejava_day09 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -573,7 +547,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-count">96</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
