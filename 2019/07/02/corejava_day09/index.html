@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="访问控制修饰符public            所有可见protected        同包及子类可见Default            同包可见private            仅当前类可见 Object类中的方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-02T04:08:51.101Z">
+<meta property="og:updated_time" content="2019-07-02T06:42:20.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="corejava_day09">
 <meta name="twitter:description" content="访问控制修饰符public            所有可见protected        同包及子类可见Default            同包可见private            仅当前类可见 Object类中的方法">
@@ -443,9 +443,34 @@
 <h1 id="类型安全的枚举"><a href="#类型安全的枚举" class="headerlink" title="类型安全的枚举"></a>类型安全的枚举</h1><p>1)类型不安全<br>public static final int SPRING = 1;<br>public static final int SUMMER = 2;<br>public static final int AUTUMN = 3;<br>public static final int WINTER = 4;</p>
 <p>switch(int){根据int值判断返回值<br>    case Season.SPRING:return “Spring”;<br>    case Season.SUMMER:return “Summer”;<br>    case Season.AUTUMN:return “Autumn”;<br>    case Season.WINTER:return “Winter”;<br>}</p>
 <p>2)外部调用类型安全<br>class Season{<br>    private Season(){}<br>    public static final Season SPRING = new Season();<br>}</p>
-<p>3)enum构造方法必须是私有的</p>
-<p>所有枚举类默认继承一个父类叫Enum&lt;E extends Enum<e>&gt;，不是Object，且不能指定父类，不能指定abstract和final</e></p>
-<p>enum Color{<br>    RED,GREEN<br>}</p>
+<p>3)枚举<br>继承自 java.lang.Enum 类, 枚举成员默认都被 final、public, static 修饰，使用时直接使用枚举名称调用成员即可;<br>枚举的构造方法是私有的，可以添加方法</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">常用方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">values()</td>
+<td style="text-align:left">以数组形式返回枚举类型的所有成员</td>
+</tr>
+<tr>
+<td style="text-align:left">valueOf()</td>
+<td style="text-align:left">将普通字符串转换为枚举实例</td>
+</tr>
+<tr>
+<td style="text-align:left">compareTo()</td>
+<td style="text-align:left">比较两个枚举成员在定义时的顺序</td>
+</tr>
+<tr>
+<td style="text-align:left">ordinal()</td>
+<td style="text-align:left">获取枚举成员的索引位置</td>
+</tr>
+</tbody>
+</table>
+<p>java.util 中添加了两个新类：EnumMap 和 EnumSet<br>EnumMap 使用数组来存放与枚举类型对应的值，使得 EnumMap 的效率非常高(比HashMap高)<br>EnumSet 是枚举类型的高性能 Set 实现，它要求放入它的枚举常量必须属于同一枚举类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//定义数据库类型枚举</span><br><span class="line">public enum DataBaseType</span><br><span class="line">&#123;</span><br><span class="line">    MYSQUORACLE,DB2,SQLSERVER</span><br><span class="line">&#125;</span><br><span class="line">//某类中定义的获取数据库URL的方法以及EnumMap的声明</span><br><span class="line">private EnumMap&lt;DataBaseType,String&gt;urls=new EnumMap&lt;DataBaseType,String&gt;(DataBaseType.class);</span><br><span class="line">public DataBaseInfo()</span><br><span class="line">&#123;</span><br><span class="line">    urls.put(DataBaseType.DB2,&quot;jdbc:db2://localhost:5000/sample&quot;);</span><br><span class="line">    urls.put(DataBaseType.MYSQL,&quot;jdbc:mysql://localhost/mydb&quot;);</span><br><span class="line">    urls.put(DataBaseType.ORACLE,&quot;jdbc:oracle:thin:@localhost:1521:sample&quot;);</span><br><span class="line">    urls.put(DataBaseType.SQLSERVER,&quot;jdbc:microsoft:sqlserver://sql:1433;Database=mydb&quot;);</span><br><span class="line">&#125;</span><br><span class="line">//根据不同的数据库类型，返回对应的URL</span><br><span class="line">//@param type DataBaseType 枚举类新实例</span><br><span class="line">//@return</span><br><span class="line">public String getURL(DataBaseType type)</span><br><span class="line">&#123;</span><br><span class="line">    return this.urls.get(type);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -610,7 +635,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

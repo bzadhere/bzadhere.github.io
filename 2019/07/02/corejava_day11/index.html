@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="内部类静态内部类12345678class OuterClass&amp;#123;	private String name1 = &amp;quot;hello&amp;quot;;	private static String name2 = &amp;quot;moto&amp;quot;;	public static class InnerClass&amp;#123;//看成一个静态成员，寄居关系		public void innerM">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-02T04:06:05.401Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/02/corejava_day11/1.png">
+<meta property="og:updated_time" content="2019-07-02T08:38:09.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="corejava_day11">
 <meta name="twitter:description" content="内部类静态内部类12345678class OuterClass&amp;#123;	private String name1 = &amp;quot;hello&amp;quot;;	private static String name2 = &amp;quot;moto&amp;quot;;	public static class InnerClass&amp;#123;//看成一个静态成员，寄居关系		public void innerM">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/02/corejava_day11/1.png">
 
 
 
@@ -405,8 +407,187 @@
 <p>若内部类方法要访问外部方法中的变量, 该变量必须是final, 否则当外部类方法执行完, 变量被GC, JDK 1.8 不需要声明为final</p>
 <h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class OuterClass&#123;</span><br><span class="line">	public MyInter M()&#123;</span><br><span class="line">		//这里将匿名内部类生成的对象当成一个方法的返回值返回</span><br><span class="line">		return new MyInter()&#123;//定义一个无名类实现MyInter接口，实现方法，生成该实现类的对象</span><br><span class="line">			public void innerM()&#123;</span><br><span class="line">				// ... ... </span><br><span class="line">			&#125;</span><br><span class="line">		&#125; ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>局部内部类的特例, 无类名，无构造方法，必隐含实现接口或继承父类</p>
-<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>Collection实现了Iterable接口, 覆盖了public Iterator iterator();<br>返回Iterator接口类型, Iterator中有hasNext(),next(),remove()方法, 迭代器的使用：<br>Iterator it = list.iterator();<br>while(it.hasNext()){<br>    System.out.pritnln(it.next());<br>}</p>
-<h2 id="for-each-循环"><a href="#for-each-循环" class="headerlink" title="for-each 循环"></a>for-each 循环</h2><p>for(Object obj : list(or Array)){<br>    System.out.println(obj);</p>
+<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p>Collection 接口是 List 接口和 Set 接口的父接口，通常情况下不被直接使用(不能对其实例化) </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">常用方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">boolean add(E e)</td>
+<td style="text-align:left">向集合中添加一个元素，E 是元素的数据类型</td>
+</tr>
+<tr>
+<td style="text-align:left">boolean addAll(Collection c)</td>
+<td style="text-align:left">向集合中添加集合 c 中的所有元素</td>
+</tr>
+<tr>
+<td style="text-align:left">void clear()</td>
+<td style="text-align:left">删除集合中的所有元素</td>
+</tr>
+<tr>
+<td style="text-align:left">boolean isEmpty()</td>
+<td style="text-align:left">判断集合是否为空</td>
+</tr>
+<tr>
+<td style="text-align:left">Iterator iterator()</td>
+<td style="text-align:left">返回一个 Iterator 对象，用于遍历集合中的元素</td>
+</tr>
+<tr>
+<td style="text-align:left">boolean remove(Object o)</td>
+<td style="text-align:left">从集合中删除一个指定元素</td>
+</tr>
+<tr>
+<td style="text-align:left">int size()</td>
+<td style="text-align:left">返回集合中元素的个数</td>
+</tr>
+<tr>
+<td style="text-align:left">boolean contains(Object o)</td>
+<td style="text-align:left">判断集合中是否存在指定元素</td>
+</tr>
+</tbody>
+</table>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>List 接口实现了 Collection 接口，它主要有两个实现类：ArrayList 类和 LinkedList 类<br>ArrayList 类提供了快速的基于索引的成员访问方式，对尾部成员的增加和删除支持较好<br>LinkedList 类采用链表结构保存对象，这种结构的优点是便于向集合中插入或者删除元素</p>
+<pre><code>ArrayList类常用方法
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">E get(int index)</td>
+<td style="text-align:left">获取此集合中指定索引位置的元素，E 为集合中元素的数据类型</td>
+</tr>
+<tr>
+<td style="text-align:left">int index(Object o)</td>
+<td style="text-align:left">返回此集合中第一次出现指定元素的索引，如果此集合不包含该元素，则返回 -1</td>
+</tr>
+<tr>
+<td style="text-align:left">int lastIndexOf(Obj ect o)</td>
+<td style="text-align:left">返回此集合中最后一次出现指定元素的索引，如果此集合不包含该元素，则返回 -1</td>
+</tr>
+<tr>
+<td style="text-align:left">E set(int index, E element)</td>
+<td style="text-align:left">将此集合中指定索引位置的元素修改为 element 参数指定的对象</td>
+</tr>
+<tr>
+<td style="text-align:left">List&lt;E&gt; subList(int fromlndex, int tolndex)</td>
+<td style="text-align:left">返回一个新的集合</td>
+</tr>
+</tbody>
+</table>
+<pre><code>LinkedList常用方法
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">void addFirst(E e)</td>
+<td style="text-align:left">将指定元素添加到此集合的开头</td>
+</tr>
+<tr>
+<td style="text-align:left">void addLast(E e)</td>
+<td style="text-align:left">将指定元素添加到此集合的末尾</td>
+</tr>
+<tr>
+<td style="text-align:left">E getFirst()</td>
+<td style="text-align:left">返回此集合的第一个元素</td>
+</tr>
+<tr>
+<td style="text-align:left">E getLast()</td>
+<td style="text-align:left">返回此集合的最后一个元素</td>
+</tr>
+<tr>
+<td style="text-align:left">E removeFirst()</td>
+<td style="text-align:left">删除此集合中的第一个元素</td>
+</tr>
+<tr>
+<td style="text-align:left">E removeLast()</td>
+<td style="text-align:left">删除此集合中的最后一个元素</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>Set 集合也实现了 Collection 接口，它主要有两个实现类：HashSet 类和 TreeSet类<br>HashSet 类是按照哈希算法来存储集合中的元素, </p>
+<p>TreeSet 类同时实现了 Set 接口和 SortedSet 接口。SortedSet 接口是 Set 接口的子接口，可以实现对集合进行自然排序<br>TreeSet 只能对实现了 Comparable 接口的类对象进行排序(compareTos), 二叉树结构, 中序遍历方式</p>
+<pre><code>TreeSet类的常用方法
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">E first()</td>
+<td style="text-align:left">返回此集合中的第一个元素</td>
+</tr>
+<tr>
+<td style="text-align:left">E last()</td>
+<td style="text-align:left">返回此集合中的最后一个元素</td>
+</tr>
+<tr>
+<td style="text-align:left">SortedSet&lt;E&gt; subSet(E fromElement,E toElement)</td>
+<td style="text-align:left">返回一个新的集合</td>
+</tr>
+<tr>
+<td style="text-align:left">SortedSet&lt;E&gt; headSet&lt;E toElement&gt;</td>
+<td style="text-align:left">返回一个新的集合, toElement 对象之前的所有对象</td>
+</tr>
+<tr>
+<td style="text-align:left">SortedSet&lt;E&gt; tailSet(E fromElement)</td>
+<td style="text-align:left">返回一个新的集合, fromElement 对象之后的所有对</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>自己定义一个比较器和迭代器</p>
+</blockquote>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>Map 接口主要有两个实现类：HashMap 类和 TreeMap 类<br>Map.Entry 描述在一个Map中的一个元素（键/值对）</p>
+<pre><code>Map接口的常用方法
+</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">V get(Object key)</td>
+<td style="text-align:left">返回 Map 集合中指定键对象所对应的值</td>
+</tr>
+<tr>
+<td style="text-align:left">V put(K key, V value)</td>
+<td style="text-align:left">向 Map 集合中添加键-值对，返回 key 以前对应的 value，如果不存在, 则返回 null</td>
+</tr>
+<tr>
+<td style="text-align:left">V remove(Object key)</td>
+<td style="text-align:left">从 Map 集合中删除 key 对应的键-值对，返回 key 对应的 value，如 果没有，则返回null</td>
+</tr>
+<tr>
+<td style="text-align:left">Set entrySet()</td>
+<td style="text-align:left">返回 Map 集合中所有键-值对的 Set 集合, 此 Set 集合中元素的数据 类型为 Map.Entry</td>
+</tr>
+<tr>
+<td style="text-align:left">Set keySet()</td>
+<td style="text-align:left">返回 Map 集合中所有键对象的 Set 集合</td>
+</tr>
+</tbody>
+</table>
+<p>遍历方法: 通过Map.keySet遍历key和value, 通过Map.entrySet使用iterator遍历key和value,<br>过Map.entrySet遍历key和value, 通过Map.values()遍历所有的value，但不能遍历key</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>接口：是代表集合的抽象数据类型。例如 Collection、List、Set、Map 等。之所以定义多个接口，是为了以不同的方式操作集合对象<br>实现（类）：是集合接口的具体实现。从本质上讲，它们是可重复使用的数据结构，例如：ArrayList、LinkedList、HashSet、HashMap。<br>算法：是实现集合接口的对象里的方法执行的一些有用的计算，例如：搜索和排序。这些算法被称为多态，那是因为相同的方法可以在相似的接口上有着不同的实现。</p>
+<p><img src="/2019/07/02/corejava_day11/1.png" alt=""></p>
 
       
     </div>
@@ -567,7 +748,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -600,7 +781,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">1.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态内部类"><span class="nav-number">1.1.</span> <span class="nav-text">静态内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员内部类"><span class="nav-number">1.2.</span> <span class="nav-text">成员内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部内部类"><span class="nav-number">1.3.</span> <span class="nav-text">局部内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">1.4.</span> <span class="nav-text">匿名内部类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合"><span class="nav-number">2.</span> <span class="nav-text">集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器"><span class="nav-number">2.1.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-each-循环"><span class="nav-number">2.2.</span> <span class="nav-text">for-each 循环</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">1.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态内部类"><span class="nav-number">1.1.</span> <span class="nav-text">静态内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员内部类"><span class="nav-number">1.2.</span> <span class="nav-text">成员内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#局部内部类"><span class="nav-number">1.3.</span> <span class="nav-text">局部内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">1.4.</span> <span class="nav-text">匿名内部类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合"><span class="nav-number">2.</span> <span class="nav-text">集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">2.1.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">2.2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">2.3.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">2.4.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">2.5.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
             
 
           </div>
