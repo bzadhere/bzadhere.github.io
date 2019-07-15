@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="四种类型转换  const_cast 修改类型的const或volatile属性 static_cast 通常用于转换数值类型, 进行非多态的类型转换, 编译时检查 dynamic_cast 基类转换成子类, 基类必须要有虚函数 reinterpret_cast 比较底层的转换, 在非相关的类型之间转换; 操作结果只是简单的从一个指针到别的指针的值的二进制拷贝;在类型之间指向的内容不做任何类型的检">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-22T12:26:02.273Z">
+<meta property="og:updated_time" content="2019-07-15T09:08:51.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++类型转换">
 <meta name="twitter:description" content="四种类型转换  const_cast 修改类型的const或volatile属性 static_cast 通常用于转换数值类型, 进行非多态的类型转换, 编译时检查 dynamic_cast 基类转换成子类, 基类必须要有虚函数 reinterpret_cast 比较底层的转换, 在非相关的类型之间转换; 操作结果只是简单的从一个指针到别的指针的值的二进制拷贝;在类型之间指向的内容不做任何类型的检">
@@ -408,6 +408,7 @@
 <h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><blockquote>
 <p>xxx_cast <type-id> (expression)</type-id></p>
 </blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MXdr::SXdr&amp; _Xdr = const_cast&lt;MXdr::SXdr&amp;&gt;(xdr);</span><br><span class="line"></span><br><span class="line">static_cast&lt;rState&gt;(0);</span><br><span class="line"></span><br><span class="line">CUsageBase* pUsageBase = m_UsageBaseFactory.get_UsageBase(pCRatePlanABC-&gt;GetUsageID());</span><br><span class="line">const CUsageSimple* p_usageSimple = dynamic_cast&lt;CUsageSimple*&gt;(pUsageBase);</span><br></pre></td></tr></table></figure>
 
       
     </div>
