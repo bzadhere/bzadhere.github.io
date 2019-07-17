@@ -727,6 +727,7 @@
 <li>unique_ptr 只允许基础指针的一个所有者, 可移动, 但不可复制; 大小等同于一<br>个指针且支持 rvalue 引用</li>
 </ul>
 </blockquote>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>auto_ptr 赋值后不安全，原指针变成野指针;<br>shared_ptr 采用引用计数, 安全性提高; 多个shared_ptr对象指向同个对象，多次析构core不安全;<br>unique_ptr 严格控制所有权, 不允许直接赋值;move 后原指针为空;<br>模板shared_ptr包含一个显式构造函数，可用于将右值unique_ptr转换为shared_ptr。<br>shared_ptr将接管原来归unique_ptr所有的对象。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/10/28/c-智能指针/#more" rel="contents">
