@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="volatile 阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回阻止编译器操作volatile变量的指令顺序  123456volatile int i=10; int a = i; ... //其他代码，并未明确告诉编译器，对i进行过操作 //编译器发现两次从i读数据的代码之间的代码没有对i进行过操作，它会自动把上次读的数据放在b中int b = i;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-15T03:59:42.568Z">
+<meta property="og:updated_time" content="2019-07-17T09:16:45.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++关键字">
 <meta name="twitter:description" content="volatile 阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回阻止编译器操作volatile变量的指令顺序  123456volatile int i=10; int a = i; ... //其他代码，并未明确告诉编译器，对i进行过操作 //编译器发现两次从i读数据的代码之间的代码没有对i进行过操作，它会自动把上次读的数据放在b中int b = i;">
@@ -402,6 +402,8 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">volatile int i=10; </span><br><span class="line">int a = i; </span><br><span class="line">... </span><br><span class="line">//其他代码，并未明确告诉编译器，对i进行过操作 </span><br><span class="line">//编译器发现两次从i读数据的代码之间的代码没有对i进行过操作，它会自动把上次读的数据放在b中</span><br><span class="line">int b = i;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
+<h1 id="inline"><a href="#inline" class="headerlink" title="inline"></a>inline</h1><p>对于内联函数, 编译器在符号表里方式函数声明(名字, 参数类型, 返回值类型),<br>如果编译器没发现错误, 函数代码也被放入符号表里。在调用一个内联函数时, 编译器如果<br>检查类型正确, 内联函数代码会直接替换函数调用(宏替换也是一样), 省去了函数调用开销。 </p>
+<p>inline 是一种用来实现的关键字, 不是用来声明的关键字; 用户也不要知道函数是否内联, 推荐<br>风格如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//头文件</span><br><span class="line">class A</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  void Foo(int i);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 实现文件</span><br><span class="line">inline void A::Foo(int i)</span><br><span class="line">&#123;</span><br><span class="line">  ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h1 id="explicit"><a href="#explicit" class="headerlink" title="explicit"></a>explicit</h1><blockquote>
 <p>防止由构造函数定义的隐式转换</p>
 </blockquote>
@@ -422,7 +424,8 @@
 <h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1><h1 id="virtual"><a href="#virtual" class="headerlink" title="virtual"></a>virtual</h1><blockquote>
 <p>虚表存放的位置一般存放在模块的常量段中，从始至终都只有一份?</p>
 </blockquote>
-<p><a href="https://juejin.im/entry/58576d9c570c3500690b1211" target="_blank" rel="noopener">问题参考</a></p>
+<p>和编译器有关, 在gcc编译器的实现中虚函数表vtable存放在可执行文件的只读数据段.rodata中</p>
+<p><a href="https://juejin.im/entry/58576d9c570c3500690b1211" target="_blank" rel="noopener">问题参考1</a><br><a href="https://www.cnblogs.com/chenhuan001/p/6485233.html" target="_blank" rel="noopener">问题参考2</a></p>
 
       
     </div>
@@ -620,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">1.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#explicit"><span class="nav-number">2.</span> <span class="nav-text">explicit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extern"><span class="nav-number">3.</span> <span class="nav-text">extern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typedef"><span class="nav-number">4.</span> <span class="nav-text">typedef</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#const"><span class="nav-number">5.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#virtual"><span class="nav-number">6.</span> <span class="nav-text">virtual</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">1.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#inline"><span class="nav-number">2.</span> <span class="nav-text">inline</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#explicit"><span class="nav-number">3.</span> <span class="nav-text">explicit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extern"><span class="nav-number">4.</span> <span class="nav-text">extern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typedef"><span class="nav-number">5.</span> <span class="nav-text">typedef</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#const"><span class="nav-number">6.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#virtual"><span class="nav-number">7.</span> <span class="nav-text">virtual</span></a></li></ol></div>
             
 
           </div>
