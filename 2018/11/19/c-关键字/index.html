@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="volatile 阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回阻止编译器操作volatile变量的指令顺序  123456volatile int i=10; int a = i; ... //其他代码，并未明确告诉编译器，对i进行过操作 //编译器发现两次从i读数据的代码之间的代码没有对i进行过操作，它会自动把上次读的数据放在b中int b = i;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T09:16:45.411Z">
+<meta property="og:updated_time" content="2019-07-17T09:42:22.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++关键字">
 <meta name="twitter:description" content="volatile 阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回阻止编译器操作volatile变量的指令顺序  123456volatile int i=10; int a = i; ... //其他代码，并未明确告诉编译器，对i进行过操作 //编译器发现两次从i读数据的代码之间的代码没有对i进行过操作，它会自动把上次读的数据放在b中int b = i;">
@@ -421,11 +421,15 @@
 <p>定义类型别名</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">typedef int* PINT; // 一般用大写</span><br><span class="line">PINT pa, pb; // 同时声明了两个指向int变量的指针</span><br><span class="line">typedef float REAL;  // 跨平台编译</span><br><span class="line"></span><br><span class="line">typedef struct tagPOINT</span><br><span class="line">&#123;</span><br><span class="line">int x;</span><br><span class="line">int y;</span><br><span class="line">&#125;SPOINT;</span><br><span class="line">SPOINT sa; // 省略了一个struct</span><br><span class="line"></span><br><span class="line">int mystrcmp(const pstr, const pstr); </span><br><span class="line">typedef int (*PF) (const char *, const char *);</span><br><span class="line">PF p = mystrcmp;</span><br></pre></td></tr></table></figure>
-<h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1><h1 id="virtual"><a href="#virtual" class="headerlink" title="virtual"></a>virtual</h1><blockquote>
+<h1 id="const"><a href="#const" class="headerlink" title="const"></a>const</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const int *A;       // 修饰指向的对象，A可变，A指向的对象不可变</span><br><span class="line">int const *A; 　    // 修饰指向的对象，A可变，A指向的对象不可变</span><br><span class="line">int *const A; 　    // 修饰指针A，     A不可变，A指向的对象可变 </span><br><span class="line">const int *const A; // 指针A和A指向的对象都不可变</span><br></pre></td></tr></table></figure>
+<h1 id="virtual"><a href="#virtual" class="headerlink" title="virtual"></a>virtual</h1><blockquote>
 <p>虚表存放的位置一般存放在模块的常量段中，从始至终都只有一份?</p>
 </blockquote>
 <p>和编译器有关, 在gcc编译器的实现中虚函数表vtable存放在可执行文件的只读数据段.rodata中</p>
 <p><a href="https://juejin.im/entry/58576d9c570c3500690b1211" target="_blank" rel="noopener">问题参考1</a><br><a href="https://www.cnblogs.com/chenhuan001/p/6485233.html" target="_blank" rel="noopener">问题参考2</a></p>
+<p><strong>重载、覆盖、隐藏</strong><br>成员函数被重载的特征：（同名不同参）<br>（1）相同的范围（在同一个类中）；<br>（2）函数名字相同；<br>（3）参数不同；<br>（4）virtual 关键字可有可无。<br>覆盖是指派生类函数覆盖基类函数，特征是：(虚函数)<br>（1）不同的范围（分别位于派生类与基类）；<br>（2）函数名字相同；<br>（3）参数相同；<br>（4）基类函数必须有virtual 关键</p>
+<p>“隐藏”是指派生类的函数屏蔽了与其同名的基类函数，规则如下：(behavior depends on type of the pointer)<br>（1）如果派生类的函数与基类的函数同名，但是参数不同。此时，不论有无virtual<br>关键字，基类的函数将被隐藏（注意别与重载混淆）<br>（2）如果派生类的函数与基类的函数同名，并且参数也相同，但是基类函数没有virtual<br>关键字。此时，基类的函数被隐藏（注意别与覆盖混淆）</p>
+<h1 id="assert"><a href="#assert" class="headerlink" title="assert"></a>assert</h1><p>void print_number(int<em> myInt) {<br>  assert (myInt!=NULL); // 条件表达式为假就退出<br>  printf (“%d\n”,</em>myInt);<br>}</p>
 
       
     </div>
@@ -623,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">1.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#inline"><span class="nav-number">2.</span> <span class="nav-text">inline</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#explicit"><span class="nav-number">3.</span> <span class="nav-text">explicit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extern"><span class="nav-number">4.</span> <span class="nav-text">extern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typedef"><span class="nav-number">5.</span> <span class="nav-text">typedef</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#const"><span class="nav-number">6.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#virtual"><span class="nav-number">7.</span> <span class="nav-text">virtual</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">1.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#inline"><span class="nav-number">2.</span> <span class="nav-text">inline</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#explicit"><span class="nav-number">3.</span> <span class="nav-text">explicit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extern"><span class="nav-number">4.</span> <span class="nav-text">extern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typedef"><span class="nav-number">5.</span> <span class="nav-text">typedef</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#const"><span class="nav-number">6.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#virtual"><span class="nav-number">7.</span> <span class="nav-text">virtual</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#assert"><span class="nav-number">8.</span> <span class="nav-text">assert</span></a></li></ol></div>
             
 
           </div>
