@@ -294,6 +294,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/STL源码解析-笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/18/STL源码解析-笔记/" itemprop="url">STL源码解析-笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-18T09:57:50+08:00">
+                2019-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/07/18/STL源码解析-笔记/" class="leancloud_visitors" data-flag-title="STL源码解析-笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="STL概述与版本"><a href="#STL概述与版本" class="headerlink" title="STL概述与版本"></a>STL概述与版本</h1><p>STL六大组件, 容器/算法/迭代器/仿函数/配接器(adapters)/配置器(alloctors)</p>
+<h2 id="令人困惑的语法"><a href="#令人困惑的语法" class="headerlink" title="令人困惑的语法"></a>令人困惑的语法</h2><h3 id="临时对象产生和应用"><a href="#临时对象产生和应用" class="headerlink" title="临时对象产生和应用"></a>临时对象产生和应用</h3><p>for_each(begin, end, Print<int>())</int></p>
+<h3 id="静态常量在class里直接初始化"><a href="#静态常量在class里直接初始化" class="headerlink" title="静态常量在class里直接初始化"></a>静态常量在class里直接初始化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">calss Test</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	static const int a = 1;</span><br><span class="line">	static const char b = &apos;c&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="操作符-–"><a href="#操作符-–" class="headerlink" title="操作符++/–/*"></a>操作符++/–/*</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Int</span><br><span class="line">&#123;</span><br><span class="line">  friend ostream&amp; operator&lt;&lt;(ostream&amp; os, const Int&amp; i);</span><br><span class="line">  // prefix, same as operator--</span><br><span class="line">  Int&amp; operator++()</span><br><span class="line">  &#123;</span><br><span class="line">    ++(this-&gt;m_i);</span><br><span class="line">    return *this;</span><br><span class="line">  &#125;</span><br><span class="line">  // postfix, same as operator--</span><br><span class="line">  const Int operator++(int)</span><br><span class="line">  &#123;</span><br><span class="line">    Int tmp = *this;</span><br><span class="line">	++(*this);</span><br><span class="line">	return tmp;</span><br><span class="line">  &#125;</span><br><span class="line">  // dereference</span><br><span class="line">  int&amp; operator*() const </span><br><span class="line">  &#123;</span><br><span class="line">    return (int&amp;)m_i;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">private:</span><br><span class="line">	int m_i;</span><br><span class="line">&#125;</span><br><span class="line">ostream&amp; operator&lt;&lt;(ostream&amp; os, const Int&amp; i)</span><br><span class="line">&#123;</span><br><span class="line">  os &lt;&lt; &apos;[&apos; &lt;&lt; i &lt;&lt; &apos;]&apos;;</span><br><span class="line">  return os;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="前闭后开"><a href="#前闭后开" class="headerlink" title="前闭后开"></a>前闭后开</h3><h3 id="操作符operator"><a href="#操作符operator" class="headerlink" title="操作符operator()"></a>操作符operator()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">class Plus</span><br><span class="line">&#123;</span><br><span class="line">  T operator(const T&amp; t1, const T&amp; t2)</span><br><span class="line">  &#123;</span><br><span class="line">    return t1+t2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  Plus&lt;int&gt; obj;</span><br><span class="line">  // 使用仿函数, 和普通函数一样</span><br><span class="line">  cout&lt;&lt; obj(3,4) &lt;&lt; endl;</span><br><span class="line">  // 直接使用仿函数使用的临时对象, 并调用</span><br><span class="line">  cout&lt;&lt; Plus&lt;int&gt;()(3,4) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="源码获取"><a href="#源码获取" class="headerlink" title="源码获取"></a><a href="ftp://gcc.gnu.org/pub/gcc" target="_blank" rel="noopener">源码获取</a></h2><p>解压后在 gcc-5-20171003\libstdc++-v3\include\bits 目录</p>
+<h1 id="空间配置器"><a href="#空间配置器" class="headerlink" title="空间配置器"></a>空间配置器</h1><h2 id="类设计"><a href="#类设计" class="headerlink" title="类设计"></a>类设计</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">class Alloc</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	typedef size_t size_type;</span><br><span class="line">	typedef T* pointer;</span><br><span class="line">	typedef const T* const_pointer;</span><br><span class="line">	typedef T&amp; reference;</span><br><span class="line">	typedef const T&amp; const_reference;</span><br><span class="line">	typedef T value_type;</span><br><span class="line"></span><br><span class="line">	// 内嵌类</span><br><span class="line">	template&lt;class T1&gt;</span><br><span class="line">	struct rebind</span><br><span class="line">	&#123;typedef Alloc&lt;T1&gt; other;&#125;;</span><br><span class="line">	</span><br><span class="line">	Alloc()throw() &#123; &#125;</span><br><span class="line">	Alloc(Alloc&amp; rh);</span><br><span class="line">	~Alloc();</span><br><span class="line">	</span><br><span class="line">	void construct();</span><br><span class="line">	void destory();</span><br><span class="line">	</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><blockquote>
+<p>向 heap 申请空间<br>考虑多线程状态<br>内存不足时应变处理<br>内存碎片</p>
+</blockquote>
+<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><h1 id="序列容器"><a href="#序列容器" class="headerlink" title="序列容器"></a>序列容器</h1><h1 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h1><h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h1 id="仿函数"><a href="#仿函数" class="headerlink" title="仿函数"></a>仿函数</h1><h1 id="配接器"><a href="#配接器" class="headerlink" title="配接器"></a>配接器</h1>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/17/c-指针详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1698,166 +1860,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/28/corejava_day01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/28/corejava_day01/" itemprop="url">corejava_day01</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-28T14:00:44+08:00">
-                2019-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java基础/" itemprop="url" rel="index">
-                    <span itemprop="name">java基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/06/28/corejava_day01/" class="leancloud_visitors" data-flag-title="corejava_day01">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Java特点"><a href="#Java特点" class="headerlink" title="Java特点"></a>Java特点</h1><p><strong>why invent java ?</strong><br>    1995.5.23  sun.发布<br>    简单：抛弃指针、垃圾回收机制 (System.gc() ; )<br>    安全：允许用户使用指针而不允许用户操作指针<br>    跨平台：跨操作系统平台</p>
-<p>32位(xp),指总线宽度为32位，存储内存空间的地址值，可以存储2^32个不同的值，每个地址值指向一个字节的<br>地址， 故机器能够识别管理大内存空间为2^32字节(4<em>2^10</em>2^10*2^10=4G)</p>
-<p>C++原码跨平台，编译后不跨平台，需不同平台下编译 </p>
-<p>高级语言 =&gt; 编译 =&gt; 操作平台代码 =&gt; OS转化 =&gt; 机器平台代码(cpu指令集)<br>java语言 =&gt; 编译 =&gt; 二进制字节码 =&gt; JVM (不跨平台)=&gt; 转化 =&gt; 操作平台代码 =&gt; OS转化 =&gt; 机器平台代码<br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/06/28/corejava_day01/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1908,7 +1910,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="volatile 阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回阻止编译器操作volatile变量的指令顺序  123456volatile int i=10; int a = i; ... //其他代码，并未明确告诉编译器，对i进行过操作 //编译器发现两次从i读数据的代码之间的代码没有对i进行过操作，它会自动把上次读的数据放在b中int b = i;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T09:42:22.823Z">
+<meta property="og:updated_time" content="2019-07-18T09:27:57.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++关键字">
 <meta name="twitter:description" content="volatile 阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回阻止编译器操作volatile变量的指令顺序  123456volatile int i=10; int a = i; ... //其他代码，并未明确告诉编译器，对i进行过操作 //编译器发现两次从i读数据的代码之间的代码没有对i进行过操作，它会自动把上次读的数据放在b中int b = i;">
@@ -430,7 +430,8 @@
 <p><strong>重载、覆盖、隐藏</strong><br>成员函数被重载的特征：（同名不同参）<br>（1）相同的范围（在同一个类中）；<br>（2）函数名字相同；<br>（3）参数不同；<br>（4）virtual 关键字可有可无。<br>覆盖是指派生类函数覆盖基类函数，特征是：(虚函数)<br>（1）不同的范围（分别位于派生类与基类）；<br>（2）函数名字相同；<br>（3）参数相同；<br>（4）基类函数必须有virtual 关键</p>
 <p>“隐藏”是指派生类的函数屏蔽了与其同名的基类函数，规则如下：(behavior depends on type of the pointer)<br>（1）如果派生类的函数与基类的函数同名，但是参数不同。此时，不论有无virtual<br>关键字，基类的函数将被隐藏（注意别与重载混淆）<br>（2）如果派生类的函数与基类的函数同名，并且参数也相同，但是基类函数没有virtual<br>关键字。此时，基类的函数被隐藏（注意别与覆盖混淆）</p>
 <h1 id="assert"><a href="#assert" class="headerlink" title="assert"></a>assert</h1><p>void print_number(int<em> myInt) {<br>  assert (myInt!=NULL); // 条件表达式为假就退出<br>  printf (“%d\n”,</em>myInt);<br>}</p>
-
+<h1 id="using"><a href="#using" class="headerlink" title="using"></a>using</h1><p>1.命名空间<br>2.继承时, 在子类中使用基类成员<br>3.指定别名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">template&lt;typename _Tp, typename _Alloc = std::allocator&lt;_Tp&gt; &gt;</span><br><span class="line">class vector : protected _Vector_base&lt;_Tp, _Alloc&gt;</span><br><span class="line">&#123;</span><br><span class="line">protected:</span><br><span class="line">  using _Base::_M_allocate;</span><br><span class="line">  using _Base::_M_deallocate;</span><br><span class="line">  using _Base::_M_impl;</span><br><span class="line">  using _Base::_M_get_Tp_allocator;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">using Vec = MyVector&lt;T, MyAlloc&lt;T&gt;&gt;;</span><br><span class="line"> </span><br><span class="line">// usage</span><br><span class="line">Vec&lt;int&gt; vec;</span><br></pre></td></tr></table></figure></p>
+<h1 id="define-undef"><a href="#define-undef" class="headerlink" title="define/undef"></a>define/undef</h1>
       
     </div>
     
@@ -572,7 +573,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -627,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">1.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#inline"><span class="nav-number">2.</span> <span class="nav-text">inline</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#explicit"><span class="nav-number">3.</span> <span class="nav-text">explicit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extern"><span class="nav-number">4.</span> <span class="nav-text">extern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typedef"><span class="nav-number">5.</span> <span class="nav-text">typedef</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#const"><span class="nav-number">6.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#virtual"><span class="nav-number">7.</span> <span class="nav-text">virtual</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#assert"><span class="nav-number">8.</span> <span class="nav-text">assert</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">1.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#inline"><span class="nav-number">2.</span> <span class="nav-text">inline</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#explicit"><span class="nav-number">3.</span> <span class="nav-text">explicit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#extern"><span class="nav-number">4.</span> <span class="nav-text">extern</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typedef"><span class="nav-number">5.</span> <span class="nav-text">typedef</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#const"><span class="nav-number">6.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#virtual"><span class="nav-number">7.</span> <span class="nav-text">virtual</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#assert"><span class="nav-number">8.</span> <span class="nav-text">assert</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#using"><span class="nav-number">9.</span> <span class="nav-text">using</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#define-undef"><span class="nav-number">10.</span> <span class="nav-text">define/undef</span></a></li></ol></div>
             
 
           </div>
