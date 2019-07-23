@@ -404,10 +404,17 @@
 <h3 id="操作符-–"><a href="#操作符-–" class="headerlink" title="操作符++/–/*"></a>操作符++/–/*</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Int</span><br><span class="line">&#123;</span><br><span class="line">  friend ostream&amp; operator&lt;&lt;(ostream&amp; os, const Int&amp; i);</span><br><span class="line">  // prefix, same as operator--</span><br><span class="line">  Int&amp; operator++()</span><br><span class="line">  &#123;</span><br><span class="line">    ++(this-&gt;m_i);</span><br><span class="line">    return *this;</span><br><span class="line">  &#125;</span><br><span class="line">  // postfix, same as operator--</span><br><span class="line">  const Int operator++(int)</span><br><span class="line">  &#123;</span><br><span class="line">    Int tmp = *this;</span><br><span class="line">	++(*this);</span><br><span class="line">	return tmp;</span><br><span class="line">  &#125;</span><br><span class="line">  // dereference</span><br><span class="line">  int&amp; operator*() const </span><br><span class="line">  &#123;</span><br><span class="line">    return (int&amp;)m_i;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">private:</span><br><span class="line">	int m_i;</span><br><span class="line">&#125;</span><br><span class="line">ostream&amp; operator&lt;&lt;(ostream&amp; os, const Int&amp; i)</span><br><span class="line">&#123;</span><br><span class="line">  os &lt;&lt; &apos;[&apos; &lt;&lt; i &lt;&lt; &apos;]&apos;;</span><br><span class="line">  return os;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="前闭后开"><a href="#前闭后开" class="headerlink" title="前闭后开"></a>前闭后开</h3><h3 id="操作符operator"><a href="#操作符operator" class="headerlink" title="操作符operator()"></a>操作符operator()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">class Plus</span><br><span class="line">&#123;</span><br><span class="line">  T operator(const T&amp; t1, const T&amp; t2)</span><br><span class="line">  &#123;</span><br><span class="line">    return t1+t2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  Plus&lt;int&gt; obj;</span><br><span class="line">  // 使用仿函数, 和普通函数一样</span><br><span class="line">  cout&lt;&lt; obj(3,4) &lt;&lt; endl;</span><br><span class="line">  // 直接使用仿函数使用的临时对象, 并调用</span><br><span class="line">  cout&lt;&lt; Plus&lt;int&gt;()(3,4) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="源码获取"><a href="#源码获取" class="headerlink" title="源码获取"></a><a href="ftp://gcc.gnu.org/pub/gcc" target="_blank" rel="noopener">源码获取</a></h2><p>解压后在 gcc-5-20171003\libstdc++-v3\include\bits 目录</p>
-<h1 id="空间配置器"><a href="#空间配置器" class="headerlink" title="空间配置器"></a>空间配置器</h1><h2 id="类设计"><a href="#类设计" class="headerlink" title="类设计"></a>类设计</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">class Alloc</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	typedef size_t size_type;</span><br><span class="line">	typedef T* pointer;</span><br><span class="line">	typedef const T* const_pointer;</span><br><span class="line">	typedef T&amp; reference;</span><br><span class="line">	typedef const T&amp; const_reference;</span><br><span class="line">	typedef T value_type;</span><br><span class="line"></span><br><span class="line">	// 内嵌类</span><br><span class="line">	template&lt;class T1&gt;</span><br><span class="line">	struct rebind</span><br><span class="line">	&#123;typedef Alloc&lt;T1&gt; other;&#125;;</span><br><span class="line">	</span><br><span class="line">	Alloc()throw() &#123; &#125;</span><br><span class="line">	Alloc(Alloc&amp; rh);</span><br><span class="line">	~Alloc();</span><br><span class="line">	</span><br><span class="line">	void construct();</span><br><span class="line">	void destory();</span><br><span class="line">	</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="空间配置器"><a href="#空间配置器" class="headerlink" title="空间配置器"></a>空间配置器</h1><h2 id="文件清单"><a href="#文件清单" class="headerlink" title="文件清单"></a>文件清单</h2><p>stl_construct.h 定义构造析构<br>stl_uninitalize.h 定义内存拷贝和填充<br>allocate.h 定义内存分配器</p>
+<h2 id="模板分析"><a href="#模板分析" class="headerlink" title="模板分析"></a>模板分析</h2><h3 id="变长参数模板"><a href="#变长参数模板" class="headerlink" title="变长参数模板"></a>变长参数模板</h3><p>接受零个或多个模板实参的模板形参<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename _T1, typename... _Args&gt;</span><br><span class="line">inline void</span><br><span class="line">_Construct(_T1* __p, _Args&amp;&amp;... __args)</span><br><span class="line">&#123; ::new(static_cast&lt;void*&gt;(__p)) _T1(std::forward&lt;_Args&gt;(__args)...); &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="类设计"><a href="#类设计" class="headerlink" title="类设计"></a>类设计</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">class Alloc</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	typedef size_t size_type;</span><br><span class="line">	typedef T* pointer;</span><br><span class="line">	typedef const T* const_pointer;</span><br><span class="line">	typedef T&amp; reference;</span><br><span class="line">	typedef const T&amp; const_reference;</span><br><span class="line">	typedef T value_type;</span><br><span class="line"></span><br><span class="line">	// 内嵌类</span><br><span class="line">	template&lt;class T1&gt;</span><br><span class="line">	struct rebind</span><br><span class="line">	&#123;typedef Alloc&lt;T1&gt; other;&#125;;</span><br><span class="line">	</span><br><span class="line">	Alloc()throw() &#123; &#125;</span><br><span class="line">	Alloc(Alloc&amp; rh);</span><br><span class="line">	~Alloc();</span><br><span class="line">	</span><br><span class="line">	void allocate(); // 内存分配</span><br><span class="line">	void deallocate(); // 内存释放</span><br><span class="line">	void construct(); // 对象构造</span><br><span class="line">	void destory(); // 对象析构</span><br><span class="line">	</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><blockquote>
-<p>向 heap 申请空间<br>考虑多线程状态<br>内存不足时应变处理<br>内存碎片</p>
+<p>向 heap 申请空间<br>考虑多线程状态<br>内存不足时应变处理<br>内存碎片(小的用memory pool, 大于128 bytes 才用malloc )</p>
 </blockquote>
+<h2 id="allocate"><a href="#allocate" class="headerlink" title="allocate"></a>allocate</h2><p>allocate申请内存大于128 byte 时, 直接用new(malloc)分配<br>申请内存小于128 byte 时, _M_get_free_list 从空闲链表中取一块分配, 内存池由16个不同大小的链表数组(8的倍, 8~128 byte)</p>
+<p>取到的链表头头为空, _M_refill 初始化内存池返回可用地址, _M_round_up 规整成8的整数倍<br>_M_allocate_chunk 申请固定内存块, 大小为 (2<em>20</em>(n<em>sizeof(Tp))+ heap_size&gt;&gt;4), 返回空闲起始地址<br>重新调用_M_get_free_list(n</em>sizeof(Tp))<br>再将整个chunk中剩下的nobj-1个内存块串联起来构成一个空闲列表, 根据size获取链表数组下标返回地址</p>
+<p>例子, _M_allocate_chunk(32, 20), 申请分配了40个32 byte块, free_list[3] 第一个交给调用者, 19个给 free_list, 余下给内存池;<br>若接下来调用 _M_allocate_chunk(64, 20) 只够10个, 一个交给调用者, 19个交给free_list[7];<br>再来调用 _M_allocate_chunk(96, 20) 则重新申请 40+n(附加量)个96 byte块……<br>如果heap 都没有, 从free_list 挖出一块交出, 找不到就交给malloc</p>
+<p><img src="/2019/07/18/STL源码解析-笔记/1.png" alt=""></p>
+<h2 id="deallocate"><a href="#deallocate" class="headerlink" title="deallocate"></a>deallocate</h2><p>回收也是重新放入free_list</p>
 <h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><h1 id="序列容器"><a href="#序列容器" class="headerlink" title="序列容器"></a>序列容器</h1><h1 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h1><h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h1 id="仿函数"><a href="#仿函数" class="headerlink" title="仿函数"></a>仿函数</h1><h1 id="配接器"><a href="#配接器" class="headerlink" title="配接器"></a>配接器</h1>
           
         
@@ -1553,6 +1560,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/corejava_day03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/01/corejava_day03/" itemprop="url">corejava_day03</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T09:49:44+08:00">
+                2019-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/07/01/corejava_day03/" class="leancloud_visitors" data-flag-title="corejava_day03">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">switch(byte/short/int/char/enum(精确存储，可以匹配))</span><br><span class="line">&#123;</span><br><span class="line"> case byte/short/int/char/enum:... ... ...;break(如果进入该句，而没有break，则以下语句将执行完);</span><br><span class="line"> case byte/short/int/char/enum:... ... ...;</span><br><span class="line"> case x1 case x2 case x3:...;</span><br><span class="line">  ... ... ...</span><br><span class="line">  default :...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/01/corejava_day03/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/corejava_day02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1666,163 +1830,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/07/01/corejava_day02/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/corejava_day03/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/01/corejava_day03/" itemprop="url">corejava_day03</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T09:49:44+08:00">
-                2019-07-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java基础/" itemprop="url" rel="index">
-                    <span itemprop="name">java基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/07/01/corejava_day03/" class="leancloud_visitors" data-flag-title="corejava_day03">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">switch(byte/short/int/char/enum(精确存储，可以匹配))</span><br><span class="line">&#123;</span><br><span class="line"> case byte/short/int/char/enum:... ... ...;break(如果进入该句，而没有break，则以下语句将执行完);</span><br><span class="line"> case byte/short/int/char/enum:... ... ...;</span><br><span class="line"> case x1 case x2 case x3:...;</span><br><span class="line">  ... ... ...</span><br><span class="line">  default :...;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/01/corejava_day03/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
