@@ -83,25 +83,25 @@
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式系统之一致性算法Paxos(5)">
-<meta property="og:url" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/index.html">
+<meta property="og:url" content="tiedan.website/2018/11/06/分布式系统之一致性算法Paxos-5/index.html">
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="前言世界上只有一种一致性算法, 就是Paxos(帕克索斯), 出自一位 Google 大神之口。 Paxos解决了2PC，3PC中的各种硬伤, 在很多大长都有工程实践。比如阿里的 OceanBase 分布式数据库，底层就是使用的 Paxos 算法。再比如 Google 的 chubby 分布式锁 也是用的这个算法。可见该算法在分布式系统中的地位，甚至于Paxos 就是 分布式一致性 的代名词。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/2.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/3.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/4.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/5.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/6.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/7.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/8.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/9.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/10.png">
+<meta property="og:image" content="/06/分布式系统之一致性算法Paxos-5/1.png">
+<meta property="og:image" content="/06/分布式系统之一致性算法Paxos-5/2.png">
+<meta property="og:image" content="/06/分布式系统之一致性算法Paxos-5/3.png">
+<meta property="og:image" content="/06/分布式系统之一致性算法Paxos-5/4.png">
+<meta property="og:image" content="/06/分布式系统之一致性算法Paxos-5/5.png">
+<meta property="og:image" content="/06/分布式系统之一致性算法Paxos-5/6.png">
+<meta property="og:image" content="/06/分布式系统之一致性算法Paxos-5/7.png">
+<meta property="og:image" content="/06/分布式系统之一致性算法Paxos-5/8.png">
+<meta property="og:image" content="/06/分布式系统之一致性算法Paxos-5/9.png">
+<meta property="og:image" content="/06/分布式系统之一致性算法Paxos-5/10.png">
 <meta property="og:updated_time" content="2018-11-08T08:52:39.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式系统之一致性算法Paxos(5)">
 <meta name="twitter:description" content="前言世界上只有一种一致性算法, 就是Paxos(帕克索斯), 出自一位 Google 大神之口。 Paxos解决了2PC，3PC中的各种硬伤, 在很多大长都有工程实践。比如阿里的 OceanBase 分布式数据库，底层就是使用的 Paxos 算法。再比如 Google 的 chubby 分布式锁 也是用的这个算法。可见该算法在分布式系统中的地位，甚至于Paxos 就是 分布式一致性 的代名词。">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/1.png">
+<meta name="twitter:image" content="/06/分布式系统之一致性算法Paxos-5/1.png">
 
 
 
@@ -131,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/"/>
+  <link rel="canonical" href="tiedan.website/2018/11/06/分布式系统之一致性算法Paxos-5/"/>
 
 
 
@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/分布式系统之一致性算法Paxos-5/">
+    <link itemprop="mainEntityOfPage" href="tiedan.website/2018/11/06/分布式系统之一致性算法Paxos-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -414,11 +414,11 @@
 <hr>
 <h1 id="1-Paxos算法是什么"><a href="#1-Paxos算法是什么" class="headerlink" title="1. Paxos算法是什么"></a>1. Paxos算法是什么</h1><p>Paxos 算法是 基于消息传递 且具有 高效容错特性 的一致性算法，目前公认的解决 分布式一致性问题 最有效  </p>
 <h2 id="的算法之一。"><a href="#的算法之一。" class="headerlink" title="的算法之一。"></a>的算法之一。</h2><h1 id="2-解决了什么问题-产生背景"><a href="#2-解决了什么问题-产生背景" class="headerlink" title="2. 解决了什么问题(产生背景)"></a>2. 解决了什么问题(产生背景)</h1><p>在常见的 分布式系统 中，总会发生 节点宕机 或 网络异常 (包括消息的 重复、丢失、延迟、乱序、网络分区)<br>等情况。Paxos 算法主要就是解决如何在一个 发生如上故障 的分布式系统中，快速正确的在集群内 对某个值达<br>成一致，并且保证 整个系统的一致性。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/11/06/分布式系统之一致性算法Paxos-5/1.png" alt="1"></h2><h1 id="3-算法详解"><a href="#3-算法详解" class="headerlink" title="3. 算法详解"></a>3. 算法详解</h1><h2 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h2><blockquote>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/06/分布式系统之一致性算法Paxos-5/1.png" alt="1"></h2><h1 id="3-算法详解"><a href="#3-算法详解" class="headerlink" title="3. 算法详解"></a>3. 算法详解</h1><h2 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h2><blockquote>
 <p>Proposer: Proposer 可以 提出提案 (Proposal)<br>Acceptor: Acceptor 可以 接受提案。一旦接受提案，提案 里面的 value 值就被选定了<br>Leaner: Acceptor 告诉 Learner 哪个提案被选定了，那么 Learner 就学习这个被选择的 value<br>在具体的实现中，一个进程即可能是Proposer,也可能是Acceptor，也可能是Learner。</p>
 </blockquote>
 <p>注意：提案的范围&gt;value.后面会讲到，[提案=编号+Value].也可表示为[M,V].以下描述中暂定: 提案=P，Value=V</p>
-<p><img src="/2018/11/06/分布式系统之一致性算法Paxos-5/2.png" alt="2"></p>
+<p><img src="/06/分布式系统之一致性算法Paxos-5/2.png" alt="2"></p>
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Paxos 算法的核心是 一致性。所以将从一致性问题的描述来讲解该算法怎么解决实际问题。</p>
 <h3 id="一致性算法的前置条件"><a href="#一致性算法的前置条件" class="headerlink" title="一致性算法的前置条件"></a>一致性算法的前置条件</h3><blockquote>
 <p>在被提出的 P 中，只有一个 V 被选中<br>如果没有 P 被提出，就没有 V 被选中<br>在 P 被选定后，进程都可以学习被选中的 P</p>
@@ -429,11 +429,11 @@
 <li><p>消息在传递过程中可能出现 任意时长的延迟，可能会 重复，也可能 丢失，但是消息不会被 损坏</p>
 </li>
 </ol>
-<h2 id="推导过程"><a href="#推导过程" class="headerlink" title="推导过程"></a>推导过程</h2><h3 id="只有一个Acceptor"><a href="#只有一个Acceptor" class="headerlink" title="只有一个Acceptor"></a>只有一个Acceptor</h3><p><img src="/2018/11/06/分布式系统之一致性算法Paxos-5/3.png" alt="3"></p>
+<h2 id="推导过程"><a href="#推导过程" class="headerlink" title="推导过程"></a>推导过程</h2><h3 id="只有一个Acceptor"><a href="#只有一个Acceptor" class="headerlink" title="只有一个Acceptor"></a>只有一个Acceptor</h3><p><img src="/06/分布式系统之一致性算法Paxos-5/3.png" alt="3"></p>
 <blockquote>
 <p>问题：如果这个 Acceptor 宕机，那么整个系统服务不可用</p>
 </blockquote>
-<h3 id="多个Acceptor"><a href="#多个Acceptor" class="headerlink" title="多个Acceptor"></a>多个Acceptor</h3><p><img src="/2018/11/06/分布式系统之一致性算法Paxos-5/4.png" alt="4"></p>
+<h3 id="多个Acceptor"><a href="#多个Acceptor" class="headerlink" title="多个Acceptor"></a>多个Acceptor</h3><p><img src="/06/分布式系统之一致性算法Paxos-5/4.png" alt="4"></p>
 <blockquote>
 <p>问题：如何在多 Proposer 和多 Acceptor 情况下，选定一个 value？</p>
 </blockquote>
@@ -443,7 +443,7 @@
 <li>P1 ：一个 Acceptor 必须接受一个它收到的第一个 P。</li>
 </ul>
 </blockquote>
-<p>如果每个 Proposer 会产生不同的 P，那么多个 Proposer 必定产生多个 P，发给多个 Acceptor。根据 约定 P1，<br>Acceptor 分别接受到 P，就会导致不同的 V 被选定，如下图所示：<br><img src="/2018/11/06/分布式系统之一致性算法Paxos-5/5.png" alt="5"><br>如上图所示，P1 会产生的问题: v1、v2、v3 都没有被选定，因为他们只有被一个 Acceptor 接受。<br>对于上述问题，我们需要一个额外的约定:</p>
+<p>如果每个 Proposer 会产生不同的 P，那么多个 Proposer 必定产生多个 P，发给多个 Acceptor。根据 约定 P1，<br>Acceptor 分别接受到 P，就会导致不同的 V 被选定，如下图所示：<br><img src="/06/分布式系统之一致性算法Paxos-5/5.png" alt="5"><br>如上图所示，P1 会产生的问题: v1、v2、v3 都没有被选定，因为他们只有被一个 Acceptor 接受。<br>对于上述问题，我们需要一个额外的约定:</p>
 <blockquote>
 <ul>
 <li>P1a : 一个提案 P 被选定，需要被半数以上 Acceptor 接受.</li>
@@ -462,7 +462,7 @@
 <li>P2a : 如果提案 P[M0,V0] 被选定了，那么所有比 M0 编号更高的，且 [被Acceptor批准] 的P，其 value<br>值也是 V0。</li>
 </ul>
 </blockquote>
-<p>只要满足 P2a，就能满足 P2。多提案被选择 的问题解决了，但是由于 网络不稳定 或者 宕机 的原因(不可避免)<br>会产生新问题：<br><img src="/2018/11/06/分布式系统之一致性算法Paxos-5/6.png" alt="6"></p>
+<p>只要满足 P2a，就能满足 P2。多提案被选择 的问题解决了，但是由于 网络不稳定 或者 宕机 的原因(不可避免)<br>会产生新问题：<br><img src="/06/分布式系统之一致性算法Paxos-5/6.png" alt="6"></p>
 <p>假设有 5 个 Acceptor。Proposer2 提出 [M1,V1]的提案，Acceptor2~5（半数以上）均接受了该提案，于是<br>对于  Acceptor2~5 和 Proposer2 来讲，它们都认为 V1 被选定。Acceptor1 刚刚从 宕机状态 恢复过来<br>（之前 Acceptor1  没有收到过任何提案），此时 Proposer1 向 Acceptor1 发送了 [M2,V2] 的提案<br>（V2≠V1且M2&gt;M1）。对于 Acceptor1 来讲，这是它收到的 第一个提案。根据 P1（一个 Acceptor 必须接受<br>它收到的 第一个提案），Acceptor1 必须接受该提案。同时 Acceptor1 认为 V2 被选定。</p>
 <p>这就出现了两个问题：</p>
 <ol>
@@ -506,7 +506,7 @@
 <li>已接受的编号最大的提案</li>
 <li>已响应的请求的最大编号</li>
 </ol>
-<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="/2018/11/06/分布式系统之一致性算法Paxos-5/7.png" alt="7"></h2><h1 id="4-Paxos算法描述"><a href="#4-Paxos算法描述" class="headerlink" title="4. Paxos算法描述"></a>4. Paxos算法描述</h1><h2 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="/2018/11/06/分布式系统之一致性算法Paxos-5/8.png" alt="8"></h2><h1 id="5-Learner学习提案"><a href="#5-Learner学习提案" class="headerlink" title="5. Learner学习提案"></a>5. Learner学习提案</h1><h2 id="-3"><a href="#-3" class="headerlink" title=""></a><img src="/2018/11/06/分布式系统之一致性算法Paxos-5/9.png" alt="9"></h2><h1 id="6-如何保证Paxos算法的活性"><a href="#6-如何保证Paxos算法的活性" class="headerlink" title="6. 如何保证Paxos算法的活性"></a>6. 如何保证Paxos算法的活性</h1><h2 id="-4"><a href="#-4" class="headerlink" title=""></a><img src="/2018/11/06/分布式系统之一致性算法Paxos-5/10.png" alt="10"></h2><h1 id="7-小结"><a href="#7-小结" class="headerlink" title="7. 小结"></a>7. 小结</h1><p>Paxos 在 节点宕机恢复、消息无序或丢失、网络分化 的场景下能保证 数据的一致性。而 Paxos<br>的描述侧重于 理论，在实际项目应用中，处理了 N 多实际细节后，可能已经变成了另外一种算法，<br>这时候正确性已经无法得到理论的保证。</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="/06/分布式系统之一致性算法Paxos-5/7.png" alt="7"></h2><h1 id="4-Paxos算法描述"><a href="#4-Paxos算法描述" class="headerlink" title="4. Paxos算法描述"></a>4. Paxos算法描述</h1><h2 id="-2"><a href="#-2" class="headerlink" title=""></a><img src="/06/分布式系统之一致性算法Paxos-5/8.png" alt="8"></h2><h1 id="5-Learner学习提案"><a href="#5-Learner学习提案" class="headerlink" title="5. Learner学习提案"></a>5. Learner学习提案</h1><h2 id="-3"><a href="#-3" class="headerlink" title=""></a><img src="/06/分布式系统之一致性算法Paxos-5/9.png" alt="9"></h2><h1 id="6-如何保证Paxos算法的活性"><a href="#6-如何保证Paxos算法的活性" class="headerlink" title="6. 如何保证Paxos算法的活性"></a>6. 如何保证Paxos算法的活性</h1><h2 id="-4"><a href="#-4" class="headerlink" title=""></a><img src="/06/分布式系统之一致性算法Paxos-5/10.png" alt="10"></h2><h1 id="7-小结"><a href="#7-小结" class="headerlink" title="7. 小结"></a>7. 小结</h1><p>Paxos 在 节点宕机恢复、消息无序或丢失、网络分化 的场景下能保证 数据的一致性。而 Paxos<br>的描述侧重于 理论，在实际项目应用中，处理了 N 多实际细节后，可能已经变成了另外一种算法，<br>这时候正确性已经无法得到理论的保证。</p>
 <p>要证明分布式一致性算法的正确性通常比实现算法还困难。所以很多系统实际中使用的都是以 Paxos<br>理论 为基础而 衍生 出来的变种和简化版。例如 Google 的 Chubby、MegaStore、Spanner 等系统，<br>ZooKeeper 的 ZAB 协议，还有更加容易理解的 Raft 协议。</p>
 
       

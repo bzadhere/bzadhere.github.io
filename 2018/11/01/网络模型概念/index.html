@@ -83,21 +83,21 @@
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络模型概念">
-<meta property="og:url" content="http://yoursite.com/2018/11/01/网络模型概念/index.html">
+<meta property="og:url" content="tiedan.website/2018/11/01/网络模型概念/index.html">
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="在Linux中，对于一次读取IO的操作, 包含两个阶段  1 Waiting for the data to be ready(等待数据到达内核缓冲区)2 Copying the data from the kernel to the process(从内核缓冲区拷贝数据到程序缓冲区)  对于同步、异步IO, Stevens给的定义  A synchronous I/O operation cau">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/11/01/网络模型概念/1.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/01/网络模型概念/2.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/01/网络模型概念/3.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/01/网络模型概念/4.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/01/网络模型概念/5.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/01/网络模型概念/6.png">
+<meta property="og:image" content="/01/网络模型概念/1.png">
+<meta property="og:image" content="/01/网络模型概念/2.png">
+<meta property="og:image" content="/01/网络模型概念/3.png">
+<meta property="og:image" content="/01/网络模型概念/4.png">
+<meta property="og:image" content="/01/网络模型概念/5.png">
+<meta property="og:image" content="/01/网络模型概念/6.png">
 <meta property="og:updated_time" content="2019-03-06T06:56:44.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络模型概念">
 <meta name="twitter:description" content="在Linux中，对于一次读取IO的操作, 包含两个阶段  1 Waiting for the data to be ready(等待数据到达内核缓冲区)2 Copying the data from the kernel to the process(从内核缓冲区拷贝数据到程序缓冲区)  对于同步、异步IO, Stevens给的定义  A synchronous I/O operation cau">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/01/网络模型概念/1.png">
+<meta name="twitter:image" content="/01/网络模型概念/1.png">
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/01/网络模型概念/"/>
+  <link rel="canonical" href="tiedan.website/2018/11/01/网络模型概念/"/>
 
 
 
@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/01/网络模型概念/">
+    <link itemprop="mainEntityOfPage" href="tiedan.website/2018/11/01/网络模型概念/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -414,12 +414,12 @@
 </blockquote>
 <a id="more"></a>
 <p>根据IO操作和进程的关系，分为五种模型</p>
-<h1 id="阻塞IO"><a href="#阻塞IO" class="headerlink" title="阻塞IO"></a>阻塞IO</h1><p><img src="/2018/11/01/网络模型概念/1.png" alt=""><br>IO操作的两个阶段都阻塞, 用户进程一直等待系统调用返回</p>
-<h1 id="非阻塞IO"><a href="#非阻塞IO" class="headerlink" title="非阻塞IO"></a>非阻塞IO</h1><p><img src="/2018/11/01/网络模型概念/2.png" alt=""><br>前三次调用立即返回, 第四次调用内核数据已经准备好, 但是从内核缓冲区拷贝数据到程序缓冲区时<br>用户进程会等待系统调用返回</p>
-<h1 id="IO复用"><a href="#IO复用" class="headerlink" title="IO复用"></a>IO复用</h1><p><img src="/2018/11/01/网络模型概念/3.png" alt=""><br>select等待数据到达内核缓冲区(或超时), recvfrom从内核缓冲区拷贝数据到程序缓冲区, 两个过程<br>用户进程分别会阻塞等待调用返回</p>
-<h1 id="信号驱动"><a href="#信号驱动" class="headerlink" title="信号驱动"></a>信号驱动</h1><p><img src="/2018/11/01/网络模型概念/4.png" alt=""><br>设置socket为一个信号驱动IO, 内核数据准备好后通知用户进程.<br>用户进程调用recform, 等待从内核缓冲区拷贝数据到程序缓冲区, 这个过程用户进程阻塞等待</p>
-<h1 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h1><p><img src="/2018/11/01/网络模型概念/5.png" alt=""><br>用户进程调用aio_read后, 可以继续执行, 等待IO操作两个阶段完成收到信号通知, 读取数据</p>
-<p><img src="/2018/11/01/网络模型概念/6.png" alt=""></p>
+<h1 id="阻塞IO"><a href="#阻塞IO" class="headerlink" title="阻塞IO"></a>阻塞IO</h1><p><img src="/01/网络模型概念/1.png" alt=""><br>IO操作的两个阶段都阻塞, 用户进程一直等待系统调用返回</p>
+<h1 id="非阻塞IO"><a href="#非阻塞IO" class="headerlink" title="非阻塞IO"></a>非阻塞IO</h1><p><img src="/01/网络模型概念/2.png" alt=""><br>前三次调用立即返回, 第四次调用内核数据已经准备好, 但是从内核缓冲区拷贝数据到程序缓冲区时<br>用户进程会等待系统调用返回</p>
+<h1 id="IO复用"><a href="#IO复用" class="headerlink" title="IO复用"></a>IO复用</h1><p><img src="/01/网络模型概念/3.png" alt=""><br>select等待数据到达内核缓冲区(或超时), recvfrom从内核缓冲区拷贝数据到程序缓冲区, 两个过程<br>用户进程分别会阻塞等待调用返回</p>
+<h1 id="信号驱动"><a href="#信号驱动" class="headerlink" title="信号驱动"></a>信号驱动</h1><p><img src="/01/网络模型概念/4.png" alt=""><br>设置socket为一个信号驱动IO, 内核数据准备好后通知用户进程.<br>用户进程调用recform, 等待从内核缓冲区拷贝数据到程序缓冲区, 这个过程用户进程阻塞等待</p>
+<h1 id="异步IO"><a href="#异步IO" class="headerlink" title="异步IO"></a>异步IO</h1><p><img src="/01/网络模型概念/5.png" alt=""><br>用户进程调用aio_read后, 可以继续执行, 等待IO操作两个阶段完成收到信号通知, 读取数据</p>
+<p><img src="/01/网络模型概念/6.png" alt=""></p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>前四种都是同步型IO操作, 只有异步IO才是异步型IO操作。</p>
 
       

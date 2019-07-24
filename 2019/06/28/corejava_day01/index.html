@@ -83,16 +83,16 @@
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="corejava_day01">
-<meta property="og:url" content="http://yoursite.com/2019/06/28/corejava_day01/index.html">
+<meta property="og:url" content="tiedan.website/2019/06/28/corejava_day01/index.html">
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="Java特点why invent java ?    1995.5.23  sun.发布    简单：抛弃指针、垃圾回收机制 (System.gc() ; )    安全：允许用户使用指针而不允许用户操作指针    跨平台：跨操作系统平台 32位(xp),指总线宽度为32位，存储内存空间的地址值，可以存储2^32个不同的值，每个地址值指向一个字节的地址， 故机器能够识别管理大内存空间为2^32字节">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/06/28/corejava_day01/jvm-jre-jdk.png">
+<meta property="og:image" content="/28/corejava_day01/jvm-jre-jdk.png">
 <meta property="og:updated_time" content="2019-07-02T10:05:40.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="corejava_day01">
 <meta name="twitter:description" content="Java特点why invent java ?    1995.5.23  sun.发布    简单：抛弃指针、垃圾回收机制 (System.gc() ; )    安全：允许用户使用指针而不允许用户操作指针    跨平台：跨操作系统平台 32位(xp),指总线宽度为32位，存储内存空间的地址值，可以存储2^32个不同的值，每个地址值指向一个字节的地址， 故机器能够识别管理大内存空间为2^32字节">
-<meta name="twitter:image" content="http://yoursite.com/2019/06/28/corejava_day01/jvm-jre-jdk.png">
+<meta name="twitter:image" content="/28/corejava_day01/jvm-jre-jdk.png">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/28/corejava_day01/"/>
+  <link rel="canonical" href="tiedan.website/2019/06/28/corejava_day01/"/>
 
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/28/corejava_day01/">
+    <link itemprop="mainEntityOfPage" href="tiedan.website/2019/06/28/corejava_day01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -403,7 +403,7 @@
 <p>32位(xp),指总线宽度为32位，存储内存空间的地址值，可以存储2^32个不同的值，每个地址值指向一个字节的<br>地址， 故机器能够识别管理大内存空间为2^32字节(4<em>2^10</em>2^10*2^10=4G)</p>
 <p>C++原码跨平台，编译后不跨平台，需不同平台下编译 </p>
 <p>高级语言 =&gt; 编译 =&gt; 操作平台代码 =&gt; OS转化 =&gt; 机器平台代码(cpu指令集)<br>java语言 =&gt; 编译 =&gt; 二进制字节码 =&gt; JVM (不跨平台)=&gt; 转化 =&gt; 操作平台代码 =&gt; OS转化 =&gt; 机器平台代码<br><a id="more"></a></p>
-<h1 id="What-is-the-difference-between-JRE-JVM-and-JDK"><a href="#What-is-the-difference-between-JRE-JVM-and-JDK" class="headerlink" title="What is the difference between JRE,JVM and JDK?"></a>What is the difference between JRE,JVM and JDK?</h1><p>JDK Java Development Kit, 编写java程序所需的开发工具包, 包含JRE, java/javac。<br>JRE Java Runtime Environment, JRE=JVM+Java Packages Classes+runtime libraries<br>JVM Java Virtual Machine, It only helps Java to be executed on the platform-independent way.<br><img src="/2019/06/28/corejava_day01/jvm-jre-jdk.png" alt=""></p>
+<h1 id="What-is-the-difference-between-JRE-JVM-and-JDK"><a href="#What-is-the-difference-between-JRE-JVM-and-JDK" class="headerlink" title="What is the difference between JRE,JVM and JDK?"></a>What is the difference between JRE,JVM and JDK?</h1><p>JDK Java Development Kit, 编写java程序所需的开发工具包, 包含JRE, java/javac。<br>JRE Java Runtime Environment, JRE=JVM+Java Packages Classes+runtime libraries<br>JVM Java Virtual Machine, It only helps Java to be executed on the platform-independent way.<br><img src="/28/corejava_day01/jvm-jre-jdk.png" alt=""></p>
 <p><a href="https://javabeat.net/what-is-the-difference-between-jrejvm-and-jdk/" target="_blank" rel="noopener">参考</a></p>
 <h1 id="JDK安装"><a href="#JDK安装" class="headerlink" title="JDK安装"></a>JDK安装</h1><p>JDK/lib 目录下rt.jar JDK提供的基础开发类库(字节码文件); src.zip是rt.jar 的源码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.bash_profile</span><br><span class="line">	JAVA_HOME=xxxxx                 #JDK安装目录</span><br><span class="line">	CLASSPATH=.                     #字节码搜索路径</span><br><span class="line">	PATH=$PATH:$JAVA_HOME/bin       #加入jdkXXX/bin目录 (jdk开发调试命令 )</span><br><span class="line">	export JAVA_HOME CLASSPATH PATH</span><br><span class="line"></span><br><span class="line">	vi MyFirstJava.java</span><br><span class="line">	javac MyFirstJava.java</span><br><span class="line">	java MyFirstJava</span><br></pre></td></tr></table></figure></p>
 <h1 id="Java基本概念"><a href="#Java基本概念" class="headerlink" title="Java基本概念"></a>Java基本概念</h1><h2 id="类"><a href="#类" class="headerlink" title="类"></a><strong>类</strong></h2><p>  1) 一个java源文件可以定义多个类，但最多只能有一个public类，而且该public类的类名必须和文件名一致<br>  2) 一个java源文件在编译后形成的字节码文件个数与该源文件中定义的类的个数一致，每一个类 =&gt; 一个字节码文件<br>  3) 一个可运行的java类有且仅有一个主方法，而且主方法的签名(public static void main(String[] args))是固定的，是整个程序的入口方法</p>

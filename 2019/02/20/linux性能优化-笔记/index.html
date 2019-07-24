@@ -83,19 +83,19 @@
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux性能优化  笔记">
-<meta property="og:url" content="http://yoursite.com/2019/02/20/linux性能优化-笔记/index.html">
+<meta property="og:url" content="tiedan.website/2019/02/20/linux性能优化-笔记/index.html">
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="第一章 序Linux 资源可能会碰到的性能问题，包括CPU性能、磁盘IO、内存以及网络性能 鸡汤提神：”想要得到你就要学会付出，要付出还要坚持；如果你真的觉得很难，那你就放弃，如果你放弃了就不要抱怨。人生就是这样，世界是平衡的，每个人都是通过自己的努力，去决定自己生活的样子” 总结鸡汤可以调整心态续命; 学习要会抓重点">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/02/20/linux性能优化-笔记/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/20/linux性能优化-笔记/2.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/20/linux性能优化-笔记/3.png">
-<meta property="og:image" content="http://yoursite.com/2019/02/20/linux性能优化-笔记/4.png">
+<meta property="og:image" content="/20/linux性能优化-笔记/1.png">
+<meta property="og:image" content="/20/linux性能优化-笔记/2.png">
+<meta property="og:image" content="/20/linux性能优化-笔记/3.png">
+<meta property="og:image" content="/20/linux性能优化-笔记/4.png">
 <meta property="og:updated_time" content="2019-03-05T07:17:09.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux性能优化  笔记">
 <meta name="twitter:description" content="第一章 序Linux 资源可能会碰到的性能问题，包括CPU性能、磁盘IO、内存以及网络性能 鸡汤提神：”想要得到你就要学会付出，要付出还要坚持；如果你真的觉得很难，那你就放弃，如果你放弃了就不要抱怨。人生就是这样，世界是平衡的，每个人都是通过自己的努力，去决定自己生活的样子” 总结鸡汤可以调整心态续命; 学习要会抓重点">
-<meta name="twitter:image" content="http://yoursite.com/2019/02/20/linux性能优化-笔记/1.png">
+<meta name="twitter:image" content="/20/linux性能优化-笔记/1.png">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/20/linux性能优化-笔记/"/>
+  <link rel="canonical" href="tiedan.website/2019/02/20/linux性能优化-笔记/"/>
 
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/linux性能优化-笔记/">
+    <link itemprop="mainEntityOfPage" href="tiedan.website/2019/02/20/linux性能优化-笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -501,7 +501,7 @@
 <h1 id="第九章-软中断CPU使用率升高"><a href="#第九章-软中断CPU使用率升高" class="headerlink" title="第九章 软中断CPU使用率升高"></a>第九章 软中断CPU使用率升高</h1><p>工具：<br>sar: 系统活动报告工具, 实时查看系统当前活动<br>hpping3：tcp/id 协议数据包工具, sync flood</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># top 运行后按数字 1 切换到显示所有 CPU</span><br><span class="line">$ top</span><br><span class="line">top - 10:50:58 up 1 days, 22:10,  1 user,  load average: 0.00, 0.00, 0.00</span><br><span class="line">Tasks: 122 total,   1 running,  71 sleeping,   0 stopped,   0 zombie</span><br><span class="line">%Cpu0  :  0.0 us,  0.0 sy,  0.0 ni, 96.7 id,  0.0 wa,  0.0 hi,  3.3 si,  0.0 st</span><br><span class="line">%Cpu1  :  0.0 us,  0.0 sy,  0.0 ni, 95.6 id,  0.0 wa,  0.0 hi,  4.4 si,  0.0 st</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND</span><br><span class="line">    7 root      20   0       0      0      0 S   0.3  0.0   0:01.64 ksoftirqd/0</span><br><span class="line">   16 root      20   0       0      0      0 S   0.3  0.0   0:01.97 ksoftirqd/1</span><br><span class="line"> 2663 root      20   0  923480  28292  13996 S   0.3  0.3   4:58.66 docker-containe</span><br><span class="line"> 3699 root      20   0       0      0      0 I   0.3  0.0   0:00.13 kworker/u4:0</span><br><span class="line"> 3708 root      20   0   44572   4176   3512 R   0.3  0.1   0:00.07 top</span><br><span class="line">    1 root      20   0  225384   9136   6724 S   0.0  0.1   0:23.25 systemd</span><br><span class="line">    2 root      20   0       0      0      0 S   0.0  0.0   0:00.03 kthreadd</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@localhost ~]# watch -d cat /proc/softirqs</span><br><span class="line">Every 2.0s: cat /proc/softirqs                                                               Tue Feb 26 21:54:03 2019</span><br><span class="line">                    CPU0</span><br><span class="line">          HI:          6</span><br><span class="line">       TIMER:      67166</span><br><span class="line">      NET_TX:       1817</span><br><span class="line">      NET_RX:       6051</span><br><span class="line">       BLOCK:       9899</span><br><span class="line">BLOCK_IOPOLL:          0</span><br><span class="line">     TASKLET:         45</span><br><span class="line">       SCHED:          0</span><br><span class="line">     HRTIMER:          0</span><br><span class="line">         RCU:      16504</span><br></pre></td></tr></table></figure>
 <h2 id="总结-6"><a href="#总结-6" class="headerlink" title="总结"></a>总结</h2><p>软中断CPU使用率升高是个常见的性能问题, 实际生产一般是网络收发导致, 尤其是网络接收软中断</p>
-<h1 id="第十章-系统CPU瓶颈分析套路"><a href="#第十章-系统CPU瓶颈分析套路" class="headerlink" title="第十章 系统CPU瓶颈分析套路"></a>第十章 系统CPU瓶颈分析套路</h1><p><img src="/2019/02/20/linux性能优化-笔记/1.png" alt=""><br><img src="/2019/02/20/linux性能优化-笔记/2.png" alt=""><br><img src="/2019/02/20/linux性能优化-笔记/3.png" alt=""><br><img src="/2019/02/20/linux性能优化-笔记/4.png" alt=""></p>
+<h1 id="第十章-系统CPU瓶颈分析套路"><a href="#第十章-系统CPU瓶颈分析套路" class="headerlink" title="第十章 系统CPU瓶颈分析套路"></a>第十章 系统CPU瓶颈分析套路</h1><p><img src="/20/linux性能优化-笔记/1.png" alt=""><br><img src="/20/linux性能优化-笔记/2.png" alt=""><br><img src="/20/linux性能优化-笔记/3.png" alt=""><br><img src="/20/linux性能优化-笔记/4.png" alt=""></p>
 
       
     </div>

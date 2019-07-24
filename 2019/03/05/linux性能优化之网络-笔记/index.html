@@ -83,24 +83,24 @@
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux性能优化之网络 笔记">
-<meta property="og:url" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/index.html">
+<meta property="og:url" content="tiedan.website/2019/03/05/linux性能优化之网络-笔记/index.html">
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="linux网络网络模型   OSI七层 功能 协议     应用层 负责为程序提供统一的接口 ftp telnet http dns   表示层 负责把数据转换成兼容接收系统的格式 NULL   会话层 负责维护计算机之间的通信连接 NULL   传输层 负责为数据加上传输表头, 形成数据包 TCP UDP   网路层 负责数据的路由和转发 IP ICMP IGMP RIP   数据链路层 负责M">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/4.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/5.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/6.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/2.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/3.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/7.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/8.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/9.png">
+<meta property="og:image" content="/05/linux性能优化之网络-笔记/4.png">
+<meta property="og:image" content="/05/linux性能优化之网络-笔记/5.png">
+<meta property="og:image" content="/05/linux性能优化之网络-笔记/6.png">
+<meta property="og:image" content="/05/linux性能优化之网络-笔记/1.png">
+<meta property="og:image" content="/05/linux性能优化之网络-笔记/2.png">
+<meta property="og:image" content="/05/linux性能优化之网络-笔记/3.png">
+<meta property="og:image" content="/05/linux性能优化之网络-笔记/7.png">
+<meta property="og:image" content="/05/linux性能优化之网络-笔记/8.png">
+<meta property="og:image" content="/05/linux性能优化之网络-笔记/9.png">
 <meta property="og:updated_time" content="2019-03-07T07:31:06.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux性能优化之网络 笔记">
 <meta name="twitter:description" content="linux网络网络模型   OSI七层 功能 协议     应用层 负责为程序提供统一的接口 ftp telnet http dns   表示层 负责把数据转换成兼容接收系统的格式 NULL   会话层 负责维护计算机之间的通信连接 NULL   传输层 负责为数据加上传输表头, 形成数据包 TCP UDP   网路层 负责数据的路由和转发 IP ICMP IGMP RIP   数据链路层 负责M">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/4.png">
+<meta name="twitter:image" content="/05/linux性能优化之网络-笔记/4.png">
 
 
 
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/"/>
+  <link rel="canonical" href="tiedan.website/2019/03/05/linux性能优化之网络-笔记/"/>
 
 
 
@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/">
+    <link itemprop="mainEntityOfPage" href="tiedan.website/2019/03/05/linux性能优化之网络-笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -481,10 +481,10 @@
 </table>
 <a id="more"></a>
 <p>tcp/udp/ip头协议格式, 一个tcp数据包协议头最长60个字节</p>
-<p><img src="/2019/03/05/linux性能优化之网络-笔记/4.png" alt=""><br><img src="/2019/03/05/linux性能优化之网络-笔记/5.png" alt=""><br><img src="/2019/03/05/linux性能优化之网络-笔记/6.png" alt=""></p>
-<h2 id="OSI和TCP-IP关系"><a href="#OSI和TCP-IP关系" class="headerlink" title="OSI和TCP/IP关系"></a>OSI和TCP/IP关系</h2><p><img src="/2019/03/05/linux性能优化之网络-笔记/1.png" alt=""></p>
-<h2 id="linux网络栈"><a href="#linux网络栈" class="headerlink" title="linux网络栈"></a>linux网络栈</h2><p><img src="/2019/03/05/linux性能优化之网络-笔记/2.png" alt=""></p>
-<h2 id="Linux-通用-IP-网络栈的示意图"><a href="#Linux-通用-IP-网络栈的示意图" class="headerlink" title="Linux 通用 IP 网络栈的示意图"></a>Linux 通用 IP 网络栈的示意图</h2><p><img src="/2019/03/05/linux性能优化之网络-笔记/3.png" alt=""></p>
+<p><img src="/05/linux性能优化之网络-笔记/4.png" alt=""><br><img src="/05/linux性能优化之网络-笔记/5.png" alt=""><br><img src="/05/linux性能优化之网络-笔记/6.png" alt=""></p>
+<h2 id="OSI和TCP-IP关系"><a href="#OSI和TCP-IP关系" class="headerlink" title="OSI和TCP/IP关系"></a>OSI和TCP/IP关系</h2><p><img src="/05/linux性能优化之网络-笔记/1.png" alt=""></p>
+<h2 id="linux网络栈"><a href="#linux网络栈" class="headerlink" title="linux网络栈"></a>linux网络栈</h2><p><img src="/05/linux性能优化之网络-笔记/2.png" alt=""></p>
+<h2 id="Linux-通用-IP-网络栈的示意图"><a href="#Linux-通用-IP-网络栈的示意图" class="headerlink" title="Linux 通用 IP 网络栈的示意图"></a>Linux 通用 IP 网络栈的示意图</h2><p><img src="/05/linux性能优化之网络-笔记/3.png" alt=""></p>
 <h2 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h2><table>
 <thead>
 <tr>
@@ -590,7 +590,7 @@
 <li>DPDK 用户态网络标准, 跳过内核协议栈, 直接由用户态程序通过轮询来处理网络接收</li>
 <li>XDP 允许网络包在进入内核前就进行处理(丢弃,转发,给上层应用)</li>
 </ul>
-<p><img src="/2019/03/05/linux性能优化之网络-笔记/7.png" alt=""><br><img src="/2019/03/05/linux性能优化之网络-笔记/8.png" alt=""></p>
+<p><img src="/05/linux性能优化之网络-笔记/7.png" alt=""><br><img src="/05/linux性能优化之网络-笔记/8.png" alt=""></p>
 <hr>
 <h1 id="评估系统网络性能"><a href="#评估系统网络性能" class="headerlink" title="评估系统网络性能"></a>评估系统网络性能</h1><p>各个协议层的基本测试</p>
 <h2 id="转发性能"><a href="#转发性能" class="headerlink" title="转发性能"></a>转发性能</h2><p>pktgen</p>
@@ -611,7 +611,7 @@
 <li>NS记录 表示该域名对应的域名服务器地址</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/resolv.conf</span><br><span class="line">; generated by /usr/sbin/dhclient-script</span><br><span class="line">nameserver 10.70.75.253</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# yum install -y bind-utils</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# nslookup time.geekbang.org</span><br><span class="line">Server:         10.70.75.253</span><br><span class="line">Address:        10.70.75.253#53</span><br><span class="line"></span><br><span class="line">Non-authoritative answer:</span><br><span class="line">Name:   time.geekbang.org</span><br><span class="line">Address: 39.106.233.176</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# dig +trace +nodnssec time.geekbang.org</span><br><span class="line"></span><br><span class="line">; &lt;&lt;&gt;&gt; DiG 9.9.4-RedHat-9.9.4-73.el7_6 &lt;&lt;&gt;&gt; +trace +nodnssec time.geekbang.org</span><br><span class="line">;; global options: +cmd</span><br><span class="line">.                       518400  IN      NS      m.root-servers.net.</span><br><span class="line">.                       518400  IN      NS      c.root-servers.net.</span><br><span class="line">.                       518400  IN      NS      i.root-servers.net.</span><br><span class="line">.                       518400  IN      NS      d.root-servers.net.</span><br><span class="line">.                       518400  IN      NS      j.root-servers.net.</span><br><span class="line">.                       518400  IN      NS      e.root-servers.net.</span><br><span class="line">.                       518400  IN      NS      l.root-servers.net.</span><br><span class="line">.                       518400  IN      NS      g.root-servers.net.</span><br><span class="line">.                       518400  IN      NS      h.root-servers.net.</span><br><span class="line">.                       518400  IN      NS      f.root-servers.net.</span><br><span class="line">.                       518400  IN      NS      k.root-servers.net.</span><br><span class="line">.                       518400  IN      NS      b.root-servers.net.</span><br><span class="line">.                       518400  IN      NS      a.root-servers.net.</span><br><span class="line">;; Received 239 bytes from 10.70.75.253#53(10.70.75.253) in 46 ms</span><br><span class="line"></span><br><span class="line">org.                    172800  IN      NS      a0.org.afilias-nst.info.</span><br><span class="line">org.                    172800  IN      NS      a2.org.afilias-nst.info.</span><br><span class="line">org.                    172800  IN      NS      b0.org.afilias-nst.org.</span><br><span class="line">org.                    172800  IN      NS      b2.org.afilias-nst.org.</span><br><span class="line">org.                    172800  IN      NS      c0.org.afilias-nst.info.</span><br><span class="line">org.                    172800  IN      NS      d0.org.afilias-nst.org.</span><br><span class="line">;; Received 448 bytes from 199.7.91.13#53(d.root-servers.net) in 426 ms</span><br><span class="line"></span><br><span class="line">geekbang.org.           86400   IN      NS      dns10.hichina.com.</span><br><span class="line">geekbang.org.           86400   IN      NS      dns9.hichina.com.</span><br><span class="line">;; Received 96 bytes from 199.19.56.1#53(a0.org.afilias-nst.info) in 106 ms</span><br><span class="line"></span><br><span class="line">time.geekbang.org.      600     IN      A       39.106.233.176</span><br><span class="line">;; Received 62 bytes from 106.11.211.56#53(dns10.hichina.com) in 40 ms</span><br></pre></td></tr></table></figure>
-<p><img src="/2019/03/05/linux性能优化之网络-笔记/9.png" alt=""></p>
+<p><img src="/05/linux性能优化之网络-笔记/9.png" alt=""></p>
 <p>可以把主机名和IP地址对应关系, 写入到本机/ect/hosts中, 指定的主机名可以直接找到IP<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/hosts</span><br><span class="line">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4</span><br><span class="line">::1         localhost localhost.localdomain localhost6 localhost6.localdomain6</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# ping localhost4</span><br><span class="line">PING localhost (127.0.0.1) 56(84) bytes of data.</span><br><span class="line">64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.041 ms</span><br><span class="line">64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.066 ms</span><br><span class="line">^C</span><br><span class="line">--- localhost ping statistics ---</span><br><span class="line">2 packets transmitted, 2 received, 0% packet loss, time 999ms</span><br><span class="line">rtt min/avg/max/mdev = 0.041/0.053/0.066/0.014 ms</span><br></pre></td></tr></table></figure></p>
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><ul>
 <li><p><strong>DNS</strong> 未配置在/etc/resolve.conf 导致找到域名服务器</p>
