@@ -83,17 +83,17 @@
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c++比java快吗">
-<meta property="og:url" content="tiedan.website/2019/02/07/c-比java快吗/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/02/07/c-比java快吗/index.html">
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="参考文章地址 The test suite  Loading Program Executable(加载程序可执行文件) Running Program Instructions(运行程序指令) Allocating Memory(内存分配) Accessing System Resources(访问系统资源)   EnvironmentPlatform: linux/windowsHardwar">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/07/c-比java快吗/1.png">
-<meta property="og:image" content="/07/c-比java快吗/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/07/c-比java快吗/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/07/c-比java快吗/2.png">
 <meta property="og:updated_time" content="2019-02-14T06:40:23.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c++比java快吗">
 <meta name="twitter:description" content="参考文章地址 The test suite  Loading Program Executable(加载程序可执行文件) Running Program Instructions(运行程序指令) Allocating Memory(内存分配) Accessing System Resources(访问系统资源)   EnvironmentPlatform: linux/windowsHardwar">
-<meta name="twitter:image" content="/07/c-比java快吗/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/07/c-比java快吗/1.png">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="tiedan.website/2019/02/07/c-比java快吗/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/07/c-比java快吗/"/>
 
 
 
@@ -300,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="tiedan.website/2019/02/07/c-比java快吗/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/07/c-比java快吗/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -411,7 +411,7 @@
 </blockquote>
 <p>Environment<br>Platform: linux/windows<br>Hardware configuration: cpu,memory<br>Software: c++/jdk version</p>
 <a id="more"></a>
-<h1 id="Loading-Program-Executable-LPE"><a href="#Loading-Program-Executable-LPE" class="headerlink" title="Loading Program Executable(LPE)"></a>Loading Program Executable(LPE)</h1><p><img src="/07/c-比java快吗/1.png" alt=""><br><img src="/07/c-比java快吗/2.png" alt=""><br>There are two main contributors to this size difference: executable size and selective loading.</p>
+<h1 id="Loading-Program-Executable-LPE"><a href="#Loading-Program-Executable-LPE" class="headerlink" title="Loading Program Executable(LPE)"></a>Loading Program Executable(LPE)</h1><p><img src="/2019/02/07/c-比java快吗/1.png" alt=""><br><img src="/2019/02/07/c-比java快吗/2.png" alt=""><br>There are two main contributors to this size difference: executable size and selective loading.</p>
 <h2 id="executable-size"><a href="#executable-size" class="headerlink" title="executable size"></a>executable size</h2><p>c++一般比java大, jvm包含运行需要的库？</p>
 <h2 id="selective-loading"><a href="#selective-loading" class="headerlink" title="selective loading"></a>selective loading</h2><p>c++在执行前加载全部可执行文件。链接库加载分为静态和动态加载, 静态加载是指在执行前加载，动态加载<br>是指在运行时调用对应函数。动态加载时没有类型校验, 库变更会导致不可预知的错误。</p>
 <p>java在需要时动态加载</p>

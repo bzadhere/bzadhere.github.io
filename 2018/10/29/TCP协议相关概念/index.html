@@ -83,22 +83,22 @@
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP协议相关概念">
-<meta property="og:url" content="tiedan.website/2018/10/29/TCP协议相关概念/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/10/29/TCP协议相关概念/index.html">
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="1. TCP协议头部格式 DNS在应用层, TCP/UDP/PORT在传输层, IP在网络层,  ARP在数据链路层去掉没有协议的表示层和会话层，就是TCP/IP五层网络模型OSI是Open System Interconnect的缩写，意为开放式系统互联">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/29/TCP协议相关概念/OSI七层模型.png">
-<meta property="og:image" content="/29/TCP协议相关概念/tcp协议头部格式.png">
-<meta property="og:image" content="/29/TCP协议相关概念/握手分手.jpg">
-<meta property="og:image" content="/29/TCP协议相关概念/同时关闭.jpg">
-<meta property="og:image" content="/29/TCP协议相关概念/同时打开.jpg">
-<meta property="og:image" content="/29/TCP协议相关概念/tcp状态转换.jpg">
-<meta property="og:image" content="/29/TCP协议相关概念/tcp_queue.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/OSI七层模型.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/tcp协议头部格式.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/握手分手.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/同时关闭.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/同时打开.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/tcp状态转换.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/tcp_queue.png">
 <meta property="og:updated_time" content="2019-03-14T06:46:55.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP协议相关概念">
 <meta name="twitter:description" content="1. TCP协议头部格式 DNS在应用层, TCP/UDP/PORT在传输层, IP在网络层,  ARP在数据链路层去掉没有协议的表示层和会话层，就是TCP/IP五层网络模型OSI是Open System Interconnect的缩写，意为开放式系统互联">
-<meta name="twitter:image" content="/29/TCP协议相关概念/OSI七层模型.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/29/TCP协议相关概念/OSI七层模型.png">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="tiedan.website/2018/10/29/TCP协议相关概念/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/29/TCP协议相关概念/"/>
 
 
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="tiedan.website/2018/10/29/TCP协议相关概念/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/29/TCP协议相关概念/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -405,14 +405,14 @@
       
 
       
-        <h1 id="1-TCP协议头部格式"><a href="#1-TCP协议头部格式" class="headerlink" title="1. TCP协议头部格式"></a>1. TCP协议头部格式</h1><p><img src="/29/TCP协议相关概念/OSI七层模型.png" alt="OSI七层模型"></p>
+        <h1 id="1-TCP协议头部格式"><a href="#1-TCP协议头部格式" class="headerlink" title="1. TCP协议头部格式"></a>1. TCP协议头部格式</h1><p><img src="/2018/10/29/TCP协议相关概念/OSI七层模型.png" alt="OSI七层模型"></p>
 <p>DNS在应用层, TCP/UDP/PORT在传输层, IP在网络层,  ARP在数据链路层<br>去掉没有协议的表示层和会话层，就是TCP/IP五层网络模型<br>OSI是Open System Interconnect的缩写，意为开放式系统互联<br><a id="more"></a></p>
-<p><img src="/29/TCP协议相关概念/tcp协议头部格式.png" alt="tcp协议头部格式"></p>
+<p><img src="/2018/10/29/TCP协议相关概念/tcp协议头部格式.png" alt="tcp协议头部格式"></p>
 <p>为什么需要2MSL？</p>
 <blockquote>
 <p>Maximum Segment Lifetime 报文最大生存时间, 保证最后发送的ACK报文<br>对端可以收到, 不然对端会重发FIN. 所以TIME_WAIT用来重发可能丢失的ACK</p>
 </blockquote>
-<h1 id="2-三次握手四次分手"><a href="#2-三次握手四次分手" class="headerlink" title="2. 三次握手四次分手"></a>2. 三次握手四次分手</h1><p><img src="/29/TCP协议相关概念/握手分手.jpg" alt="三次握手四次分手"></p>
+<h1 id="2-三次握手四次分手"><a href="#2-三次握手四次分手" class="headerlink" title="2. 三次握手四次分手"></a>2. 三次握手四次分手</h1><p><img src="/2018/10/29/TCP协议相关概念/握手分手.jpg" alt="三次握手四次分手"></p>
 <p>为什么需要三次握手？</p>
 <blockquote>
 <p>全双工, 告诉对方 发送/接受数据 能力OK</p>
@@ -421,8 +421,8 @@
 <blockquote>
 <p>为了确保数据能够完成传输(确保对端收完数据)</p>
 </blockquote>
-<p><img src="/29/TCP协议相关概念/同时关闭.jpg" alt="同时关闭"><br><img src="/29/TCP协议相关概念/同时打开.jpg" alt="同时打开"></p>
-<h1 id="3-TCP状态转换"><a href="#3-TCP状态转换" class="headerlink" title="3. TCP状态转换"></a>3. TCP状态转换</h1><p><img src="/29/TCP协议相关概念/tcp状态转换.jpg" alt="TCP状态转换"></p>
+<p><img src="/2018/10/29/TCP协议相关概念/同时关闭.jpg" alt="同时关闭"><br><img src="/2018/10/29/TCP协议相关概念/同时打开.jpg" alt="同时打开"></p>
+<h1 id="3-TCP状态转换"><a href="#3-TCP状态转换" class="headerlink" title="3. TCP状态转换"></a>3. TCP状态转换</h1><p><img src="/2018/10/29/TCP协议相关概念/tcp状态转换.jpg" alt="TCP状态转换"></p>
 <h1 id="4-TCP如何保证可靠传输"><a href="#4-TCP如何保证可靠传输" class="headerlink" title="4. TCP如何保证可靠传输"></a>4. TCP如何保证可靠传输</h1><p>三次握手, seq+ack, 超时重传, 流量控制, 拥塞控制</p>
 <h3 id="超时重传"><a href="#超时重传" class="headerlink" title="超时重传"></a>超时重传</h3><h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h3><h3 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h3><h1 id="5-TCP粘包"><a href="#5-TCP粘包" class="headerlink" title="5. TCP粘包"></a>5. TCP粘包</h1><p>TCP粘包是指发送方发送的若干包数据到接收方接收时粘成一包, 从接收缓冲区看,<br>后一包数据的头紧接着前一包数据的尾</p>
 <h3 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h3><blockquote>
@@ -442,7 +442,7 @@
 <li>半连接状态为：服务器处于Listen状态时收到客户端SYN报文时放入半连接队列中，即SYN queue<br>(服务器端口状态为：SYN_RCVD)</li>
 <li>全连接状态为：TCP的连接状态从服务器（SYN+ACK）响应客户端后，到客户端的ACK报文到达服<br>务器之前，则一直保留在半连接状态中；当服务器接收到客户端的ACK报文后，该条目将从半连<br>接队列搬到全连接队列尾部，即 accept queue (服务器端口状态为：ESTABLISHED)</li>
 </ul>
-<p><img src="/29/TCP协议相关概念/tcp_queue.png" alt="tcp_queue"></p>
+<p><img src="/2018/10/29/TCP协议相关概念/tcp_queue.png" alt="tcp_queue"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># SYN queue 队列长度</span><br><span class="line">51_zjdev[/data01/zjgrp/zjdev]%cat  /proc/sys/net/ipv4/tcp_max_syn_backlog</span><br><span class="line">2048</span><br><span class="line"></span><br><span class="line"># Accept queue 队列长度</span><br><span class="line">51_zjdev[/data01/zjgrp/zjdev]%cat /proc/sys/net/core/somaxconn</span><br><span class="line">128</span><br><span class="line"></span><br><span class="line">/*最终取min(128, 使用listen函数时传入的参数)。在Linux内核2.4.25之前，是写死在代码常量  </span><br><span class="line">SOMAXCONN ，在Linux内核2.4.25之后，在配置文件 /proc/sys/net/core/somaxconn 中直接修改，  </span><br><span class="line">或者在/etc/sysctl.conf 中配置 net.core.somaxconn = 128*/</span><br><span class="line"></span><br><span class="line"># 查看SYN queue 溢出</span><br><span class="line">[root@localhost ~]# netstat -s | grep LISTEN</span><br><span class="line">102324 SYNs to LISTEN sockets dropped</span><br><span class="line"></span><br><span class="line"># 查看Accept queue 溢出</span><br><span class="line">[root@localhost ~]# netstat -s | grep TCPBacklogDrop</span><br><span class="line">TCPBacklogDrop: 2334</span><br><span class="line"></span><br><span class="line"># 查看Accept queue</span><br><span class="line">[root@zhangbb ~]# ss -lnt</span><br><span class="line">State      Recv-Q Send-Q                 Local Address:Port                                Peer Address:Port              </span><br><span class="line">LISTEN     0      50                                 *:3306                                           *:* </span><br><span class="line"></span><br><span class="line">/*在LISTEN状态，其中 Send-Q 即为Accept queue的最大值，Recv-Q 则表示Accept queue中等待被服务器accept()*/</span><br></pre></td></tr></table></figure>
 
       

@@ -83,17 +83,17 @@
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="开源库应用--tcmalloc">
-<meta property="og:url" content="tiedan.website/2018/11/21/开源库应用-tcmalloc/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/开源库应用-tcmalloc/index.html">
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="glibc每一种分配器都宣称自己快（fast）、可拓展（scalable）、效率高（memory efficient） 数据结构    头部 名称 说明     Arena header malloc_state 包括bins、top chunk、last remainder chunk等   Heap Header heap_info 每个thread arena 维护一个或多个堆   Chun">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/21/开源库应用-tcmalloc/1.png">
-<meta property="og:image" content="/21/开源库应用-tcmalloc/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/21/开源库应用-tcmalloc/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/21/开源库应用-tcmalloc/2.png">
 <meta property="og:updated_time" content="2019-06-04T08:59:07.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开源库应用--tcmalloc">
 <meta name="twitter:description" content="glibc每一种分配器都宣称自己快（fast）、可拓展（scalable）、效率高（memory efficient） 数据结构    头部 名称 说明     Arena header malloc_state 包括bins、top chunk、last remainder chunk等   Heap Header heap_info 每个thread arena 维护一个或多个堆   Chun">
-<meta name="twitter:image" content="/21/开源库应用-tcmalloc/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/21/开源库应用-tcmalloc/1.png">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="tiedan.website/2018/11/21/开源库应用-tcmalloc/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/21/开源库应用-tcmalloc/"/>
 
 
 
@@ -300,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="tiedan.website/2018/11/21/开源库应用-tcmalloc/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/开源库应用-tcmalloc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -428,7 +428,7 @@
 </tr>
 </tbody>
 </table>
-<p><img src="/21/开源库应用-tcmalloc/1.png" alt=""><br><img src="/21/开源库应用-tcmalloc/2.png" alt=""></p>
+<p><img src="/2018/11/21/开源库应用-tcmalloc/1.png" alt=""><br><img src="/2018/11/21/开源库应用-tcmalloc/2.png" alt=""></p>
 <h1 id="tcmalloc"><a href="#tcmalloc" class="headerlink" title="tcmalloc"></a>tcmalloc</h1><p>tcmalloc是一个内存分配器，管理堆内存，主要影响malloc和free，用于降低频繁分配、释放内存造成的损耗,<br>并且有效的控制内存碎片。</p>
 <h1 id="解决了什么问题"><a href="#解决了什么问题" class="headerlink" title="解决了什么问题"></a>解决了什么问题</h1><h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1>
       

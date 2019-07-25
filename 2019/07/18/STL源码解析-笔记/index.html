@@ -83,16 +83,16 @@
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="STL源码解析-笔记">
-<meta property="og:url" content="tiedan.website/2019/07/18/STL源码解析-笔记/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/07/18/STL源码解析-笔记/index.html">
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="STL概述与版本STL六大组件, 容器/算法/迭代器/仿函数/配接器(adapters)/配置器(alloctors) 令人困惑的语法临时对象产生和应用for_each(begin, end, Print())">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/18/STL源码解析-笔记/1.png">
-<meta property="og:updated_time" content="2019-07-23T11:50:00.444Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/18/STL源码解析-笔记/1.png">
+<meta property="og:updated_time" content="2019-07-25T09:29:30.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL源码解析-笔记">
 <meta name="twitter:description" content="STL概述与版本STL六大组件, 容器/算法/迭代器/仿函数/配接器(adapters)/配置器(alloctors) 令人困惑的语法临时对象产生和应用for_each(begin, end, Print())">
-<meta name="twitter:image" content="/18/STL源码解析-笔记/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/18/STL源码解析-笔记/1.png">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="tiedan.website/2019/07/18/STL源码解析-笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/07/18/STL源码解析-笔记/"/>
 
 
 
@@ -299,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="tiedan.website/2019/07/18/STL源码解析-笔记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/STL源码解析-笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -415,7 +415,7 @@
 <h2 id="allocate"><a href="#allocate" class="headerlink" title="allocate"></a>allocate</h2><p>allocate申请内存大于128 byte 时, 直接用new(malloc)分配<br>申请内存小于128 byte 时, _M_get_free_list 从空闲链表中取一块分配, 内存池由16个不同大小的链表数组(8的倍, 8~128 byte)</p>
 <p>取到的链表头头为空, _M_refill 初始化内存池返回可用地址, _M_round_up 规整成8的整数倍<br>_M_allocate_chunk 申请固定内存块, 大小为 (2*20*(n*sizeof(Tp))+ heap_size&gt;&gt;4), 返回空闲起始地址<br>重新调用_M_get_free_list(n*sizeof(Tp))<br>再将整个chunk中剩下的nobj-1个内存块串联起来构成一个空闲列表, 根据size获取链表数组下标返回地址</p>
 <p>例子, _M_allocate_chunk(32, 20), 申请分配了40个32 byte块, free_list[3] 第一个交给调用者, 19个给 free_list, 余下给内存池;<br>若接下来调用 _M_allocate_chunk(64, 20) 只够10个, 一个交给调用者, 19个交给free_list[7];<br>再来调用 _M_allocate_chunk(96, 20) 则重新申请 40+n(附加量)个96 byte块……<br>如果heap 都没有, 从free_list 挖出一块交出, 找不到就交给malloc</p>
-<p><img src="/18/STL源码解析-笔记/1.png" alt=""></p>
+<p><img src="/2019/07/18/STL源码解析-笔记/1.png" alt=""></p>
 <h2 id="deallocate"><a href="#deallocate" class="headerlink" title="deallocate"></a>deallocate</h2><p>回收也是重新放入free_list</p>
 <h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><h1 id="序列容器"><a href="#序列容器" class="headerlink" title="序列容器"></a>序列容器</h1><h1 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h1><h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h1 id="仿函数"><a href="#仿函数" class="headerlink" title="仿函数"></a>仿函数</h1><h1 id="配接器"><a href="#配接器" class="headerlink" title="配接器"></a>配接器</h1>
       

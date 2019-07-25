@@ -83,20 +83,20 @@
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一致性hash算法">
-<meta property="og:url" content="tiedan.website/2018/10/30/一致性hash算法/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/10/30/一致性hash算法/index.html">
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="常规思路：  1.是什么2.解决了什么问题3.是怎么实现的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/30/一致性hash算法/1.png">
-<meta property="og:image" content="/30/一致性hash算法/2.png">
-<meta property="og:image" content="/30/一致性hash算法/3.png">
-<meta property="og:image" content="/30/一致性hash算法/4.png">
-<meta property="og:image" content="/30/一致性hash算法/5.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/30/一致性hash算法/1.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/30/一致性hash算法/2.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/30/一致性hash算法/3.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/30/一致性hash算法/4.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/30/一致性hash算法/5.png">
 <meta property="og:updated_time" content="2018-11-09T01:27:16.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一致性hash算法">
 <meta name="twitter:description" content="常规思路：  1.是什么2.解决了什么问题3.是怎么实现的">
-<meta name="twitter:image" content="/30/一致性hash算法/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/30/一致性hash算法/1.png">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="tiedan.website/2018/10/30/一致性hash算法/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/30/一致性hash算法/"/>
 
 
 
@@ -303,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="tiedan.website/2018/10/30/一致性hash算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/一致性hash算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="扫地小道童">
@@ -412,17 +412,17 @@
 <h1 id="hash问题"><a href="#hash问题" class="headerlink" title="hash问题"></a>hash问题</h1><p>数据库中分库分表规则，按照hash取值、取模、按类别、按某一个字段。<br>例如redis集群使用hash的方式，对图片缓存, 对服务器的数量进行取模<br>hash(a.png)%4 = 2</p>
 <p>当我们增加或减少一台服务器时，hash(a.png)%5=? hash(a.png)%3=？<br>redis缓存的图片就找不到了，都会想后端数据库直请求，引发缓存雪崩</p>
 <h1 id="一致性hash"><a href="#一致性hash" class="headerlink" title="一致性hash"></a>一致性hash</h1><p>一致性Hash算法是对2^32取模, 整个哈希值空间组织成一个虚拟的圆环，<br>如假设某哈希函数H的值空间为0-2^32-1（即哈希值是一个32位无符号整形）<br>整个哈希环如下:</p>
-<p><img src="/30/一致性hash算法/1.png" alt="1"></p>
+<p><img src="/2018/10/30/一致性hash算法/1.png" alt="1"></p>
 <p>整个空间按顺时针方向组织，圆环的正上方的点代表0，0点右侧的第一个点代表1，<br>以此类推，2、3、4、5、6……直到2^32-1，也就是说0点左侧的第一个点代表2^32-1，<br>0和2^32-1在零点中方向重合，我们把这个由2^32个点组成的圆环称为Hash环。</p>
 <p>下一步将各个服务器使用Hash进行一个哈希，具体可以选择服务器的IP或主机名作<br>为关键字进行哈希，这样每台机器就能确定其在哈希环上的位置，这里假设将上文<br>中四台服务器使用IP地址哈希后在环空间的位置如下： </p>
-<p>下一步将各个服务器使用Hash进行一个哈希，具体可以选择服务器的IP或主机名作<br>为关键字进行哈希，这样每台机器就能确定其在哈希环上的位置，这里假设将上文<br>中四台服务器使用IP地址哈希后在环空间的位置如下：<br><img src="/30/一致性hash算法/2.png" alt="2"></p>
+<p>下一步将各个服务器使用Hash进行一个哈希，具体可以选择服务器的IP或主机名作<br>为关键字进行哈希，这样每台机器就能确定其在哈希环上的位置，这里假设将上文<br>中四台服务器使用IP地址哈希后在环空间的位置如下：<br><img src="/2018/10/30/一致性hash算法/2.png" alt="2"></p>
 <p>将数据key使用相同的函数Hash计算出哈希值，并确定此数据在环上的位置，从此位<br>置沿环顺时针“行走”，第一台遇到的服务器就是其应该定位到的服务器！</p>
 <p>例如我们有Object A、Object B、Object C、Object D四个数据对象，经过哈希计算<br>后，在环空间上的位置如下：</p>
-<p><img src="/30/一致性hash算法/3.png" alt="3"></p>
+<p><img src="/2018/10/30/一致性hash算法/3.png" alt="3"></p>
 <p>根据一致性Hash算法，数据A会被定为到Node A上，B被定为到Node B上，C被定为到<br>Node C上，D被定为到Node D上。</p>
 <h1 id="一致性Hash算法的容错性和可扩展性"><a href="#一致性Hash算法的容错性和可扩展性" class="headerlink" title="一致性Hash算法的容错性和可扩展性"></a>一致性Hash算法的容错性和可扩展性</h1><p>一致性Hash算法对于节点的增减都只需重定位环空间中的一小部分数据，具有较好的<br>容错性和可扩展性。</p>
-<h1 id="Hash环的数据倾斜问题"><a href="#Hash环的数据倾斜问题" class="headerlink" title="Hash环的数据倾斜问题"></a>Hash环的数据倾斜问题</h1><p>一致性Hash算法在服务节点太少时，容易因为节点分部不均匀而造成数据倾斜（被缓存<br>的对象大部分集中缓存在某一台服务器上）问题，例如系统中只有两台服务器，其环分布如下：<br><img src="/30/一致性hash算法/4.png" alt="4"></p>
-<p>此时必然造成大量数据集中到Node A上，而只有极少量会定位到Node B上。为了解决这<br>种数据倾斜问题，一致性Hash算法引入了虚拟节点机制，即对每一个服务节点计算多个<br>哈希，每个计算结果位置都放置一个此服务节点，称为虚拟节点。具体做法可以在服务<br>器IP或主机名的后面增加编号来实现。<br><img src="/30/一致性hash算法/5.png" alt="5"></p>
+<h1 id="Hash环的数据倾斜问题"><a href="#Hash环的数据倾斜问题" class="headerlink" title="Hash环的数据倾斜问题"></a>Hash环的数据倾斜问题</h1><p>一致性Hash算法在服务节点太少时，容易因为节点分部不均匀而造成数据倾斜（被缓存<br>的对象大部分集中缓存在某一台服务器上）问题，例如系统中只有两台服务器，其环分布如下：<br><img src="/2018/10/30/一致性hash算法/4.png" alt="4"></p>
+<p>此时必然造成大量数据集中到Node A上，而只有极少量会定位到Node B上。为了解决这<br>种数据倾斜问题，一致性Hash算法引入了虚拟节点机制，即对每一个服务节点计算多个<br>哈希，每个计算结果位置都放置一个此服务节点，称为虚拟节点。具体做法可以在服务<br>器IP或主机名的后面增加编号来实现。<br><img src="/2018/10/30/一致性hash算法/5.png" alt="5"></p>
 <p>同时数据定位算法不变，只是多了一步虚拟节点到实际节点的映射，使很少的服务节点<br>也能做到相对均匀的数据分布</p>
 
       
