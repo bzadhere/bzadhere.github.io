@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[散列和跳表]]></title>
+    <url>%2F2019%2F08%2F08%2F%E6%95%A3%E5%88%97%E5%92%8C%E8%B7%B3%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[字典： dictionary, 有限元素集合, key+value 线性表描述: template class SortedChain { public: SortedChain(){ first = 0; } ~SortedChain(); bool isEmpty() { return first == 0 ? true : false; } int Length(); bool Search(); SortedChain&lt;E, K&gt;&amp; Delete(const K&amp; k, E&amp; e); SortedChain&lt;E, K&gt;&amp; Insert(const E&amp; e); SortedChain&lt;E, K&gt;&amp; DistincsInsert(); private: SortedChainNode&lt;E, K&gt;* first; } 跳表描述： 特征： 1) 一个跳表有几个层组成 2) 跳表第一层包含所有元素 3) 每一层都是有序链表 http://www.cppblog.com/mysileng/archive/2013/04/06/199159.html 散列描述：]]></content>
+      <categories>
+        <category>数据结构和算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[二叉树和其他树]]></title>
+    <url>%2F2019%2F08%2F08%2F%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E5%85%B6%E4%BB%96%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[树 概念 描述 树的定义 tree 是一个有限非空集合, 其中一个元素为根(root), 余下的元素组成t的子树 树的叶子 没有孩子的节点称为叶子 树的层级 level 根的级为1, 孩子的级为2 树的高度 叶节点的深度, 根节点的高度为0 元素的度 degree of element 孩子的个数, 叶子节点的度为0 二叉树二叉树及其表示二叉树的定义: tree 是一个有限非空集合; 根元素 + 2个二叉树组成, 分别称为t的左子树和右子树 有序二叉树: 节点的度数均不超过2个 满二叉树: 有2^h-1个元素 完全二叉树: 从满二叉树中删除k个元素, 称为完全二叉树, 满二叉树是完全二叉树的一个特例 特点： 每个元素有两棵子树 每个元素的子树都是有序的，可以用左右来区分 特性： 1. 包含n(n&gt;0)个元素的二叉树边数为n-1 2. 若二叉树的高度或深度(层数)h, h&gt;=0, 则该二叉树至少有h个元素, 最多有2^h-1个元素(满二叉树) 3. 包含n个元素的二叉树最大高度为n, 最小为log2^(n+1) 4. 设完全二叉树中一元素序号为i, 1&lt;=i&lt;=n, 则有以下关系: 1) 当i=1时, 该元素为二叉树的根; 若i&gt;1, 则该元素的父节点编号i/2 2) 当2i&gt;n时, 该元素无左孩子; 否则其左孩子编号为2i 3) 当2i+1&gt;n时, 该元素无右孩子; 否则该右孩子编号为2i+1 编码树PFC编码树, 每个字符对应叶子节点, 顺序？ 二叉树的实现二叉树的遍历Huffman 编码公式化描述: 按层级的数组 链表描述:template class BinaryTreeNode{public: Visit(BinaryTreeNode ); void PreOrder(BinaryTreeNode ); void InOrder(BinaryTreeNode ); void PostOrder(BinaryTreeNode ); void LevelOrder(BinaryTreeNode* ); public: BinaryTreeNode(){} BinaryTreeNode(const T&amp; e) { data = e; } BinaryTreeNode(const T&amp;e, BinaryTreeNode l, BinaryTreeNode r) { }private: T data; BinaryTreeNode liftChild = 0; BinaryTreeNode rightChild = 0;} 遍历:void PreOrder(BinaryTreeNode* t){ if(t) { Visit(t); PreOrder(t-&gt;leftChild); PreOrder(t-&gt;rightChild); }} void InOrder(BinaryTreeNode* t){ if(t) { InOrder(t-&gt;leftChild); Visit(t); InOrder(t-&gt;rightChild); }} void PostOrder(BinaryTreeNode* t){ if(t) { PostOrder(t-&gt;leftChild); PostOrder(t-&gt;rightChild); Visit(t); }} void LevelOrder(BinaryTreeNode t){ LinkedQueue&lt;BinaryTreeNode&gt; list; while(t) { Visit(t); list.add(t-&gt;leftChild); list.add(t-&gt;rightChild); list.delete(t); // vector erase // return; }} 类BinaryTreetemplate class BinaryTree{public: BinaryTree(){root = 0;} ~BinaryTree(){} bool IsEmpty(){ return root ? true : false; } bool RootValue(T&amp; x); void MakeTree(T&amp; e, BinaryTree&amp; leftTree, BinaryTree&amp; rightTree); void BreakTree(T&amp; e, BinaryTree&amp; leftTree, BinaryTree&amp; rightTree); void PreOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u)) { PreOrder(Visit, root); } void InOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u)) { InOrder(Visit, root); } void PostOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u)) { PostOrder(Visit, root); } void LevelOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u)) { LevelOrder(Visit, root); } private: BinaryTreeNode* root;} bool RootValue(T&amp; x){ if(root) { x = root-&gt;data; return true; } else { return false; }}]]></content>
+      <categories>
+        <category>数据结构和算法</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[chrome小技巧]]></title>
     <url>%2F2019%2F07%2F31%2Fchrome%E5%B0%8F%E6%8A%80%E5%B7%A7%2F</url>
     <content type="text"><![CDATA[全屏截图F12打开开发工具栏, Ctl+Shift+P调出查找界面栏, 输入命令full回车截图并自动下载(或者capture选择截图模式)]]></content>
