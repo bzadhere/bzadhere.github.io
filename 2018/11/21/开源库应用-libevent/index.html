@@ -79,15 +79,20 @@
 
 
 
+<meta name="description" content="使用简介 初始化 event_init()/event_base_new() 通过event对象对文件描述符进行监控 event_set()/event_add()/event_dispatch()  读写I/O事件 bufferevent_enable()/bufferevent_disable(), bufferevent_read()/bufferevent_write()  定时事件 ev">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="开源库应用--libevent">
 <meta property="og:url" content="http://yoursite.com/2018/11/21/开源库应用-libevent/index.html">
 <meta property="og:site_name" content="扫地小道童">
+<meta property="og:description" content="使用简介 初始化 event_init()/event_base_new() 通过event对象对文件描述符进行监控 event_set()/event_add()/event_dispatch()  读写I/O事件 bufferevent_enable()/bufferevent_disable(), bufferevent_read()/bufferevent_write()  定时事件 ev">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-21T06:14:16.351Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/21/开源库应用-libevent/1.png">
+<meta property="og:updated_time" content="2019-08-30T08:57:01.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开源库应用--libevent">
+<meta name="twitter:description" content="使用简介 初始化 event_init()/event_base_new() 通过event对象对文件描述符进行监控 event_set()/event_add()/event_dispatch()  读写I/O事件 bufferevent_enable()/bufferevent_disable(), bufferevent_read()/bufferevent_write()  定时事件 ev">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/21/开源库应用-libevent/1.png">
 
 
 
@@ -394,7 +399,28 @@
       
 
       
-        
+        <h1 id="使用简介"><a href="#使用简介" class="headerlink" title="使用简介"></a>使用简介</h1><ol>
+<li>初始化 event_init()/event_base_new()</li>
+<li>通过event对象对文件描述符进行监控 event_set()/event_add()/event_dispatch() </li>
+<li>读写I/O事件 bufferevent_enable()/bufferevent_disable(), bufferevent_read()/bufferevent_write() </li>
+<li>定时事件 evtimer_set()/ evtimer_add()/ evtimer_del() </li>
+<li>对文件描述符指定超时时间 timeout_set()/timeout_add()/timeout_del() </li>
+<li>异步DNS evdns_init()/evdns_resolve_ipv4()/evdns_resolve_reverse() </li>
+<li>http server evhttp_new()/evhttp_bind_socket()/evhttp_set_cb()/evhttp_set_gencb() </li>
+<li>rpc server and clients</li>
+</ol>
+<h1 id="设计原理"><a href="#设计原理" class="headerlink" title="设计原理"></a>设计原理</h1><p><img src="/2018/11/21/开源库应用-libevent/1.png" alt=""></p>
+<p>基于Reactor模式</p>
+<blockquote>
+<p>Handle 事件源, 如Linux下的文件描述符<br>Event Handle 为事件处理提供一组有效接口, 对应绑定一个事件源<br>Reactor 事件管理接口, 内部使用Event Demultiplexer注册/注销事件, 运行事件循环, 当事件就绪时, 调用对应回调函数<br>Event Demultiplexer 事件多路分发机制, 由select,poll,epoll等实现</p>
+</blockquote>
+<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><h2 id="event"><a href="#event" class="headerlink" title="event"></a>event</h2><p>用event_new创建时设置好监听事件/回调函数, 或event_set设置</p>
+<div><div class="fold_hider"><div class="close hider_title">点击显/隐内容</div></div><div class="fold">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">struct event &#123;</span><br><span class="line">	struct event_callback ev_evcallback;  // 回调函数, event_base 调用</span><br><span class="line"></span><br><span class="line">	/* for managing timeouts */</span><br><span class="line">	union &#123;</span><br><span class="line">		TAILQ_ENTRY(event) ev_next_with_common_timeout;</span><br><span class="line">		int min_heap_idx;			   // 索引值指明该event结构体在堆的位置</span><br><span class="line">	&#125; ev_timeout_pos;                  // 定时事件</span><br><span class="line">	evutil_socket_t ev_fd;             // 文件描述符 或 信号</span><br><span class="line"></span><br><span class="line">	struct event_base *ev_base;        // 管理者指针</span><br><span class="line"></span><br><span class="line">	union &#123;                                 // 用union节省内存, 只会用一种类型事件</span><br><span class="line">		/* used for io events */</span><br><span class="line">		struct &#123;</span><br><span class="line">			LIST_ENTRY (event) ev_io_next;  // 双向链表, 可以有多个文件描述符</span><br><span class="line">			struct timeval ev_timeout;</span><br><span class="line">		&#125; ev_io;</span><br><span class="line"></span><br><span class="line">		/* used by signal events */</span><br><span class="line">		struct &#123;</span><br><span class="line">			LIST_ENTRY (event) ev_signal_next;</span><br><span class="line">			short ev_ncalls;</span><br><span class="line">			/* Allows deletes in callback */</span><br><span class="line">			short *ev_pncalls;</span><br><span class="line">		&#125; ev_signal;</span><br><span class="line">	&#125; ev_;        // I/O 或 信号事件</span><br><span class="line"></span><br><span class="line">	short ev_events;     // 关注的事件类型 I/O事件(EV_READ/EV_WRITE/EV_CLOSED)...</span><br><span class="line">	short ev_res;		/* result passed to event callback */</span><br><span class="line">	struct timeval ev_timeout;  // 超时时间</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+<h2 id="event-base"><a href="#event-base" class="headerlink" title="event_base"></a>event_base</h2><h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><p>memcache</p>
+
       
     </div>
     
@@ -511,8 +537,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -572,6 +607,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用简介"><span class="nav-number">1.</span> <span class="nav-text">使用简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计原理"><span class="nav-number">2.</span> <span class="nav-text">设计原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码分析"><span class="nav-number">3.</span> <span class="nav-text">源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#event"><span class="nav-number">3.1.</span> <span class="nav-text">event</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#event-base"><span class="nav-number">3.2.</span> <span class="nav-text">event_base</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用"><span class="nav-number">4.</span> <span class="nav-text">应用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

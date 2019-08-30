@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="基本概念定义HTTP(Hypertext Transfer Protocol) 超文本传输协议, 用HTML超文本标记语言(Hypertext Markup Language)作为创建网页的标准 特点网络基础HTTP使用的传输层协议为可靠的TCP协议，而网络层使用的是IP协议 URI和URLURI(Uniform Resource Identifier) 统一资源标识符(RFC2396定义), 就">
+<meta name="description" content="基本概念定义HTTP(Hypertext Transfer Protocol) 超文本传输协议, 用HTML超文本标记语言(Hypertext Markup Language)作为创建网页的标准 特点支持客户/服务器模式简单快速：客户向服务器请求服务时，只需传送请求方法和路径, 常用的有GET、HEAD、POST灵活：允许传输任意类型的数据对象, 传输的类型由Content-Type加以标记无连接">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图解http 读书笔记">
 <meta property="og:url" content="http://yoursite.com/2019/03/18/图解http-读书笔记/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="基本概念定义HTTP(Hypertext Transfer Protocol) 超文本传输协议, 用HTML超文本标记语言(Hypertext Markup Language)作为创建网页的标准 特点网络基础HTTP使用的传输层协议为可靠的TCP协议，而网络层使用的是IP协议 URI和URLURI(Uniform Resource Identifier) 统一资源标识符(RFC2396定义), 就">
+<meta property="og:description" content="基本概念定义HTTP(Hypertext Transfer Protocol) 超文本传输协议, 用HTML超文本标记语言(Hypertext Markup Language)作为创建网页的标准 特点支持客户/服务器模式简单快速：客户向服务器请求服务时，只需传送请求方法和路径, 常用的有GET、HEAD、POST灵活：允许传输任意类型的数据对象, 传输的类型由Content-Type加以标记无连接">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-21T07:33:28.477Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/18/图解http-读书笔记/1.png">
+<meta property="og:updated_time" content="2019-08-26T06:58:07.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解http 读书笔记">
-<meta name="twitter:description" content="基本概念定义HTTP(Hypertext Transfer Protocol) 超文本传输协议, 用HTML超文本标记语言(Hypertext Markup Language)作为创建网页的标准 特点网络基础HTTP使用的传输层协议为可靠的TCP协议，而网络层使用的是IP协议 URI和URLURI(Uniform Resource Identifier) 统一资源标识符(RFC2396定义), 就">
+<meta name="twitter:description" content="基本概念定义HTTP(Hypertext Transfer Protocol) 超文本传输协议, 用HTML超文本标记语言(Hypertext Markup Language)作为创建网页的标准 特点支持客户/服务器模式简单快速：客户向服务器请求服务时，只需传送请求方法和路径, 常用的有GET、HEAD、POST灵活：允许传输任意类型的数据对象, 传输的类型由Content-Type加以标记无连接">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/18/图解http-读书笔记/1.png">
 
 
 
@@ -398,9 +400,103 @@
 
       
         <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>HTTP(Hypertext Transfer Protocol) 超文本传输协议, 用HTML超文本标记语言<br>(Hypertext Markup Language)作为创建网页的标准</p>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><h2 id="网络基础"><a href="#网络基础" class="headerlink" title="网络基础"></a>网络基础</h2><p>HTTP使用的传输层协议为可靠的TCP协议，而网络层使用的是IP协议</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>支持客户/服务器模式<br>简单快速：客户向服务器请求服务时，只需传送请求方法和路径, 常用的有GET、HEAD、POST<br>灵活：允许传输任意类型的数据对象, 传输的类型由Content-Type加以标记<br>无连接：限制每次连接只处理一个请求, 处理完后关闭连接<br>无状态：协议对于事务处理没有记忆能力</p>
+<a id="more"></a>
+<h2 id="网络基础"><a href="#网络基础" class="headerlink" title="网络基础"></a>网络基础</h2><p>HTTP使用的传输层协议为可靠的TCP协议，而网络层使用的是IP协议</p>
 <h2 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h2><p>URI(Uniform Resource Identifier) 统一资源标识符(RFC2396定义), 就是由某个协议<br>方案表示的资源的定位标识符, URL是URI的子集<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://www.rfc.com/rfc/rfc.txt</span><br><span class="line">ftp://ftp.rfc.com/rfc/rfc.txt</span><br><span class="line">......</span><br></pre></td></tr></table></figure></p>
-<h1 id="简单的HTTP协议"><a href="#简单的HTTP协议" class="headerlink" title="简单的HTTP协议"></a>简单的HTTP协议</h1>
+<h1 id="简单的HTTP协议"><a href="#简单的HTTP协议" class="headerlink" title="简单的HTTP协议"></a>简单的HTTP协议</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">GET</td>
+<td style="text-align:left">获取资源</td>
+</tr>
+<tr>
+<td style="text-align:left">POST</td>
+<td style="text-align:left">传输实际主体</td>
+</tr>
+<tr>
+<td style="text-align:left">PUT</td>
+<td style="text-align:left">传输文件</td>
+</tr>
+<tr>
+<td style="text-align:left">HEAD</td>
+<td style="text-align:left">获得报文首部</td>
+</tr>
+<tr>
+<td style="text-align:left">DELETE</td>
+<td style="text-align:left">删除文件</td>
+</tr>
+<tr>
+<td style="text-align:left">OPTIONS</td>
+<td style="text-align:left">询问支持的方法</td>
+</tr>
+<tr>
+<td style="text-align:left">TRACE</td>
+<td style="text-align:left">追踪路径</td>
+</tr>
+<tr>
+<td style="text-align:left">CONNECT</td>
+<td style="text-align:left">要求用隧道协议链接代理</td>
+</tr>
+</tbody>
+</table>
+<p>使用cookie进行状态管理</p>
+<h1 id="http报文"><a href="#http报文" class="headerlink" title="http报文"></a>http报文</h1><p>由报文首部和报文主体组成, 一般CR(Carriage Return 回车符0x0d)+LF(Line Feed 换行符0x0a)来划分</p>
+<p><img src="/2019/03/18/图解http-读书笔记/1.png" alt=""></p>
+<h2 id="压缩编码"><a href="#压缩编码" class="headerlink" title="压缩编码"></a>压缩编码</h2><p>常用的内容编码 gzip(GNU zip), compress(UNIX), default(zip), identity(不进行编码)</p>
+<h2 id="分块传输"><a href="#分块传输" class="headerlink" title="分块传输"></a>分块传输</h2><p>from-data, byteranges</p>
+<h2 id="内容协商返回"><a href="#内容协商返回" class="headerlink" title="内容协商返回"></a>内容协商返回</h2><p>服务器驱动(在服务端自动处理)/客户端驱动/透明协商</p>
+<h1 id="http状态码"><a href="#http状态码" class="headerlink" title="http状态码"></a>http状态码</h1><h2 id="状态码类别"><a href="#状态码类别" class="headerlink" title="状态码类别"></a>状态码类别</h2><table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">类别</th>
+<th style="text-align:left">原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1xx</td>
+<td style="text-align:left">指示信息</td>
+<td style="text-align:left">接收的请求正在处理</td>
+</tr>
+<tr>
+<td style="text-align:left">2xx</td>
+<td style="text-align:left">成功</td>
+<td style="text-align:left">请求正常处理完毕</td>
+</tr>
+<tr>
+<td style="text-align:left">3xx</td>
+<td style="text-align:left">重定向</td>
+<td style="text-align:left">请求需要进行更进一步操作</td>
+</tr>
+<tr>
+<td style="text-align:left">4xx</td>
+<td style="text-align:left">客户端错误</td>
+<td style="text-align:left">服务器无法处理请求</td>
+</tr>
+<tr>
+<td style="text-align:left">5xx</td>
+<td style="text-align:left">服务端错误</td>
+<td style="text-align:left">服务器处理请求出错</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2xx"><a href="#2xx" class="headerlink" title="2xx"></a>2xx</h2><p>200 ok 请求被正常处理<br>204 no content 请求被正常处理, 不返回任何实体, 浏览器页面不更新<br>206 Partial content 范围请求响应</p>
+<h2 id="3xx"><a href="#3xx" class="headerlink" title="3xx"></a>3xx</h2><p>301 Moved Permanently 永久重定向, 请求资源已被分配了新的URI<br>302 Found 临时重定向, 请求资源已被分配了新的URI, 将来有可能还会发生改变<br>303 See Other 请求对应资源存在另一个URI, 用GET方法定向获取<br>304 Not Modified 客户端发送条件请求, 服务端允许访问资源, 但不满足条件, 返回304, 和重定向无关<br>307 Temporary Redirect 临时重定向, 禁止POST变成GET, 实际取决于浏览器</p>
+<h2 id="4xx"><a href="#4xx" class="headerlink" title="4xx"></a>4xx</h2><p>400 bad request 请求报文语法错误<br>401 unauthorized 需要认证信息<br>403 forbidden 请求资费的访问被拒绝<br>404 not found 服务器上无法找到请求资源</p>
+<h2 id="5xx"><a href="#5xx" class="headerlink" title="5xx"></a>5xx</h2><p>500 internal server err 服务端在执行请求发生了错误<br>503 service unavaliable 服务器无法处理请求, 负载太大或停机</p>
+<h1 id="Web服务器"><a href="#Web服务器" class="headerlink" title="Web服务器"></a>Web服务器</h1><h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>只是转发请求, 每次代理转发追加Via信息</p>
+<h2 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h2><p>使通信线路上的服务器提供非HTTP协议服务</p>
+<h2 id="隧道"><a href="#隧道" class="headerlink" title="隧道"></a>隧道</h2><p>建立一条与其他服务器通信线路, 使用SSL等加密手段通信</p>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>指代理服务器或客户端本地磁盘内保存的副本</p>
+<h1 id="http首部"><a href="#http首部" class="headerlink" title="http首部"></a>http首部</h1><h1 id="https"><a href="#https" class="headerlink" title="https"></a>https</h1>
       
     </div>
     
@@ -597,7 +693,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络基础"><span class="nav-number">1.3.</span> <span class="nav-text">网络基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URI和URL"><span class="nav-number">1.4.</span> <span class="nav-text">URI和URL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单的HTTP协议"><span class="nav-number">2.</span> <span class="nav-text">简单的HTTP协议</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络基础"><span class="nav-number">1.3.</span> <span class="nav-text">网络基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URI和URL"><span class="nav-number">1.4.</span> <span class="nav-text">URI和URL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单的HTTP协议"><span class="nav-number">2.</span> <span class="nav-text">简单的HTTP协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http报文"><span class="nav-number">3.</span> <span class="nav-text">http报文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩编码"><span class="nav-number">3.1.</span> <span class="nav-text">压缩编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分块传输"><span class="nav-number">3.2.</span> <span class="nav-text">分块传输</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容协商返回"><span class="nav-number">3.3.</span> <span class="nav-text">内容协商返回</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http状态码"><span class="nav-number">4.</span> <span class="nav-text">http状态码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#状态码类别"><span class="nav-number">4.1.</span> <span class="nav-text">状态码类别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2xx"><span class="nav-number">4.2.</span> <span class="nav-text">2xx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3xx"><span class="nav-number">4.3.</span> <span class="nav-text">3xx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4xx"><span class="nav-number">4.4.</span> <span class="nav-text">4xx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5xx"><span class="nav-number">4.5.</span> <span class="nav-text">5xx</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web服务器"><span class="nav-number">5.</span> <span class="nav-text">Web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代理"><span class="nav-number">5.1.</span> <span class="nav-text">代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网关"><span class="nav-number">5.2.</span> <span class="nav-text">网关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隧道"><span class="nav-number">5.3.</span> <span class="nav-text">隧道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">5.4.</span> <span class="nav-text">缓存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http首部"><span class="nav-number">6.</span> <span class="nav-text">http首部</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#https"><span class="nav-number">7.</span> <span class="nav-text">https</span></a></li></ol></div>
             
 
           </div>
