@@ -88,7 +88,7 @@
 <meta property="og:description" content="创建仓库git clone [url] [dir]git init git@github.com:bzadhere/myim.git ssh协议https://github.com/bzadhere/myim.git https协议 git生成SSH公钥~/.ssh 目录下有公钥, 或ssh-keygen创建, 生成公钥id_rsa.pub和私钥id_rsa">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/08/14/git操作命令/git-cheat-sheet.png">
-<meta property="og:updated_time" content="2019-08-21T03:26:06.287Z">
+<meta property="og:updated_time" content="2019-09-06T08:10:04.907Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git操作命令">
 <meta name="twitter:description" content="创建仓库git clone [url] [dir]git init git@github.com:bzadhere/myim.git ssh协议https://github.com/bzadhere/myim.git https协议 git生成SSH公钥~/.ssh 目录下有公钥, 或ssh-keygen创建, 生成公钥id_rsa.pub和私钥id_rsa">
@@ -427,7 +427,7 @@
 <hr>
 <h1 id="修改提交"><a href="#修改提交" class="headerlink" title="修改提交"></a>修改提交</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 文件改名</span><br><span class="line">git mv &lt;old&gt; &lt;new&gt;</span><br><span class="line">// 彻底删除文件,  包括工作区和暂存区</span><br><span class="line">git rm &lt;file&gt;</span><br><span class="line">// 暂存区和上一个版本差异</span><br><span class="line">git diff --stage</span><br></pre></td></tr></table></figure>
 <hr>
-<h1 id="版本合并-变基"><a href="#版本合并-变基" class="headerlink" title="版本合并(变基)"></a>版本合并(变基)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 下载更新到本地</span><br><span class="line">git fetch [remote-name]</span><br><span class="line">// 合并到任意分支</span><br><span class="line">git merge [shortname]</span><br><span class="line">// 推送本地数据到远程仓库, 如果从分支push 会产生合并请求</span><br><span class="line">git push [remote-name] [branch-name]</span><br><span class="line">// 从远程仓库更新合并到本地</span><br><span class="line">git pull [remote-name] [branch-name]</span><br></pre></td></tr></table></figure>
+<h1 id="版本合并-变基"><a href="#版本合并-变基" class="headerlink" title="版本合并(变基)"></a>版本合并(变基)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 下载更新到本地</span><br><span class="line">git fetch [remote-name]</span><br><span class="line">// 合并到任意分支</span><br><span class="line">git merge [shortname]</span><br><span class="line">// 推送本地数据到远程仓库, 如果从分支push 会产生合并请求</span><br><span class="line">git push [remote-name] [branch-name]</span><br><span class="line">// 从远程仓库更新合并到本地</span><br><span class="line">git pull [remote-name] [branch-name]</span><br><span class="line"></span><br><span class="line">// 合并一个分支上改动的部分文件到master</span><br><span class="line">git checkeout master</span><br><span class="line">git checkeout --path branch file</span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="回退commit"><a href="#回退commit" class="headerlink" title="回退commit"></a>回退commit</h1><p>最后三个版本 HEAD~3包含(HEAD, HEAD^, HEAD~2)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 本地进行了多次git commit操作，现在想撤销到其中某次Commit</span><br><span class="line">// soft 回退到某个版本，只回退了commit的信息，不会恢复到index file一级</span><br><span class="line">// mixed 此为默认方式, 回退到某个版本，只保留源码，回退commit和index信息</span><br><span class="line">// hard 彻底回退到某个版本，本地的源码也会变为上一个版本的内容</span><br><span class="line">git reset [--soft | --mixed | --hard | --merge | --keep] [-q] [&lt;commit&gt;]</span><br><span class="line"></span><br><span class="line">// 文件被修改了，但未执行git add操作(working tree内撤销) </span><br><span class="line">git checkout fileName </span><br><span class="line">git checkout .</span><br><span class="line"></span><br><span class="line">// 同时对多个文件执行了git add操作，但本次只想提交其中一部分文件</span><br><span class="line">git add *</span><br><span class="line">git status</span><br><span class="line">git reset HEAD &lt;filename&gt; # 取消暂存</span><br><span class="line"></span><br><span class="line">// 文件执行了git add操作，但想撤销对其的修改（index内回滚）</span><br><span class="line">git reset HEAD fileName # 取消暂存</span><br><span class="line">git checkout fileName # 撤销修改</span><br><span class="line"></span><br><span class="line">// 修改的文件已被git commit，但想再次修改不再产生新的Commit</span><br><span class="line">git add sample.txt</span><br><span class="line">git commit --amend -m &quot;说明&quot; # 修改最后一次提交 </span><br><span class="line"></span><br><span class="line">// 修改最近三次提交信息, 删除某次提交, 编辑删除即可</span><br><span class="line">git rebase -i HEAD~3</span><br></pre></td></tr></table></figure>
@@ -497,6 +497,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/06/lua应用/" rel="prev" title="lua应用">
+                lua应用 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -573,7 +577,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">104</span>
+                  <span class="site-state-item-count">105</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
