@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/16/CDN技术详解-笔记/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/16/CDN技术详解-笔记/3.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/16/CDN技术详解-笔记/4.png">
-<meta property="og:updated_time" content="2019-09-17T03:35:39.370Z">
+<meta property="og:updated_time" content="2019-09-17T08:00:40.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CDN技术详解 笔记">
 <meta name="twitter:description" content="引言CDN基本概念, Content Distribute Network, 内容分发网络。产生背景, 为解决网络拥塞问题：第一公里/最后一公里/对等互联网关/长途骨干传输CDN的基本工作过程">
@@ -440,11 +440,54 @@
 <h2 id="开源软件-1"><a href="#开源软件-1" class="headerlink" title="开源软件"></a>开源软件</h2><p>LVS/Nginx</p>
 <h1 id="全局负载均衡工作原理"><a href="#全局负载均衡工作原理" class="headerlink" title="全局负载均衡工作原理"></a>全局负载均衡工作原理</h1><p>GSLB 在全网对各节点(设备)保持负载</p>
 <h2 id="基于DNS解析的GSLB"><a href="#基于DNS解析的GSLB" class="headerlink" title="基于DNS解析的GSLB"></a>基于DNS解析的GSLB</h2><ul>
-<li><p>实现机制</p>
-</li>
-<li><p>应用部署方式</p>
-</li>
+<li>DNS基本工作原理<br>根DNS服务器, 顶级域名服务器, 权威DNS服务器共同组成了DNS服务器层, 共同维护分布式层次化的数据库<br>本地DNS服务器：用户所在局域网或ISP网络中的域名服务器</li>
 </ul>
+<p>DNS记录类型及报文格式 可以用nslookup工具查看 </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">原名</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">A记录</td>
+<td style="text-align:left">Adress</td>
+<td style="text-align:left">域名到IP映射关系,可以有多条记录</td>
+</tr>
+<tr>
+<td style="text-align:left">NS记录</td>
+<td style="text-align:left">Name Server</td>
+<td style="text-align:left">域名服务器记录, 指定由哪个域名服务器来解析, 可以有多条记录</td>
+</tr>
+<tr>
+<td style="text-align:left">SOA记录</td>
+<td style="text-align:left">Start Of Authority</td>
+<td style="text-align:left">指定该区域的权威服务器, 只允许一条记录</td>
+</tr>
+<tr>
+<td style="text-align:left">CNAME记录</td>
+<td style="text-align:left">.</td>
+<td style="text-align:left">域名或主机的别名, 允许多个名字映射到一台计算机, 别名用来查询A记录</td>
+</tr>
+<tr>
+<td style="text-align:left">PTR记录</td>
+<td style="text-align:left">Pointer Record</td>
+<td style="text-align:left">IP到域名的映射关系, 一个IP可以有多个域名</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>基于DNS解析的GSLB实现机制<br>通过CNAME方式实现负载均衡, 返回排序的IP地址<br>负载均衡器作为权威DNS服务器<br>负载均衡器作为代理DNS服务器</li>
+</ul>
+<p>负载均衡策略：服务器的健康状况/地理区域距离/会话保持/响应时间/IP地址权重/会话能力阀值/往返时间<br>开源DNS软件: BIND</p>
+<ul>
+<li>应用部署方式<br>域组：由CNAME中的别名查询到多个服务池IP<br>区域：用户本地DNS服务器代表的范围(联通, 电信)<br>服务池: 虚拟服务器集合<br>虚拟服务器：可以是四层交换设备进行负载均衡的一组服务器设备<br>!()[/5.png]</li>
+</ul>
+<p>负载均衡策略, 静态策略(基于IP地址/地理位置/POP节点/成本) , 动态策略(基于POP节点健康/会话能力/物理服务器绑定/流量)</p>
+<p><strong>GSLB部署关键问题:</strong> 网站SP接入, 用户访问调度, 异常流程, 网络攻击</p>
 <h2 id="基于应用层协议重定向GSLB"><a href="#基于应用层协议重定向GSLB" class="headerlink" title="基于应用层协议重定向GSLB"></a>基于应用层协议重定向GSLB</h2><h2 id="基于IP路由的GSLB"><a href="#基于IP路由的GSLB" class="headerlink" title="基于IP路由的GSLB"></a>基于IP路由的GSLB</h2><h1 id="流媒体CDN系统的组成和关键技术"><a href="#流媒体CDN系统的组成和关键技术" class="headerlink" title="流媒体CDN系统的组成和关键技术"></a>流媒体CDN系统的组成和关键技术</h1><h1 id="动态内容和加速服务实现"><a href="#动态内容和加速服务实现" class="headerlink" title="动态内容和加速服务实现"></a>动态内容和加速服务实现</h1><h1 id="CDN商业化服务现状"><a href="#CDN商业化服务现状" class="headerlink" title="CDN商业化服务现状"></a>CDN商业化服务现状</h1><h1 id="CND发展展望"><a href="#CND发展展望" class="headerlink" title="CND发展展望"></a>CND发展展望</h1>
       
     </div>
