@@ -93,7 +93,9 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/16/CDN技术详解-笔记/4.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/16/CDN技术详解-笔记/5.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/16/CDN技术详解-笔记/6.png">
-<meta property="og:updated_time" content="2019-09-18T02:46:49.148Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/16/CDN技术详解-笔记/7.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/16/CDN技术详解-笔记/8.png">
+<meta property="og:updated_time" content="2019-09-23T02:34:09.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CDN技术详解 笔记">
 <meta name="twitter:description" content="引言CDN基本概念, Content Distribute Network, 内容分发网络。产生背景, 为解决网络拥塞问题：第一公里/最后一公里/对等互联网关/长途骨干传输CDN的基本工作过程">
@@ -498,7 +500,17 @@
 <h2 id="基于IP路由的GSLB"><a href="#基于IP路由的GSLB" class="headerlink" title="基于IP路由的GSLB"></a>基于IP路由的GSLB</h2><ul>
 <li>思科LISP协议, 封装多个IP, 网络运营商需要硬件支持</li>
 </ul>
-<h1 id="流媒体CDN系统的组成和关键技术"><a href="#流媒体CDN系统的组成和关键技术" class="headerlink" title="流媒体CDN系统的组成和关键技术"></a>流媒体CDN系统的组成和关键技术</h1><h1 id="动态内容和加速服务实现"><a href="#动态内容和加速服务实现" class="headerlink" title="动态内容和加速服务实现"></a>动态内容和加速服务实现</h1><h1 id="CDN商业化服务现状"><a href="#CDN商业化服务现状" class="headerlink" title="CDN商业化服务现状"></a>CDN商业化服务现状</h1><h1 id="CND发展展望"><a href="#CND发展展望" class="headerlink" title="CND发展展望"></a>CND发展展望</h1>
+<h1 id="流媒体CDN系统的组成和关键技术"><a href="#流媒体CDN系统的组成和关键技术" class="headerlink" title="流媒体CDN系统的组成和关键技术"></a>流媒体CDN系统的组成和关键技术</h1><ul>
+<li><p>流媒体系统工作原理</p>
+</li>
+<li><p>流媒体协议<br>TRSP 远程播放控制, RTP用来提供时间信息和实现流同步, RTCP协助RTP完成质量传输控制,<br>RTMP 和 HTTP Streaming 是企业自有流媒体协议<br><strong>RTP和RTCP</strong><br><img src="/2019/09/16/CDN技术详解-笔记/7.png" alt=""><br><img src="/2019/09/16/CDN技术详解-笔记/8.png" alt=""> </p>
+</li>
+</ul>
+<p><strong>RTSP</strong><br>应用层协议, 在RTP/TTCP之上, 像遥控器控制电视一样</p>
+<p><strong>RTMP</strong><br>flash流媒体</p>
+<p><strong>HTTP Streaming</strong></p>
+<p><strong>MPEG-2 TS</strong></p>
+<h1 id="动态内容和加速服务实现"><a href="#动态内容和加速服务实现" class="headerlink" title="动态内容和加速服务实现"></a>动态内容和加速服务实现</h1><h1 id="CDN商业化服务现状"><a href="#CDN商业化服务现状" class="headerlink" title="CDN商业化服务现状"></a>CDN商业化服务现状</h1><h1 id="CND发展展望"><a href="#CND发展展望" class="headerlink" title="CND发展展望"></a>CND发展展望</h1>
       
     </div>
     
@@ -560,6 +572,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/08/费曼技巧/" rel="prev" title="费曼技巧">
+                费曼技巧 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -636,7 +652,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-count">107</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
