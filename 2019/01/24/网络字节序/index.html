@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="理解字节序 大端字节序：高位字节在前, 低位字节在后, 这是人类读取字节的方法。小端字节序：低位字节在前, 高位字节在后    0x1234567的大端字节序和小端字节序的写法如下    地址 0x100 0x101 0x102 0x103     大端 0x01 0x23 0x45 0x67   小端 0x67 0x45 0x23 0x01    网络字节序网络字节顺序是TCP/IP中规定好的一">
+<meta name="description" content="理解字节序 大端字节序：高位字节在前, 低位字节在后, 是人类读取字节的方法小端字节序：低位字节在前, 高位字节在后    int32 num = 0x1234567的大端字节序和小端字节序的写法如下    地址 0x100 0x101 0x102 0x103     大端 0x01 0x23 0x45 0x67   小端 0x67 0x45 0x23 0x01    网络字节序网络字节顺序采用大">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络字节序">
 <meta property="og:url" content="http://yoursite.com/2019/01/24/网络字节序/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="理解字节序 大端字节序：高位字节在前, 低位字节在后, 这是人类读取字节的方法。小端字节序：低位字节在前, 高位字节在后    0x1234567的大端字节序和小端字节序的写法如下    地址 0x100 0x101 0x102 0x103     大端 0x01 0x23 0x45 0x67   小端 0x67 0x45 0x23 0x01    网络字节序网络字节顺序是TCP/IP中规定好的一">
+<meta property="og:description" content="理解字节序 大端字节序：高位字节在前, 低位字节在后, 是人类读取字节的方法小端字节序：低位字节在前, 高位字节在后    int32 num = 0x1234567的大端字节序和小端字节序的写法如下    地址 0x100 0x101 0x102 0x103     大端 0x01 0x23 0x45 0x67   小端 0x67 0x45 0x23 0x01    网络字节序网络字节顺序采用大">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-15T02:40:19.372Z">
+<meta property="og:updated_time" content="2019-10-29T02:33:03.067Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络字节序">
-<meta name="twitter:description" content="理解字节序 大端字节序：高位字节在前, 低位字节在后, 这是人类读取字节的方法。小端字节序：低位字节在前, 高位字节在后    0x1234567的大端字节序和小端字节序的写法如下    地址 0x100 0x101 0x102 0x103     大端 0x01 0x23 0x45 0x67   小端 0x67 0x45 0x23 0x01    网络字节序网络字节顺序是TCP/IP中规定好的一">
+<meta name="twitter:description" content="理解字节序 大端字节序：高位字节在前, 低位字节在后, 是人类读取字节的方法小端字节序：低位字节在前, 高位字节在后    int32 num = 0x1234567的大端字节序和小端字节序的写法如下    地址 0x100 0x101 0x102 0x103     大端 0x01 0x23 0x45 0x67   小端 0x67 0x45 0x23 0x01    网络字节序网络字节顺序采用大">
 
 
 
@@ -398,9 +398,9 @@
 
       
         <h1 id="理解字节序"><a href="#理解字节序" class="headerlink" title="理解字节序"></a>理解字节序</h1><blockquote>
-<p>大端字节序：高位字节在前, 低位字节在后, 这是人类读取字节的方法。<br>小端字节序：低位字节在前, 高位字节在后  </p>
+<p>大端字节序：高位字节在前, 低位字节在后, 是人类读取字节的方法<br>小端字节序：低位字节在前, 高位字节在后  </p>
 </blockquote>
-<p>0x1234567的大端字节序和小端字节序的写法如下</p>
+<p>int32 num = 0x1234567的大端字节序和小端字节序的写法如下</p>
 <table>
 <thead>
 <tr>
@@ -428,8 +428,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="网络字节序"><a href="#网络字节序" class="headerlink" title="网络字节序"></a>网络字节序</h1><p>网络字节顺序是TCP/IP中规定好的一种数据表示格式, 采用大端字节序; 与具体的CPU类型、操作系统等无关，<br>从而可以保证数据在不同主机之间传输时能够被正确解释。</p>
-<p>4个字节的32 bit值以下面的次序传输：首先是0～7bit，其次8～15bit，然后16～23bit，最后是24~31bit。<br>这种传输次序称作大端字节序。由于TCP/IP首部中所有的二进制整数在网络中传输时都要求以这种次序，<br>因此它又称作网络字节序。</p>
+<h1 id="网络字节序"><a href="#网络字节序" class="headerlink" title="网络字节序"></a>网络字节序</h1><p>网络字节顺序采用大端字节序, 是TCP/IP中规定好的一种数据表示格式;<br>与具体的CPU类型、操作系统等无关, 保证数据在不同主机之间传输时能够被正确解释。</p>
 <h1 id="主机字节序"><a href="#主机字节序" class="headerlink" title="主机字节序"></a>主机字节序</h1><table>
 <thead>
 <tr>
