@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="all-stop mode: 默认模式, 有一个线程在断点处停止，其他所有线程也会停止 non-stop mode: 某一个线程停止时，其他线程会继续运行 Background Execution：异步运行程序 Thread-Specific Breakpoints: 控制断点 Interrupted System Calls: gdb会干扰系统调用 Observer Mode：gdb不影响程">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-06T05:48:47.011Z">
+<meta property="og:updated_time" content="2019-11-06T05:51:55.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gdb多线程调试">
 <meta name="twitter:description" content="all-stop mode: 默认模式, 有一个线程在断点处停止，其他所有线程也会停止 non-stop mode: 某一个线程停止时，其他线程会继续运行 Background Execution：异步运行程序 Thread-Specific Breakpoints: 控制断点 Interrupted System Calls: gdb会干扰系统调用 Observer Mode：gdb不影响程">
@@ -442,14 +442,35 @@
 </ul>
 <hr>
 <ul>
-<li style="list-style: none"><input type="checkbox"> Interrupted System Calls<br>在使用gdb调试多线程程序时，有一个副作用。如果一个线程因断点或其他原因而停止，而另一个线程在系统调用中被阻塞，那么系统调用可能会提前返回。这是多线程和gdb用来实现断点和其他停止执行的事件的信号之间交互的结果。<br>例如： sleep (10); 如果不同的线程在断点处或出于其他原因停止，则调用sleep将提前返回。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">       <span class="keyword">int</span> unslept = <span class="number">10</span>;</span><br><span class="line">       <span class="keyword">while</span> (unslept &gt; <span class="number">0</span>)</span><br><span class="line">         unslept = sleep (unslept);</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">  允许系统调用提前返回，因此系统仍然符合其规范。但是gdb确实会导致多线程程序的行为与没有gdb时不同。</span><br><span class="line">  另外，gdb在线程库中使用内部断点来监视某些事件，例如线程创建和线程销毁。当这样的事件发生时，另一个线程中的系统调用可能会提前返回，即使您的程序似乎没有停止.  </span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">- [ ] Observer Mode</span><br><span class="line">略</span><br></pre></td></tr></table></figure>
+<li><p>[ ] Interrupted System Calls<br>在使用gdb调试多线程程序时，有一个副作用。如果一个线程因断点或其他原因而停止，而另一个线程在系统调用中被阻塞，那么系统调用可能会提前返回。这是多线程和gdb用来实现断点和其他停止执行的事件的信号之间交互的结果。<br>例如： sleep (10); 如果不同的线程在断点处或出于其他原因停止，则调用sleep将提前返回。</p>
+<pre><code class="c++"><span class="keyword">int</span> unslept = <span class="number">10</span>;
+<span class="keyword">while</span> (unslept &gt; <span class="number">0</span>)
+  unslept = sleep (unslept);
+</code></pre>
+<p>允许系统调用提前返回，因此系统仍然符合其规范。但是gdb确实会导致多线程程序的行为与没有gdb时不同。<br>另外，gdb在线程库中使用内部断点来监视某些事件，例如线程创建和线程销毁。当这样的事件发生时，另一个线程中的系统调用可能会提前返回，即使您的程序似乎没有停止.  </p>
 </li>
 </ul>
-<p>gdb sframe<br>// 设置non-stop 模式<br>set target-async 1<br>set pagination off<br>set non-stop on<br>// 设置断点<br>b ratms_base_rating.cpp:909 //insert<br>b ratms_base_sync.cpp:169  //truncate</p>
-<p>r -i xxxxx.xml</p>
-<p>ctrl+c<br>info threads<br>thread apply n continue<br>thread apply n continue</p>
-<p><code>`</code></p>
+<hr>
+<ul>
+<li style="list-style: none"><input type="checkbox"> Observer Mode<br>略 </li>
+</ul>
+<pre><code>gdb sframe
+// 设置non-stop 模式
+set target-async 1
+set pagination off
+set non-stop on
+// 设置断点
+b ratms_base_rating.cpp:909 //insert
+b ratms_base_sync.cpp:169  //truncate
+// 启动
+r -i xxxxx.xml
+// 发送请求
+ctrl+c
+info threads
+thread apply n continue
+thread apply n continue
 
+</code></pre>
       
     </div>
     
