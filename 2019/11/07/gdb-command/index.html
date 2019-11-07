@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="参考地址 脚本用户目录下 .gdbinit 文件, 启动gdb时默认加载 1234567891011121314151617181920212223# 打印STL容器中的内容pythonimport syssys.path.insert(0, &amp;apos;/home/maude/gdb_printers/python&amp;apos;)from libstdcxx.v6.printers import">
+<meta name="description" content="参考地址 脚本用户目录下 .gdbinit 文件, 启动gdb时默认加载">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gdb  command">
 <meta property="og:url" content="http://yoursite.com/2019/11/07/gdb-command/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="参考地址 脚本用户目录下 .gdbinit 文件, 启动gdb时默认加载 1234567891011121314151617181920212223# 打印STL容器中的内容pythonimport syssys.path.insert(0, &amp;apos;/home/maude/gdb_printers/python&amp;apos;)from libstdcxx.v6.printers import">
+<meta property="og:description" content="参考地址 脚本用户目录下 .gdbinit 文件, 启动gdb时默认加载">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-07T07:58:30.179Z">
+<meta property="og:updated_time" content="2019-11-07T08:07:34.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gdb  command">
-<meta name="twitter:description" content="参考地址 脚本用户目录下 .gdbinit 文件, 启动gdb时默认加载 1234567891011121314151617181920212223# 打印STL容器中的内容pythonimport syssys.path.insert(0, &amp;apos;/home/maude/gdb_printers/python&amp;apos;)from libstdcxx.v6.printers import">
+<meta name="twitter:description" content="参考地址 脚本用户目录下 .gdbinit 文件, 启动gdb时默认加载">
 
 
 
@@ -399,6 +399,7 @@
       
         <p><a href="https://github.com/hellogcc/100-gdb-tips" target="_blank" rel="noopener">参考地址</a></p>
 <h1 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h1><p>用户目录下 .gdbinit 文件, 启动gdb时默认加载</p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 打印STL容器中的内容</span><br><span class="line">python</span><br><span class="line">import sys</span><br><span class="line">sys.path.insert(0, &apos;/home/maude/gdb_printers/python&apos;)</span><br><span class="line">from libstdcxx.v6.printers import register_libstdcxx_printers</span><br><span class="line">register_libstdcxx_printers (None)</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"># 保存历史命令</span><br><span class="line">set history filename ~/.gdb_history</span><br><span class="line">set history save on</span><br><span class="line"></span><br><span class="line"># 退出时不显示提示信息</span><br><span class="line">set confirm off</span><br><span class="line"></span><br><span class="line"># 按照派生类型打印对象</span><br><span class="line">set print object on</span><br><span class="line"></span><br><span class="line"># 打印数组的索引下标</span><br><span class="line">set print array-indexes on</span><br><span class="line"></span><br><span class="line"># 每行打印一个结构体成员</span><br><span class="line">set print pretty on</span><br></pre></td></tr></table></figure>
 <h1 id="源文件"><a href="#源文件" class="headerlink" title="源文件"></a>源文件</h1><p>directory（或dir)命令设置源文件的查找目录</p>
 <h1 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">break/b</span><br><span class="line">break file:line</span><br><span class="line">break calss:function</span><br><span class="line"></span><br><span class="line">// 设置条件断点</span><br><span class="line">(gdb) break do_freebie if a&gt; 0 &amp;&amp; b&gt;0</span><br><span class="line"></span><br><span class="line">// 调试汇编, 在程序地址上打印断点, b *address </span><br><span class="line"></span><br><span class="line">// 设置临时断点, 只生效一次</span><br><span class="line">(gdb) tbreak filename:line</span><br><span class="line"></span><br><span class="line">// 使用如下命令将设置的断点保存下来</span><br><span class="line">(gdb) save breakpoints file-name-to-save</span><br><span class="line">// 下次调试时, 加载保存的断点</span><br><span class="line">(gdb) source file-name-to-save</span><br></pre></td></tr></table></figure>
