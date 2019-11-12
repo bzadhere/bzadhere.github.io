@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[备战2020]]></title>
     <url>%2F2019%2F11%2F11%2F%E5%A4%87%E6%88%982020%2F</url>
-    <content type="text"><![CDATA[title: 备战2020date: 2019-11-11 00:00:44tags: categories: 面试 简历重构经验 项目描述项目描述两三行，然后概括下我大概做了哪几个模块，完了。 找2-3个亮点, 一句话高度概括，突出亮点。 比如： 我负责这个系统中爬虫的开发，终端控制管理，店铺管理 负责系统中爬虫模块的开发，用于爬取影片的各种信息，包括年份，介绍，主演信息等 独立开发多线程影片信息爬虫工具， 并针对线程池性能、网络异常以及反爬虫措施进行多次优化，容错性良好并达到并发请求30+的QPS 面试的人有问题可以提，自己也可以掌握主动权，把握方向。 面试技巧1 简历一行行看，不要给自己挖坑 2 心态平和，正常表达，逻辑清晰有条理 3 缘分和运气 4 要有信念， 努力+坚持 目标 学习准备C/C++const / static / this / virtual / inline / volatile / assert / sizeof / #program pack(n) / 位域 extern “C” / struct class union / 封装继承多态 / explicit / friend / using / enum / decltype 左 右值引用 / 成员初始化列表 / 面向对象 / 虚析构函数 / 纯虚函数 / 虚函数 纯虚函数 虚函数表 指针 / 虚继承 / 模板类 函数 虚函数 / 抽象类 接口类 聚合类 / 内存分配管理 delete this / 定义只能在堆或栈上生成的类 / 智能指针 / 强制类型转换运算符号 / Effective C++ 抽空 STL容器array / vector / deque / forward_list / list / stack / queue / priority_queue / set / map find / sort 1周补充源码阅读, 11.11~11.17 数据结构顺序结构：stack / queue / list / 链队列，单链表，双向链表，循环链表 / 树：二叉/红黑/AVL/B/B+ 图： １周补充, 11.18~11.24 算法排序 / 查找 / 图搜索 / 其他(分治、动态规划、贪心) １周补充 , 11.24~12.1 设计模式23种设计模式 / 设计原则 1周补充，抽空 操作系统进程 / 线程 间通信 同步方式 字节序 1周补充， 12.2～12.8 计算机网络OSI七层/TCP四层 抽空 网络编程read/write socket select/poll/epoll 抽空 数据库范式 / 事务ACID / 并发控制(锁) / mysql 2周补充, 12.9~12.22 库与链接gdb分布式系统概念 / 实践 / 性能优化linux命令 网络 / 内存 / CPU 抽空 3rdtcmalloc / libevent / boost 2周补充]]></content>
+    <content type="text"><![CDATA[简历重构经验 项目描述项目描述两三行，然后概括下我大概做了哪几个模块，完了。 找2-3个亮点, 一句话高度概括，突出亮点。 比如： 我负责这个系统中爬虫的开发，终端控制管理，店铺管理 负责系统中爬虫模块的开发，用于爬取影片的各种信息，包括年份，介绍，主演信息等 独立开发多线程影片信息爬虫工具， 并针对线程池性能、网络异常以及反爬虫措施进行多次优化，容错性良好并达到并发请求30+的QPS 面试的人有问题可以提，自己也可以掌握主动权，把握方向。 面试技巧1 简历一行行看，不要给自己挖坑 2 心态平和，正常表达，逻辑清晰有条理 3 缘分和运气 4 要有信念， 努力+坚持 目标 学习准备C/C++const / static / this / virtual / inline / volatile / assert / sizeof / #program pack(n) / 位域 extern “C” / struct class union / 封装继承多态 / explicit / friend / using / enum / decltype 左 右值引用 / 成员初始化列表 / 面向对象 / 虚析构函数 / 纯虚函数 / 虚函数 纯虚函数 虚函数表 指针 / 虚继承 / 模板类 函数 虚函数 / 抽象类 接口类 聚合类 / 内存分配管理 delete this / 定义只能在堆或栈上生成的类 / 智能指针 / 强制类型转换运算符号 / Effective C++ 抽空 STL容器array / vector / deque / forward_list / list / stack / queue / priority_queue / set / map find / sort 1周补充源码阅读, 11.11~11.17 数据结构顺序结构：stack / queue / list / 链队列，单链表，双向链表，循环链表 / 树：二叉/红黑/AVL/B/B+ 图： １周补充, 11.18~11.24 算法排序 / 查找 / 图搜索 / 其他(分治、动态规划、贪心) １周补充 , 11.24~12.1 设计模式23种设计模式 / 设计原则 1周补充，抽空 操作系统进程 / 线程 间通信 同步方式 字节序 1周补充， 12.2～12.8 计算机网络OSI七层/TCP四层 抽空 网络编程read/write socket select/poll/epoll 抽空 数据库范式 / 事务ACID / 并发控制(锁) / mysql 2周补充, 12.9~12.22 库与链接gdb分布式系统概念 / 实践 / 性能优化linux命令 网络 / 内存 / CPU 抽空 3rdtcmalloc / libevent / boost 2周补充]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[gdb command]]></title>
