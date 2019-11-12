@@ -88,7 +88,7 @@
 <meta property="og:description" content="简历重构经验 项目描述项目描述两三行，然后概括下我大概做了哪几个模块，完了。  找2-3个亮点, 一句话高度概括，突出亮点。 比如：   我负责这个系统中爬虫的开发，终端控制管理，店铺管理   负责系统中爬虫模块的开发，用于爬取影片的各种信息，包括年份，介绍，主演信息等   独立开发多线程影片信息爬虫工具， 并针对线程池性能、网络异常以及反爬虫措施进行多次优化，容错性良好并达到并发请求30+的QP">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/11/11/备战2020/image-20191111152712592.png">
-<meta property="og:updated_time" content="2019-11-12T09:19:58.978Z">
+<meta property="og:updated_time" content="2019-11-12T09:33:07.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="备战2020">
 <meta name="twitter:description" content="简历重构经验 项目描述项目描述两三行，然后概括下我大概做了哪几个模块，完了。  找2-3个亮点, 一句话高度概括，突出亮点。 比如：   我负责这个系统中爬虫的开发，终端控制管理，店铺管理   负责系统中爬虫模块的开发，用于爬取影片的各种信息，包括年份，介绍，主演信息等   独立开发多线程影片信息爬虫工具， 并针对线程池性能、网络异常以及反爬虫措施进行多次优化，容错性良好并达到并发请求30+的QP">
@@ -513,7 +513,15 @@
 <li><code>X&amp;&amp; &amp;&amp;</code> 可折叠成 <code>X&amp;&amp;</code></li>
 </ul>
 <h3 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="成员初始化列表"><a href="#成员初始化列表" class="headerlink" title="成员初始化列表"></a>成员初始化列表</h3><h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><h2 id="STL容器"><a href="#STL容器" class="headerlink" title="STL容器"></a>STL容器</h2><p>array / vector / deque / forward_list / list / stack / queue / priority_queue / set / map</p>
+<h3 id="成员初始化列表"><a href="#成员初始化列表" class="headerlink" title="成员初始化列表"></a>成员初始化列表</h3><p>好处</p>
+<p>1）更高效：少了一次调用默认构造函数的过程。</p>
+<p>2）有些场合必须要用初始化列表：</p>
+<ol>
+<li>常量成员，因为常量只能初始化不能赋值，所以必须放在初始化列表里面</li>
+<li>引用类型，引用必须在定义的时候初始化，并且不能重新赋值，所以也要写在初始化列表里面</li>
+<li>没有默认构造函数的类类型，因为使用初始化列表可以不必调用默认构造函数来初始化 </li>
+</ol>
+<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><h2 id="STL容器"><a href="#STL容器" class="headerlink" title="STL容器"></a>STL容器</h2><p>array / vector / deque / forward_list / list / stack / queue / priority_queue / set / map</p>
 <p>find / sort </p>
 <blockquote>
 <p>1周补充源码阅读, 11.11~11.17</p>
