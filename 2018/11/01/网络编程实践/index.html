@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="头文件简介linux  sys/types.h ifaddrs.h net/if.h   参考文章select">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-10T11:42:48.897Z">
+<meta property="og:updated_time" content="2019-12-24T08:15:33.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络编程实践">
 <meta name="twitter:description" content="头文件简介linux  sys/types.h ifaddrs.h net/if.h   参考文章select">
@@ -428,6 +428,7 @@
 <p>ET模式下，EPOLLOUT触发条件有：<br>1.缓冲区满–&gt;缓冲区非满；<br>2.同时监听EPOLLOUT和EPOLLIN事件 时，当有IN 事件发生，都会顺带一个OUT事件；</p>
 <h2 id="3-一个客户端connect过来，accept成功后会触发一次OUT事件。"><a href="#3-一个客户端connect过来，accept成功后会触发一次OUT事件。" class="headerlink" title="3.一个客户端connect过来，accept成功后会触发一次OUT事件。"></a>3.一个客户端connect过来，accept成功后会触发一次OUT事件。</h2><h1 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h1><h2 id="errno"><a href="#errno" class="headerlink" title="errno"></a>errno</h2><p>errno是线程安全的, 在一个线程中设置它, 不会影响别的线程对它的使用<br>如果你的程序对它有依赖, 需要开发人员在接口错误处理中手工设置</p>
 <h2 id="粘包"><a href="#粘包" class="headerlink" title="粘包"></a>粘包</h2><p>客户端没有收完整, 导致收下一个包core</p>
+<h2 id="超时时间"><a href="#超时时间" class="headerlink" title="超时时间"></a>超时时间</h2><p>poll/epoll 超时时间设置太小，如10ms，进程空跑CPU会高</p>
 
       
     </div>
@@ -570,7 +571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">113</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -625,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#头文件简介"><span class="nav-number">1.</span> <span class="nav-text">头文件简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">2.</span> <span class="nav-text">参考文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#select"><span class="nav-number">3.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#poll"><span class="nav-number">4.</span> <span class="nav-text">poll</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#epoll"><span class="nav-number">5.</span> <span class="nav-text">epoll</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#差异"><span class="nav-number">6.1.</span> <span class="nav-text">差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这也能节省不少的开销。"><span class="nav-number">6.2.</span> <span class="nav-text">这也能节省不少的开销。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#阻塞-非阻塞设置"><span class="nav-number">7.</span> <span class="nav-text">阻塞/非阻塞设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#read"><span class="nav-number">8.</span> <span class="nav-text">read</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#write"><span class="nav-number">9.</span> <span class="nav-text">write</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-一个客户端connect过来，accept成功后会触发一次OUT事件。"><span class="nav-number">9.1.</span> <span class="nav-text">3.一个客户端connect过来，accept成功后会触发一次OUT事件。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#踩过的坑"><span class="nav-number">10.</span> <span class="nav-text">踩过的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#errno"><span class="nav-number">10.1.</span> <span class="nav-text">errno</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#粘包"><span class="nav-number">10.2.</span> <span class="nav-text">粘包</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#头文件简介"><span class="nav-number">1.</span> <span class="nav-text">头文件简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">2.</span> <span class="nav-text">参考文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#select"><span class="nav-number">3.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#poll"><span class="nav-number">4.</span> <span class="nav-text">poll</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#epoll"><span class="nav-number">5.</span> <span class="nav-text">epoll</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#差异"><span class="nav-number">6.1.</span> <span class="nav-text">差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这也能节省不少的开销。"><span class="nav-number">6.2.</span> <span class="nav-text">这也能节省不少的开销。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#阻塞-非阻塞设置"><span class="nav-number">7.</span> <span class="nav-text">阻塞/非阻塞设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#read"><span class="nav-number">8.</span> <span class="nav-text">read</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#write"><span class="nav-number">9.</span> <span class="nav-text">write</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-一个客户端connect过来，accept成功后会触发一次OUT事件。"><span class="nav-number">9.1.</span> <span class="nav-text">3.一个客户端connect过来，accept成功后会触发一次OUT事件。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#踩过的坑"><span class="nav-number">10.</span> <span class="nav-text">踩过的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#errno"><span class="nav-number">10.1.</span> <span class="nav-text">errno</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#粘包"><span class="nav-number">10.2.</span> <span class="nav-text">粘包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超时时间"><span class="nav-number">10.3.</span> <span class="nav-text">超时时间</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -645,7 +646,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

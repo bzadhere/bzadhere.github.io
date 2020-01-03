@@ -89,7 +89,12 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/11/11/备战2020/image-20191111152712592.png">
 <meta property="og:image" content="http://yoursite.com/2019/11/11/备战2020/HashTable.png">
-<meta property="og:updated_time" content="2019-11-25T13:41:39.940Z">
+<meta property="og:image" content="http://yoursite.com/2019/11/11/备战2020/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/11/备战2020/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/11/备战2020/握手分手.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/11/11/备战2020/TCP的有限状态机.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/11/备战2020/6.png">
+<meta property="og:updated_time" content="2019-11-28T08:09:10.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="备战2020">
 <meta name="twitter:description" content="简历重构经验 项目描述项目描述两三行，然后概括下我大概做了哪几个模块，完了。  找2-3个亮点, 一句话高度概括，突出亮点。 比如：   我负责这个系统中爬虫的开发，终端控制管理，店铺管理   负责系统中爬虫模块的开发，用于爬取影片的各种信息，包括年份，介绍，主演信息等   独立开发多线程影片信息爬虫工具， 并针对线程池性能、网络异常以及反爬虫措施进行多次优化，容错性良好并达到并发请求30+的QP">
@@ -703,7 +708,8 @@
 </tbody>
 </table>
 <h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p>避免死锁的方法：有序分配</p>
-<h3 id="字节序"><a href="#字节序" class="headerlink" title="字节序"></a>字节序</h3><h3 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h3><p>在地址映射过程中，若在页面中发现所要访问的页面不在内存中，则产生缺页中断。当发生缺页中断时，如果操作系统内存中没有空闲页面，则操作系统必须在内存选择一个页面将其移出内存，以便为即将调入的页面让出空间。而用来选择淘汰哪一页的规则叫做页面置换算法。</p>
+<h3 id="字节序"><a href="#字节序" class="headerlink" title="字节序"></a>字节序</h3><p> 大端字节序：高位字节在前, 低位字节在后, 是人类读取字节的方法 (网络字节序)<br> 小端字节序：低位字节在前, 高位字节在后 </p>
+<h3 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h3><p>在地址映射过程中，若在页面中发现所要访问的页面不在内存中，则产生缺页中断。当发生缺页中断时，如果操作系统内存中没有空闲页面，则操作系统必须在内存选择一个页面将其移出内存，以便为即将调入的页面让出空间。而用来选择淘汰哪一页的规则叫做页面置换算法。</p>
 <h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><ul>
 <li>全局置换：在整个内存空间置换</li>
 <li>局部置换：在本进程中进行置换</li>
@@ -720,27 +726,178 @@
 <li>最近最久未使用（LRU）算法</li>
 <li>时钟（Clock）置换算法</li>
 </ul>
-<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><p>OSI七层/TCP四层</p>
+<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><h3 id="OSI七层"><a href="#OSI七层" class="headerlink" title="OSI七层"></a>OSI七层</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">OSI七层</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">应用层</td>
+<td style="text-align:left">负责为程序提供统一的接口</td>
+<td style="text-align:left">ftp telnet http dns</td>
+</tr>
+<tr>
+<td style="text-align:left">表示层</td>
+<td style="text-align:left">负责把数据转换成兼容接收系统的格式</td>
+<td style="text-align:left">NULL(JPEG、MPEG、ASII)</td>
+</tr>
+<tr>
+<td style="text-align:left">会话层</td>
+<td style="text-align:left">负责维护计算机之间的通信连接</td>
+<td style="text-align:left">NULL(NFS、SQL、NETBIOS、RPC)</td>
+</tr>
+<tr>
+<td style="text-align:left">传输层</td>
+<td style="text-align:left">负责为数据加上传输表头(包含port), 形成数据包</td>
+<td style="text-align:left">TCP UDP</td>
+</tr>
+<tr>
+<td style="text-align:left">网路层</td>
+<td style="text-align:left">负责数据的路由和转发</td>
+<td style="text-align:left">IP ICMP IGMP（路由器） RIP</td>
+</tr>
+<tr>
+<td style="text-align:left">数据链路层</td>
+<td style="text-align:left">负责MAC寻址, 错误侦测和改错</td>
+<td style="text-align:left">ARP RARP MTU PPP（网桥，交换机）</td>
+</tr>
+<tr>
+<td style="text-align:left">物理层</td>
+<td style="text-align:left">负责在物理网络中传输数据帧</td>
+<td style="text-align:left">RJ45、CLOCK、IEEE802.3(中继器，集线器)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>DNS ，FTP ，TELNET<br>URL统一资源定位符 格式：<code>协议类型:[//服务器地址[:端口号]][/资源层级UNIX文件路径]文件名[?查询][#片段ID]</code><br>HTTP 请求方法和状态码</p>
+<h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a><strong>传输层</strong></h4><p>TCP（Transmission Control Protocol，传输控制协议），UDP（User Datagram Protocol，用户数据报协议）</p>
+<h5 id="TCP如何保证可靠传输"><a href="#TCP如何保证可靠传输" class="headerlink" title="TCP如何保证可靠传输"></a>TCP如何保证可靠传输</h5><p>ack确认，超时重传，流量控制，拥塞控制，<br>数据校验：TCP首部和IP首部都有校验和，范围不同。<br>数据合理分片和排序：IP分片 在以太网上，由于电气限制，一帧不能超过1518字节，除去以太网帧头14字节（mac地址等）和帧尾4字节校验，还剩1500字节，这个大小称为MTU（最大传输单元）。另外在TCP层有MSS协商，数据会分段，一般约定1460，这样就不会超过MTU。因此TCP传输不会造成IP层分片，在TCP层就分段好了，IP分片一般是给UDP和ICMP使用。</p>
+<h5 id="TCP首部"><a href="#TCP首部" class="headerlink" title="TCP首部"></a>TCP首部</h5><p><strong>最大24个字节，一般没有选项20个字节</strong></p>
+<p><img src="/2019/11/11/备战2020/4.png" alt="4"></p>
+<h5 id="UDP首部"><a href="#UDP首部" class="headerlink" title="UDP首部"></a>UDP首部</h5><p><img src="/2019/11/11/备战2020/5.png" alt="5"></p>
+<h5 id="TCP与UDP的区别"><a href="#TCP与UDP的区别" class="headerlink" title="TCP与UDP的区别"></a>TCP与UDP的区别</h5><p>1）TCP是面向连接的，UDP是无连接的<br>2）TCP的逻辑通信是全双工的可靠信道，UDP是不可靠信道<br>3）TCP只能是点对点，UDP可以一对多，一对一，多对一的交互通信<br>4）TCP面向字节流， 实际上是 TCP 把数据看成一连串无结构的字节流 ；UDP面向报文（不会拈包）<br>5）UDP没有拥塞控制， 因此网络出现拥塞不会使源主机的发送速率降低<br>6）TCP首部开销20个字节，UDP首部开销8个字节</p>
+<h5 id="TCP粘包问题"><a href="#TCP粘包问题" class="headerlink" title="TCP粘包问题"></a>TCP粘包问题</h5><p>TCP 是一个基于字节流的传输服务（UDP 基于报文的），“流” 意味着 TCP 所传输的数据是没有边界的 。<br><strong>产生原因</strong>：1） 发送方 TCP默认会使用Nagle算法: 只有上一个分组得到确认，才会发送下一个分组; 收集多个小分组，在一个确认到来时一起发送 。2） 接受方 没有立即处理, TCP将收到的分组保存至接收缓存里, 缓冲区会存在多个包 。<br><strong>解决办法</strong>：1） 发送发关闭Nagle算法, TCP_NODELAY选项 。2） 接受方 TCP协议没有处理机制, 通过应用层来处理。3） 应用层 定义消息包头(len+type)和包体(data), 收包时循环处理。</p>
+<h5 id="TCP流量控制"><a href="#TCP流量控制" class="headerlink" title="TCP流量控制"></a>TCP流量控制</h5><p> 让发送方的发送速率不要太快，要让接收方来得及接收 ，利用可变窗口进行流量控制。</p>
+<h5 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h5><p> 拥塞控制就是防止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载 。</p>
+<p>方法：慢开始，拥塞避免，快重传，快恢复。</p>
+<h5 id="TCP三次握手和四次挥手"><a href="#TCP三次握手和四次挥手" class="headerlink" title="TCP三次握手和四次挥手"></a>TCP三次握手和四次挥手</h5><p><img src="/2019/11/11/备战2020/握手分手.jpg" alt="握手分手"></p>
+<p>为什么需要三次握手？ </p>
 <blockquote>
-<p>抽空</p>
+<p>全双工, 告诉对方 发送/接受数据 能力OK </p>
 </blockquote>
-<h2 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h2><p>read/write </p>
-<p>socket </p>
-<p>select/poll/epoll</p>
+<p>为什么需要四次分手？ </p>
 <blockquote>
-<p>抽空</p>
+<p>为了确保数据能够完成传输(确保对端收完数据)</p>
 </blockquote>
-<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>范式 / 事务ACID / 并发控制(锁) / mysql</p>
+<p>为什么 TCP 连接时可以 ACK 和 SYN 一起发送，而释放时则 ACK 和 FIN 分开发送呢？ </p>
 <blockquote>
-<p>2周补充, 12.9~12.22</p>
+<p>因为客户端请求释放时，服务器可能还有数据需要传输给客户端，因此服务端要先响应客户端 FIN 请求（服务端发送 ACK），然后数据传输，传输完成后，服务端再提出 FIN 请求（服务端发送 FIN）；而连接时则没有中间的数据传输，因此连接时可以 ACK 和 SYN 一起发送。</p>
 </blockquote>
-<h2 id="库与链接"><a href="#库与链接" class="headerlink" title="库与链接"></a>库与链接</h2><h2 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h2><p><a href="https://tiedan.website/2019/11/07/gdb-command/" target="_blank" rel="noopener">gdb-command</a></p>
-<h2 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h2><p>概念 / 实践 / </p>
+<h5 id="TCP的四种定时器"><a href="#TCP的四种定时器" class="headerlink" title="TCP的四种定时器"></a>TCP的四种定时器</h5><p>a）重传定时器，<br>b）坚持定时器，窗口探查， 解决零窗口大小通知可能导致的死锁问题<br>c）保活定时器，keep-alive<br>d）2MSL定时器，time_wait保持2MSL：<br>    1）是为了保证客户端发送的最后一个 ACK 报文能够到达服务端。 若未成功到达，则服务端超时重传 FIN+ACK 报文段，客户端再重传 ACK，并重新计时<br>    2） 防止已失效的连接请求报文段出现在本连接中 。TIME-WAIT 持续 2MSL 可使本连接持续的时间内所产生的所有报文段都从网络中消失，这样可使下次连接中不会出现旧的连接报文段 </p>
+<h5 id="TCP状态机"><a href="#TCP状态机" class="headerlink" title="TCP状态机"></a>TCP状态机</h5><p><img src="/2019/11/11/备战2020/TCP的有限状态机.png" alt="TCP的有限状态机"></p>
+<h4 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a><strong>网络层</strong></h4><p>IP ，<br>ARP 工作原理<br>ICMP，网际控制报文协议，用于PING<br>IGMP，网际组管理协议 ，用于多播<br>IP 地址分类：</p>
+<ul>
+<li><code>IP 地址 ::= {&lt;网络号&gt;,&lt;主机号&gt;}</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>IP 地址类别</th>
+<th>网络号</th>
+<th>网络范围</th>
+<th>主机号</th>
+<th>IP 地址范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 类</td>
+<td>8bit，第一位固定为 0</td>
+<td>0 —— 127</td>
+<td>24bit</td>
+<td>1.0.0.0 —— 127.255.255.255</td>
+</tr>
+<tr>
+<td>B 类</td>
+<td>16bit，前两位固定为 10</td>
+<td>128.0 —— 191.255</td>
+<td>16bit</td>
+<td>128.0.0.0 —— 191.255.255.255</td>
+</tr>
+<tr>
+<td>C 类</td>
+<td>24bit，前三位固定为 110</td>
+<td>192.0.0 —— 223.255.255</td>
+<td>8bit</td>
+<td>192.0.0.0 —— 223.255.255.255</td>
+</tr>
+<tr>
+<td>D 类</td>
+<td>前四位固定为 1110，后面为多播地址</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E 类</td>
+<td>前五位固定为 11110，后面保留为今后所用</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="IP头部格式"><a href="#IP头部格式" class="headerlink" title="IP头部格式"></a>IP头部格式</h5><p>最大24个字节，一般没有选项20个字节</p>
+<p><img src="/2019/11/11/备战2020/6.png" alt="6"></p>
+<h4 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a><strong>数据链路层</strong></h4><p>主要信道：点对点信道，广播信道。数据单元：帧。<br>1）点对点信道：<br>        三个基本问题： 封装成帧 , 透明传输 ,  差错检测<br>        点对点协议( Point-to-Point Protocol )： 用户计算机和 ISP 通信时所使用的协议 </p>
+<p>2）广播信道：<br>        单播（unicast）帧（一对一）：收到的帧的 MAC 地址与本站的硬件地址相同<br>        广播（broadcast）帧（一对全体）：发送给本局域网上所有站点的帧<br>        多播（multicast）帧（一对多）：发送给本局域网上一部分站点的帧</p>
+<h4 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a><strong>物理层</strong></h4><p>传输单位是比特<br>通道：<br>    a）单向通道(单工通道)：只有一个方向通信，没有反向交互，如广播<br>    b）双向交替通信(半双工通信)：双发可以发消息，但不能同时发送或接收<br>    c）双向同时通信(全双工通信)：通信双发可以同时发送和接收<br>通道复用技术：<br>    a） 频分复用： 不同用户在不同频带，所用用户在同样时间占用不同带宽资源<br>    b） 时分复用 ： 不同用户在同一时间段的不同时间片，所有用户在不同时间占用同样的频带宽度<br>    c） 波分复用 ： 光的频分复用<br>    d） 码分复用 ： 不同用户使用不同的码，可以在同样时间使用同样频带通信 </p>
+<h3 id="TCP-IP四层"><a href="#TCP-IP四层" class="headerlink" title="TCP/IP四层"></a>TCP/IP四层</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">TCP/IP四层</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">应用层</td>
+<td style="text-align:left">负责向用户提供一组应用程序, 比如HTTP/DNS/FTP</td>
+</tr>
+<tr>
+<td style="text-align:left">传输层</td>
+<td style="text-align:left">负责端到端的通信, 比如TCP/UDP</td>
+</tr>
+<tr>
+<td style="text-align:left">网络层</td>
+<td style="text-align:left">负责网络包的封装、寻址和路哟, 比如IP/ICMP</td>
+</tr>
+<tr>
+<td style="text-align:left">网络接口层</td>
+<td style="text-align:left">负责在物理网络中传输数据帧, 比如MAC寻址, 错误侦测和改错</td>
+</tr>
+</tbody>
+</table>
+<h2 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h2><h4 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h4><h4 id="read-write"><a href="#read-write" class="headerlink" title="read/write"></a>read/write</h4><p>socket </p>
+<h4 id="select-poll-epoll"><a href="#select-poll-epoll" class="headerlink" title="select/poll/epoll"></a>select/poll/epoll</h4><p><a href="https://tiedan.website/2018/11/01/网络编程实践/" target="_blank" rel="noopener">参考</a> </p>
+<h4 id="TCP队列"><a href="#TCP队列" class="headerlink" title="TCP队列"></a>TCP队列</h4><p><a href=""></a></p>
+<h4 id="发送大文件缓冲区满"><a href="#发送大文件缓冲区满" class="headerlink" title="发送大文件缓冲区满"></a>发送大文件缓冲区满</h4><h4 id="TCP-keep-alive"><a href="#TCP-keep-alive" class="headerlink" title="TCP keep-alive"></a>TCP keep-alive</h4><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h4 id="常用数据模型"><a href="#常用数据模型" class="headerlink" title="常用数据模型"></a>常用数据模型</h4><p>层次模型，<br>网状模型，<br>关系模型，<br>    a）关系，一个关系对应通常说的一张表<br>    b）元组，表中的一行即为一个元组<br>    c）属性，表中的一列即为一个属性<br>    d）码，表中可以唯一确定一个元组的的某个属性组<br>    e）域，一组具有相同数据类型的值的集合<br>    f）分量，元组中的一个属性值<br>    g）关系模型，对关系的描述，一般表示为 关系名(属性1，属性2 ……)<br>面向对象数据模型，<br>对象关系数据模型，<br>半结构化数据模型，非关系模型的、有基本固定结构模式的数据，例如日志文件、XML文档、JSON文档、Email等</p>
+<h4 id="数据库常用操作"><a href="#数据库常用操作" class="headerlink" title="数据库常用操作"></a>数据库常用操作</h4><p>查询（选择，投影，链接【等值，自然，左外连接，右外连接】）、除、并、差、交、<br>笛卡尔积)、插入、删除、修改<br>关系模型中的三类完整性约束：实体完整性，参照完整性，用户定义完整性</p>
+<h4 id="数据库完整性"><a href="#数据库完整性" class="headerlink" title="数据库完整性"></a>数据库完整性</h4><p>数据库的完整性是指数据的正确性和相容性？<br>触发器：是用户定义在关系表中的一类由事件驱动的特殊过程</p>
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="noopener">MySQL索引背后的数据结构及算法原理</a></p>
+<h4 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h4><p><a href="https://tiedan.website/2018/11/13/数据库设计三范式/" target="_blank" rel="noopener">参考</a> </p>
+<p>1NF：属性(字段)是最小单位不可分割<br>2NF：满足1NF，每个非主属性完全依赖于主键(消除1NF非主属性对码的函数依赖)<br>3NF：满足2NF，任何非主属性不依赖于其他非主属性(消除2NF主属性对码的传递函数依赖)<br>BCNF（ 鲍依斯-科得范式 ）：满足3NF，任何非主属性不能对主键子集依赖( 消除 3NF 主属性对码的部分和传递函数依赖 )<br>4NF：满足3NF， 属性之间不能有非平凡且非函数依赖的多值依赖 </p>
+<h4 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h4><p><a href="https://tiedan.website/2018/10/23/数据库事务及锁/" target="_blank" rel="noopener">参考</a> </p>
+<h4 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h4><h4 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h4><h4 id="分析与设计数据库模型过程"><a href="#分析与设计数据库模型过程" class="headerlink" title="分析与设计数据库模型过程"></a>分析与设计数据库模型过程</h4><h4 id="mysql优化"><a href="#mysql优化" class="headerlink" title="mysql优化"></a>mysql优化</h4><p><a href="https://tiedan.website/2019/06/04/mysql深入浅出-笔记/" target="_blank" rel="noopener">参考</a> </p>
+<h2 id="库与链接"><a href="#库与链接" class="headerlink" title="库与链接"></a>库与链接</h2><h2 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h2><p><a href="https://tiedan.website/2019/11/07/gdb-command/" target="_blank" rel="noopener">command</a></p>
+<h2 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h2><p>概念 / 实践 / CAP/BASE/RPC/分布式锁</p>
 <h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><p>linux命令</p>
-<p>网络 / 内存 / CPU  </p>
-<blockquote>
-<p>抽空</p>
-</blockquote>
+<p><a href="https://tiedan.website/2019/03/05/linux性能优化之网络-笔记/" target="_blank" rel="noopener">网络</a> </p>
+<p><a href="https://tiedan.website/2019/02/27/linux性能优化之内存-笔记/" target="_blank" rel="noopener">内存</a> </p>
+<p><a href="https://tiedan.website/2019/02/28/linux性能优化之磁盘文件-笔记/" target="_blank" rel="noopener">磁盘</a> </p>
+<p><a href="https://tiedan.website/2019/02/20/linux性能优化-笔记/" target="_blank" rel="noopener">性能</a> </p>
 <h2 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a>3rd</h2><p>tcmalloc / libevent / boost </p>
 <blockquote>
 <p>2周补充</p>
@@ -807,6 +964,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/09/v8实施经验分享/" rel="prev" title="v8实施经验分享">
+                v8实施经验分享 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -883,7 +1044,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">113</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -938,7 +1099,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简历重构"><span class="nav-number">1.</span> <span class="nav-text">简历重构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目描述"><span class="nav-number">1.1.</span> <span class="nav-text">项目描述</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面试技巧"><span class="nav-number">2.</span> <span class="nav-text">面试技巧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目标"><span class="nav-number">3.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习准备"><span class="nav-number">4.</span> <span class="nav-text">学习准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C"><span class="nav-number">4.1.</span> <span class="nav-text">C/C++</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#const"><span class="nav-number">4.1.1.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static"><span class="nav-number">4.1.2.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-指针"><span class="nav-number">4.1.3.</span> <span class="nav-text">this 指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inline-内联函数"><span class="nav-number">4.1.4.</span> <span class="nav-text">inline 内联函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要"><span class="nav-number">4.1.4.1.</span> <span class="nav-text">为什么需要</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征"><span class="nav-number">4.1.4.2.</span> <span class="nav-text">特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译器对内联的处理"><span class="nav-number">4.1.4.3.</span> <span class="nav-text">编译器对内联的处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优缺点"><span class="nav-number">4.1.4.4.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数可以内联吗"><span class="nav-number">4.1.4.5.</span> <span class="nav-text">虚函数可以内联吗</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile"><span class="nav-number">4.1.5.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#assert"><span class="nav-number">4.1.6.</span> <span class="nav-text">assert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sizeof"><span class="nav-number">4.1.7.</span> <span class="nav-text">sizeof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#program-pack-n"><span class="nav-number">4.1.8.</span> <span class="nav-text">#program pack(n)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位域"><span class="nav-number">4.1.9.</span> <span class="nav-text">位域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extern"><span class="nav-number">4.1.10.</span> <span class="nav-text">extern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#struct-class"><span class="nav-number">4.1.11.</span> <span class="nav-text">struct/class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#union"><span class="nav-number">4.1.12.</span> <span class="nav-text">union</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#explicit-显示-关键字"><span class="nav-number">4.1.13.</span> <span class="nav-text">explicit(显示)关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#friend友元类和友元函数"><span class="nav-number">4.1.14.</span> <span class="nav-text">friend友元类和友元函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#using"><span class="nav-number">4.1.15.</span> <span class="nav-text">using</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范围解析运算符"><span class="nav-number">4.1.16.</span> <span class="nav-text">:: 范围解析运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#enum-枚举类型"><span class="nav-number">4.1.17.</span> <span class="nav-text">enum 枚举类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decltype"><span class="nav-number">4.1.18.</span> <span class="nav-text">decltype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">4.1.19.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏"><span class="nav-number">4.1.20.</span> <span class="nav-text">宏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成员初始化列表"><span class="nav-number">4.1.21.</span> <span class="nav-text">成员初始化列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#initializer-list-列表初始化"><span class="nav-number">4.1.22.</span> <span class="nav-text">initializer_list 列表初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象"><span class="nav-number">4.1.23.</span> <span class="nav-text">面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#封装"><span class="nav-number">4.1.23.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承"><span class="nav-number">4.1.23.2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多态"><span class="nav-number">4.1.23.3.</span> <span class="nav-text">多态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚析构函数"><span class="nav-number">4.1.24.</span> <span class="nav-text">虚析构函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#纯虚函数"><span class="nav-number">4.1.25.</span> <span class="nav-text">纯虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚函数、纯虚函数"><span class="nav-number">4.1.26.</span> <span class="nav-text">虚函数、纯虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚函数指针、虚函数表"><span class="nav-number">4.1.27.</span> <span class="nav-text">虚函数指针、虚函数表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚继承"><span class="nav-number">4.1.28.</span> <span class="nav-text">虚继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚继承、虚函数"><span class="nav-number">4.1.29.</span> <span class="nav-text">虚继承、虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板类、成员模板、虚函数"><span class="nav-number">4.1.30.</span> <span class="nav-text">模板类、成员模板、虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类、接口类、聚合类"><span class="nav-number">4.1.31.</span> <span class="nav-text">抽象类、接口类、聚合类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存分配管理"><span class="nav-number">4.1.32.</span> <span class="nav-text">内存分配管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-this-合法吗？"><span class="nav-number">4.1.33.</span> <span class="nav-text">delete this 合法吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何定义一个只能在堆上-栈上-生成对象的类"><span class="nav-number">4.1.34.</span> <span class="nav-text">如何定义一个只能在堆上(栈上)生成对象的类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#智能指针"><span class="nav-number">4.1.35.</span> <span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制类型转换运算符"><span class="nav-number">4.1.36.</span> <span class="nav-text">强制类型转换运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行时类型信息-RTTI"><span class="nav-number">4.1.37.</span> <span class="nav-text">运行时类型信息 (RTTI)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Effictive-C"><span class="nav-number">4.2.</span> <span class="nav-text">Effictive C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#STL容器"><span class="nav-number">4.3.</span> <span class="nav-text">STL容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">4.4.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-顺序结构"><span class="nav-number">4.4.1.</span> <span class="nav-text">1-顺序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-顺序栈-Sequence-Stack"><span class="nav-number">4.4.1.1.</span> <span class="nav-text">1.1-顺序栈(Sequence Stack)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-队列-Sqeuence-Queue"><span class="nav-number">4.4.1.2.</span> <span class="nav-text">1.2-队列(Sqeuence Queue)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-顺序表-Sequence-List"><span class="nav-number">4.4.1.3.</span> <span class="nav-text">1.3-顺序表(Sequence List)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-链式结构"><span class="nav-number">4.4.2.</span> <span class="nav-text">2-链式结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-链队列-Link-Queue"><span class="nav-number">4.4.2.1.</span> <span class="nav-text">2.1-链队列(Link Queue)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-线性表的链式表示"><span class="nav-number">4.4.2.2.</span> <span class="nav-text">2.2-线性表的链式表示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-哈希表"><span class="nav-number">4.4.3.</span> <span class="nav-text">3-哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-递归"><span class="nav-number">4.4.4.</span> <span class="nav-text">4-递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-二叉树"><span class="nav-number">4.4.5.</span> <span class="nav-text">5-二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-其他树"><span class="nav-number">4.4.6.</span> <span class="nav-text">6-其他树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">4.5.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式"><span class="nav-number">4.6.</span> <span class="nav-text">设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统"><span class="nav-number">4.7.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程和线程"><span class="nav-number">4.7.1.</span> <span class="nav-text">进程和线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程间通信及优缺点"><span class="nav-number">4.7.2.</span> <span class="nav-text">进程间通信及优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-管道-Pipe"><span class="nav-number">4.7.2.1.</span> <span class="nav-text">1-管道(Pipe)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-信号量-Semaphore"><span class="nav-number">4.7.2.2.</span> <span class="nav-text">2-信号量(Semaphore)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-信号-Signal"><span class="nav-number">4.7.2.3.</span> <span class="nav-text">3-信号(Signal)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-消息队列-Message-Queue"><span class="nav-number">4.7.2.4.</span> <span class="nav-text">4-消息队列(Message Queue)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-共享内存-Shared-Memory"><span class="nav-number">4.7.2.5.</span> <span class="nav-text">5-共享内存(Shared Memory)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-套接字-Socket"><span class="nav-number">4.7.2.6.</span> <span class="nav-text">6-套接字(Socket)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程间通信方式"><span class="nav-number">4.7.3.</span> <span class="nav-text">线程间通信方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁"><span class="nav-number">4.7.4.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字节序"><span class="nav-number">4.7.5.</span> <span class="nav-text">字节序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面置换算法"><span class="nav-number">4.7.6.</span> <span class="nav-text">页面置换算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分类"><span class="nav-number">4.7.6.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">4.7.6.2.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络"><span class="nav-number">4.8.</span> <span class="nav-text">计算机网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络编程"><span class="nav-number">4.9.</span> <span class="nav-text">网络编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-number">4.10.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#库与链接"><span class="nav-number">4.11.</span> <span class="nav-text">库与链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gdb"><span class="nav-number">4.12.</span> <span class="nav-text">gdb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式系统"><span class="nav-number">4.13.</span> <span class="nav-text">分布式系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能优化"><span class="nav-number">4.14.</span> <span class="nav-text">性能优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3rd"><span class="nav-number">4.15.</span> <span class="nav-text">3rd</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简历重构"><span class="nav-number">1.</span> <span class="nav-text">简历重构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目描述"><span class="nav-number">1.1.</span> <span class="nav-text">项目描述</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面试技巧"><span class="nav-number">2.</span> <span class="nav-text">面试技巧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目标"><span class="nav-number">3.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习准备"><span class="nav-number">4.</span> <span class="nav-text">学习准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C"><span class="nav-number">4.1.</span> <span class="nav-text">C/C++</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#const"><span class="nav-number">4.1.1.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static"><span class="nav-number">4.1.2.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-指针"><span class="nav-number">4.1.3.</span> <span class="nav-text">this 指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inline-内联函数"><span class="nav-number">4.1.4.</span> <span class="nav-text">inline 内联函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要"><span class="nav-number">4.1.4.1.</span> <span class="nav-text">为什么需要</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征"><span class="nav-number">4.1.4.2.</span> <span class="nav-text">特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译器对内联的处理"><span class="nav-number">4.1.4.3.</span> <span class="nav-text">编译器对内联的处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优缺点"><span class="nav-number">4.1.4.4.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数可以内联吗"><span class="nav-number">4.1.4.5.</span> <span class="nav-text">虚函数可以内联吗</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile"><span class="nav-number">4.1.5.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#assert"><span class="nav-number">4.1.6.</span> <span class="nav-text">assert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sizeof"><span class="nav-number">4.1.7.</span> <span class="nav-text">sizeof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#program-pack-n"><span class="nav-number">4.1.8.</span> <span class="nav-text">#program pack(n)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位域"><span class="nav-number">4.1.9.</span> <span class="nav-text">位域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extern"><span class="nav-number">4.1.10.</span> <span class="nav-text">extern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#struct-class"><span class="nav-number">4.1.11.</span> <span class="nav-text">struct/class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#union"><span class="nav-number">4.1.12.</span> <span class="nav-text">union</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#explicit-显示-关键字"><span class="nav-number">4.1.13.</span> <span class="nav-text">explicit(显示)关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#friend友元类和友元函数"><span class="nav-number">4.1.14.</span> <span class="nav-text">friend友元类和友元函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#using"><span class="nav-number">4.1.15.</span> <span class="nav-text">using</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范围解析运算符"><span class="nav-number">4.1.16.</span> <span class="nav-text">:: 范围解析运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#enum-枚举类型"><span class="nav-number">4.1.17.</span> <span class="nav-text">enum 枚举类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decltype"><span class="nav-number">4.1.18.</span> <span class="nav-text">decltype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">4.1.19.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宏"><span class="nav-number">4.1.20.</span> <span class="nav-text">宏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成员初始化列表"><span class="nav-number">4.1.21.</span> <span class="nav-text">成员初始化列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#initializer-list-列表初始化"><span class="nav-number">4.1.22.</span> <span class="nav-text">initializer_list 列表初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象"><span class="nav-number">4.1.23.</span> <span class="nav-text">面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#封装"><span class="nav-number">4.1.23.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承"><span class="nav-number">4.1.23.2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多态"><span class="nav-number">4.1.23.3.</span> <span class="nav-text">多态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚析构函数"><span class="nav-number">4.1.24.</span> <span class="nav-text">虚析构函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#纯虚函数"><span class="nav-number">4.1.25.</span> <span class="nav-text">纯虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚函数、纯虚函数"><span class="nav-number">4.1.26.</span> <span class="nav-text">虚函数、纯虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚函数指针、虚函数表"><span class="nav-number">4.1.27.</span> <span class="nav-text">虚函数指针、虚函数表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚继承"><span class="nav-number">4.1.28.</span> <span class="nav-text">虚继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚继承、虚函数"><span class="nav-number">4.1.29.</span> <span class="nav-text">虚继承、虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板类、成员模板、虚函数"><span class="nav-number">4.1.30.</span> <span class="nav-text">模板类、成员模板、虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类、接口类、聚合类"><span class="nav-number">4.1.31.</span> <span class="nav-text">抽象类、接口类、聚合类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存分配管理"><span class="nav-number">4.1.32.</span> <span class="nav-text">内存分配管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete-this-合法吗？"><span class="nav-number">4.1.33.</span> <span class="nav-text">delete this 合法吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何定义一个只能在堆上-栈上-生成对象的类"><span class="nav-number">4.1.34.</span> <span class="nav-text">如何定义一个只能在堆上(栈上)生成对象的类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#智能指针"><span class="nav-number">4.1.35.</span> <span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制类型转换运算符"><span class="nav-number">4.1.36.</span> <span class="nav-text">强制类型转换运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行时类型信息-RTTI"><span class="nav-number">4.1.37.</span> <span class="nav-text">运行时类型信息 (RTTI)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Effictive-C"><span class="nav-number">4.2.</span> <span class="nav-text">Effictive C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#STL容器"><span class="nav-number">4.3.</span> <span class="nav-text">STL容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">4.4.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-顺序结构"><span class="nav-number">4.4.1.</span> <span class="nav-text">1-顺序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-顺序栈-Sequence-Stack"><span class="nav-number">4.4.1.1.</span> <span class="nav-text">1.1-顺序栈(Sequence Stack)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-队列-Sqeuence-Queue"><span class="nav-number">4.4.1.2.</span> <span class="nav-text">1.2-队列(Sqeuence Queue)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-顺序表-Sequence-List"><span class="nav-number">4.4.1.3.</span> <span class="nav-text">1.3-顺序表(Sequence List)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-链式结构"><span class="nav-number">4.4.2.</span> <span class="nav-text">2-链式结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-链队列-Link-Queue"><span class="nav-number">4.4.2.1.</span> <span class="nav-text">2.1-链队列(Link Queue)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-线性表的链式表示"><span class="nav-number">4.4.2.2.</span> <span class="nav-text">2.2-线性表的链式表示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-哈希表"><span class="nav-number">4.4.3.</span> <span class="nav-text">3-哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-递归"><span class="nav-number">4.4.4.</span> <span class="nav-text">4-递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-二叉树"><span class="nav-number">4.4.5.</span> <span class="nav-text">5-二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-其他树"><span class="nav-number">4.4.6.</span> <span class="nav-text">6-其他树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">4.5.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式"><span class="nav-number">4.6.</span> <span class="nav-text">设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统"><span class="nav-number">4.7.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程和线程"><span class="nav-number">4.7.1.</span> <span class="nav-text">进程和线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程间通信及优缺点"><span class="nav-number">4.7.2.</span> <span class="nav-text">进程间通信及优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-管道-Pipe"><span class="nav-number">4.7.2.1.</span> <span class="nav-text">1-管道(Pipe)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-信号量-Semaphore"><span class="nav-number">4.7.2.2.</span> <span class="nav-text">2-信号量(Semaphore)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-信号-Signal"><span class="nav-number">4.7.2.3.</span> <span class="nav-text">3-信号(Signal)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-消息队列-Message-Queue"><span class="nav-number">4.7.2.4.</span> <span class="nav-text">4-消息队列(Message Queue)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-共享内存-Shared-Memory"><span class="nav-number">4.7.2.5.</span> <span class="nav-text">5-共享内存(Shared Memory)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-套接字-Socket"><span class="nav-number">4.7.2.6.</span> <span class="nav-text">6-套接字(Socket)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程间通信方式"><span class="nav-number">4.7.3.</span> <span class="nav-text">线程间通信方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁"><span class="nav-number">4.7.4.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字节序"><span class="nav-number">4.7.5.</span> <span class="nav-text">字节序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面置换算法"><span class="nav-number">4.7.6.</span> <span class="nav-text">页面置换算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分类"><span class="nav-number">4.7.6.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法-1"><span class="nav-number">4.7.6.2.</span> <span class="nav-text">算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络"><span class="nav-number">4.8.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OSI七层"><span class="nav-number">4.8.1.</span> <span class="nav-text">OSI七层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用层"><span class="nav-number">4.8.1.1.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传输层"><span class="nav-number">4.8.1.2.</span> <span class="nav-text">传输层</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP如何保证可靠传输"><span class="nav-number">4.8.1.2.1.</span> <span class="nav-text">TCP如何保证可靠传输</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP首部"><span class="nav-number">4.8.1.2.2.</span> <span class="nav-text">TCP首部</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#UDP首部"><span class="nav-number">4.8.1.2.3.</span> <span class="nav-text">UDP首部</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP与UDP的区别"><span class="nav-number">4.8.1.2.4.</span> <span class="nav-text">TCP与UDP的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP粘包问题"><span class="nav-number">4.8.1.2.5.</span> <span class="nav-text">TCP粘包问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP流量控制"><span class="nav-number">4.8.1.2.6.</span> <span class="nav-text">TCP流量控制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP拥塞控制"><span class="nav-number">4.8.1.2.7.</span> <span class="nav-text">TCP拥塞控制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP三次握手和四次挥手"><span class="nav-number">4.8.1.2.8.</span> <span class="nav-text">TCP三次握手和四次挥手</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP的四种定时器"><span class="nav-number">4.8.1.2.9.</span> <span class="nav-text">TCP的四种定时器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP状态机"><span class="nav-number">4.8.1.2.10.</span> <span class="nav-text">TCP状态机</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络层"><span class="nav-number">4.8.1.3.</span> <span class="nav-text">网络层</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IP头部格式"><span class="nav-number">4.8.1.3.1.</span> <span class="nav-text">IP头部格式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据链路层"><span class="nav-number">4.8.1.4.</span> <span class="nav-text">数据链路层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理层"><span class="nav-number">4.8.1.5.</span> <span class="nav-text">物理层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP四层"><span class="nav-number">4.8.2.</span> <span class="nav-text">TCP/IP四层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络编程"><span class="nav-number">4.9.</span> <span class="nav-text">网络编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#网络模型"><span class="nav-number">4.9.0.1.</span> <span class="nav-text">网络模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#read-write"><span class="nav-number">4.9.0.2.</span> <span class="nav-text">read/write</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select-poll-epoll"><span class="nav-number">4.9.0.3.</span> <span class="nav-text">select/poll/epoll</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP队列"><span class="nav-number">4.9.0.4.</span> <span class="nav-text">TCP队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发送大文件缓冲区满"><span class="nav-number">4.9.0.5.</span> <span class="nav-text">发送大文件缓冲区满</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-keep-alive"><span class="nav-number">4.9.0.6.</span> <span class="nav-text">TCP keep-alive</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-number">4.10.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用数据模型"><span class="nav-number">4.10.0.1.</span> <span class="nav-text">常用数据模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库常用操作"><span class="nav-number">4.10.0.2.</span> <span class="nav-text">数据库常用操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库完整性"><span class="nav-number">4.10.0.3.</span> <span class="nav-text">数据库完整性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引"><span class="nav-number">4.10.0.4.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#范式"><span class="nav-number">4.10.0.5.</span> <span class="nav-text">范式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ACID"><span class="nav-number">4.10.0.6.</span> <span class="nav-text">ACID</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并发控制"><span class="nav-number">4.10.0.7.</span> <span class="nav-text">并发控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分库分表"><span class="nav-number">4.10.0.8.</span> <span class="nav-text">分库分表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析与设计数据库模型过程"><span class="nav-number">4.10.0.9.</span> <span class="nav-text">分析与设计数据库模型过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mysql优化"><span class="nav-number">4.10.0.10.</span> <span class="nav-text">mysql优化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#库与链接"><span class="nav-number">4.11.</span> <span class="nav-text">库与链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gdb"><span class="nav-number">4.12.</span> <span class="nav-text">gdb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式系统"><span class="nav-number">4.13.</span> <span class="nav-text">分布式系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能优化"><span class="nav-number">4.14.</span> <span class="nav-text">性能优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3rd"><span class="nav-number">4.15.</span> <span class="nav-text">3rd</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -958,7 +1119,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="事务的四个特性  原子性(Atomicity) 一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-10T11:42:53.923Z">
+<meta property="og:updated_time" content="2019-11-27T08:29:12.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库事务及锁">
 <meta name="twitter:description" content="事务的四个特性  原子性(Atomicity) 一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
@@ -425,13 +425,9 @@
 <li><p>虚读(幻读)<br>幻读是事务非独立执行时发生的一种现象。例如事务T1对一个表中所有的行的某个数据项做<br>了从“1”修改为“2”的操作，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值<br>还是为“1”并且提交给数据库。而操作事务T1的用户, 如果再查看刚刚修改的数据，会发现还<br>有一行没有修改，其实这行是从事务T2中添加的，就好像产生幻觉一样，这就是发生了幻读。<br>幻读和不可重复读都是读取了另一条已经提交的事务(这点就脏读不同)，所不同的是不可重复<br>读查询的都是同一个数据项，而幻读针对的是一批数据整体(比如数据的个数)。</p>
 </li>
 <li><p>串行化(Serializable)<br>在串行化隔离模式下，消除了脏读，幻象，但事务并发度急剧下降，事务的隔离级别与事务的并发度成<br>反比，隔离级别越高，事务的并发度越低。实际生产环境下，dba会在并发和满足业务需求之间作权衡，<br>选择合适的隔离级别  </p>
+<p>MySQL数据库为我们提供的四种隔离级别：<br>   1）Read uncommitted (读未提交)：最低级别，任何情况都无法保证<br>   2）Read committed (读已提交)：可避免脏读的发生<br>   3）Repeatable read (可重复读)：可避免脏读、不可重复读的发生<br>   4）Serializable (串行化)：可避免脏读、不可重复读、幻读的发生</p>
 </li>
 </ol>
-<p>现在来看看MySQL数据库为我们提供的四种隔离级别：</p>
-<p>　　① Serializable (串行化)：可避免脏读、不可重复读、幻读的发生。</p>
-<p>　　② Repeatable read (可重复读)：可避免脏读、不可重复读的发生。</p>
-<p>　　③ Read committed (读已提交)：可避免脏读的发生。</p>
-<p>　　④ Read uncommitted (读未提交)：最低级别，任何情况都无法保证。  </p>
 <p>在MySQL数据库中，支持上面四种隔离级别，默认的为Repeatable read (可重复读)；而在Oracle数据库中，<br>只支持Serializable (串行化)级别和Read committed (读已提交)这两种级别，其中默认的为Read committed级别</p>
 <h1 id="事务隔离的实现——锁"><a href="#事务隔离的实现——锁" class="headerlink" title="事务隔离的实现——锁"></a>事务隔离的实现——锁</h1><ol>
 <li>共享锁(S锁)<blockquote>
@@ -599,7 +595,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">113</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -674,7 +670,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
