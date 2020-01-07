@@ -294,6 +294,176 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/06/linux多线程服务端编程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/06/linux多线程服务端编程/" itemprop="url">linux多线程服务端编程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-06T14:08:00+08:00">
+                2020-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/01/06/linux多线程服务端编程/" class="leancloud_visitors" data-flag-title="linux多线程服务端编程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="线程安全的对象生命管理周期"><a href="#线程安全的对象生命管理周期" class="headerlink" title="线程安全的对象生命管理周期"></a>线程安全的对象生命管理周期</h1><p>weak_ptr 与 shared_ptr 搭档<br>RAII 资源获取即初始化<br>写个对象池</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="线程同步精要"><a href="#线程同步精要" class="headerlink" title="线程同步精要"></a>线程同步精要</h1><p>尽量使用高层同步设施（线程池，队列，）<br>使用普通互斥锁和条件变量来同步，采用RAII和Scoped Locking<br>写个安全的Singleton, 用shared_ptr来实现copy-on-write</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="常用变成模型"><a href="#常用变成模型" class="headerlink" title="常用变成模型"></a>常用变成模型</h1><p><strong>单线程服务器模型</strong>，“non-blocking IO + IO multiplexing” ， 即Reactor模式。程序基本结构一个事件驱动，以事件驱动和回调方式实现。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 缺点：回调函数必须非阻塞，割裂了业务逻辑不易于维护</span></span><br><span class="line"><span class="keyword">while</span>(!bStop)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">switch</span>(poll())</span><br><span class="line">  &#123;</span><br><span class="line">  	<span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">  		<span class="keyword">break</span>; <span class="comment">// 超时</span></span><br><span class="line">  	<span class="keyword">case</span> <span class="number">-1</span>:</span><br><span class="line">  		<span class="keyword">break</span>; <span class="comment">// 出错</span></span><br><span class="line">  	<span class="keyword">default</span>:</span><br><span class="line">  		<span class="keyword">break</span>; <span class="comment">// IO事件回调 accept或read</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>多线程服务器模型:</strong></p>
+<blockquote>
+<p>1 阻塞IO, 一个请求一个连接（V4查询代理）<br>2 阻塞IO，线程池，是对1的优化<br>3 non-blocking IO + one loop per thread， 即JAVA NIO<br>4 Leader/Flower等高级模式</p>
+</blockquote>
+<p>one loop per thread优点:</p>
+<blockquote>
+<p>1 线程数据固定，启动时创建好，不会频繁创建和销毁<br>2 方便线程间调配负载，Eventloop代表线程主循环，把IOChannel(如TCP连接)注册到需要干活的线程。<br>3 IO事件的发生是固定的，同一个TCP链接不需要考虑并发</p>
+</blockquote>
+<p>同步，调用者主动等待返回结果；异步，调用发出之后，调用就直接返回了，所以没有返回结果。<br>但是在处理IO的时候，阻塞/非阻塞/IO复用(select/epoll)，都属于同步IO，异步IO有专门的API接口。</p>
+<p><strong>消息队列和线程池</strong>，参考Java的Arrary和Linked，线程分类(IO线程，计算线程，第三方库如log，数据库连接线程)</p>
+<p>适用场景，具体分析，IO密集型和计算密集型，链接数</p>
+<h1 id="多线程系统编程精要"><a href="#多线程系统编程精要" class="headerlink" title="多线程系统编程精要"></a>多线程系统编程精要</h1><p>__thread 只能修饰非POD类型，不能修饰class，可以修饰全局或函数内的静态变量<br>epoll增删改fd需要在同一个线程中进行，所以Eventloop需要wakeup()<br>Socket对象包装文件描述符fd，便于读写不串话及生命周期管理(shared_ptr)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/27/win10使用问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -652,13 +822,13 @@
         
           
             <h1 id="基本情况"><a href="#基本情况" class="headerlink" title="基本情况"></a>基本情况</h1><ul>
-<li>姓名：章彬彬</li>
+<li>姓名：</li>
 <li>出生年月：1988.12</li>
 <li>学历：本科/自动化专业/浙江工业大学之江学院</li>
 <li>毕业时间：2011.7</li>
 <li>期望职位: Linux c++ 开发</li>
-<li>手机: 15858179271</li>
-<li>Email: <a href="mailto:bzadhere@163.com" target="_blank" rel="noopener">bzadhere@163.com</a></li>
+<li>手机: </li>
+<li>Email: </li>
 </ul>
 <h1 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h1><h2 id="亚信软件-2016-4-至今"><a href="#亚信软件-2016-4-至今" class="headerlink" title="亚信软件(2016.4~至今)"></a>亚信软件(2016.4~至今)</h2><ul>
 <li>负责计费系统xxx</li>
@@ -2176,167 +2346,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/git操作命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/14/git操作命令/" itemprop="url">git操作命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T09:44:48+08:00">
-                2019-08-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tools/" itemprop="url" rel="index">
-                    <span itemprop="name">tools</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/08/14/git操作命令/" class="leancloud_visitors" data-flag-title="git操作命令">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="沉浸式学习Git"><a href="#沉浸式学习Git" class="headerlink" title="沉浸式学习Git"></a>沉浸式学习Git</h1><p><a href="http://igit.linuxtoy.org/index.html" target="_blank" rel="noopener">参考地址</a></p>
-<h1 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h1><p><strong>git clone [url] [dir]</strong><br><strong>git init</strong></p>
-<p><a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:bzadhere/myim.git ssh协议<br><a href="https://github.com/bzadhere/myim.git" target="_blank" rel="noopener">https://github.com/bzadhere/myim.git</a> https协议</p>
-<p><strong>git生成SSH公钥</strong><br>~/.ssh 目录下有公钥, 或ssh-keygen创建, 生成公钥id_rsa.pub和私钥id_rsa </p>
-<!--�124-->
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/08/14/git操作命令/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2387,7 +2396,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">114</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
