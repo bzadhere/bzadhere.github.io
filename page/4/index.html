@@ -398,7 +398,7 @@
       
         
           <h1 id="mysql基本架构"><a href="#mysql基本架构" class="headerlink" title="mysql基本架构"></a>mysql基本架构</h1><p>MySQL的逻辑架构：Server层和引擎层。<br>Server层：连接器+分析器(词法/语法分析)+优化器(索引选择)+执行器(操作引擎，返回结果) + 查询缓存(分析时命中则直接返回)<br>引擎层：</p>
-<!--�225-->
+<!--�213-->
 <p>一个链接长时间不用默认8小时断开，参数wait_timeout控制；通过链接对象管理内存，用久内存占用大。<br> mysql_reset_connection 重新初始化链接。</p>
 <p>查询缓存，key-value，key是sql，value是结果；在更新数据后清空，一般不建议用(参数query_cache_type)，在<br>MySQL8.0中没有缓存。</p>
           <!--noindex-->
