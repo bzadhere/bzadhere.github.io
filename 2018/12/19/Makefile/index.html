@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Makefile 包含 变量/注释/文件指示/显式规则/隐晦规则 变量= 基本赋值, := 覆盖之前的值, ?= 如果没被赋值过就赋值, += 追加赋值 赋值foo = a.cpp b.cpp  追加bar = a.cppbar += c.cpp或 bar := $(bar) c.cpp或 bar := ${bae} c.cpp 替换$(var :=) 条件操作符FOO ?= bar 如果FOO未">
+<meta name="description" content="Makefile 包含 变量/注释/文件指示/显式规则/隐晦规则 变量= 基本赋值, 可以使用后面的变量:= 覆盖之前的值, 前面的变量不能使用后面的变量?= 如果没被赋值过就赋值+= 追加赋值，用空格隔开方式追加$(shell cmd) 用shell函数赋值\$(var:=) 替换环境变量可以直接使用嵌套调用Makefile, export 声明变量传递给下一层Makefile 12345678">
 <meta name="keywords" content="Makefile">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Makefile">
 <meta property="og:url" content="http://yoursite.com/2018/12/19/Makefile/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="Makefile 包含 变量/注释/文件指示/显式规则/隐晦规则 变量= 基本赋值, := 覆盖之前的值, ?= 如果没被赋值过就赋值, += 追加赋值 赋值foo = a.cpp b.cpp  追加bar = a.cppbar += c.cpp或 bar := $(bar) c.cpp或 bar := ${bae} c.cpp 替换$(var :=) 条件操作符FOO ?= bar 如果FOO未">
+<meta property="og:description" content="Makefile 包含 变量/注释/文件指示/显式规则/隐晦规则 变量= 基本赋值, 可以使用后面的变量:= 覆盖之前的值, 前面的变量不能使用后面的变量?= 如果没被赋值过就赋值+= 追加赋值，用空格隔开方式追加$(shell cmd) 用shell函数赋值\$(var:=) 替换环境变量可以直接使用嵌套调用Makefile, export 声明变量传递给下一层Makefile 12345678">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-10T11:43:08.863Z">
+<meta property="og:updated_time" content="2020-03-06T03:42:54.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Makefile">
-<meta name="twitter:description" content="Makefile 包含 变量/注释/文件指示/显式规则/隐晦规则 变量= 基本赋值, := 覆盖之前的值, ?= 如果没被赋值过就赋值, += 追加赋值 赋值foo = a.cpp b.cpp  追加bar = a.cppbar += c.cpp或 bar := $(bar) c.cpp或 bar := ${bae} c.cpp 替换$(var :=) 条件操作符FOO ?= bar 如果FOO未">
+<meta name="twitter:description" content="Makefile 包含 变量/注释/文件指示/显式规则/隐晦规则 变量= 基本赋值, 可以使用后面的变量:= 覆盖之前的值, 前面的变量不能使用后面的变量?= 如果没被赋值过就赋值+= 追加赋值，用空格隔开方式追加$(shell cmd) 用shell函数赋值\$(var:=) 替换环境变量可以直接使用嵌套调用Makefile, export 声明变量传递给下一层Makefile 12345678">
 
 
 
@@ -398,16 +398,12 @@
 
       
         <p>Makefile 包含 变量/注释/文件指示/显式规则/隐晦规则</p>
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>= 基本赋值, := 覆盖之前的值, ?= 如果没被赋值过就赋值, += 追加赋值</p>
-<p><strong>赋值</strong><br>foo = a.cpp b.cpp </p>
-<p><strong>追加</strong><br>bar = a.cpp<br>bar += c.cpp<br>或 bar := $(bar) c.cpp<br>或 bar := ${bae} c.cpp</p>
-<p><strong>替换</strong><br>$(var :<parten>=<parten>)</parten></parten></p>
-<p><strong>条件操作符</strong><br>FOO ?= bar 如果FOO未被定义过则赋值, 否则什么也不做</p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>= 基本赋值, 可以使用后面的变量<br>:= 覆盖之前的值, 前面的变量不能使用后面的变量<br>?= 如果没被赋值过就赋值<br>+= 追加赋值，用空格隔开方式追加<br>$(shell cmd) 用shell函数赋值<br>\$(var:<parten>=<parten>) 替换<br>环境变量可以直接使用<br>嵌套调用Makefile, export 声明变量传递给下一层Makefile</parten></parten></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 赋值</span></span><br><span class="line">foo = <span class="variable">$(bar)</span></span><br><span class="line">bar = a.cpp b.cpp</span><br><span class="line"><span class="comment"># 嵌套赋值会报错</span></span><br><span class="line">A = <span class="variable">$(B)</span></span><br><span class="line">B = <span class="variable">$(A)</span></span><br><span class="line"><span class="comment"># := 赋值, 只是不能使用后面的变量, foo是a.cpp</span></span><br><span class="line">foo := <span class="variable">$(bar)</span> a.cpp</span><br><span class="line">bar := b.cpp</span><br><span class="line"><span class="comment"># ?= 如果foo未被定义过则赋值, 否则什么也不做</span></span><br><span class="line">foo ?= bar </span><br><span class="line"><span class="comment"># += 追加</span></span><br><span class="line">foo = a.cpp</span><br><span class="line">foo += b.cpp</span><br><span class="line"><span class="comment"># shell赋值</span></span><br><span class="line">dir = <span class="variable">$(<span class="built_in">shell</span> pwd)</span></span><br><span class="line"><span class="comment"># 替换 将字符串结尾的a替换成b, 结尾指空格和结束符</span></span><br><span class="line"><span class="section">$(var:a=b)</span></span><br><span class="line"><span class="section">$(var:%.o=%.c)</span></span><br><span class="line"><span class="comment"># @echo 打印变量, 没有@时会回显命令</span></span><br><span class="line">@echo <span class="string">"bar=&gt;<span class="variable">$(bar)</span>"</span></span><br></pre></td></tr></table></figure>
 <p><strong>目标变量</strong><br>foo.o : foo.cpp<br>$(CXX) $(CFLAG) foo.cpp</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 将字符串结尾的a替换成b, 结尾指空格和结束符</span><br><span class="line">$(var:a=b)</span><br><span class="line">$(var:%.o=%.c)</span><br><span class="line"></span><br><span class="line">dir = $(shell pwd)</span><br><span class="line"></span><br><span class="line">// 条件操作符</span><br><span class="line">ifeq ($(origin FOO), undefined)</span><br><span class="line">FOO = bar</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
 <h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 注释</span><br><span class="line">bar = a.cpp</span><br></pre></td></tr></table></figure>
-<h1 id="文件指指示"><a href="#文件指指示" class="headerlink" title="文件指指示"></a>文件指指示</h1><p>include NGCmake</p>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>$(function &lt;arg&gt;) 或 ${function &lt;arg&gt;}</p>
+<h1 id="文件指指示"><a href="#文件指指示" class="headerlink" title="文件指指示"></a>文件指指示</h1><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 包含NGCmake</span></span><br><span class="line"><span class="keyword">include</span> NGCmake</span><br></pre></td></tr></table></figure>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(function &lt;arg&gt;)</span> 或 $&#123;function &lt;arg&gt;&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h2><table>
 <thead>
 <tr>
@@ -544,10 +540,10 @@
 <h2 id="控制和调用"><a href="#控制和调用" class="headerlink" title="控制和调用"></a>控制和调用</h2><ul>
 <li>$(foreach &lt;var&gt;,&lt;list&gt;,&lt;text&gt;)<br>循环执行</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names := a b c d</span><br><span class="line">files := $(foreach n,$(names),$(n).o)</span><br><span class="line">ouput: a.o b.o c.o d.o</span><br></pre></td></tr></table></figure>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names := a b c d</span><br><span class="line">files := <span class="variable">$(<span class="built_in">foreach</span> n,<span class="variable">$(names)</span>,<span class="variable">$(n)</span>.o)</span></span><br><span class="line"><span class="comment"># ouput: a.o b.o c.o d.o</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>$(if &lt;condition&gt;,&lt;then-part&gt;)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ifeq ($(CXX), gcc)</span><br><span class="line">$(CXX) -o test $(object) $(lib_gcc)</span><br><span class="line">else</span><br><span class="line">$(CXX) -o test $(object) $(lib_others)</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ifeq</span> (<span class="variable">$(CXX)</span>, gcc)</span><br><span class="line"><span class="variable">$(CXX)</span> -o test <span class="variable">$(object)</span> <span class="variable">$(lib_gcc)</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="variable">$(CXX)</span> -o test <span class="variable">$(object)</span> <span class="variable">$(lib_others)</span></span><br><span class="line"><span class="keyword">endif</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>$(call &lt;expression&gt;,&lt;param1&gt;,&lt;param2&gt;…)<br>创建新的函数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">reserve := $(1) $(2)</span><br><span class="line">f = $(call reserve,a,b)</span><br><span class="line"></span><br><span class="line">f的值是a b</span><br></pre></td></tr></table></figure>
@@ -580,12 +576,9 @@
 </tr>
 </tbody>
 </table>
-<h1 id="显示规则"><a href="#显示规则" class="headerlink" title="显示规则"></a>显示规则</h1><p>targest : prerequisites<br>command</p>
-<p>通配符: */%/[…]</p>
+<h1 id="显示规则"><a href="#显示规则" class="headerlink" title="显示规则"></a>显示规则</h1><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通配符: */%/[...]</span></span><br><span class="line">targest : prerequisites</span><br><span class="line">	command</span><br></pre></td></tr></table></figure>
 <h2 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h2><p>// 为符合模式的文件指定搜索目录<br>vpath <pattern> <directories><br>// 为符合模式的文件清除搜索目录<br>vpath <pattern><br>// 清楚搜索目录<br>vpath</pattern></directories></pattern></p>
-<h2 id="伪目标"><a href="#伪目标" class="headerlink" title="伪目标"></a>伪目标</h2><p>clean:<br>    rm -rf *.o </p>
-<p>执行时指定 make clean</p>
-<p>.PHONY: clean<br>clean:<br>    rm -rf *.o<br>.PHONY 显示的标记一个伪目标, 还能避免重名</p>
+<h2 id="伪目标"><a href="#伪目标" class="headerlink" title="伪目标"></a>伪目标</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># make clean会执行 "rm -rf *.o"</span></span><br><span class="line"><span class="comment"># 但如果当前目录下存在clean文件, 规则没有依赖文件，目标被认为是最新的，不会去执行rm命令</span></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm -rf *.o </span><br><span class="line"></span><br><span class="line"><span class="comment"># .PHONY 显示的标记一个伪目标, 还能避免重名</span></span><br><span class="line"><span class="comment"># 工作目录下存在clean文件也会执行rm命令</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>: clean</span></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm -rf *.o </span><br><span class="line">	</span><br><span class="line"><span class="comment"># 多个伪目标，伪目标之间有依赖</span></span><br><span class="line"><span class="comment"># make cleanobj 相当于一个子程序</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>: cleanall cleanobj cleandiff </span></span><br><span class="line">cleanall : cleanobj cleandiff </span><br><span class="line">	rm program </span><br><span class="line">cleanobj : </span><br><span class="line">	rm *.o </span><br><span class="line">cleandiff : </span><br><span class="line">	rm *.diff </span><br><span class="line">	</span><br><span class="line"><span class="comment"># 多个伪目标，每个伪目标有自己的依赖</span></span><br><span class="line"><span class="comment"># make all, 重建all依赖的文件(prog1,prog2,prog3)</span></span><br><span class="line"><span class="section">all: prog1 prog2 prog3</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>: all</span></span><br><span class="line">.PHONY : all </span><br><span class="line">prog1 : prog1.o utils.o </span><br><span class="line">	cc -o prog1 prog1.o utils.o </span><br><span class="line">prog2 : prog2.o </span><br><span class="line">	cc -o prog2 prog2.o </span><br><span class="line">prog3 : prog3.o </span><br><span class="line">	cc -o prog3 prog3.o</span><br></pre></td></tr></table></figure>
 <h2 id="静态规则"><a href="#静态规则" class="headerlink" title="静态规则"></a>静态规则</h2><p>&lt;targets…&gt; : <target-pattern> : <prerequisites></prerequisites></target-pattern></p>
 <p><commands><br>…</commands></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">object = foo.o bar.o </span><br><span class="line">all: $(object)</span><br><span class="line">$(object): %.o: %.c </span><br><span class="line">$CC -c $(FLAG) $&lt; -o $@</span><br></pre></td></tr></table></figure>
@@ -799,7 +792,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
