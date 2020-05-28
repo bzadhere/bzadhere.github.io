@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/02/27/linux性能优化之内存-笔记/6.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/27/linux性能优化之内存-笔记/7.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/27/linux性能优化之内存-笔记/8.png">
-<meta property="og:updated_time" content="2019-11-10T11:43:11.925Z">
+<meta property="og:updated_time" content="2020-05-25T05:59:08.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux性能优化之内存 笔记">
 <meta name="twitter:description" content="linux内存工作原理linux内核给每个进程提供了一个独立的虚拟地址空间, 并且这个地址空间是连续的。 内存映射虚拟地址空间分为内核空间和用户空间, 常见的32位和64位虚拟地址空间如下：">
@@ -429,6 +429,7 @@
 <p>centos上安装相当不方便</p>
 <h1 id="内存泄漏排查和优化"><a href="#内存泄漏排查和优化" class="headerlink" title="内存泄漏排查和优化"></a>内存泄漏排查和优化</h1><p>valgrind/memleak/</p>
 <p>存在需要大量内存场景, 考虑栈内存或者内存池, 大页来优化内存分配管理</p>
+<p>valgrind/mtrace/dmalloc/ccmalloc/memwatch/debug_new</p>
 <h1 id="Swap交换分区"><a href="#Swap交换分区" class="headerlink" title="Swap交换分区"></a>Swap交换分区</h1><h2 id="原理说明"><a href="#原理说明" class="headerlink" title="原理说明"></a>原理说明</h2><p>内存紧张时, linux通过直接回收和定期扫描方式, 来释放文件页和内存页, 把内存分配给<br>更需要的进程：</p>
 <ul>
 <li>文件页直接清空, 或写回磁盘后释放缓存</li>

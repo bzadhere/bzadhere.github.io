@@ -1528,10 +1528,8 @@
       
         
           <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><p>全文基于lua5.1</p>
-<h2 id="CAPI"><a href="#CAPI" class="headerlink" title="CAPI"></a>CAPI</h2><blockquote>
-<p>lua.h 基础函数, lua_ 开头, Lua没有定义全局变量, lua_State 动态结构保持所有状态<br>lauxlib.h 辅助函数 luaL_ 开头, 基于基础函数api, 侧重解决具体业务<br>lualib.h 定义了标准库, 用户可以包含这个文件, 来统一openlibs, 如 luaL_openlibs</p>
-</blockquote>
 <h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>Lua和C语言数据交换, 有两个问题, 动态和静态类型之间区别, 自动和手动内存管理的区别<br>Lua设计了一个抽象的栈, 用于与其他语言数据交换, 栈中元素可以保存任何Lua类型的值</p>
+<p><img src="/2019/09/06/lua应用/image-20200526173904275.png" alt="image-20200526173904275"></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/09/06/lua应用/#more" rel="contents">
@@ -1692,7 +1690,7 @@
 <h1 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h1><p><strong>git clone [url] [dir]</strong><br><strong>git init</strong></p>
 <p><a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:bzadhere/myim.git ssh协议<br><a href="https://github.com/bzadhere/myim.git" target="_blank" rel="noopener">https://github.com/bzadhere/myim.git</a> https协议</p>
 <p><strong>git生成SSH公钥</strong><br>~/.ssh 目录下有公钥, 或ssh-keygen创建, 生成公钥id_rsa.pub和私钥id_rsa </p>
-<!--�140-->
+<!--�163-->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/08/14/git操作命令/#more" rel="contents">
