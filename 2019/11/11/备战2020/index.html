@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/11/11/备战2020/握手分手.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/11/11/备战2020/TCP的有限状态机.png">
 <meta property="og:image" content="http://yoursite.com/2019/11/11/备战2020/6.png">
-<meta property="og:updated_time" content="2020-06-24T07:13:00.686Z">
+<meta property="og:updated_time" content="2020-07-29T06:59:28.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="备战2020">
 <meta name="twitter:description" content="简历重构经验 项目描述项目描述两三行，然后概括下我大概做了哪几个模块，完了。  找2-3个亮点, 一句话高度概括，突出亮点。 比如：   我负责这个系统中爬虫的开发，终端控制管理，店铺管理   负责系统中爬虫模块的开发，用于爬取影片的各种信息，包括年份，介绍，主演信息等   独立开发多线程影片信息爬虫工具， 并针对线程池性能、网络异常以及反爬虫措施进行多次优化，容错性良好并达到并发请求30+的QP">
@@ -610,7 +610,8 @@
 <p>2）不同之处：<br>    虚继承，虚基类存储在在继承类中，只占用存储空间；虚基类表存储的是虚基类相对直接继承类的偏移<br>    虚函数，虚函数不占用类存储空间，虚函数表存储的是虚函数地址</p>
 <h3 id="模板类、成员模板、虚函数"><a href="#模板类、成员模板、虚函数" class="headerlink" title="模板类、成员模板、虚函数"></a>模板类、成员模板、虚函数</h3><p>1）模板类中可以使用虚函数<br>2）一个类的成员模板(本身是模板的成员函数)不能是虚函数，不管是普通类还是类模；<br>    因为虚函数表里的虚函数指针是确定的，成员模板无法确定</p>
 <h3 id="抽象类、接口类、聚合类"><a href="#抽象类、接口类、聚合类" class="headerlink" title="抽象类、接口类、聚合类"></a>抽象类、接口类、聚合类</h3><p>1）抽象类：含有纯虚函数的类<br>2）接口类：只含有纯虚函数的抽象类<br>3）聚合类：用户可以直接访问成员，并且具有特殊的初始化语法形式。满足如下特点：<br>    a）所有成员都是public<br>    b）没有定义任何构造函数<br>    c）没有类内初始化<br>    d）没有基类，也没有virtual函数</p>
-<h3 id="内存分配管理"><a href="#内存分配管理" class="headerlink" title="内存分配管理"></a>内存分配管理</h3><p>1）malloc：申请指定字节数内存，申请到内存中的初始值不确定<br>2）calloc：为指定长度的对象，分配能容纳其指定个数的内存。申请到的内存初始化为0<br>3）realloc：更改以前分配内存长度(增加或减少）。当增加长度时，将以前分配区的内容移动到一个足够大的区域，新增区域内的初始值不确定<br>4）alloca：在栈上申请内存。程序在出栈的时候，会自动释放。但需要注意的是alloca不可移植，在没有传统堆栈的机器上很难实现，所以不宜用在需要广泛移植的程序中。C99中支持变长数组(VLA)可以用来替代alloca</p>
+<h3 id="内存分配管理"><a href="#内存分配管理" class="headerlink" title="内存分配管理"></a>内存分配管理</h3><p>C++内存分配：堆/栈/全局(静态)/常量/ 自由存储区(通过new,delete动态分配和释放对象的抽象概念）</p>
+<p>1）malloc：申请指定字节数内存，申请到内存中的初始值不确定<br>2）calloc：为指定长度的对象，分配能容纳其指定个数的内存。申请到的内存初始化为0<br>3）realloc：更改以前分配内存长度(增加或减少）。当增加长度时，将以前分配区的内容移动到一个足够大的区域，新增区域内的初始值不确定<br>4）alloca：在栈上申请内存。程序在出栈的时候，会自动释放。但需要注意的是alloca不可移植，在没有传统堆栈的机器上很难实现，所以不宜用在需要广泛移植的程序中。C99中支持变长数组(VLA)可以用来替代alloca</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">malloc</span> <span class="params">(<span class="keyword">size_t</span> size)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">calloc</span> <span class="params">(<span class="keyword">size_t</span> num, <span class="keyword">size_t</span> size)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">realloc</span> <span class="params">(<span class="keyword">void</span>* ptr, <span class="keyword">size_t</span> size)</span></span>;</span><br><span class="line"><span class="keyword">void</span> * __<span class="function">cdecl <span class="title">alloca</span><span class="params">(<span class="keyword">size_t</span>)</span></span>; <span class="comment">// 有些函数定义成__cdecl宏</span></span><br></pre></td></tr></table></figure>
 <p>5)new/delete<br>    a）new/new [] 完成两件事，先调用malloc分配内存，然后调用构造函数创建对象<br>    b）delete/delete [] 完成两件事, 先调用析构函数(清理资源)，再调用free释放空间<br>    c）new 在申请内存时会自动计算所需字节数，而malloc需要我们自己指定</p>
 <p>6）定位new  允许我们向 new 传递额外的地址参数，从而在预先指定的内存区域创建对象 </p>
@@ -1094,7 +1095,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">123</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1116,7 +1117,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

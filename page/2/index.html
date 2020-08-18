@@ -294,6 +294,637 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/27/win10使用问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/27/win10使用问题/" itemprop="url">win10使用问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-27T11:50:13+08:00">
+                2019-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/12/27/win10使用问题/" class="leancloud_visitors" data-flag-title="win10使用问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="删除国际键盘"><a href="#删除国际键盘" class="headerlink" title="删除国际键盘"></a>删除国际键盘</h2><p>输入法切换时，英语-美式/英语-国际/中文。</p>
+<p>设置=&gt;时间和语言=&gt;区域和语言=&gt;管理语言设置</p>
+<p><img src="/2019/12/27/win10使用问题/image-20191227115449769.png" alt="image-20191227115449769"></p>
+<h2 id="取消FN键盘"><a href="#取消FN键盘" class="headerlink" title="取消FN键盘"></a>取消FN键盘</h2><p>Fn + Esc 恢复或取消F1~F12</p>
+<h2 id="WLAN不见了"><a href="#WLAN不见了" class="headerlink" title="WLAN不见了"></a>WLAN不见了</h2><p>麻烦右键1535驱动，选择卸载设备，不要勾选对话框，直接点击卸载</p>
+<p>完成后，机器关机，然后开机后，马上连续敲击F2，进入后点击右下角restore setting，选择bios default，选择OK，然后点击右下角exit</p>
+<p>重启电脑后，进入系统里查看wifi情况</p>
+<p>选择网络还是没有无线，接下来考虑的是驱动或者系统问题</p>
+<p>麻烦您右键左下角开始按钮–选择windows powershell（管理员 win+x），输入：netsh winsock  reset，回车运行，成功后，重启电脑</p>
+<h2 id="充电设置"><a href="#充电设置" class="headerlink" title="充电设置"></a>充电设置</h2><p>开机F2进入BIOS设置，选择Power Managerment，选择Primary Battery Charge Configuration</p>
+<h2 id="系统清理"><a href="#系统清理" class="headerlink" title="系统清理"></a>系统清理</h2><p>C:\Users\zhangbb\AppData</p>
+<p>C:\Windows\Installer</p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>win + d  窗口最小化</p>
+<p>win + e 打开我的电脑</p>
+<p>win + x 设备管理器，任务管理器，磁盘管理，设置</p>
+<p>win + r 运行。。。</p>
+<p> <strong>ctrl + alt + delete</strong> 注销，切换用户，任务管理器</p>
+<p> <strong>ctrl + shift + delete</strong> 快速清除浏览器缓存</p>
+<h2 id="github无法访问"><a href="#github无法访问" class="headerlink" title="github无法访问"></a>github无法访问</h2><p>电脑管家=&gt;工具箱=&gt;DNS优选</p>
+<p>常用DNS：<br>阿里云 (223.5.5.5,  223.6.6.6 )<br>Google Public DNS （8.8.8.8， 8.8.4.4）<br>腾讯 119.29.29.29</p>
+<p>C:\Windows\System32\drivers\etc 一般用不到，能访问的指定合适的DNS肯定可以访问</p>
+<h2 id="c盘清理"><a href="#c盘清理" class="headerlink" title="c盘清理"></a>c盘清理</h2><p>C:\Users\zhangbb\AppData\Roaming\PCDr    dell诊断支持使用</p>
+<p>C:\Program Files\WindowsApps   应用商店，不用可删除</p>
+<blockquote>
+<p>windows.old 升级备份，可删除</p>
+</blockquote>
+<blockquote>
+<p> 删除应用qq/微信缓存</p>
+</blockquote>
+<blockquote>
+<p>关闭休眠：Cortana=&gt;cmd=&gt;以管理员身份运行=&gt;powercfg /h off </p>
+</blockquote>
+<blockquote>
+<p>删除临时文件：设置=&gt;系统=&gt;存储=&gt;C盘=&gt;临时文件=&gt;删除文件</p>
+</blockquote>
+<blockquote>
+<p>虚拟内存更改：我的电脑=&gt;右键属性=&gt;高级系统设置=&gt;高级=&gt;（视觉效果)设置=&gt;高级=&gt;(虚拟内存)更改</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/13/load-balance问题分分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/13/load-balance问题分分析/" itemprop="url">load-balance问题分分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T13:55:49+08:00">
+                2019-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/12/13/load-balance问题分分析/" class="leancloud_visitors" data-flag-title="load-balance问题分分析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/brief/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/11/brief/" itemprop="url">brief</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-11T09:59:29+08:00">
+                2019-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/12/11/brief/" class="leancloud_visitors" data-flag-title="brief">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="基本情况"><a href="#基本情况" class="headerlink" title="基本情况"></a>基本情况</h1><ul>
+<li>姓名：</li>
+<li>出生年月：1988.12</li>
+<li>学历：本科/自动化专业/浙江工业大学之江学院</li>
+<li>毕业时间：2011.7</li>
+<li>期望职位: Linux c++ 开发</li>
+<li>手机: </li>
+<li>Email: </li>
+</ul>
+<h1 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h1><h2 id="亚信软件-2016-4-至今"><a href="#亚信软件-2016-4-至今" class="headerlink" title="亚信软件(2016.4~至今)"></a>亚信软件(2016.4~至今)</h2><ul>
+<li>负责计费系统xxx</li>
+<li>主要参与了北京物联网, 浙江计费中心建设, 5G等项目</li>
+<li>具体技术: Linux c++, zk, docker, rpc, http2, mysql</li>
+</ul>
+<h2 id="浙江大华技术股份有限公司-2015-10-2016-4"><a href="#浙江大华技术股份有限公司-2015-10-2016-4" class="headerlink" title="浙江大华技术股份有限公司(2015.10~2016.4)"></a>浙江大华技术股份有限公司(2015.10~2016.4)</h2><ul>
+<li>在网络平台部负责定制化需求开发<br>车载设备/监控设备: 定位, 路况汇报, 抓拍, 测速, 音视频控制等业务功能</li>
+<li>具体技术：Linux c++</li>
+</ul>
+<h2 id="亚信软件-2012-7-2015-10"><a href="#亚信软件-2012-7-2015-10" class="headerlink" title="亚信软件(2012.7~2015.10)"></a>亚信软件(2012.7~2015.10)</h2><ul>
+<li>负责计费系统部分模块开发运维 及 需求设计分析</li>
+<li>主要参与了在线计费, 贵州双中心等项目</li>
+<li>具体技术：Linux c++ , Lua, Oracle</li>
+</ul>
+<h2 id="杭州凯宇信息技术有限公司-2010-12-2012-6"><a href="#杭州凯宇信息技术有限公司-2010-12-2012-6" class="headerlink" title="杭州凯宇信息技术有限公司(2010.12~2012.6)"></a>杭州凯宇信息技术有限公司(2010.12~2012.6)</h2><ul>
+<li>负责IM服务器后端开发, 完成乐聊/百视汇多媒体社交APP服务端开发</li>
+<li>具体技术：Linux c++, libevent/spserver, postgresql, memcached, tcpdump/wireshark工具</li>
+</ul>
+<h1 id="项目经历"><a href="#项目经历" class="headerlink" title="项目经历"></a>项目经历</h1><h2 id="浙江5G项目"><a href="#浙江5G项目" class="headerlink" title="浙江5G项目"></a>浙江5G项目</h2><p>负责系统中解码，将JSON消息格式转换成内部消息格式<br>负载均衡模块开发，线程池/对象池</p>
+<h2 id="浙江计费中心建设项目"><a href="#浙江计费中心建设项目" class="headerlink" title="浙江计费中心建设项目"></a>浙江计费中心建设项目</h2><p>服务化架构升级，负责系统业务模块改造方案及部分模块设计开发<br>重构资费引擎批价模块, (引入c++11新特性, 设计模式, 资费数据用共享内存), 提高可维护性<br>查询服务模块，高并发的网络服务库, (查询量和性能)<br>内存数据库 插件开发(服务接口和路由和导出)和优化(查重优化)</p>
+<h2 id="北京物联网项目"><a href="#北京物联网项目" class="headerlink" title="北京物联网项目"></a>北京物联网项目</h2><p>负责系统总体设计方案和实施, 计费流程引入乐观锁和流量分片, 性能提升了多少</p>
+<h2 id="在线计费项目"><a href="#在线计费项目" class="headerlink" title="在线计费项目"></a>在线计费项目</h2><p>负责在线计费流程优化, 压力测试和优化，增加KPI指标模块衡量各个模块性能</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/09/v8实施经验分享/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/09/v8实施经验分享/" itemprop="url">v8实施经验分享</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-09T11:14:30+08:00">
+                2019-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/12/09/v8实施经验分享/" class="leancloud_visitors" data-flag-title="v8实施经验分享">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="代码开发"><a href="#代码开发" class="headerlink" title="代码开发"></a>代码开发</h1><p>照搬浙江V8代码，做适配修改，具体要点如下：</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xc</td>
+<td>xcd模板实现</td>
+</tr>
+<tr>
+<td>批价</td>
+<td>结构调整(接口离线/在线/漫游/回退/5G融合计费)，去掉按量接口，提醒等相关功能；                                    xc查询接口，在线冲销(最好封装成接口)，科目转换，新增业务功能</td>
+</tr>
+<tr>
+<td>计费mdb</td>
+<td>调整上下行包定义，表定义，业务接口具体逻辑                                                                                   mapreduce 路由适配</td>
+</tr>
+<tr>
+<td>查询代理</td>
+<td>TG(socket消息收发) 和 工具(压测和对账) 直接用，TP 业务接口做调整</td>
+</tr>
+</tbody>
+</table>
+<h1 id="数据割接"><a href="#数据割接" class="headerlink" title="数据割接"></a>数据割接</h1><p>1）PM_EXPRESSIONS 条件表达式，USE_TRIGGER按模块区分<br>2）科目转换</p>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p>1）V5/V8 自测流程搭建，便于开发去复现问题<br>2）编译时去掉O2，便于GDB调试</p>
+<h1 id="遇到过的问题"><a href="#遇到过的问题" class="headerlink" title="遇到过的问题"></a>遇到过的问题</h1><h2 id="1）xc"><a href="#1）xc" class="headerlink" title="1）xc"></a>1）xc</h2><p>a）建议 index 定义尽量显示，少用indexs=“KEY”，查询sqlite文件时方便点</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;container indexs=<span class="string">"PROD_PROP_ID"</span> name=<span class="string">"PM_PROD_BILL_EXT_PROP"</span> type=<span class="string">"hash_multimap"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>b） PM_CURVE_SEGMENT.TAIL_ROUND 等 小数精度加载到xc时转换成了整数，注意下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TO_CHAR(A.RATE_ROUND, '0D99') AS RATE_ROUND</span><br></pre></td></tr></table></figure>
+<h2 id="2）批价"><a href="#2）批价" class="headerlink" title="2）批价"></a>2）批价</h2><p>对账问题，没有太大参考意义，具体情况具体分析。基本都是某个字段的差异(STD_UNIT, CHARGE1) </p>
+<h2 id="3）计费mdb"><a href="#3）计费mdb" class="headerlink" title="3）计费mdb"></a>3）计费mdb</h2><p>a）mdb无缝ck，代码中去掉sleep相关操作</p>
+<p>b)   统一设置 MDB CK 后缀名，主端格式为 <em>.mdb.xy.yyyymmdd  , 备端 </em>.mdb.stb.xy.yyyymmdd </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RATMDB_CAMTFreeResource.mdb<span class="number">.01</span><span class="number">.20191115</span></span><br></pre></td></tr></table></figure>
+<p>c）批价查询接口，查多个mdb时，一个查询/接收完后再顺序处理下一个mdb(mapreduce 重载ReqAndRes4Queryratingmdb)</p>
+<p>d）mapreduce 在gmake clean_all  会删除rdl 对应的<em>h/</em>cpp 文件，gmake install_headers 后自动重新生成，覆盖掉了开发提交的修改。在mapreduce 的Makefile中去掉IMPL_RDL = .rdl 依赖，由开发提交和控制rdl 对应的h/cpp 文件。后续QA编译不会再自动生成rdl接口代码文件。</p>
+<p>e）计费MDB A2 HA和容 在binlog乱序时 异常退出，主端先执行truncate(告警导出)，再执行insert(批价更新) ，备端先执行了insert ，导致出错。</p>
+<p><img src="/2019/12/09/v8实施经验分享/image-20191209112959060.png" alt="image-20191209112959060"></p>
+<h2 id="4）查询代理"><a href="#4）查询代理" class="headerlink" title="4）查询代理"></a>4）查询代理</h2><p>对账一把，具体问题具体分析</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/11/备战2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -603,7 +1234,8 @@
 <p>2）不同之处：<br>    虚继承，虚基类存储在在继承类中，只占用存储空间；虚基类表存储的是虚基类相对直接继承类的偏移<br>    虚函数，虚函数不占用类存储空间，虚函数表存储的是虚函数地址</p>
 <h3 id="模板类、成员模板、虚函数"><a href="#模板类、成员模板、虚函数" class="headerlink" title="模板类、成员模板、虚函数"></a>模板类、成员模板、虚函数</h3><p>1）模板类中可以使用虚函数<br>2）一个类的成员模板(本身是模板的成员函数)不能是虚函数，不管是普通类还是类模；<br>    因为虚函数表里的虚函数指针是确定的，成员模板无法确定</p>
 <h3 id="抽象类、接口类、聚合类"><a href="#抽象类、接口类、聚合类" class="headerlink" title="抽象类、接口类、聚合类"></a>抽象类、接口类、聚合类</h3><p>1）抽象类：含有纯虚函数的类<br>2）接口类：只含有纯虚函数的抽象类<br>3）聚合类：用户可以直接访问成员，并且具有特殊的初始化语法形式。满足如下特点：<br>    a）所有成员都是public<br>    b）没有定义任何构造函数<br>    c）没有类内初始化<br>    d）没有基类，也没有virtual函数</p>
-<h3 id="内存分配管理"><a href="#内存分配管理" class="headerlink" title="内存分配管理"></a>内存分配管理</h3><p>1）malloc：申请指定字节数内存，申请到内存中的初始值不确定<br>2）calloc：为指定长度的对象，分配能容纳其指定个数的内存。申请到的内存初始化为0<br>3）realloc：更改以前分配内存长度(增加或减少）。当增加长度时，将以前分配区的内容移动到一个足够大的区域，新增区域内的初始值不确定<br>4）alloca：在栈上申请内存。程序在出栈的时候，会自动释放。但需要注意的是alloca不可移植，在没有传统堆栈的机器上很难实现，所以不宜用在需要广泛移植的程序中。C99中支持变长数组(VLA)可以用来替代alloca</p>
+<h3 id="内存分配管理"><a href="#内存分配管理" class="headerlink" title="内存分配管理"></a>内存分配管理</h3><p>C++内存分配：堆/栈/全局(静态)/常量/ 自由存储区(通过new,delete动态分配和释放对象的抽象概念）</p>
+<p>1）malloc：申请指定字节数内存，申请到内存中的初始值不确定<br>2）calloc：为指定长度的对象，分配能容纳其指定个数的内存。申请到的内存初始化为0<br>3）realloc：更改以前分配内存长度(增加或减少）。当增加长度时，将以前分配区的内容移动到一个足够大的区域，新增区域内的初始值不确定<br>4）alloca：在栈上申请内存。程序在出栈的时候，会自动释放。但需要注意的是alloca不可移植，在没有传统堆栈的机器上很难实现，所以不宜用在需要广泛移植的程序中。C99中支持变长数组(VLA)可以用来替代alloca</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">malloc</span> <span class="params">(<span class="keyword">size_t</span> size)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">calloc</span> <span class="params">(<span class="keyword">size_t</span> num, <span class="keyword">size_t</span> size)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">realloc</span> <span class="params">(<span class="keyword">void</span>* ptr, <span class="keyword">size_t</span> size)</span></span>;</span><br><span class="line"><span class="keyword">void</span> * __<span class="function">cdecl <span class="title">alloca</span><span class="params">(<span class="keyword">size_t</span>)</span></span>; <span class="comment">// 有些函数定义成__cdecl宏</span></span><br></pre></td></tr></table></figure>
 <p>5)new/delete<br>    a）new/new [] 完成两件事，先调用malloc分配内存，然后调用构造函数创建对象<br>    b）delete/delete [] 完成两件事, 先调用析构函数(清理资源)，再调用free释放空间<br>    c）new 在申请内存时会自动计算所需字节数，而malloc需要我们自己指定</p>
 <p>6）定位new  允许我们向 new 传递额外的地址参数，从而在预先指定的内存区域创建对象 </p>
@@ -1264,7 +1896,6 @@
 <li>为了讲解通俗易懂, 简化表达语言(直接表达)</li>
 </ol>
 </blockquote>
-<p># </p>
 
           
         
@@ -1732,715 +2363,21 @@
 
       
         
-          <h1 id="沉浸式学习Git"><a href="#沉浸式学习Git" class="headerlink" title="沉浸式学习Git"></a>沉浸式学习Git</h1><p><a href="http://igit.linuxtoy.org/index.html" target="_blank" rel="noopener">参考地址</a></p>
-<h1 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h1><p><strong>git clone [url] [dir]</strong><br><strong>git init</strong></p>
-<p><a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:bzadhere/myim.git ssh协议<br><a href="https://github.com/bzadhere/myim.git" target="_blank" rel="noopener">https://github.com/bzadhere/myim.git</a> https协议</p>
-<p><strong>git生成SSH公钥</strong><br>~/.ssh 目录下有公钥, 或ssh-keygen创建, 生成公钥id_rsa.pub和私钥id_rsa </p>
-<!--�139-->
+          <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p><img src="/2019/08/14/git操作命令/1-1596006424936.png" alt="1"></p>
+<ul>
+<li>Workspace：工作区，能看到的目录</li>
+<li>Index / Stage：暂存区</li>
+<li>Repository：仓库区（或本地仓库）</li>
+<li>Remote：远程仓库</li>
+</ul>
+<p><strong>HEAD</strong>: 指向该分支上的最后一次提交，待补充</p>
+<p><strong>master</strong>: 只是这个repository中默认创建的第一个branch</p>
+<p><strong>origin</strong>: 远程仓库在本地的标签或者别名，git clone url 默认创建的指向这个远程代码库的标签</p>
+<h1 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h1><!--�0-->
+<!--�1-->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/08/14/git操作命令/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/散列和跳表/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/08/散列和跳表/" itemprop="url">散列和跳表</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T10:26:49+08:00">
-                2019-08-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构和算法/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构和算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/08/08/散列和跳表/" class="leancloud_visitors" data-flag-title="散列和跳表">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>字典：<br>  dictionary, 有限元素集合, key+value</p>
-<p>线性表描述:<br>  template<class e,="" class="" k=""><br>  class SortedChain<br>  {<br>    public:<br>      SortedChain(){ first = 0; }<br>      ~SortedChain();<br>      bool isEmpty() { return first == 0 ? true : false; }<br>      int Length();</class></p>
-<pre><code>  bool Search();
-  SortedChain&lt;E, K&gt;&amp; Delete(const K&amp; k, E&amp; e);
-  SortedChain&lt;E, K&gt;&amp; Insert(const E&amp; e);
-  SortedChain&lt;E, K&gt;&amp; DistincsInsert();
-
-
-
-private:
-  SortedChainNode&lt;E, K&gt;* first;
-</code></pre><p>  }</p>
-<p>跳表描述：<br>    特征：<br>    1) 一个跳表有几个层组成<br>    2) 跳表第一层包含所有元素<br>    3) 每一层都是有序链表</p>
-<p><a href="http://www.cppblog.com/mysileng/archive/2013/04/06/199159.html" target="_blank" rel="noopener">http://www.cppblog.com/mysileng/archive/2013/04/06/199159.html</a></p>
-<p>散列描述：</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/二叉树和其他树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/08/二叉树和其他树/" itemprop="url">二叉树和其他树</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T10:26:07+08:00">
-                2019-08-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构和算法/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构和算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/08/08/二叉树和其他树/" class="leancloud_visitors" data-flag-title="二叉树和其他树">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><table>
-<thead>
-<tr>
-<th style="text-align:left">概念</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">树的定义</td>
-<td style="text-align:left">tree 是一个有限非空集合, 其中一个元素为根(root), 余下的元素组成t的子树</td>
-</tr>
-<tr>
-<td style="text-align:left">树的叶子</td>
-<td style="text-align:left">没有孩子的节点称为叶子</td>
-</tr>
-<tr>
-<td style="text-align:left">树的层级</td>
-<td style="text-align:left">level 根的级为1, 孩子的级为2</td>
-</tr>
-<tr>
-<td style="text-align:left">树的高度</td>
-<td style="text-align:left">叶节点的深度, 根节点的高度为0</td>
-</tr>
-<tr>
-<td style="text-align:left">元素的度</td>
-<td style="text-align:left">degree of element 孩子的个数, 叶子节点的度为0</td>
-</tr>
-</tbody>
-</table>
-<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><h2 id="二叉树及其表示"><a href="#二叉树及其表示" class="headerlink" title="二叉树及其表示"></a>二叉树及其表示</h2><p>二叉树的定义: tree 是一个有限非空集合; 根元素 + 2个二叉树组成, 分别称为t的左子树和右子树</p>
-<p>有序二叉树: 节点的度数均不超过2个</p>
-<p>满二叉树: 有2^h-1个元素</p>
-<p>完全二叉树: 从满二叉树中删除k个元素,　称为完全二叉树,  满二叉树是完全二叉树的一个特例</p>
-<p>特点：<br>    每个元素有两棵子树<br>    每个元素的子树都是有序的，可以用左右来区分</p>
-<p>特性：</p>
-<pre><code>1. 包含n(n&gt;0)个元素的二叉树边数为n-1
-2. 若二叉树的高度或深度(层数)h, h&gt;=0, 则该二叉树至少有h个元素, 最多有2^h-1个元素(满二叉树)
-3. 包含n个元素的二叉树最大高度为n, 最小为log2^(n+1)
-4. 设完全二叉树中一元素序号为i, 1&lt;=i&lt;=n, 则有以下关系:
-    1) 当i=1时, 该元素为二叉树的根; 若i&gt;1, 则该元素的父节点编号i/2
-    2) 当2i&gt;n时, 该元素无左孩子; 否则其左孩子编号为2i
-    3) 当2i+1&gt;n时, 该元素无右孩子; 否则该右孩子编号为2i+1
-</code></pre><hr>
-<h2 id="编码树"><a href="#编码树" class="headerlink" title="编码树"></a>编码树</h2><p>PFC编码树, 每个字符对应叶子节点, 顺序？<br><img src="/2019/08/08/二叉树和其他树/1.png" alt=""></p>
-<h2 id="二叉树的实现"><a href="#二叉树的实现" class="headerlink" title="二叉树的实现"></a>二叉树的实现</h2><h2 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h2><h2 id="Huffman-编码"><a href="#Huffman-编码" class="headerlink" title="Huffman 编码"></a>Huffman 编码</h2><p>公式化描述: 按层级的数组</p>
-<p>链表描述:<br>template <class t=""><br>class BinaryTreeNode<br>{<br>public:<br>    Visit(BinaryTreeNode<t><em> );<br>    void PreOrder(BinaryTreeNode<t></t></em> );<br>    void InOrder(BinaryTreeNode<t><em> );<br>    void PostOrder(BinaryTreeNode<t></t></em> );<br>    void LevelOrder(BinaryTreeNode<t>* );</t></t></t></class></p>
-<p>public:<br>    BinaryTreeNode(){}<br>    BinaryTreeNode(const T&amp; e) { data = e; }<br>    BinaryTreeNode(const T&amp;e, BinaryTreeNode<em> l, BinaryTreeNode</em> r)<br>    {<br>    }<br>private:<br>    T data;<br>    BinaryTreeNode<t><em> liftChild = 0;<br>    BinaryTreeNode<t></t></em> rightChild = 0;<br>}</t></p>
-<p>遍历:<br>void PreOrder(BinaryTreeNode<t>* t)<br>{<br>  if(t)<br>  {<br>    Visit(t);<br>    PreOrder(t-&gt;leftChild);<br>    PreOrder(t-&gt;rightChild);<br>  }<br>}</t></p>
-<p>void InOrder(BinaryTreeNode<t>* t)<br>{<br>  if(t)<br>  {<br>    InOrder(t-&gt;leftChild);<br>    Visit(t);<br>    InOrder(t-&gt;rightChild);<br>  }<br>}</t></p>
-<p>void PostOrder(BinaryTreeNode<t>* t)<br>{<br>  if(t)<br>  {<br>    PostOrder(t-&gt;leftChild);<br>    PostOrder(t-&gt;rightChild);<br>    Visit(t);<br>  }<br>}</t></p>
-<p>void LevelOrder(BinaryTreeNode<t><em> t)<br>{<br>  LinkedQueue&lt;BinaryTreeNode<t></t></em>&gt; list;<br>  while(t)<br>  {<br>    Visit(t);<br>    list.add(t-&gt;leftChild);<br>    list.add(t-&gt;rightChild);</t></p>
-<pre><code>list.delete(t); // vector erase
-// return;
-</code></pre><p>  }<br>}</p>
-<hr>
-<p>类BinaryTree<br>template <class t=""><br>class BinaryTree<br>{<br>public:<br>    BinaryTree(){root = 0;}<br>    ~BinaryTree(){}<br>    bool IsEmpty(){ return root ? true : false; }<br>    bool RootValue(T&amp; x);<br>    void MakeTree(T&amp; e, BinaryTree&amp; leftTree, BinaryTree&amp; rightTree);<br>    void BreakTree(T&amp; e, BinaryTree&amp; leftTree, BinaryTree&amp; rightTree);</class></p>
-<pre><code>void PreOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u))
-{ PreOrder(Visit, root); }
-void InOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u))
-{ InOrder(Visit, root); }
-void PostOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u))
-{ PostOrder(Visit, root); }
-void LevelOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u))
-{ LevelOrder(Visit, root); }
-</code></pre><p>private:<br>    BinaryTreeNode<t>* root;<br>}</t></p>
-<p>bool RootValue(T&amp; x)<br>{<br>  if(root)<br>  {<br>    x = root-&gt;data;<br>    return true;<br>  }<br>  else<br>  {<br>    return false;<br>  }<br>}</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/chrome小技巧/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/31/chrome小技巧/" itemprop="url">chrome小技巧</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-31T15:55:11+08:00">
-                2019-07-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/07/31/chrome小技巧/" class="leancloud_visitors" data-flag-title="chrome小技巧">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>全屏截图</strong><br>F12打开开发工具栏, Ctl+Shift+P调出查找界面栏, 输入命令full回车截图并自动下载(或者capture选择截图模式)</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/31/chrome小技巧/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/STL源码解析-笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/18/STL源码解析-笔记/" itemprop="url">STL源码解析-笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-18T09:57:50+08:00">
-                2019-07-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/07/18/STL源码解析-笔记/" class="leancloud_visitors" data-flag-title="STL源码解析-笔记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="STL概述与版本"><a href="#STL概述与版本" class="headerlink" title="STL概述与版本"></a>STL概述与版本</h1><p>STL六大组件, 容器/算法/迭代器/仿函数/配接器(adapters)/配置器(alloctors)</p>
-<h2 id="令人困惑的语法"><a href="#令人困惑的语法" class="headerlink" title="令人困惑的语法"></a>令人困惑的语法</h2><h3 id="临时对象产生和应用"><a href="#临时对象产生和应用" class="headerlink" title="临时对象产生和应用"></a>临时对象产生和应用</h3><p>for_each(begin, end, Print<int>())</int></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/18/STL源码解析-笔记/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2482,7 +2419,7 @@ void LevelOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u))
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2528,7 +2465,7 @@ void LevelOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u))
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">123</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2550,7 +2487,7 @@ void LevelOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u))
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
