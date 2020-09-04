@@ -79,15 +79,18 @@
 
 
 
+<meta name="description" content="mysql1234567891011121314151617181920212223242526272829303132# docker 中下载 mysqldocker pull mysql#启动docker run --name mysql -p 3306:3306  -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7.26# 目录挂载[-v /data01/z">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据迁移">
 <meta property="og:url" content="http://yoursite.com/2020/08/26/数据迁移/index.html">
 <meta property="og:site_name" content="扫地小道童">
+<meta property="og:description" content="mysql1234567891011121314151617181920212223242526272829303132# docker 中下载 mysqldocker pull mysql#启动docker run --name mysql -p 3306:3306  -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7.26# 目录挂载[-v /data01/z">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-08-26T01:51:11.478Z">
+<meta property="og:updated_time" content="2020-09-03T08:04:50.282Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据迁移">
+<meta name="twitter:description" content="mysql1234567891011121314151617181920212223242526272829303132# docker 中下载 mysqldocker pull mysql#启动docker run --name mysql -p 3306:3306  -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7.26# 目录挂载[-v /data01/z">
 
 
 
@@ -334,6 +337,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -372,7 +397,8 @@
       
 
       
-        
+        <h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> docker 中下载 mysql</span><br><span class="line">docker pull mysql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>启动</span><br><span class="line">docker run --name mysql -p 3306:3306  -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7.26</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 目录挂载</span><br><span class="line">[-v /data01/zjgrp/zjv8cs/users/zhangbb/docker/mysql/conf:/etc/mysql/conf.d]</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>进入容器</span><br><span class="line">docker exec -it mysql bash</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>登录mysql</span><br><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>创建/删除 远程用户</span><br><span class="line">create user '[用户名称]'@'%' identified by '[用户密码]'</span><br><span class="line">ALTER USER 'zjdev'@'%' IDENTIFIED BY '123';</span><br><span class="line">delete from mysql.user where user='zjdev';</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>授权</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO 'zjdev'@'%';</span><br><span class="line">grant select,insert,update,delete,create on [数据库名称].* to [用户名称];</span><br><span class="line">revoke all on *.* from [用户名称];</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 创建数据库</span><br><span class="line">create schema [数据库名称] default character set utf8 collate utf8_general_ci;</span><br><span class="line">drop database [schema名称|数据库名称];</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 设置/查看 数据库编码</span><br><span class="line"><span class="meta">mysql&gt;</span> set global character_set_server = utf8;</span><br><span class="line"><span class="meta">mysql&gt;</span> show variables like 'character%';</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -435,6 +461,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/09/03/svn-常用命令/" rel="prev" title="svn 常用命令">
+                svn 常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -485,8 +515,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -501,7 +540,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">125</span>
+                  <span class="site-state-item-count">126</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -546,6 +585,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql"><span class="nav-number">1.</span> <span class="nav-text">mysql</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
