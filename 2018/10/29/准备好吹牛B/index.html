@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="BOSS系统介绍 整体功能架构计费功能架构计费技术架构计费对外接口设计部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系)高可用及容灾设计和测试(mdb)  两个机房, A/B/C/D 4个业务中心,| 流程 | 部署 | 事务数/秒(TPS) | 查询次数/秒(QPS) | 总量/天 ||:-|:-|:-|:-|:-|:-|:-|| 计费查询代理 | A/B/C/D">
+<meta name="description" content="一、简历准备信息亮点， 1. 自我介绍信息亮点， 2. BOSS系统介绍整体功能架构 技术架构 部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系) 高可用及容灾设计和测试    流程 部署 事务数/秒(TPS) 查询次数/秒(QPS) 总量/天">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="准备好吹牛B">
 <meta property="og:url" content="http://yoursite.com/2018/10/29/准备好吹牛B/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="BOSS系统介绍 整体功能架构计费功能架构计费技术架构计费对外接口设计部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系)高可用及容灾设计和测试(mdb)  两个机房, A/B/C/D 4个业务中心,| 流程 | 部署 | 事务数/秒(TPS) | 查询次数/秒(QPS) | 总量/天 ||:-|:-|:-|:-|:-|:-|:-|| 计费查询代理 | A/B/C/D">
+<meta property="og:description" content="一、简历准备信息亮点， 1. 自我介绍信息亮点， 2. BOSS系统介绍整体功能架构 技术架构 部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系) 高可用及容灾设计和测试    流程 部署 事务数/秒(TPS) 查询次数/秒(QPS) 总量/天">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-10T11:43:01.945Z">
+<meta property="og:updated_time" content="2020-10-09T01:32:22.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="准备好吹牛B">
-<meta name="twitter:description" content="BOSS系统介绍 整体功能架构计费功能架构计费技术架构计费对外接口设计部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系)高可用及容灾设计和测试(mdb)  两个机房, A/B/C/D 4个业务中心,| 流程 | 部署 | 事务数/秒(TPS) | 查询次数/秒(QPS) | 总量/天 ||:-|:-|:-|:-|:-|:-|:-|| 计费查询代理 | A/B/C/D">
+<meta name="twitter:description" content="一、简历准备信息亮点， 1. 自我介绍信息亮点， 2. BOSS系统介绍整体功能架构 技术架构 部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系) 高可用及容灾设计和测试    流程 部署 事务数/秒(TPS) 查询次数/秒(QPS) 总量/天">
 
 
 
@@ -397,18 +397,75 @@
       
 
       
-        <h1 id="BOSS系统介绍"><a href="#BOSS系统介绍" class="headerlink" title="BOSS系统介绍"></a>BOSS系统介绍</h1><blockquote>
-<p>整体功能架构<br>计费功能架构<br>计费技术架构<br>计费对外接口设计<br>部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系)<br>高可用及容灾设计和测试(mdb)</p>
-</blockquote>
-<p>两个机房, A/B/C/D 4个业务中心,<br>| 流程 | 部署 | 事务数/秒(TPS) | 查询次数/秒(QPS) | 总量/天 |<br>|:-|:-|:-|:-|:-|:-|:-|<br>| 计费查询代理 | A/B/C/D 每个中心多个端口 | | | | |<br>| 计费MDB | 主/备(同机房)/容(异地机房), A/B/C/D 每个中心2个 | |<br>| GSM长流程 | 按需部署 |<br>| GPRS长流程 | 按需部署 |<br>| 告警导出 | 按需部署 |<br>| 在线计费 | 按需部署 |<br>| 资料上发 | 按需部署 | |<br>| XC本地容器 | 每个应用主机一个 | |</p>
+        <h1 id="一、简历准备"><a href="#一、简历准备" class="headerlink" title="一、简历准备"></a>一、简历准备</h1><p>信息亮点，</p>
+<h2 id="1-自我介绍"><a href="#1-自我介绍" class="headerlink" title="1. 自我介绍"></a>1. 自我介绍</h2><p>信息亮点，</p>
+<h2 id="2-BOSS系统介绍"><a href="#2-BOSS系统介绍" class="headerlink" title="2. BOSS系统介绍"></a>2. BOSS系统介绍</h2><p>整体功能架构</p>
+<p>技术架构</p>
+<p>部署方案(接入/应用/数据) (集群、负载均衡、分布式、数据一致性的区别与关系)</p>
+<p>高可用及容灾设计和测试</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">流程</th>
+<th style="text-align:left">部署</th>
+<th style="text-align:left">事务数/秒(TPS)</th>
+<th style="text-align:left">查询次数/秒(QPS)</th>
+<th style="text-align:left">总量/天</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
 <a id="more"></a>
-<h1 id="遇到过的问题"><a href="#遇到过的问题" class="headerlink" title="遇到过的问题"></a>遇到过的问题</h1><blockquote>
-<p>网络粘包, errno<br>交叉死锁, 锁顺序不一致<br>binlog乱序, 索引优化<br>内存泄漏(lua,new/del, 基类不是析构函数, vector内存只增不减,swap释放问题)<br>性能优化, 主机问题(linux时钟源, ssd调度方式cfq/deadline, ck和binglog文件rename, 自旋锁占CPU过高, 存储变为只读)<br>咪咕在线流程超时(kpi数据分析, sock日志, 冲销节点慢，但是在整个批价节点的占比变化不大，因此判断是网络/CPU等原因导致<br>乐观锁优化 <a href="https://github.com/bzadhere/JavaGuide/blob/master/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87%E4%B9%8B%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8E%E6%82%B2%E8%A7%82%E9%94%81.md" target="_blank" rel="noopener">介绍</a></p>
-</blockquote>
-<h1 id="最得意的事"><a href="#最得意的事" class="headerlink" title="最得意的事"></a>最得意的事</h1><blockquote>
-<p>　</p>
-</blockquote>
-
+<h2 id="3-技术问答"><a href="#3-技术问答" class="headerlink" title="3. 技术问答"></a>3. 技术问答</h2><p>c++ 语言,</p>
+<p>设计模式,</p>
+<p>操作系统，linux, </p>
+<p>网络，</p>
+<p>数据库，索引，</p>
+<p>库与连接,</p>
+<p>工具：gdb，valgrind, c++filt…</p>
+<p>系统设计，分布式系统，服务化</p>
+<p>性能优化: 套路，kpi, google prof…</p>
+<p>阐述自己的优势，冷静处理问题，做什么什么有经验</p>
+<p>最骄傲/得意的事情，</p>
+<p>遇到过的问题，犯过的错误</p>
+<h2 id="4-HR问答"><a href="#4-HR问答" class="headerlink" title="4. HR问答"></a>4. HR问答</h2><p>面试人事助理 hr会问哪些问题 我该怎么回答 求通用台词？</p>
+<ul>
+<li><p>为什么离职</p>
+<pre><code>基本系统维护，没有新项目，希望能提高和新挑战
+  离家更近，更好的平衡生活
+  收入增长缓慢，不符合预期
+</code></pre></li>
+<li><p>找工作最看重什么，为什么对公司感兴趣</p>
+<pre><code>公司前景，岗位技能匹配，领导
+</code></pre></li>
+<li><p>家庭情况</p>
+<pre><code>婚姻，父母
+</code></pre></li>
+<li><p>兴趣爱好，</p>
+</li>
+<li><p>未来几年规划，</p>
+<pre><code>关心的是稳定性，匹配度，以及能力， 希望可以轮岗不同部门，不局限于做某一部分工作
+</code></pre></li>
+<li><p>优缺点，<br>技术上的弱势，不是个人成败和性格</p>
+</li>
+</ul>
+<h2 id="5-需要反问"><a href="#5-需要反问" class="headerlink" title="5. 需要反问"></a>5. 需要反问</h2><p>1 岗位日常工作是什么</p>
+<p>2 加班，开会 情况</p>
+<p>3 岗位是新增还是替换</p>
+<p>4 开发和自测环境搭建，</p>
+<p>5 软件发布流程，产品，运营，测试</p>
+<p>6 商业，盈利状况</p>
+<p><a href="[yifeikong/reverse-interview-zh: 技术面试最后反问面试官的话 (github.com">详细问题</a>](<a href="https://github.com/yifeikong/reverse-interview-zh)" target="_blank" rel="noopener">https://github.com/yifeikong/reverse-interview-zh)</a>)</p>
+<h2 id="6-遇到过的问题"><a href="#6-遇到过的问题" class="headerlink" title="6. 遇到过的问题"></a>6. 遇到过的问题</h2><p>1 网络粘包, errno<br>2 交叉死锁, 锁顺序不一致<br>3 binlog乱序, 索引优化<br>4 内存泄漏(lua,new/del, 基类不是析构函数, vector内存只增不减,swap释放问题)<br>5 性能优化, 主机问题(linux时钟源, ssd调度方式cfq/deadline, ck和binglog文件rename, 自旋锁占CPU过高, 存储变为只读)<br>6 咪咕在线流程超时(kpi数据分析, sock日志, 冲销节点慢，但是在整个批价节点的占比变化不大，因此判断是网络/CPU等原因导致<br>7 乐观锁优化 <a href="https://github.com/bzadhere/JavaGuide/blob/master/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87/%E9%9D%A2%E8%AF%95%E5%BF%85%E5%A4%87%E4%B9%8B%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8E%E6%82%B2%E8%A7%82%E9%94%81.md" target="_blank" rel="noopener">介绍</a></p>
+<h1 id="二、数据结构和算法"><a href="#二、数据结构和算法" class="headerlink" title="二、数据结构和算法"></a>二、数据结构和算法</h1><p>github 上搜关键字 leetcode， 比如 yuanguangxin/LeetCode</p>
+<h1 id="三、TO-DO"><a href="#三、TO-DO" class="headerlink" title="三、TO-DO"></a>三、TO-DO</h1>
       
     </div>
     
@@ -605,7 +662,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BOSS系统介绍"><span class="nav-number">1.</span> <span class="nav-text">BOSS系统介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到过的问题"><span class="nav-number">2.</span> <span class="nav-text">遇到过的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最得意的事"><span class="nav-number">3.</span> <span class="nav-text">最得意的事</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、简历准备"><span class="nav-number">1.</span> <span class="nav-text">一、简历准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-自我介绍"><span class="nav-number">1.1.</span> <span class="nav-text">1. 自我介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-BOSS系统介绍"><span class="nav-number">1.2.</span> <span class="nav-text">2. BOSS系统介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-技术问答"><span class="nav-number">1.3.</span> <span class="nav-text">3. 技术问答</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-HR问答"><span class="nav-number">1.4.</span> <span class="nav-text">4. HR问答</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-需要反问"><span class="nav-number">1.5.</span> <span class="nav-text">5. 需要反问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-遇到过的问题"><span class="nav-number">1.6.</span> <span class="nav-text">6. 遇到过的问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、数据结构和算法"><span class="nav-number">2.</span> <span class="nav-text">二、数据结构和算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、TO-DO"><span class="nav-number">3.</span> <span class="nav-text">三、TO-DO</span></a></li></ol></div>
             
 
           </div>
