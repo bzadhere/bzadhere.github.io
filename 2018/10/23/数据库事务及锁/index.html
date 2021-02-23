@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="事务的四个特性  原子性(Atomicity) 一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-27T08:29:12.523Z">
+<meta property="og:updated_time" content="2020-12-22T02:33:48.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库事务及锁">
 <meta name="twitter:description" content="事务的四个特性  原子性(Atomicity) 一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
@@ -424,7 +424,7 @@
 </li>
 <li><p>虚读(幻读)<br>幻读是事务非独立执行时发生的一种现象。例如事务T1对一个表中所有的行的某个数据项做<br>了从“1”修改为“2”的操作，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值<br>还是为“1”并且提交给数据库。而操作事务T1的用户, 如果再查看刚刚修改的数据，会发现还<br>有一行没有修改，其实这行是从事务T2中添加的，就好像产生幻觉一样，这就是发生了幻读。<br>幻读和不可重复读都是读取了另一条已经提交的事务(这点就脏读不同)，所不同的是不可重复<br>读查询的都是同一个数据项，而幻读针对的是一批数据整体(比如数据的个数)。</p>
 </li>
-<li><p>串行化(Serializable)<br>在串行化隔离模式下，消除了脏读，幻象，但事务并发度急剧下降，事务的隔离级别与事务的并发度成<br>反比，隔离级别越高，事务的并发度越低。实际生产环境下，dba会在并发和满足业务需求之间作权衡，<br>选择合适的隔离级别  </p>
+<li><p>串行化(Serializable)<br> 在串行化隔离模式下，消除了脏读，幻象，但事务并发度急剧下降，事务的隔离级别与事务的并发度成<br> 反比，隔离级别越高，事务的并发度越低。实际生产环境下，dba会在并发和满足业务需求之间作权衡，<br> 选择合适的隔离级别  </p>
 <p>MySQL数据库为我们提供的四种隔离级别：<br>   1）Read uncommitted (读未提交)：最低级别，任何情况都无法保证<br>   2）Read committed (读已提交)：可避免脏读的发生<br>   3）Repeatable read (可重复读)：可避免脏读、不可重复读的发生<br>   4）Serializable (串行化)：可避免脏读、不可重复读、幻读的发生</p>
 </li>
 </ol>
@@ -447,7 +447,9 @@
 <p>Read Committed 读取数据的事务允许其他事务继续访问该行数据，但是未提交的写事务将会禁止其他事务访问该行。可以通过“瞬间共享读锁”和“排他写锁”实现。</p>
 <p>Repeatable Read 读取数据的事务将会禁止写事务（但允许读事务），写事务则禁止任何其他事务。可以通过“共享读锁”和“排他写锁”实现。</p>
 <p>Serializable 读加共享锁，写加排他锁，读写互斥。</p>
-<h1 id="三级封锁协议"><a href="#三级封锁协议" class="headerlink" title="三级封锁协议"></a>三级封锁协议</h1><h1 id="mvcc多版本并发控制协议"><a href="#mvcc多版本并发控制协议" class="headerlink" title="mvcc多版本并发控制协议"></a>mvcc多版本并发控制协议</h1><h1 id="间隙锁"><a href="#间隙锁" class="headerlink" title="间隙锁"></a>间隙锁</h1>
+<h1 id="三级封锁协议"><a href="#三级封锁协议" class="headerlink" title="三级封锁协议"></a>三级封锁协议</h1><h1 id="mvcc多版本并发控制协议"><a href="#mvcc多版本并发控制协议" class="headerlink" title="mvcc多版本并发控制协议"></a>mvcc多版本并发控制协议</h1><h1 id="间隙锁"><a href="#间隙锁" class="headerlink" title="间隙锁"></a>间隙锁</h1><h1 id="SQL-优化"><a href="#SQL-优化" class="headerlink" title="SQL 优化"></a>SQL 优化</h1><p><a href="https://mp.weixin.qq.com/s/YqyHA_CuIpk5My3Ggu2Fgg" target="_blank" rel="noopener">优化策略</a></p>
+<p><a href="https://mp.weixin.qq.com/s/q9wSQJu0MBmVN97KIdX8aA" target="_blank" rel="noopener">内核简介</a></p>
+
       
     </div>
     
@@ -595,7 +597,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">131</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -650,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事务的四个特性"><span class="nav-number">1.</span> <span class="nav-text">事务的四个特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">2.</span> <span class="nav-text">事务隔离级别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离的实现——锁"><span class="nav-number">3.</span> <span class="nav-text">事务隔离的实现——锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三级封锁协议"><span class="nav-number">4.</span> <span class="nav-text">三级封锁协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mvcc多版本并发控制协议"><span class="nav-number">5.</span> <span class="nav-text">mvcc多版本并发控制协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#间隙锁"><span class="nav-number">6.</span> <span class="nav-text">间隙锁</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事务的四个特性"><span class="nav-number">1.</span> <span class="nav-text">事务的四个特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离级别"><span class="nav-number">2.</span> <span class="nav-text">事务隔离级别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务隔离的实现——锁"><span class="nav-number">3.</span> <span class="nav-text">事务隔离的实现——锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三级封锁协议"><span class="nav-number">4.</span> <span class="nav-text">三级封锁协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mvcc多版本并发控制协议"><span class="nav-number">5.</span> <span class="nav-text">mvcc多版本并发控制协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#间隙锁"><span class="nav-number">6.</span> <span class="nav-text">间隙锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL-优化"><span class="nav-number">7.</span> <span class="nav-text">SQL 优化</span></a></li></ol></div>
             
 
           </div>
@@ -670,7 +672,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

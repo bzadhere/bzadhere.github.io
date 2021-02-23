@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="扫地小道童">
 <meta property="og:description" content="头文件简介linux  sys/types.h ifaddrs.h net/if.h   参考文章select">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-08-21T09:49:12.773Z">
+<meta property="og:updated_time" content="2020-11-26T01:44:57.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络编程实践">
 <meta name="twitter:description" content="头文件简介linux  sys/types.h ifaddrs.h net/if.h   参考文章select">
@@ -433,6 +433,8 @@
 <p><a href="https://www.cnblogs.com/silyvin/articles/12037918.html" target="_blank" rel="noopener">https://www.cnblogs.com/silyvin/articles/12037918.html</a></p>
 <p><a href="https://www.cnblogs.com/silyvin/articles/12041638.html" target="_blank" rel="noopener">https://www.cnblogs.com/silyvin/articles/12041638.html</a></p>
 <h2 id="分段和分片"><a href="#分段和分片" class="headerlink" title="分段和分片"></a>分段和分片</h2><p>报文会分段和分片</p>
+<h2 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h2><p>C10K,C1000K，C10M</p>
+<p>如何估算线程数量?</p>
 
       
     </div>
@@ -575,7 +577,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">131</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -630,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#头文件简介"><span class="nav-number">1.</span> <span class="nav-text">头文件简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">2.</span> <span class="nav-text">参考文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#select"><span class="nav-number">3.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#poll"><span class="nav-number">4.</span> <span class="nav-text">poll</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#epoll"><span class="nav-number">5.</span> <span class="nav-text">epoll</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#差异"><span class="nav-number">6.1.</span> <span class="nav-text">差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这也能节省不少的开销。"><span class="nav-number">6.2.</span> <span class="nav-text">这也能节省不少的开销。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#阻塞-非阻塞设置"><span class="nav-number">7.</span> <span class="nav-text">阻塞/非阻塞设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#read"><span class="nav-number">8.</span> <span class="nav-text">read</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#write"><span class="nav-number">9.</span> <span class="nav-text">write</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-一个客户端connect过来，accept成功后会触发一次OUT事件。"><span class="nav-number">9.1.</span> <span class="nav-text">3.一个客户端connect过来，accept成功后会触发一次OUT事件。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#踩过的坑"><span class="nav-number">10.</span> <span class="nav-text">踩过的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#errno"><span class="nav-number">10.1.</span> <span class="nav-text">errno</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#粘包"><span class="nav-number">10.2.</span> <span class="nav-text">粘包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超时时间"><span class="nav-number">10.3.</span> <span class="nav-text">超时时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滑动窗口"><span class="nav-number">10.4.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分段和分片"><span class="nav-number">10.5.</span> <span class="nav-text">分段和分片</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#头文件简介"><span class="nav-number">1.</span> <span class="nav-text">头文件简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">2.</span> <span class="nav-text">参考文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#select"><span class="nav-number">3.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#poll"><span class="nav-number">4.</span> <span class="nav-text">poll</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#epoll"><span class="nav-number">5.</span> <span class="nav-text">epoll</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#差异"><span class="nav-number">6.1.</span> <span class="nav-text">差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这也能节省不少的开销。"><span class="nav-number">6.2.</span> <span class="nav-text">这也能节省不少的开销。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#阻塞-非阻塞设置"><span class="nav-number">7.</span> <span class="nav-text">阻塞/非阻塞设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#read"><span class="nav-number">8.</span> <span class="nav-text">read</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#write"><span class="nav-number">9.</span> <span class="nav-text">write</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-一个客户端connect过来，accept成功后会触发一次OUT事件。"><span class="nav-number">9.1.</span> <span class="nav-text">3.一个客户端connect过来，accept成功后会触发一次OUT事件。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#踩过的坑"><span class="nav-number">10.</span> <span class="nav-text">踩过的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#errno"><span class="nav-number">10.1.</span> <span class="nav-text">errno</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#粘包"><span class="nav-number">10.2.</span> <span class="nav-text">粘包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超时时间"><span class="nav-number">10.3.</span> <span class="nav-text">超时时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滑动窗口"><span class="nav-number">10.4.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分段和分片"><span class="nav-number">10.5.</span> <span class="nav-text">分段和分片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他问题"><span class="nav-number">10.6.</span> <span class="nav-text">其他问题</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -650,7 +652,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

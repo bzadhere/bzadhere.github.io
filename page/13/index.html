@@ -294,6 +294,913 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/24/设计模式/" itemprop="url">设计模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-24T16:01:59+08:00">
+                2018-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/c/" itemprop="url" rel="index">
+                    <span itemprop="name">c++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/24/设计模式/" class="leancloud_visitors" data-flag-title="设计模式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="UML关系图"><a href="#UML关系图" class="headerlink" title="UML关系图"></a>UML关系图</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">关系</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">箭头</th>
+<th style="text-align:left">补充</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">依赖</td>
+<td style="text-align:left">use a</td>
+<td style="text-align:left">虚线+箭头</td>
+<td style="text-align:left">工厂模式</td>
+</tr>
+<tr>
+<td style="text-align:left">关联</td>
+<td style="text-align:left">has a</td>
+<td style="text-align:left">实线+箭头</td>
+<td style="text-align:left">一个类作为参数</td>
+</tr>
+<tr>
+<td style="text-align:left">聚合</td>
+<td style="text-align:left">has a</td>
+<td style="text-align:left">实线+空心菱形</td>
+<td style="text-align:left">例如指针成员</td>
+</tr>
+<tr>
+<td style="text-align:left">组合</td>
+<td style="text-align:left">contains a</td>
+<td style="text-align:left">实线+实心菱形</td>
+<td style="text-align:left">一个整体</td>
+</tr>
+<tr>
+<td style="text-align:left">继承</td>
+<td style="text-align:left">泛化</td>
+<td style="text-align:left">实线+空心三角</td>
+<td style="text-align:left">指向基类</td>
+</tr>
+<tr>
+<td style="text-align:left">接口实现</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">虚线+空心三角</td>
+<td style="text-align:left">指向基类</td>
+</tr>
+<tr>
+<td style="text-align:left">调用</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">实线+实心三角</td>
+<td style="text-align:left">指向接口</td>
+</tr>
+</tbody>
+</table>
+<p>聚合和组合生命周期不一样: 聚合对象删除, 部分对象还存在; 组合对象删除, 部分事物对象全部删除</p>
+<p><img src="/2018/10/24/设计模式/image-20200902105726995.png" alt="image-20200902105726995"></p>
+<h1 id="创建模式"><a href="#创建模式" class="headerlink" title="创建模式"></a>创建模式</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">创建模式</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">factory</td>
+<td style="text-align:left">定义创建一个对象接口,封装对象的创建,在子类中创建对象(延迟实例化)</td>
+<td style="text-align:left">新增一个procudct就要新加接口，factory接口永远不封闭</td>
+</tr>
+<tr>
+<td style="text-align:left">abstractFactory</td>
+<td style="text-align:left">将一组对象创建封装到一个类中, abstactFactory是为一组相关或依赖的对象提供创建接口或延迟对象创建到子类中</td>
+<td style="text-align:left">新增一个product对应新增一个concreteFactory类</td>
+</tr>
+<tr>
+<td style="text-align:left">singleton</td>
+<td style="text-align:left">static成员变量记录实例, 提供一个static的接口Instance()来获得唯一的实例</td>
+<td style="text-align:left">对象构造函数为private或proctected</td>
+</tr>
+<tr>
+<td style="text-align:left">builder</td>
+<td style="text-align:left">将一个复杂对象的构建和表示分离, 同样的构建过程可以创建不同的表示</td>
+<td style="text-align:left">实际也是定义一个创建对象接口, 使用多个简单的对象一步一步构建成一个复杂的对象</td>
+</tr>
+<tr>
+<td style="text-align:left">prototype</td>
+<td style="text-align:left">自我复制自己创建的对象</td>
+<td style="text-align:left">c++通过拷贝构造实现</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2018/10/24/设计模式/factory.png" alt=""><br><img src="/2018/10/24/设计模式/abstractFactory.png" alt=""><br><img src="/2018/10/24/设计模式/singleton.png" alt=""><br><img src="/2018/10/24/设计模式/builder.png" alt=""></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/2018/10/24/设计模式/prototype.png" alt=""></h2><h1 id="结构模式"><a href="#结构模式" class="headerlink" title="结构模式"></a>结构模式</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">结构模式</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">adapter</td>
+<td style="text-align:left">将一个类的接口变换成客户端期待的, 使原本因接口不匹配无法在一起工作的两个类能够一起工作</td>
+<td style="text-align:left">复用接口或对象实现</td>
+</tr>
+<tr>
+<td style="text-align:left">bridge</td>
+<td style="text-align:left">使用组合方式将抽象和实现分离</td>
+<td style="text-align:left">调整实现逻辑, 外部调用没有变化</td>
+</tr>
+<tr>
+<td style="text-align:left">composite</td>
+<td style="text-align:left">提供对子类的管理策略，重在对象</td>
+<td style="text-align:left">递归构建树状组织, 组合模式让客户可以一致地使用组合结构和单个对象</td>
+</tr>
+<tr>
+<td style="text-align:left">decorater</td>
+<td style="text-align:left">添加职责，重在职责</td>
+<td style="text-align:left">职责管理, 例如批价process</td>
+</tr>
+<tr>
+<td style="text-align:left">flyweight</td>
+<td style="text-align:left">享元模式, 为共享对象提供一个仓库</td>
+<td style="text-align:left">对象池</td>
+</tr>
+<tr>
+<td style="text-align:left">facade</td>
+<td style="text-align:left">外观模式 在高层提供统一的接口</td>
+<td style="text-align:left">隐藏系统的复杂性, 并向客户端提供了一个客户端可以访问系统的接口</td>
+</tr>
+<tr>
+<td style="text-align:left">proxy</td>
+<td style="text-align:left">请求实际提交给其他类处理，逻辑和实现彻底解构</td>
+<td style="text-align:left">创建具有现有对象的对象，以便向外界提供功能接口</td>
+</tr>
+</tbody>
+</table>
+<p>通过private, 接口继承, 就是派生类只继承函数的接口，也就是声明<br>通过public,  实现继承, 就是派生类同时继承函数的接口和实现<br>组合和装饰模式在实现上完全不同</p>
+<p><img src="/2018/10/24/设计模式/adapter.png" alt=""><br><img src="/2018/10/24/设计模式/bridge.png" alt=""><br><img src="/2018/10/24/设计模式/composite.png" alt=""><br><img src="/2018/10/24/设计模式/decorater.png" alt=""><br><img src="/2018/10/24/设计模式/flyweight.png" alt=""><br><img src="/2018/10/24/设计模式/facade.png" alt=""><br><img src="/2018/10/24/设计模式/proxy.png" alt=""></p>
+<hr>
+<h1 id="行为模式"><a href="#行为模式" class="headerlink" title="行为模式"></a>行为模式</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">行为模式</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">约束</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">template</td>
+<td style="text-align:left">算法由子类去实现, 实现和抽象接口解耦</td>
+<td style="text-align:left">继承实现</td>
+</tr>
+<tr>
+<td style="text-align:left">strategy</td>
+<td style="text-align:left">将算法封装到到一个类中</td>
+<td style="text-align:left">组合实现</td>
+</tr>
+<tr>
+<td style="text-align:left">state</td>
+<td style="text-align:left">将状态和动作实现分离</td>
+<td style="text-align:left">条件分支语句的代替者</td>
+</tr>
+<tr>
+<td style="text-align:left">observer</td>
+<td style="text-align:left">对MVC是该模式的一个实例</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">memento</td>
+<td style="text-align:left">备忘录模式</td>
+<td style="text-align:left">不破坏封装, 获取和保存一个类的内部状态, 用来恢复; 通过friend class实现</td>
+</tr>
+<tr>
+<td style="text-align:left">Mediator</td>
+<td style="text-align:left">中介者模式</td>
+<td style="text-align:left">将对象间的交互和通讯封装到一个类中</td>
+</tr>
+<tr>
+<td style="text-align:left">command</td>
+<td style="text-align:left">命令模式</td>
+<td style="text-align:left">将”行为请求者”与”行为实现者”解耦</td>
+</tr>
+<tr>
+<td style="text-align:left">visitor</td>
+<td style="text-align:left">访问者模式,将变更封装到一个类中, 由待更改类提供一个接口</td>
+<td style="text-align:left">符合单一原则,易扩展,但依赖了具体类</td>
+</tr>
+<tr>
+<td style="text-align:left">chain of responsibility</td>
+<td style="text-align:left">职责链模式</td>
+<td style="text-align:left">一个请求指定一组对象处理</td>
+</tr>
+<tr>
+<td style="text-align:left">Iterator</td>
+<td style="text-align:left">迭代器</td>
+<td style="text-align:left">将对象遍历封装到一个类中</td>
+</tr>
+<tr>
+<td style="text-align:left">Interpreter</td>
+<td style="text-align:left">解释器</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2018/10/24/设计模式/template.png" alt=""><br><img src="/2018/10/24/设计模式/strategy.png" alt=""><br><img src="/2018/10/24/设计模式/state.png" alt=""><br><img src="/2018/10/24/设计模式/observer.png" alt=""><br><img src="/2018/10/24/设计模式/memento.png" alt=""><br><img src="/2018/10/24/设计模式/command.png" alt=""><br><img src="/2018/10/24/设计模式/visitor.png" alt=""><br><img src="/2018/10/24/设计模式/chain.png" alt=""><br><img src="/2018/10/24/设计模式/iterator.png" alt=""><br><img src="/2018/10/24/设计模式/interpreter.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式</th>
+<th style="text-align:left">解决问题</th>
+<th style="text-align:left">优点</th>
+<th style="text-align:left">缺点</th>
+<th>应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p><a href="http://www.runoob.com/design-pattern/design-pattern-tutorial.html" target="_blank" rel="noopener">参考设计模式菜鸟教程</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/性能之巅-笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/24/性能之巅-笔记/" itemprop="url">性能之巅 笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-24T15:46:01+08:00">
+                2018-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/24/性能之巅-笔记/" class="leancloud_visitors" data-flag-title="性能之巅 笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h1><p>系统性能上对整个系统的研究，包括了所有硬件组件和整个软件栈。<br>所有数据路径上和软硬件上发生的事情都包括在内，因为这些可能都影响性能。</p>
+<p>性能领域包括以下事情：</p>
+<pre><code>1. 设置性能目标和建立性能模型
+2. 基于软件或硬件原型进行性能特征归纳
+3. 对开发的代码进行性能测试(软件整合之前)
+4. 执行软件的非回归性测试(软件发布前或发布后)
+5. 针对软件发布的基准测试
+6. 目标环境中的概念验证测试
+7. 生产环境的部署的配置优化
+8. 监控生产环境中运行的软件
+9. 特定问题的性能分析
+</code></pre><p>术语容量规划是指一系列事前行动。在计划阶段，通过研究开发软件的资源占用情况，<br>来得知原有设计在多大程度上能满足目标需求。在部署后，这样的问题在出现之前就<br>能被预测。</p>
+<p>性能分析必须量化问题的重要程度， 有一个指标非常合适，延时。</p>
+<p>动态跟踪技术把所有的软件变得可以监控，而且能用在真实的生产环境中。<br>这项技术利用内存中的CPU指令并在这些指令上动态构建检测数据。这样能从任何<br>运行的软件中获得定制化的性能统计数据，从而提供了远超系统的自带的统计所能给予的观测性。</p>
+<p>DTrace对用户态和内核态的软件都提供了静态跟踪和动态跟踪，并且数据是实时产生的。</p>
+<hr>
+<h1 id="第二章-方法"><a href="#第二章-方法" class="headerlink" title="第二章 方法"></a>第二章 方法</h1><p>术语：<br>IOPS：每秒输入/输出的操作次数，是数据传输的一个度量方法。对于磁盘，就是每秒读和写的次数。<br>吞吐量：数据传输或操作的速度<br>响应时间：一次操作完成的时间<br>延时: 操作里用来等待服务的时间<br>使用率：对于服务所请求的资源，描述在给定的时间区间内资源的繁忙程度<br>饱和度: 某一资源无法满足服务的排队工作量<br>/瓶颈/工作负载/缓存</p>
+<h2 id="模型："><a href="#模型：" class="headerlink" title="模型："></a>模型：</h2><h1 id="第三章-操作系统"><a href="#第三章-操作系统" class="headerlink" title="第三章 操作系统"></a>第三章 操作系统</h1><p>了解操作系统和内核对于系统性能分析是至关重要的。会经常需要针对系统行为的开发和测试，<br>如系统调用是如何执行的、CPU是如何调度线程的、有限大小的内存是如何影响性能的、或者文件<br>系统是如何处理I/O的。</p>
+<p>基本概念介绍，最好结合《深入理解计算机系统》：</p>
+<p>内核：内核的执行/时钟/内核态<br>栈：用户栈和内核栈; 用函数和寄存器的方式记录了线程的执行历史<br>中断和中断线程<br>进程：进程的创建、进程的生命周期、进程环境<br>系统调用<br>虚拟内存<br>内存管理<br>调度器<br>文件系统：VFS、I/O栈<br>缓存（括号内为例子）：应用程序缓存、服务器缓存(apache缓存)、缓存服务器(redis)、数据库缓存(mysql缓冲区高速缓存)、<br>                    目录缓存(DNLC)、文件元数据缓存(inode 缓存)、 操作系统缓存区高速缓存(segvn)、文件系统主缓存(ZFS ARC)<br>                    文件系统次缓存(ZFS L2ARC)、设备缓存(ZFS vdev)、 块缓存(缓冲区高速缓存)、磁盘控制器缓存(RAID卡缓存)<br>                    存储阵列缓存、磁盘内置缓存<br>网络<br>设备驱动<br>多处理器：CPU交叉调用<br>抢占<br>资源管理<br>观测性</p>
+<hr>
+<h1 id="第四章-观测工具"><a href="#第四章-观测工具" class="headerlink" title="第四章 观测工具"></a>第四章 观测工具</h1><p>工具可以按照系统级别和进程级别来分类，多数工具要么基于计数器要么基于跟踪。</p>
+<pre><code>系统级
+  |
+</code></pre><p> vmstat/iostat|<br> mpstat/sar   |  dtrace/tcpdump<br>              |<br>计数器——————-跟踪<br>       pmap   |<br>       ps     |  gdb/strace<br>       top    |<br>            进程级 </p>
+<p>计数器：<br>    内核维护了各种统计数据，称为计数器，用于对事件的计数。通常计数器实现为无符号整形，发生事件时递增。</p>
+<p>系统级别的计数器：<br>    vmstat: 虚拟内存和物理内存的统计<br>    mpstat: 每个CPU的使用情况<br>    iostat: 每个磁盘 I/O 的使用情况，由块设备接口报告<br>    netstat: 网络接口统计<br>    sar: 各种各样统计，能归档历史数据<br>    iftop: 用来监控网卡的实时流量（可以指定网段）、反向解析IP、显示端口信息等</p>
+<p>进程级别：<br>    ps：进程状态，显示进程的各种统计信息，包括内存和CPU的使用<br>    top：按一个统计数据排序，显示排名高的进程<br>    pmap：将进程的内存和使用统计一起列出<br>    iotop: 进程的I/O速度<br>    pidstat：每个进程/线程CPU使用量</p>
+<p>一般来说，上述工具从/proc 文件系统里读取统计信息。</p>
+<p>跟踪：<br>系统级别：<br>    tcpdump：网络抓包(libpcap)<br>    bltrace: 块I/O 跟踪<br>    dtrace: 跟踪内核的内部活动和所有资源的使用情况，支持静态和动态跟踪<br>    perf: linux 性能事件，跟踪静态和动态的指针</p>
+<p>进程级别：<br>    strace: 系统调用跟踪<br>    gdb: 调式源码</p>
+<p>网络工具：<br>    nethogs: 按进程查看流量占用<br>    iptraf: 按连接/端口查看流量<br>    ifstat: 按设备查看流量<br>    ethtool: 诊断工具<br>    tcpdump: 抓包工具<br>    ss: 连接查看工具, 比netstat更快速更高效</p>
+<pre><code>其他: dstat, slurm, nload, bmon
+</code></pre><hr>
+<h1 id="第五章-应用程序"><a href="#第五章-应用程序" class="headerlink" title="第五章 应用程序"></a>第五章 应用程序</h1><p>性能调整离执行的地方越近越好：最好在应用程序里，包括web服务器、<br>应用服务器、负载均衡、文件服务器等等</p>
+<p>设立性能目标能为你的性能分析工作指明方向，并帮助你选择要做的事情。<br>没有目标，性能分析容易沦为随机的[钓鱼探险]。常见目标：<br>    延时<br>    吞吐量<br>    资源使用率</p>
+<p>应用程序性能技术：选择I/O尺寸、缓存、缓冲区、轮询、并发和并行、非阻塞I/O、处理器绑定</p>
+<p>编程语言相关：编译器优化、解释语言一般不是首选、虚拟机、垃圾回收</p>
+<hr>
+<h1 id="第六章-CPU"><a href="#第六章-CPU" class="headerlink" title="第六章 CPU"></a>第六章 CPU</h1><hr>
+<h1 id="第七章-内存"><a href="#第七章-内存" class="headerlink" title="第七章 内存"></a>第七章 内存</h1><p>背景：内存相关术语<br>架构：内存软硬件架构<br>方法：内存分析的方法<br>分析：分析内存性能工具<br>调优：性能调优和可调参数范例</p>
+<p>1.背景<br>主存：物理内存，高速数据存储区域，动态随机访问内存(DRAM)<br>虚拟内存: 一个抽象的主存概念，无限和非竞争性，虚拟内存不是真实的内存<br>常驻内存：当前处于主存中的内存<br>匿名内存: 无文件系统位置或者路径名的内存。包括进程地址空间的工作数据，称作堆。<br>地址空间：内存上下文。每个进程和内核都有对应的虚拟内存空间<br>段：标记为特殊用途的一块内存区域，例如用来存储可执行或者可写的页<br>OOM：内存耗尽，内核检测到可用内存低<br>页：操作系统和CPU使用的内存单位。一直以来都是4KB或8KB，现代处理器允许多种页大小。<br>缺页：无效内存。使用按虚拟内存，这是正常事件。<br>交换：将整个进程从主存转移到交换设备。<br>交换(空间)：存放换页的匿名数据和交换进程的磁盘空间。可以是存储设备的一块空间，<br>            也称为物理交换设备，或者是文件系统，称作交换文件。</p>
+<p>换页：页面换入和调出主存。包含文件系统换页(mmap), 匿名换页(进程堆和栈)</p>
+<p>按需换页：将虚拟内存映射到物理内存。CPU创建映射的开销延迟到实际需要或者访问。</p>
+<p>过度换页：支持按需换页操作系统，malloc可以申请大于物理内存和交换设备的总和。</p>
+<p>文件系统缓占用：应用进程需要时会释放</p>
+<p>2.架构<br>硬件：主存，总线，CPU缓存，MMU(内存管理单元)<br>软件：</p>
+<p>3.方法</p>
+<hr>
+<h1 id="第八章-文件系统"><a href="#第八章-文件系统" class="headerlink" title="第八章 文件系统"></a>第八章 文件系统</h1><hr>
+<h1 id="第九章-磁盘"><a href="#第九章-磁盘" class="headerlink" title="第九章 磁盘"></a>第九章 磁盘</h1><hr>
+<h1 id="第十章-网络"><a href="#第十章-网络" class="headerlink" title="第十章 网络"></a>第十章 网络</h1><hr>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/c-编程思想-笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/24/c-编程思想-笔记/" itemprop="url">c++ 编程思想 笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-24T15:44:43+08:00">
+                2018-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/24/c-编程思想-笔记/" class="leancloud_visitors" data-flag-title="c++ 编程思想 笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/RPC框架原理和实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/24/RPC框架原理和实践/" itemprop="url">RPC框架原理和实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-24T15:43:06+08:00">
+                2018-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/分布式系统/" itemprop="url" rel="index">
+                    <span itemprop="name">分布式系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/24/RPC框架原理和实践/" class="leancloud_visitors" data-flag-title="RPC框架原理和实践">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<h2 id="简单的RPC框架有三部分组成："><a href="#简单的RPC框架有三部分组成：" class="headerlink" title="简单的RPC框架有三部分组成："></a>简单的RPC框架有三部分组成：</h2><blockquote>
+<p>1 服务提供者，运行在服务端，负责提供服务接口定义和服务实现类<br>2 服务发布者，运行在RPC服务端，负责将本地服务发布成远程服务，供其他消费者调用<br>3 本地服务代理，运行在RPC客户端，通过代理调用远程服务提供者，然后将结果进行封<br>返回给本地消费者</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/24/RPC框架原理和实践/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/linux-常用命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -397,8 +1304,8 @@
 
       
         
-          <h1 id="系统级计数器"><a href="#系统级计数器" class="headerlink" title="系统级计数器"></a>系统级计数器</h1><h2 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h2><!--�165-->
-<h2 id="vmstat"><a href="#vmstat" class="headerlink" title="vmstat"></a>vmstat</h2><p>查看整个机器的CPU,内存,IO的使用情况, 如间隔2秒采集3次<br><!--�166--></p>
+          <h1 id="系统级计数器"><a href="#系统级计数器" class="headerlink" title="系统级计数器"></a>系统级计数器</h1><h2 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h2><!--�190-->
+<h2 id="vmstat"><a href="#vmstat" class="headerlink" title="vmstat"></a>vmstat</h2><p>查看整个机器的CPU,内存,IO的使用情况, 如间隔2秒采集3次<br><!--�191--></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/10/24/linux-常用命令/#more" rel="contents">
@@ -1275,177 +2182,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/15/gdb多线程调试-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/15/gdb多线程调试-1/" itemprop="url">gdb多线程调试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-15T14:48:04+08:00">
-                2018-10-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/gdb/" itemprop="url" rel="index">
-                    <span itemprop="name">gdb</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/10/15/gdb多线程调试-1/" class="leancloud_visitors" data-flag-title="gdb多线程调试">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<ul>
-<li>all-stop mode: 默认模式, 有一个线程在断点处停止，其他所有线程也会停止</li>
-<li>non-stop mode: 某一个线程停止时，其他线程会继续运行</li>
-<li>Background Execution：异步运行程序</li>
-<li>Thread-Specific Breakpoints: 控制断点</li>
-<li>Interrupted System Calls: gdb会干扰系统调用</li>
-<li>Observer Mode：gdb不影响程序执行</li>
-</ul>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/15/gdb多线程调试-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1491,7 +2232,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">131</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1550,7 +2291,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
