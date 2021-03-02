@@ -779,6 +779,8 @@
 <p>引用 / 成员初始化列表  / 面向对象 / 虚析构函数 / 纯虚函数 / 虚函数 纯虚函数 </p>
 <p>虚函数表 指针 / 虚继承 / 模板类 函数 虚函数 / 抽象类 接口类 聚合类 / 内存分配管理 </p>
 <p>delete this / 定义只能在堆或栈上生成的类 / 智能指针 / 强制类型转换运算符号 </p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>(stack overflow 难题清单)</p>
+<p>[<a href="https://github.com/ethsonliu/stackoverflow-top-cpp/tree/master/question]" target="_blank" rel="noopener">https://github.com/ethsonliu/stackoverflow-top-cpp/tree/master/question]</a></p>
 <h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><p>修饰指针，分为指向常量的指针和指针常量</p>
 <p>修改是引用，常量引用，避免拷贝和修改</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * <span class="keyword">const</span> p <span class="comment">//指针常量</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">int</span> a，b；</span><br><span class="line"><span class="keyword">int</span> * <span class="keyword">const</span> p=&amp;a <span class="comment">//指针常量</span></span><br><span class="line"><span class="comment">//那么分为一下两种操作</span></span><br><span class="line">*p=<span class="number">9</span>;<span class="comment">//操作成功</span></span><br><span class="line">p=&amp;b;<span class="comment">//操作错误</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *p = &amp;a; <span class="comment">//常量指针</span></span><br><span class="line"><span class="keyword">int</span> a，b；</span><br><span class="line"> <span class="keyword">const</span> <span class="keyword">int</span> *p=&amp;a <span class="comment">//常量指针</span></span><br><span class="line"><span class="comment">//那么分为一下两种操作</span></span><br><span class="line">*p=<span class="number">9</span>;<span class="comment">//操作错误</span></span><br><span class="line">p=&amp;b;<span class="comment">//操作成功</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> * <span class="keyword">const</span> b = &amp;a;<span class="comment">//指向常量的指针常量</span></span><br></pre></td></tr></table></figure>
@@ -2123,8 +2125,8 @@
 <p><strong>HEAD</strong>: 指向该分支上的最后一次提交，待补充</p>
 <p><strong>master</strong>: 只是这个repository中默认创建的第一个branch</p>
 <p><strong>origin</strong>: 远程仓库在本地的标签或者别名，git clone url 默认创建的指向这个远程代码库的标签</p>
-<h1 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h1><!--�147-->
-<!--�148-->
+<h1 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h1><!--�184-->
+<!--�185-->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/08/14/git操作命令/#more" rel="contents">
