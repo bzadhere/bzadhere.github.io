@@ -294,6 +294,386 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/linux性能优化之网络-笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/05/linux性能优化之网络-笔记/" itemprop="url">linux性能优化之网络 笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T10:23:34+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/05/linux性能优化之网络-笔记/" class="leancloud_visitors" data-flag-title="linux性能优化之网络 笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="linux网络"><a href="#linux网络" class="headerlink" title="linux网络"></a>linux网络</h1><h2 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">OSI七层</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">应用层</td>
+<td style="text-align:left">负责为程序提供统一的接口</td>
+<td style="text-align:left">ftp telnet http dns</td>
+</tr>
+<tr>
+<td style="text-align:left">表示层</td>
+<td style="text-align:left">负责把数据转换成兼容接收系统的格式</td>
+<td style="text-align:left">NULL</td>
+</tr>
+<tr>
+<td style="text-align:left">会话层</td>
+<td style="text-align:left">负责维护计算机之间的通信连接</td>
+<td style="text-align:left">NULL</td>
+</tr>
+<tr>
+<td style="text-align:left">传输层</td>
+<td style="text-align:left">负责为数据加上传输表头(包含port), 形成数据包</td>
+<td style="text-align:left">TCP UDP</td>
+</tr>
+<tr>
+<td style="text-align:left">网路层</td>
+<td style="text-align:left">负责数据的路由和转发</td>
+<td style="text-align:left">IP ICMP IGMP RIP</td>
+</tr>
+<tr>
+<td style="text-align:left">数据链路层</td>
+<td style="text-align:left">负责MAC寻址, 错误侦测和改错</td>
+<td style="text-align:left">ARP RARP MTU PPP</td>
+</tr>
+<tr>
+<td style="text-align:left">物理层</td>
+<td style="text-align:left">负责在物理网络中传输数据帧</td>
+<td style="text-align:left">IEEE802</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">TCP/IP四层</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">应用层</td>
+<td style="text-align:left">负责向用户提供一组应用程序, 比如HTTP/DNS/FTP</td>
+</tr>
+<tr>
+<td style="text-align:left">传输层</td>
+<td style="text-align:left">负责端到端的通信, 比如TCP/UDP</td>
+</tr>
+<tr>
+<td style="text-align:left">网络层</td>
+<td style="text-align:left">负责网络包的封装、寻址和路哟, 比如IP/ICMP</td>
+</tr>
+<tr>
+<td style="text-align:left">网络接口层</td>
+<td style="text-align:left">负责在物理网络中传输数据帧, 比如MAC寻址, 错误侦测和改错</td>
+</tr>
+</tbody>
+</table>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/05/linux性能优化之网络-笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/深入理解计算机系统-笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/05/深入理解计算机系统-笔记/" itemprop="url">深入理解计算机系统 笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T10:20:47+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/05/深入理解计算机系统-笔记/" class="leancloud_visitors" data-flag-title="深入理解计算机系统 笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/linux性能优化之磁盘文件-笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -721,7 +1101,7 @@
 
       
         
-          <h1 id="CentOS网络配置说明"><a href="#CentOS网络配置说明" class="headerlink" title="CentOS网络配置说明"></a>CentOS网络配置说明</h1><!--�353-->
+          <h1 id="CentOS网络配置说明"><a href="#CentOS网络配置说明" class="headerlink" title="CentOS网络配置说明"></a>CentOS网络配置说明</h1><!--�363-->
 <h1 id="历史方案"><a href="#历史方案" class="headerlink" title="历史方案"></a>历史方案</h1><p>虚拟机可以访问网络, 和宿主机可以相互访问</p>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>vbox: 版本 5.2.<em><br>linux: Centos7</em><br>笔记本使用办公室有线网络</p>
 <h2 id="vbox配置"><a href="#vbox配置" class="headerlink" title="vbox配置"></a>vbox配置</h2><ol>
@@ -1563,433 +1943,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/网络字节序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/24/网络字节序/" itemprop="url">网络字节序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T09:24:04+08:00">
-                2019-01-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/网络/" itemprop="url" rel="index">
-                    <span itemprop="name">网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/01/24/网络字节序/" class="leancloud_visitors" data-flag-title="网络字节序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="理解字节序"><a href="#理解字节序" class="headerlink" title="理解字节序"></a>理解字节序</h1><blockquote>
-<p>大端字节序：高位字节在前, 低位字节在后, 是人类读取字节的方法<br>小端字节序：低位字节在前, 高位字节在后  </p>
-</blockquote>
-<p>int32 num = 0x1234567的大端字节序和小端字节序的写法如下(位置相对翻转了下180度)</p>
-<table>
-<thead>
-<tr>
-<th>地址</th>
-<th style="text-align:left">0x100</th>
-<th style="text-align:left">0x101</th>
-<th style="text-align:left">0x102</th>
-<th style="text-align:left">0x103</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>大端</td>
-<td style="text-align:left">0x01</td>
-<td style="text-align:left">0x23</td>
-<td style="text-align:left">0x45</td>
-<td style="text-align:left">0x67</td>
-</tr>
-<tr>
-<td>小端</td>
-<td style="text-align:left">0x67</td>
-<td style="text-align:left">0x45</td>
-<td style="text-align:left">0x23</td>
-<td style="text-align:left">0x01</td>
-</tr>
-</tbody>
-</table>
-<h1 id="网络字节序"><a href="#网络字节序" class="headerlink" title="网络字节序"></a>网络字节序</h1><p><strong>网络字节顺序</strong>采用<strong>大端字节序</strong>, 是TCP/IP中规定好的一种数据表示格式;<br>与具体的CPU类型、操作系统等无关, 保证数据在不同主机之间传输时能够被正确解释。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> pDCCHead[<span class="number">64</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    int32 m_iLength = <span class="number">1368</span>;</span><br><span class="line">    <span class="built_in">memcpy</span>(pDCCHead, ((byte *)&amp;m_iLength), <span class="keyword">sizeof</span>(m_iLength));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"addr=&gt;"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p "</span>, pDCCHead);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p "</span>, pDCCHead + <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p "</span>, pDCCHead + <span class="number">2</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p \n"</span>, pDCCHead + <span class="number">3</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"var =&gt;"</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">sizeof</span>(m_iLength); ++i)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%02x "</span>, (byte)pDCCHead[i]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">    int32 iLength = htonl(m_iLength);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"m_iLength=%d after htonl %d\n"</span>, m_iLength, iLength);</span><br><span class="line">    <span class="built_in">memcpy</span>(pDCCHead, ((byte *)&amp;iLength), <span class="keyword">sizeof</span>(iLength));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"var =&gt;"</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">sizeof</span>(iLength); ++i)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%02x "</span>, (byte)pDCCHead[i]);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">主机是大端字节序，栈地址由低到高分配，输出：</span><br><span class="line">addr=&gt;<span class="number">0x7fff9e9e3a00</span> <span class="number">0x7fff9e9e3a01</span> <span class="number">0x7fff9e9e3a02</span> <span class="number">0x7fff9e9e3a03</span> </span><br><span class="line">var =&gt;<span class="number">58</span> <span class="number">05</span> <span class="number">00</span> <span class="number">00</span> </span><br><span class="line">m_iLength=<span class="number">1368</span> after htonl <span class="number">1476722688</span></span><br><span class="line">var =&gt;<span class="number">00</span> <span class="number">00</span> <span class="number">05</span> <span class="number">58</span></span><br></pre></td></tr></table></figure>
-<h1 id="主机字节序"><a href="#主机字节序" class="headerlink" title="主机字节序"></a>主机字节序</h1><table>
-<thead>
-<tr>
-<th style="text-align:left">处理器</th>
-<th style="text-align:left">操作系统</th>
-<th style="text-align:left">字节排序</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Alpha</td>
-<td style="text-align:left">全部</td>
-<td style="text-align:left">Little endian</td>
-</tr>
-<tr>
-<td style="text-align:left">HP-PA</td>
-<td style="text-align:left">NT</td>
-<td style="text-align:left">Little endian</td>
-</tr>
-<tr>
-<td style="text-align:left">HP-PA</td>
-<td style="text-align:left">UNIX</td>
-<td style="text-align:left">Big endian</td>
-</tr>
-<tr>
-<td style="text-align:left">Intelx86</td>
-<td style="text-align:left">全部</td>
-<td style="text-align:left">Little endian</td>
-</tr>
-<tr>
-<td style="text-align:left">Motorola680x</td>
-<td style="text-align:left">全部</td>
-<td style="text-align:left">Big endian</td>
-</tr>
-<tr>
-<td style="text-align:left">MIPS</td>
-<td style="text-align:left">NT</td>
-<td style="text-align:left">Little endian</td>
-</tr>
-<tr>
-<td style="text-align:left">MIPS</td>
-<td style="text-align:left">UNIX</td>
-<td style="text-align:left">Big endian</td>
-</tr>
-<tr>
-<td style="text-align:left">PowerPC</td>
-<td style="text-align:left">NT</td>
-<td style="text-align:left">Little endian</td>
-</tr>
-<tr>
-<td style="text-align:left">PowerPC</td>
-<td style="text-align:left">非NT</td>
-<td style="text-align:left">Big endian</td>
-</tr>
-<tr>
-<td style="text-align:left">RS/6000</td>
-<td style="text-align:left">UNIX</td>
-<td style="text-align:left">Big endian</td>
-</tr>
-<tr>
-<td style="text-align:left">SPARC</td>
-<td style="text-align:left">UNIX</td>
-<td style="text-align:left">Big endian</td>
-</tr>
-<tr>
-<td style="text-align:left">IXP1200</td>
-<td style="text-align:left">ARM核心</td>
-<td style="text-align:left">Little endian</td>
-</tr>
-</tbody>
-</table>
-<h1 id="字节序判断"><a href="#字节序判断" class="headerlink" title="字节序判断"></a>字节序判断</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">inline int64 htonl64(const char* pIn )</span><br><span class="line">&#123;</span><br><span class="line">	if (pIn == NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	int32 nIsNet = 0x12345678;</span><br><span class="line">	if (*(char *)&amp;nIsNet == 0x12)</span><br><span class="line">	&#123;</span><br><span class="line">		nIsNet = 1;</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		nIsNet = 0;</span><br><span class="line">	&#125;      </span><br><span class="line">	</span><br><span class="line">	unsigned char szBuffer[16];</span><br><span class="line">	</span><br><span class="line">	if (nIsNet == 1)</span><br><span class="line">	&#123;</span><br><span class="line">		memcpy(szBuffer, pIn, 8);</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		for (int32 i = 0, j = 7; i &lt; 8; ++i, --j)</span><br><span class="line">		&#123;</span><br><span class="line">			szBuffer[i] = pIn[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	int64 llValue;</span><br><span class="line">	memcpy(&amp;llValue, szBuffer, sizeof(int64));</span><br><span class="line">	return llValue;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">inline int64 ntohl64(const char* pIn )</span><br><span class="line">&#123;</span><br><span class="line">	if (pIn == NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	int32 nIsNet = 0x12345678;</span><br><span class="line">	</span><br><span class="line">	if (*(char *)&amp;nIsNet == 0x12)</span><br><span class="line">	&#123;</span><br><span class="line">		nIsNet = 1;</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		nIsNet = 0;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	unsigned char szBuffer[8];</span><br><span class="line">	</span><br><span class="line">	if (nIsNet == 1)</span><br><span class="line">	&#123;</span><br><span class="line">		memcpy(szBuffer, pIn, 8);</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		//!&lt; 取高4字节.</span><br><span class="line">		int32 nRetH;</span><br><span class="line">		int32 nTmpRetH;</span><br><span class="line">		memcpy(&amp;nTmpRetH, pIn, sizeof(int32));</span><br><span class="line">		nRetH = ntohl(nTmpRetH);</span><br><span class="line">		</span><br><span class="line">		//!&lt; 取低4字节.</span><br><span class="line">		int32 nRetL;</span><br><span class="line">		int32 nTmpRetL;</span><br><span class="line">		memcpy(&amp;nTmpRetL, pIn + sizeof(int32), sizeof(int32));</span><br><span class="line">		nRetL = ntohl(nTmpRetL);</span><br><span class="line">		</span><br><span class="line">		//! 整合.</span><br><span class="line">		memcpy(szBuffer, &amp;nRetL, sizeof(int32));</span><br><span class="line">		memcpy(szBuffer + sizeof(int32), &amp;nRetH, sizeof(int32));</span><br><span class="line">	&#125;</span><br><span class="line">	int64 llValue;</span><br><span class="line">	memcpy(&amp;llValue, szBuffer, sizeof(int64));</span><br><span class="line">	return llValue;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="32位整数转换为网络字节序"><a href="#32位整数转换为网络字节序" class="headerlink" title="32位整数转换为网络字节序"></a>32位整数转换为网络字节序</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 大端字节序 */</span></span><br><span class="line">i = (data[<span class="number">0</span>]&lt;&lt;<span class="number">24</span>) | (data[<span class="number">1</span>]&lt;&lt;<span class="number">16</span>) | (data[<span class="number">2</span>]&lt;&lt;<span class="number">8</span>) | (data[<span class="number">3</span>]&lt;&lt;<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 小端字节序 */</span></span><br><span class="line">i = (data[<span class="number">0</span>]&lt;&lt;<span class="number">0</span>) | (data[<span class="number">1</span>]&lt;&lt;<span class="number">8</span>) | (data[<span class="number">2</span>]&lt;&lt;<span class="number">16</span>) | (data[<span class="number">3</span>]&lt;&lt;<span class="number">24</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/******************************************************************************</span></span><br><span class="line"><span class="comment">ENDIANNESS返回结果</span></span><br><span class="line"><span class="comment">	l:小端模式</span></span><br><span class="line"><span class="comment">	b:打断模式</span></span><br><span class="line"><span class="comment">******************************************************************************/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ENDIANNESS ((char)endian_test.mylong)  </span></span><br><span class="line"></span><br><span class="line"><span class="comment">//长整形高低字节交换</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Swap32(A) ((((uint32)(A) &amp; 0xff000000) &gt;&gt; 24) | \</span></span><br><span class="line">				   (((uint32)(A) &amp; <span class="number">0x00ff0000</span>) &gt;&gt;  <span class="number">8</span>) | \</span><br><span class="line">				   (((uint32)(A) &amp; <span class="number">0x0000ff00</span>) &lt;&lt;  <span class="number">8</span>) | \</span><br><span class="line">				   (((uint32)(A) &amp; <span class="number">0x000000ff</span>) &lt;&lt; <span class="number">24</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">//将主机的无符号长整形数转换成网络字节顺序</span></span><br><span class="line"><span class="function">uint32 <span class="title">htonl</span><span class="params">(uint32 hl)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (ENDIANNESS==<span class="string">'l'</span>) ? Swap32(hl): hl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将一个无符号长整形数从网络字节顺序转换为主机字节顺序</span></span><br><span class="line"><span class="function">uint32 <span class="title">ntohl</span><span class="params">(uint32 nl)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (ENDIANNESS==<span class="string">'l'</span>) ? Swap32(nl): nl;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字节序转换，htonl和ntohl 实际上的调用效果是一样的</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/23/零拷贝/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/23/零拷贝/" itemprop="url">零拷贝</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T10:38:33+08:00">
-                2019-01-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/01/23/零拷贝/" class="leancloud_visitors" data-flag-title="零拷贝">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="为什么需要零拷贝"><a href="#为什么需要零拷贝" class="headerlink" title="为什么需要零拷贝"></a>为什么需要零拷贝</h1><p><img src="/2019/01/23/零拷贝/1.png" alt=""></p>
-<h1 id="零拷贝技术概述"><a href="#零拷贝技术概述" class="headerlink" title="零拷贝技术概述"></a>零拷贝技术概述</h1><p>简单一点来说，零拷贝就是一种避免 CPU 将数据从一块存储拷贝到另外一块存储的技术<br>避免数据拷贝</p>
-<h1 id="零拷贝技术分类"><a href="#零拷贝技术分类" class="headerlink" title="零拷贝技术分类"></a>零拷贝技术分类</h1><h2 id="直接IO"><a href="#直接IO" class="headerlink" title="直接IO"></a>直接IO</h2><p>对于这种数据传输方式来说，应用程序可以直接访问硬件存储，操作系统内核只是辅助数据<br>传输：这类零拷贝技术针对的是操作系统内核并不需要对数据进行直接处理的情况，数据可<br>以在应用程序地址空间的缓冲区和磁盘之间直接进行传输，完全不需要 Linux 操作系统内<br>核提供的页缓存的支持。<br><img src="/2019/01/23/零拷贝/2.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int open(const char *pathname, int oflag, … /*, mode_t mode * / ) ;</span><br><span class="line"></span><br><span class="line">O_DIRECT	该描述符提供对直接 I/O 的支持</span><br></pre></td></tr></table></figure>
-<p>打开文件指定O_DIRECT 属性时, read/write是直接I/O操作</p>
-<blockquote>
-<p>优点 直接 I/O 最主要的优点就是通过减少操作系统内核缓冲区和应用程序地址空间的数据拷贝<br>次数，降低了对文件读取和写入时所带来的 CPU 的使用以及内存带宽的占用<br>缺点 直接 I/O 的开销非常大, 造成磁盘的同步读, 也会导致应用程序关闭缓慢, 通常会和使用<br>异步 I/O 结合使用</p>
-</blockquote>
-<h2 id="mmap-sendfile-splice"><a href="#mmap-sendfile-splice" class="headerlink" title="mmap/sendfile/splice"></a>mmap/sendfile/splice</h2><p>避免数据在操作系统内核地址空间的缓冲区和用户应用程序地址空间的缓冲区之间进行拷贝</p>
-<h3 id="mmap"><a href="#mmap" class="headerlink" title="mmap"></a>mmap</h3><p>通过使用 mmap() 来代替 read(), 应用程序调用了 write() 之后，操作系统内核将数据从原来的内<br>核缓冲区中拷贝到与 socket 相关的内核缓冲区中<br><img src="/2019/01/23/零拷贝/3.png" alt=""></p>
-<h3 id="sendfile"><a href="#sendfile" class="headerlink" title="sendfile"></a>sendfile</h3><p>sendfile() 系统调用不需要将数据拷贝或者映射到应用程序地址空间中去，所以 sendfile()<br>只是适用于应用程序地址空间不需要对所访问数据进行处理的情况<br><img src="/2019/01/23/零拷贝/4.png" alt=""></p>
-<h3 id="splice"><a href="#splice" class="headerlink" title="splice"></a>splice</h3><p>splice() 可以被看成是类似于基于流的管道的实现，管道可以使得两个文件描述符相互连接，<br>splice 的调用者则可以控制两个设备（或者协议栈）在操作系统内核中的相互连接。在 Linux 2.6.23<br>中，sendfile() 利用了 splice() 这种机制来实现的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">long splice(int fdin, int fdout, size_t len, unsigned int flags);</span><br></pre></td></tr></table></figure>
-<h2 id="写时复制"><a href="#写时复制" class="headerlink" title="写时复制"></a>写时复制</h2><p>拷贝复制的一种策略, 例如fork/string都有使用, 缓冲区共享</p>
-<ul>
-<li>快速缓冲区(Fast Buffers)原理介绍<br>应用程序将 fbuf 传递给操作系统内核，这样就能减少传统的 write 系统调用所产生的数据拷贝开销<br><img src="/2019/01/23/零拷贝/5.png" alt=""></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2040,7 +1993,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">134</span>
+                  <span class="site-state-item-count">136</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

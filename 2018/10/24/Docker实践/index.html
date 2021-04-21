@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/10/24/Docker实践/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/24/Docker实践/2.png">
-<meta property="og:updated_time" content="2021-04-07T06:30:01.568Z">
+<meta property="og:updated_time" content="2021-04-21T03:28:13.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker实践">
 <meta name="twitter:description" content="Docker 简介Docker 是什么 Docker 最初是dotCloud公司的一个内部项目 Docker 使用go语言开发实现 Docker 是操作系统层面的虚拟化技术  Docker 是在操作系统层面进行虚拟化, 直接复用本地主机操作系统; 而传统方式是在硬件层面实现。  为什么用 Docker优势  1更高效的利用系统资源(额外系统消耗忽略不计) 2更快速的启动时间(秒级启动, 比传统虚拟">
@@ -453,6 +453,7 @@
 <li>实现原理</li>
 </ol>
 <h3 id="查看容器进程在宿主机的-PID"><a href="#查看容器进程在宿主机的-PID" class="headerlink" title="查看容器进程在宿主机的 PID"></a><a href="https://www.cnblogs.com/xy14/p/12002816.html" target="_blank" rel="noopener">查看容器进程在宿主机的 PID</a></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker container top &lt;container&gt;</span><br><span class="line"></span><br><span class="line">docker inspect -f '&#123;&#123;.State.Pid&#125;&#125;' &lt;container&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="查看容器状态"><a href="#查看容器状态" class="headerlink" title="查看容器状态"></a>查看容器状态</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">host-10-19-14-51:/data01/zjgrp/zjv8cs&gt; docker stats 9f8d7a30d83b</span><br><span class="line">CONTAINER ID        NAME                CPU %               MEM USAGE / LIMIT   MEM %               NET I/O             BLOCK I/O           PIDS</span><br><span class="line">9f8d7a30d83b        netdata             4.61%               136MiB / 63.05GiB   0.21%               910kB / 1.66MB      424MB / 3.51GB      0</span><br></pre></td></tr></table></figure>
 <h1 id="操作容器"><a href="#操作容器" class="headerlink" title="操作容器"></a>操作容器</h1><h1 id="访问仓库"><a href="#访问仓库" class="headerlink" title="访问仓库"></a>访问仓库</h1><h1 id="数据管理"><a href="#数据管理" class="headerlink" title="数据管理"></a>数据管理</h1><h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1>
       
     </div>
@@ -595,7 +596,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">134</span>
+                  <span class="site-state-item-count">136</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -650,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-简介"><span class="nav-number">1.</span> <span class="nav-text">Docker 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-是什么"><span class="nav-number">1.1.</span> <span class="nav-text">Docker 是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么用-Docker"><span class="nav-number">1.2.</span> <span class="nav-text">为什么用 Docker</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">2.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用镜像"><span class="nav-number">4.</span> <span class="nav-text">使用镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看容器进程在宿主机的-PID"><span class="nav-number">4.0.1.</span> <span class="nav-text">查看容器进程在宿主机的 PID</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作容器"><span class="nav-number">5.</span> <span class="nav-text">操作容器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问仓库"><span class="nav-number">6.</span> <span class="nav-text">访问仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据管理"><span class="nav-number">7.</span> <span class="nav-text">数据管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络"><span class="nav-number">8.</span> <span class="nav-text">网络</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-简介"><span class="nav-number">1.</span> <span class="nav-text">Docker 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-是什么"><span class="nav-number">1.1.</span> <span class="nav-text">Docker 是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么用-Docker"><span class="nav-number">1.2.</span> <span class="nav-text">为什么用 Docker</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">2.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用镜像"><span class="nav-number">4.</span> <span class="nav-text">使用镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看容器进程在宿主机的-PID"><span class="nav-number">4.0.1.</span> <span class="nav-text">查看容器进程在宿主机的 PID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看容器状态"><span class="nav-number">4.0.2.</span> <span class="nav-text">查看容器状态</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作容器"><span class="nav-number">5.</span> <span class="nav-text">操作容器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问仓库"><span class="nav-number">6.</span> <span class="nav-text">访问仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据管理"><span class="nav-number">7.</span> <span class="nav-text">数据管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络"><span class="nav-number">8.</span> <span class="nav-text">网络</span></a></li></ol></div>
             
 
           </div>
