@@ -294,6 +294,225 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/二叉树和其他树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/08/二叉树和其他树/" itemprop="url">二叉树和其他树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T10:26:07+08:00">
+                2019-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构和算法/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/08/08/二叉树和其他树/" class="leancloud_visitors" data-flag-title="二叉树和其他树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">概念</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">树的定义</td>
+<td style="text-align:left">tree 是一个有限非空集合, 其中一个元素为根(root), 余下的元素组成t的子树</td>
+</tr>
+<tr>
+<td style="text-align:left">树的叶子</td>
+<td style="text-align:left">没有孩子的节点称为叶子</td>
+</tr>
+<tr>
+<td style="text-align:left">树的层级</td>
+<td style="text-align:left">level 根的级为1, 孩子的级为2</td>
+</tr>
+<tr>
+<td style="text-align:left">树的高度</td>
+<td style="text-align:left">叶节点的深度, 根节点的高度为0</td>
+</tr>
+<tr>
+<td style="text-align:left">元素的度</td>
+<td style="text-align:left">degree of element 孩子的个数, 叶子节点的度为0</td>
+</tr>
+</tbody>
+</table>
+<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><h2 id="二叉树及其表示"><a href="#二叉树及其表示" class="headerlink" title="二叉树及其表示"></a>二叉树及其表示</h2><p>二叉树的定义: tree 是一个有限非空集合; 根元素 + 2个二叉树组成, 分别称为t的左子树和右子树</p>
+<p>有序二叉树: 节点的度数均不超过2个</p>
+<p>满二叉树: 有2^h-1个元素</p>
+<p>完全二叉树: 从满二叉树中删除k个元素,　称为完全二叉树,  满二叉树是完全二叉树的一个特例</p>
+<p>特点：<br>    每个元素有两棵子树<br>    每个元素的子树都是有序的，可以用左右来区分</p>
+<p>特性：</p>
+<pre><code>1. 包含n(n&gt;0)个元素的二叉树边数为n-1
+2. 若二叉树的高度或深度(层数)h, h&gt;=0, 则该二叉树至少有h个元素, 最多有2^h-1个元素(满二叉树)
+3. 包含n个元素的二叉树最大高度为n, 最小为log2^(n+1)
+4. 设完全二叉树中一元素序号为i, 1&lt;=i&lt;=n, 则有以下关系:
+    1) 当i=1时, 该元素为二叉树的根; 若i&gt;1, 则该元素的父节点编号i/2
+    2) 当2i&gt;n时, 该元素无左孩子; 否则其左孩子编号为2i
+    3) 当2i+1&gt;n时, 该元素无右孩子; 否则该右孩子编号为2i+1
+</code></pre><hr>
+<h2 id="编码树"><a href="#编码树" class="headerlink" title="编码树"></a>编码树</h2><p>PFC编码树, 每个字符对应叶子节点, 顺序？<br><img src="/2019/08/08/二叉树和其他树/1.png" alt=""></p>
+<h2 id="二叉树的实现"><a href="#二叉树的实现" class="headerlink" title="二叉树的实现"></a>二叉树的实现</h2><h2 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h2><h2 id="Huffman-编码"><a href="#Huffman-编码" class="headerlink" title="Huffman 编码"></a>Huffman 编码</h2><p>公式化描述: 按层级的数组</p>
+<p>链表描述:<br>template <class t=""><br>class BinaryTreeNode<br>{<br>public:<br>    Visit(BinaryTreeNode<t><em> );<br>    void PreOrder(BinaryTreeNode<t></t></em> );<br>    void InOrder(BinaryTreeNode<t><em> );<br>    void PostOrder(BinaryTreeNode<t></t></em> );<br>    void LevelOrder(BinaryTreeNode<t>* );</t></t></t></class></p>
+<p>public:<br>    BinaryTreeNode(){}<br>    BinaryTreeNode(const T&amp; e) { data = e; }<br>    BinaryTreeNode(const T&amp;e, BinaryTreeNode<em> l, BinaryTreeNode</em> r)<br>    {<br>    }<br>private:<br>    T data;<br>    BinaryTreeNode<t><em> liftChild = 0;<br>    BinaryTreeNode<t></t></em> rightChild = 0;<br>}</t></p>
+<p>遍历:<br>void PreOrder(BinaryTreeNode<t>* t)<br>{<br>  if(t)<br>  {<br>    Visit(t);<br>    PreOrder(t-&gt;leftChild);<br>    PreOrder(t-&gt;rightChild);<br>  }<br>}</t></p>
+<p>void InOrder(BinaryTreeNode<t>* t)<br>{<br>  if(t)<br>  {<br>    InOrder(t-&gt;leftChild);<br>    Visit(t);<br>    InOrder(t-&gt;rightChild);<br>  }<br>}</t></p>
+<p>void PostOrder(BinaryTreeNode<t>* t)<br>{<br>  if(t)<br>  {<br>    PostOrder(t-&gt;leftChild);<br>    PostOrder(t-&gt;rightChild);<br>    Visit(t);<br>  }<br>}</t></p>
+<p>void LevelOrder(BinaryTreeNode<t><em> t)<br>{<br>  LinkedQueue&lt;BinaryTreeNode<t></t></em>&gt; list;<br>  while(t)<br>  {<br>    Visit(t);<br>    list.add(t-&gt;leftChild);<br>    list.add(t-&gt;rightChild);</t></p>
+<pre><code>list.delete(t); // vector erase
+// return;
+</code></pre><p>  }<br>}</p>
+<hr>
+<p>类BinaryTree<br>template <class t=""><br>class BinaryTree<br>{<br>public:<br>    BinaryTree(){root = 0;}<br>    ~BinaryTree(){}<br>    bool IsEmpty(){ return root ? true : false; }<br>    bool RootValue(T&amp; x);<br>    void MakeTree(T&amp; e, BinaryTree&amp; leftTree, BinaryTree&amp; rightTree);<br>    void BreakTree(T&amp; e, BinaryTree&amp; leftTree, BinaryTree&amp; rightTree);</class></p>
+<pre><code>void PreOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u))
+{ PreOrder(Visit, root); }
+void InOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u))
+{ InOrder(Visit, root); }
+void PostOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u))
+{ PostOrder(Visit, root); }
+void LevelOrder(void (*Visit)(BinaryTreeNode&lt;T&gt;* u))
+{ LevelOrder(Visit, root); }
+</code></pre><p>private:<br>    BinaryTreeNode<t>* root;<br>}</t></p>
+<p>bool RootValue(T&amp; x)<br>{<br>  if(root)<br>  {<br>    x = root-&gt;data;<br>    return true;<br>  }<br>  else<br>  {<br>    return false;<br>  }<br>}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/chrome小技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1175,7 +1394,7 @@
 
       
         
-          <h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><!--�135-->
+          <h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><!--�139-->
 <p>静态内部类中只能访问外部类的静态成员<br>访问方式同–&gt;类名.静态成员<br></p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1649,173 +1868,10 @@
 
       
         
-          <h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p><strong>类的模板</strong><br><!--�133--></p>
+          <h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p><strong>类的模板</strong><br><!--�136--></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/07/01/corejava_day06/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/corejava_day02/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/01/corejava_day02/" itemprop="url">corejava_day02</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T09:49:44+08:00">
-                2019-07-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java基础/" itemprop="url" rel="index">
-                    <span itemprop="name">java基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/07/01/corejava_day02/" class="leancloud_visitors" data-flag-title="corejava_day02">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h1><pre><code>1，java特点：简单、安全、跨平台
-2，开发环境：JDK、JRM、JVM、环境变量
-3，java程序基本结构
-4，带包声明的java程序编译和运行，类装载搜索顺序
-5，import语法(java.lang下的类不用import，不用带包名)
-6，javadoc String.java -d ./docs
-</code></pre><hr>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/01/corejava_day02/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1903,7 +1959,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">141</span>
+                  <span class="site-state-item-count">142</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1914,7 +1970,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

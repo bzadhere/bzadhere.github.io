@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="其他经典概括：POSIX Threads Programming 推荐书籍：Programe with POSIX Threads    摘自 IBM developerWorks 图书频道   Posix线程编程指南线程创建与取消">
+<meta name="description" content="重点参考文章： POSIX Threads Programming   Linux Tutorial: POSIX Threads (yolinux.com) fork vs. thread: POSIX Threads Programming | LLNL HPC Tutorials 并行程序：Introduction to Parallel Computing Tutorial | High">
 <meta name="keywords" content="linux c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Posix线程编程指南">
 <meta property="og:url" content="http://yoursite.com/2018/10/24/Posix线程编程指南/index.html">
 <meta property="og:site_name" content="扫地小道童">
-<meta property="og:description" content="其他经典概括：POSIX Threads Programming 推荐书籍：Programe with POSIX Threads    摘自 IBM developerWorks 图书频道   Posix线程编程指南线程创建与取消">
+<meta property="og:description" content="重点参考文章： POSIX Threads Programming   Linux Tutorial: POSIX Threads (yolinux.com) fork vs. thread: POSIX Threads Programming | LLNL HPC Tutorials 并行程序：Introduction to Parallel Computing Tutorial | High">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-06T03:24:46.787Z">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/Posix线程编程指南/image-20210521153443974.png">
+<meta property="og:updated_time" content="2021-05-21T09:29:19.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Posix线程编程指南">
-<meta name="twitter:description" content="其他经典概括：POSIX Threads Programming 推荐书籍：Programe with POSIX Threads    摘自 IBM developerWorks 图书频道   Posix线程编程指南线程创建与取消">
+<meta name="twitter:description" content="重点参考文章： POSIX Threads Programming   Linux Tutorial: POSIX Threads (yolinux.com) fork vs. thread: POSIX Threads Programming | LLNL HPC Tutorials 并行程序：Introduction to Parallel Computing Tutorial | High">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/24/Posix线程编程指南/image-20210521153443974.png">
 
 
 
@@ -397,15 +399,46 @@
       
 
       
-        <h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>经典概括：<a href="https://www.cnblogs.com/mywolrd/archive/2009/02/05/1930707.html" target="_blank" rel="noopener">POSIX Threads Programming</a></p>
+        <h1 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h1><p>参考文章：</p>
+<p><a href="https://www.cnblogs.com/mywolrd/archive/2009/02/05/1930707.html" target="_blank" rel="noopener">POSIX Threads Programming</a>  </p>
+<p><a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html" target="_blank" rel="noopener">Linux Tutorial: POSIX Threads (yolinux.com)</a></p>
+<p>fork vs. thread: <a href="https://hpc-tutorials.llnl.gov/posix/" target="_blank" rel="noopener">POSIX Threads Programming | LLNL HPC Tutorials</a></p>
+<p>并行程序：<a href="https://hpc.llnl.gov/training/tutorials/introduction-parallel-computing-tutorial" target="_blank" rel="noopener">Introduction to Parallel Computing Tutorial | High Performance Computing (llnl.gov)</a></p>
 <p>推荐书籍：Programe with POSIX Threads</p>
-<hr>
+<h2 id="what-and-why"><a href="#what-and-why" class="headerlink" title="what and why?"></a>what and why?</h2><ol>
+<li>什么是线程？<ul>
+<li>技术上，线程可以定义为：可以被操作系统调度的独立的指令流</li>
+</ul>
+</li>
+<li>为什么使用多线程？<ul>
+<li>当与创建和管理进程的花费相比，线程可以使用操作系统较少的开销，管理线程需要较少的系统资源</li>
+<li>较于进程间的通信，在许多情况下线程间的通信效率比较高，且易于使用</li>
+<li>较于没有使用线程的程序，使用线程的应用程序有潜在的性能增益和实际的优点<ul>
+<li>CPU使用I/O交叠工作：例如，一个程序可能有一个需要较长时间的I/O操作，当一个线程等待I/O系统调用完成时，CPU可以被其它线程使用</li>
+<li>优先/实时调度：比较重要的任务可以被调度，替换或者中断较低优先级的任务</li>
+<li>异步事件处理：频率和持续时间不确定的任务可以交错。例如，web服务器可以同时为前一个请求传输数据和管理新请求</li>
+</ul>
+</li>
+<li>考虑在SMP架构上使用Pthreads的主要动机是获的最优的性能。特别的，如果一个程序使用MPI在节点通信，使用Pthreads可以使得节点数据传输得到显著提高</li>
+</ul>
+</li>
+</ol>
+<h2 id="进程和线程区别"><a href="#进程和线程区别" class="headerlink" title="进程和线程区别"></a>进程和线程区别</h2><p>进程被操作系统创建，需要相当多的“额外开销”。进程包含了程序的资源和执行状态信息。如下</p>
+<blockquote>
+<p>进程ID，进程group ID，用户ID和group ID<br>环境<br>工作目录<br>程序指令<br>寄存器<br>栈<br>堆<br>文件描述符<br>信号动作（Signal actions）<br>共享库<br>进程间通信工具（如：消息队列，管道，信号量或共享内存） </p>
+</blockquote>
+<p>线程独有的数据如下</p>
+<blockquote>
+<p>线程ID<br>寄存器，栈指针<br>栈上的局部变量，返回地址<br>信号集<br>调度属性，如优先级<br>返回值：errno</p>
+</blockquote>
+<p><img src="/2018/10/24/Posix线程编程指南/image-20210521153443974.png" alt="image-20210521153443974"></p>
+<h2 id="线程创建和终止"><a href="#线程创建和终止" class="headerlink" title="线程创建和终止"></a>线程创建和终止</h2><h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><h2 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h2><h2 id="线程陷阱"><a href="#线程陷阱" class="headerlink" title="线程陷阱"></a>线程陷阱</h2><hr>
 <blockquote>
 <p> 摘自 IBM developerWorks 图书频道</p>
 </blockquote>
 <hr>
 <h1 id="Posix线程编程指南"><a href="#Posix线程编程指南" class="headerlink" title="Posix线程编程指南"></a>Posix线程编程指南</h1><h2 id="线程创建与取消"><a href="#线程创建与取消" class="headerlink" title="线程创建与取消"></a><a href="https://www.ibm.com/developerworks/cn/linux/thread/posix_threadapi/part1/index.html" target="_blank" rel="noopener">线程创建与取消</a></h2><a id="more"></a>
-<h2 id="线程私有数据"><a href="#线程私有数据" class="headerlink" title="线程私有数据"></a><a href="https://www.ibm.com/developerworks/cn/linux/thread/posix_threadapi/part2/index.html" target="_blank" rel="noopener">线程私有数据</a></h2><h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a><a href="https://www.ibm.com/developerworks/cn/linux/thread/posix_threadapi/part3/index.html" target="_blank" rel="noopener">线程同步</a></h2><h2 id="线程终止"><a href="#线程终止" class="headerlink" title="线程终止"></a><a href="https://www.ibm.com/developerworks/cn/linux/thread/posix_threadapi/part4/" target="_blank" rel="noopener">线程终止</a></h2><h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a><a href="https://www.ibm.com/developerworks/cn/linux/thread/posix_threadapi/part5/index.html" target="_blank" rel="noopener">杂项</a></h2><hr>
+<h2 id="线程私有数据"><a href="#线程私有数据" class="headerlink" title="线程私有数据"></a><a href="https://www.ibm.com/developerworks/cn/linux/thread/posix_threadapi/part2/index.html" target="_blank" rel="noopener">线程私有数据</a></h2><h2 id="线程同步-1"><a href="#线程同步-1" class="headerlink" title="线程同步"></a><a href="https://www.ibm.com/developerworks/cn/linux/thread/posix_threadapi/part3/index.html" target="_blank" rel="noopener">线程同步</a></h2><h2 id="线程终止"><a href="#线程终止" class="headerlink" title="线程终止"></a><a href="https://www.ibm.com/developerworks/cn/linux/thread/posix_threadapi/part4/" target="_blank" rel="noopener">线程终止</a></h2><h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a><a href="https://www.ibm.com/developerworks/cn/linux/thread/posix_threadapi/part5/index.html" target="_blank" rel="noopener">杂项</a></h2><hr>
 <h1 id="通用线程：POSIX-线程详解"><a href="#通用线程：POSIX-线程详解" class="headerlink" title="通用线程：POSIX 线程详解"></a>通用线程：POSIX 线程详解</h1><h2 id="一种支持内存共享的简捷工具"><a href="#一种支持内存共享的简捷工具" class="headerlink" title="一种支持内存共享的简捷工具"></a><a href="https://www.ibm.com/developerworks/cn/linux/thread/posix_thread1/index.html" target="_blank" rel="noopener">一种支持内存共享的简捷工具</a></h2><h2 id="称作互斥对象的小玩意"><a href="#称作互斥对象的小玩意" class="headerlink" title="称作互斥对象的小玩意"></a><a href="https://www.ibm.com/developerworks/cn/linux/thread/posix_thread2/index.html" target="_blank" rel="noopener">称作互斥对象的小玩意</a></h2><h2 id="使用条件变量提高效率"><a href="#使用条件变量提高效率" class="headerlink" title="使用条件变量提高效率"></a><a href="https://www.ibm.com/developerworks/cn/linux/thread/posix_thread3/index.html" target="_blank" rel="noopener">使用条件变量提高效率</a></h2><hr>
 <h1 id="线程池的介绍及简单实现"><a href="#线程池的介绍及简单实现" class="headerlink" title="线程池的介绍及简单实现"></a><a href="https://www.ibm.com/developerworks/cn/java/l-threadPool/index.html" target="_blank" rel="noopener">线程池的介绍及简单实现</a></h1><h1 id="c-内存池"><a href="#c-内存池" class="headerlink" title="c++ 内存池"></a><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-ppp/index6.html" target="_blank" rel="noopener">c++ 内存池</a></h1>
       
@@ -549,7 +582,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">141</span>
+                  <span class="site-state-item-count">142</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -560,7 +593,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -604,7 +637,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#其他"><span class="nav-number">1.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Posix线程编程指南"><span class="nav-number">2.</span> <span class="nav-text">Posix线程编程指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程创建与取消"><span class="nav-number">2.1.</span> <span class="nav-text">线程创建与取消</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程私有数据"><span class="nav-number">2.2.</span> <span class="nav-text">线程私有数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程同步"><span class="nav-number">2.3.</span> <span class="nav-text">线程同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程终止"><span class="nav-number">2.4.</span> <span class="nav-text">线程终止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杂项"><span class="nav-number">2.5.</span> <span class="nav-text">杂项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通用线程：POSIX-线程详解"><span class="nav-number">3.</span> <span class="nav-text">通用线程：POSIX 线程详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一种支持内存共享的简捷工具"><span class="nav-number">3.1.</span> <span class="nav-text">一种支持内存共享的简捷工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#称作互斥对象的小玩意"><span class="nav-number">3.2.</span> <span class="nav-text">称作互斥对象的小玩意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用条件变量提高效率"><span class="nav-number">3.3.</span> <span class="nav-text">使用条件变量提高效率</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程池的介绍及简单实现"><span class="nav-number">4.</span> <span class="nav-text">线程池的介绍及简单实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#c-内存池"><span class="nav-number">5.</span> <span class="nav-text">c++ 内存池</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#重点"><span class="nav-number">1.</span> <span class="nav-text">重点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#what-and-why"><span class="nav-number">1.1.</span> <span class="nav-text">what and why?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程和线程区别"><span class="nav-number">1.2.</span> <span class="nav-text">进程和线程区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程创建和终止"><span class="nav-number">1.3.</span> <span class="nav-text">线程创建和终止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程同步"><span class="nav-number">1.4.</span> <span class="nav-text">线程同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程调度"><span class="nav-number">1.5.</span> <span class="nav-text">线程调度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程陷阱"><span class="nav-number">1.6.</span> <span class="nav-text">线程陷阱</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Posix线程编程指南"><span class="nav-number">2.</span> <span class="nav-text">Posix线程编程指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程创建与取消"><span class="nav-number">2.1.</span> <span class="nav-text">线程创建与取消</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程私有数据"><span class="nav-number">2.2.</span> <span class="nav-text">线程私有数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程同步-1"><span class="nav-number">2.3.</span> <span class="nav-text">线程同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程终止"><span class="nav-number">2.4.</span> <span class="nav-text">线程终止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杂项"><span class="nav-number">2.5.</span> <span class="nav-text">杂项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通用线程：POSIX-线程详解"><span class="nav-number">3.</span> <span class="nav-text">通用线程：POSIX 线程详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一种支持内存共享的简捷工具"><span class="nav-number">3.1.</span> <span class="nav-text">一种支持内存共享的简捷工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#称作互斥对象的小玩意"><span class="nav-number">3.2.</span> <span class="nav-text">称作互斥对象的小玩意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用条件变量提高效率"><span class="nav-number">3.3.</span> <span class="nav-text">使用条件变量提高效率</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程池的介绍及简单实现"><span class="nav-number">4.</span> <span class="nav-text">线程池的介绍及简单实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#c-内存池"><span class="nav-number">5.</span> <span class="nav-text">c++ 内存池</span></a></li></ol></div>
             
 
           </div>
