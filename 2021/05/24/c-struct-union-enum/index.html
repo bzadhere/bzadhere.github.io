@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="structC++ Struct Examples:1234567891011121314151617181920212223242526272829main()&amp;#123;    struct DataElement &amp;#123;       string SVal;       int    iVal;       bool   hasData;       DataElement()   /">
+<meta name="keywords" content="linux c++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++ struct-union-enum">
+<meta property="og:url" content="http://yoursite.com/2021/05/24/c-struct-union-enum/index.html">
+<meta property="og:site_name" content="扫地小道童">
+<meta property="og:description" content="structC++ Struct Examples:1234567891011121314151617181920212223242526272829main()&amp;#123;    struct DataElement &amp;#123;       string SVal;       int    iVal;       bool   hasData;       DataElement()   /">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-24T09:49:12.673Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="c++ struct-union-enum">
+<meta name="twitter:description" content="structC++ Struct Examples:1234567891011121314151617181920212223242526272829main()&amp;#123;    struct DataElement &amp;#123;       string SVal;       int    iVal;       bool   hasData;       DataElement()   /">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/05/24/c-struct-union-enum/"/>
+
+
+
+
+
+  <title>c++ struct-union-enum | 扫地小道童</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">扫地小道童</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/24/c-struct-union-enum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">c++ struct-union-enum</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-24T15:34:23+08:00">
+                2021-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/c/" itemprop="url" rel="index">
+                    <span itemprop="name">c++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2021/05/24/c-struct-union-enum/" class="leancloud_visitors" data-flag-title="c++ struct-union-enum">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h1><h2 id="C-Struct-Examples"><a href="#C-Struct-Examples" class="headerlink" title="C++ Struct Examples:"></a><strong>C++ Struct Examples:</strong></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">DataElement</span> &#123;</span></span><br><span class="line">       <span class="built_in">string</span> SVal;</span><br><span class="line">       <span class="keyword">int</span>    iVal;</span><br><span class="line">       <span class="keyword">bool</span>   hasData;</span><br><span class="line"></span><br><span class="line">       DataElement()   <span class="comment">// Example of a constructor used in a structure.</span></span><br><span class="line">       &#123;</span><br><span class="line">          iVal=<span class="number">-1</span>;</span><br><span class="line">          hasData=<span class="number">0</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125; *RealData;</span><br><span class="line"></span><br><span class="line">    RealData = <span class="keyword">new</span> DataElement [ <span class="number">5</span> ];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Assignment</span></span><br><span class="line">    RealData[<span class="number">0</span>].SVal = <span class="string">"Value loaded into first structure element."</span>;</span><br><span class="line">    RealData[<span class="number">0</span>].hasData = <span class="number">1</span>; <span class="comment">// True</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"First element  0: "</span> &lt;&lt; RealData[<span class="number">0</span>].SVal &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"                  "</span> &lt;&lt; RealData[<span class="number">0</span>].hasData &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Second element 1: "</span> &lt;&lt; RealData[<span class="number">1</span>].SVal &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"                  "</span> &lt;&lt; RealData[<span class="number">1</span>].hasData &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// Show effect of contructor</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"                  "</span> &lt;&lt; RealData[<span class="number">1</span>].iVal    &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// Show effect of contructor</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> [] RealData;   <span class="comment">// Or:  delete [5] RealData;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="The-same-example-using-typedef-and-a-C-initializer"><a href="#The-same-example-using-typedef-and-a-C-initializer" class="headerlink" title="The same example using typedef and a C++ initializer:"></a><strong>The same example using typedef and a C++ initializer:</strong></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dataElement</span> &#123;</span></span><br><span class="line">   <span class="built_in">string</span> SVal;</span><br><span class="line">   <span class="keyword">int</span>    iVal;</span><br><span class="line">   <span class="keyword">bool</span>   hasData;</span><br><span class="line"></span><br><span class="line">   dataElement()   <span class="comment">// Example of a constructor used in a structure.</span></span><br><span class="line">      : iVal(<span class="number">-1</span>), hasData(<span class="number">0</span>)</span><br><span class="line">   &#123;&#125;</span><br><span class="line">&#125; DataElement;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">    DataElement *RealData;</span><br><span class="line">    RealData = <span class="keyword">new</span> DataElement [ <span class="number">5</span> ];</span><br><span class="line"></span><br><span class="line">    RealData[<span class="number">0</span>].SVal = <span class="string">"Value loaded into first structure element."</span>;</span><br><span class="line">    RealData[<span class="number">0</span>].hasData = <span class="number">1</span>; <span class="comment">// True</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"First element  0: "</span> &lt;&lt; RealData[<span class="number">0</span>].SVal &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"                  "</span> &lt;&lt; RealData[<span class="number">0</span>].hasData &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Second element 1: "</span> &lt;&lt; RealData[<span class="number">1</span>].SVal &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"                  "</span> &lt;&lt; RealData[<span class="number">1</span>].hasData &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// Show effect of contructor</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"                  "</span> &lt;&lt; RealData[<span class="number">1</span>].iVal    &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// Show effect of contructor</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> [] RealData;   <span class="comment">// Or:  delete [5] RealData;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-struct-and-Virtual-Functions"><a href="#C-struct-and-Virtual-Functions" class="headerlink" title="C++ struct and Virtual Functions:"></a><strong>C++ struct and Virtual Functions:</strong></h2><p>在内存中，在使用虚拟函数之前，C ++结构的行为将与C结构相同，使用虚函数后编译器将在结构内存中添加指向虚拟表的指针作为前缀。<br>内存顺序：<br>  1）虚函数指针(sizeof 因为有了)<br>  2）基类变量数据<br>  3）类成员变量数据</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AAA</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="keyword">int</span> aaa;</span><br><span class="line">  AAA():aaa(<span class="number">0xff</span>)&#123;&#125;;</span><br><span class="line">  AAA(<span class="keyword">int</span> _aaa)&#123;aaa = _aaa;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">printThis</span><span class="params">()</span></span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"     Object this pointer memory:            "</span> &lt;&lt; hex &lt;&lt; (<span class="keyword">size_t</span>)<span class="keyword">this</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">functionA</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BBB</span> :</span> AAA &#123;</span><br><span class="line">  <span class="keyword">int</span> bbb;</span><br><span class="line">  BBB():bbb(<span class="number">0x0000</span>)&#123;&#125;;</span><br><span class="line">  BBB(<span class="keyword">int</span> _aaa, <span class="keyword">int</span> _bbb)&#123;aaa=_aaa;bbb=_bbb;&#125;;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">functionA</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">AAA <span class="title">aaa</span><span class="params">(<span class="number">0xffff</span>)</span></span>;;</span><br><span class="line">    BBB bbb;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// AAA Print pointers - memory address of object and first member of object</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"AAA: "</span> &lt;&lt; <span class="keyword">sizeof</span>(AAA) &lt;&lt; <span class="string">" bytes."</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"     Object memory address location &amp;aaa:   "</span> &lt;&lt; hex &lt;&lt; (<span class="keyword">size_t</span>)&amp;aaa &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"     First member variable Memory aaa.aaa:  "</span> &lt;&lt; hex &lt;&lt; (<span class="keyword">size_t</span>)&amp;aaa.aaa &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    aaa.printThis();  <span class="comment">// Print object this pointer</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"BBB: "</span> &lt;&lt; <span class="keyword">sizeof</span>(BBB) &lt;&lt; <span class="string">" bytes."</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"     Object memory address location &amp;bbb:   "</span> &lt;&lt; hex &lt;&lt; (<span class="keyword">size_t</span>)&amp;bbb &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"     First inherited member memory bbb.aaa: "</span> &lt;&lt; hex &lt;&lt; (<span class="keyword">size_t</span>)&amp;bbb.aaa &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"     First member variable Memory bbb.bbb:  "</span> &lt;&lt; hex &lt;&lt; (<span class="keyword">size_t</span>)&amp;bbb.bbb &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    bbb.printThis();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//------------------------------------------------------------------------------------</span></span><br><span class="line">AAA: <span class="number">16</span> bytes.</span><br><span class="line">     Object memory address location &amp;aaa:   <span class="number">7f</span>ff4b1d7fb0</span><br><span class="line">     First member variable Memory aaa.aaa:  <span class="number">7f</span>ff4b1d7fb8  -- <span class="number">8</span> bytes offset <span class="keyword">for</span> vtable pointer</span><br><span class="line">     Object <span class="keyword">this</span> pointer memory:            <span class="number">7f</span>ff4b1d7fb0</span><br><span class="line">BBB: <span class="number">10</span> bytes.</span><br><span class="line">     Object memory address location &amp;bbb:   <span class="number">7f</span>ff4b1d7fc0</span><br><span class="line">     First inherited member memory bbb.aaa: <span class="number">7f</span>ff4b1d7fc8  -- <span class="number">8</span> byte offset <span class="keyword">for</span> vtable pointer</span><br><span class="line">     First member variable Memory bbb.bbb:  <span class="number">7f</span>ff4b1d7fcc  -- <span class="number">4</span> bytes additional offset <span class="keyword">for</span> actual size of AAA</span><br><span class="line">     Object <span class="keyword">this</span> pointer memory:            <span class="number">7f</span>ff4b1d7fc0</span><br></pre></td></tr></table></figure>
+<h2 id="C-structure-notes"><a href="#C-structure-notes" class="headerlink" title="C++ structure notes:"></a>C++ structure notes:</h2><ul>
+<li><p>可以有构造和析构函数，</p>
+</li>
+<li><p>无法将构造函数声明为virtual</p>
+</li>
+<li>成员变量默认public</li>
+</ul>
+<h1 id="union"><a href="#union" class="headerlink" title="union"></a>union</h1><h2 id="Potential-Pitfall"><a href="#Potential-Pitfall" class="headerlink" title="Potential Pitfall"></a>Potential Pitfall</h2><p>潜在的坑：如果要在联合中使用结构，则不能将其与构造函数一起使用。对结构中构造函数的C ++识别将其转换为在“ C”联合中无效的C ++类。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dataElement</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   <span class="keyword">int</span>    iVal1;</span><br><span class="line">   <span class="keyword">int</span>    iVal2;</span><br><span class="line">   dataElement() : iVal1(<span class="number">1</span>), iVal2(<span class="number">2</span>)&#123;&#125;;</span><br><span class="line">&#125; DataElement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">union</span></span><br><span class="line">&#123;</span><br><span class="line">   DataElement de;</span><br><span class="line">   <span class="keyword">int</span> iVal[<span class="number">2</span>];</span><br><span class="line">&#125; UAA;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    UAA rdata;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Array output: %d %d \n"</span>,</span><br><span class="line">           rdata.iVal[<span class="number">0</span>], rdata.iVal[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line"><span class="comment">// --------------</span></span><br><span class="line">union2.cpp: 在函数‘int main()’中:</span><br><span class="line">union2.cpp:<span class="number">18</span>:<span class="number">9</span>: 错误：使用了被删除的函数‘UAA::UAA()’</span><br><span class="line">     UAA rdata;</span><br><span class="line">         ^</span><br><span class="line">union2.cpp:<span class="number">11</span>:<span class="number">1</span>: 附注：‘UAA::UAA()’ is implicitly deleted because the <span class="keyword">default</span> definition would be ill-formed:</span><br><span class="line"> &#123;</span><br><span class="line"> ^</span><br><span class="line">union2.cpp:<span class="number">12</span>:<span class="number">16</span>: 错误：<span class="keyword">union</span> member ‘UAA::de’ with non-trivial ‘dataElement::dataElement()’</span><br><span class="line">    DataElement de;</span><br><span class="line">                ^</span><br><span class="line">/data01/zjgrp/zjdev/ob_rel/etc/NGCmake:1289: recipe for target 'build/union2.o' failed</span><br><span class="line">gmake: *** [build/union2.o] Error <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h2 id="C-union-notes"><a href="#C-union-notes" class="headerlink" title="C++ union notes:"></a>C++ union notes:</h2><ul>
+<li>可以有构造函数初始化</li>
+<li>可以有析构函数</li>
+<li>成员函数不能声明为虚函数</li>
+<li>成员变量默认public</li>
+<li>数据成员不能声明为static</li>
+<li>不能作为基类</li>
+</ul>
+<p>只有一个数据成员会生效，给哪个成员赋值，哪个成员生效，size也对应变化。</p>
+<h1 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h1><h2 id="C-C-Enumeration-Syntax-and-Example"><a href="#C-C-Enumeration-Syntax-and-Example" class="headerlink" title="C / C++ Enumeration Syntax and Example:"></a><strong>C / C++ Enumeration Syntax and Example:</strong></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">enum</span></span><br><span class="line">   &#123;</span><br><span class="line">      monday, tuesday, wednesday, thursday, friday, saturday, sunday</span><br><span class="line">   &#125; day;</span><br><span class="line"></span><br><span class="line">   day = wednesday;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(day == saturday || day == sunday)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Day is a weekend day"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">if</span>(day == wednesday)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Day is hump day - middle of the work week"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output=&gt; Day is hump day - middle of the work week</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//----------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">enum</span></span><br><span class="line">   &#123;</span><br><span class="line">      saturday = <span class="number">0</span>,</span><br><span class="line">      sunday = <span class="number">0</span>,</span><br><span class="line">      monday,</span><br><span class="line">      tuesday,</span><br><span class="line">      wednesday,</span><br><span class="line">      thursday,</span><br><span class="line">      friday</span><br><span class="line">   &#125;  DAY;</span><br><span class="line"></span><br><span class="line">   DAY day = sunday;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(day == <span class="number">0</span>)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Day is a weekend day"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">if</span>(day == wednesday)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Day is hump day - middle of the work week"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output=&gt; Day is a weekend day</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//----------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">typedef</span> <span class="keyword">enum</span></span><br><span class="line">   &#123;</span><br><span class="line">      thirteen = <span class="number">10</span>,</span><br><span class="line">      fourteen,</span><br><span class="line">      fifteen,</span><br><span class="line">      sixteen,</span><br><span class="line">      seventeen,</span><br><span class="line">      eighteen,</span><br><span class="line">      nineteen</span><br><span class="line">   &#125; TEENS;</span><br><span class="line"></span><br><span class="line">   TEENS teen = seventeen;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(teen == seventeen)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; seventeen &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output=&gt; 14</span></span><br></pre></td></tr></table></figure>
+<h2 id="C-Enumeration-Class"><a href="#C-Enumeration-Class" class="headerlink" title="C++ Enumeration Class:"></a>C++ Enumeration Class:</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DAY_HPP__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DAY_HPP__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Day</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">   <span class="keyword">enum</span> Enum</span><br><span class="line">   &#123;</span><br><span class="line">      sunday = <span class="number">0</span>,</span><br><span class="line">      monday,</span><br><span class="line">      tuesday,</span><br><span class="line">      wednesday,</span><br><span class="line">      thursday,</span><br><span class="line">      friday,</span><br><span class="line">      saturday,</span><br><span class="line">      InvalidDay</span><br><span class="line">   &#125;;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Constructors</span></span><br><span class="line">   Day(<span class="keyword">void</span>);</span><br><span class="line">   Day(Enum ee);</span><br><span class="line">   <span class="function"><span class="keyword">explicit</span> <span class="title">Day</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; ss)</span></span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Overloaded assignment operators</span></span><br><span class="line">   Day&amp; <span class="keyword">operator</span> = (<span class="keyword">const</span> Day&amp; cc);</span><br><span class="line">   Day&amp; <span class="keyword">operator</span> = (<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; ss);</span><br><span class="line">   Day&amp; <span class="keyword">operator</span> = (Enum ee);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Overloaded comparison operators</span></span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;  (<span class="keyword">const</span> Day&amp; cc) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;  (Enum ee) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;= (<span class="keyword">const</span> Day&amp; cc) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;= (Enum ee) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&gt;  (<span class="keyword">const</span> Day&amp; cc) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&gt;  (Enum ee) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&gt;= (<span class="keyword">const</span> Day&amp; cc) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&gt;= (Enum ee) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>== (<span class="keyword">const</span> Day&amp; cc) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>== (<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; ss) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>== (<span class="keyword">const</span> Enum ee) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>!= (<span class="keyword">const</span> Day&amp; cc) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>!= (<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; ss) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>!= (<span class="keyword">const</span> Enum ee) <span class="keyword">const</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Accessor functions</span></span><br><span class="line">   <span class="keyword">inline</span> <span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">getString</span> <span class="params">(<span class="keyword">void</span>)</span> <span class="keyword">const</span></span>;</span><br><span class="line">   <span class="function"><span class="keyword">inline</span> Enum        <span class="title">getEnum</span>   <span class="params">(<span class="keyword">void</span>)</span> <span class="keyword">const</span></span>;</span><br><span class="line">   <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span>         <span class="title">getValue</span>  <span class="params">(<span class="keyword">void</span>)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">   <span class="comment">// Static functions</span></span><br><span class="line">   <span class="function"><span class="keyword">static</span> Enum        <span class="title">fromString</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span> ss)</span></span>;</span><br><span class="line">   <span class="keyword">static</span> <span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">toString</span><span class="params">(Enum ee)</span></span>;</span><br><span class="line">   <span class="function"><span class="keyword">static</span> <span class="keyword">int</span>         <span class="title">toValue</span><span class="params">(Enum ee)</span></span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Data members</span></span><br><span class="line">   Enum        m_enum;</span><br><span class="line">   <span class="built_in">std</span>::<span class="built_in">string</span> m_string;</span><br><span class="line">   <span class="keyword">int</span>         m_value;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line">    </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"CDay.hpp"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   Day day;</span><br><span class="line"></span><br><span class="line">   day = <span class="string">"Saturday"</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(day == Day::saturday || day == Day::sunday)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Day is a weekend day"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output=&gt; Day is a weekend day</span></span><br></pre></td></tr></table></figure>
+<h2 id="Other-Methodologies"><a href="#Other-Methodologies" class="headerlink" title="Other Methodologies:"></a>Other Methodologies:</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Associated string array:</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span></span><br><span class="line">&#123;</span><br><span class="line">   monday, tuesday, wednesday, thursday, friday, saturday, sunday</span><br><span class="line">&#125; Day;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *day_str[]=&#123; <span class="string">"Monday"</span>,<span class="string">"Tuesday"</span>,<span class="string">"Wednesday"</span>,<span class="string">"Thursday"</span>,<span class="string">"Friday"</span>,<span class="string">"Saturday"</span>, <span class="string">"Sunday"</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   Day day = saturday;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(day == saturday || day == sunday)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; day_str[day] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// C define macros:</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SUNDAY    0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MONDAY    1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TUESDAY   2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WEDNESDAY 3</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> THURSDAY  4</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FRIDAY    5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SATURDAY  6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">int</span> day;</span><br><span class="line"></span><br><span class="line">   day = SATURDAY;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(day == SATURDAY || day == SUNDAY)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Day is a weekend day"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="扫地小道童 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="扫地小道童 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/05/21/Posix线程编程指南/download/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">扫地小道童</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">143</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#struct"><span class="nav-number">1.</span> <span class="nav-text">struct</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Struct-Examples"><span class="nav-number">1.1.</span> <span class="nav-text">C++ Struct Examples:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-same-example-using-typedef-and-a-C-initializer"><span class="nav-number">1.2.</span> <span class="nav-text">The same example using typedef and a C++ initializer:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-struct-and-Virtual-Functions"><span class="nav-number">1.3.</span> <span class="nav-text">C++ struct and Virtual Functions:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-structure-notes"><span class="nav-number">1.4.</span> <span class="nav-text">C++ structure notes:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#union"><span class="nav-number">2.</span> <span class="nav-text">union</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Potential-Pitfall"><span class="nav-number">2.1.</span> <span class="nav-text">Potential Pitfall</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-union-notes"><span class="nav-number">2.2.</span> <span class="nav-text">C++ union notes:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#enum"><span class="nav-number">3.</span> <span class="nav-text">enum</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C-Enumeration-Syntax-and-Example"><span class="nav-number">3.1.</span> <span class="nav-text">C / C++ Enumeration Syntax and Example:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Enumeration-Class"><span class="nav-number">3.2.</span> <span class="nav-text">C++ Enumeration Class:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Methodologies"><span class="nav-number">3.3.</span> <span class="nav-text">Other Methodologies:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">扫地小道童</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qtaCLPFG2dC4WHDCx7CXHF86-gzGzoHsz", "o0aO4phM2twpBXHNnXD4keF5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
