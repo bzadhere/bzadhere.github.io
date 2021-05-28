@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Links Programming in C++, Rules and Recommendations (ic.ac.uk) SEI CERT C++ Coding Standard - SEI CERT C++ Coding Standard - Confluence (cmu.edu) C++ Coding Standard (possibility.com) C++ Programming">
+<meta name="keywords" content="linux c++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c++ Coding Practices">
+<meta property="og:url" content="http://yoursite.com/2021/05/25/c-Coding-Practices/index.html">
+<meta property="og:site_name" content="扫地小道童">
+<meta property="og:description" content="Links Programming in C++, Rules and Recommendations (ic.ac.uk) SEI CERT C++ Coding Standard - SEI CERT C++ Coding Standard - Confluence (cmu.edu) C++ Coding Standard (possibility.com) C++ Programming">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-25T08:31:08.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="c++ Coding Practices">
+<meta name="twitter:description" content="Links Programming in C++, Rules and Recommendations (ic.ac.uk) SEI CERT C++ Coding Standard - SEI CERT C++ Coding Standard - Confluence (cmu.edu) C++ Coding Standard (possibility.com) C++ Programming">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/05/25/c-Coding-Practices/"/>
+
+
+
+
+
+  <title>c++ Coding Practices | 扫地小道童</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">扫地小道童</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/25/c-Coding-Practices/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">c++ Coding Practices</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-25T10:35:26+08:00">
+                2021-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/c/" itemprop="url" rel="index">
+                    <span itemprop="name">c++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2021/05/25/c-Coding-Practices/" class="leancloud_visitors" data-flag-title="c++ Coding Practices">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p><strong>Links</strong></p>
+<p><a href="http://www.doc.ic.ac.uk/lab/cplus/c++.rules/" target="_blank" rel="noopener">Programming in C++, Rules and Recommendations (ic.ac.uk)</a></p>
+<p><a href="https://wiki.sei.cmu.edu/confluence/pages/viewpage.action?pageId=88046682" target="_blank" rel="noopener">SEI CERT C++ Coding Standard - SEI CERT C++ Coding Standard - Confluence (cmu.edu)</a></p>
+<p><a href="http://www.possibility.com/Cpp/CppCodingStandard.html" target="_blank" rel="noopener">C++ Coding Standard (possibility.com)</a></p>
+<p><a href="http://geosoft.no/development/cppstyle.html" target="_blank" rel="noopener">C++ Programming Style Guidelines (geosoft.no)</a></p>
+<p>唉，差距…</p>
+<hr>
+<h1 id="C-Coding-Standards-and-Practices"><a href="#C-Coding-Standards-and-Practices" class="headerlink" title="C++ Coding Standards and Practices"></a>C++ Coding Standards and Practices</h1><ul>
+<li><p>文件名</p>
+<ul>
+<li><p>每个源代码文件应include一个文件。每个include文件应描述单个类或紧密集成的类集。通用指南适用于包含（.h和.hpp）文件的包含定义和非实例化的文件。因此，包含文件可以在多个文件中使用。源文件（.C或.cpp）定义了在编译时将其加载到内存中的代码。它实例化包含文件中定义的定义。</p>
+<p>例如，一个类定义将包含在“ .hpp”包含文件中。全局变量将在“ .cpp”文件而不是“ .hpp”文件中实例化。这是因为如果多次使用了包含文件，则将多次定义全局变量。 “ extern”语句适用于包含文件，因为它不声明变量的内存，而只是识别其存在。</p>
+</li>
+<li><p>文件名应反映类名。虽然类名通常以大写字母开头，但是包含文件和源文件通常以小写字母开头。即文件classBase.hpp将包含ClassBase {}的定义，而classBase.cpp将包含其功能的源代码。</p>
+</li>
+<li><p>类名称应遵循以下格式：CXxClassID，其中“ Xx”表示组件。 （即Mn main，Fm文件管理器，Cp命令处理器）每个单词的第一个字符应大写。命名文件时，请不要使用“ C”前缀。</p>
+</li>
+<li><p>当在另一个包含文件或源文件中引用一个包含文件时，请勿包含完整路径。这避免了由依赖于操作系统的引用目录路径的方法所造成的可移植性问题。使用编译器命令行标志包括路径。 （即-I /路径名）</p>
+</li>
+<li><p>对于所有项目包含文件，请使用双引号（“”）；对于操作系统或编译器提供的包含文件，请使用尖括号（&lt;&gt;）。</p>
+</li>
+<li><p>为了简化脚本的使用和制作文件，文件名（和目录路径）不应包含空格，括号“（”或大多数操作系统不支持的疯狂字符。</p>
+</li>
+</ul>
+</li>
+<li><p>文件格式</p>
+<ul>
+<li>Command: <code>dos2unix filename.cpp</code></li>
+<li>In vim: <code>:1,$ s/{ctrl-V}{ctrl-M}//</code></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>文件头<ul>
+<li>版权声明</li>
+<li>注释放在文件顶部</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>头文件</p>
+<ul>
+<li><p>避免重复引用 <code>#ifndef class_name_h/#define class_name_h</code></p>
+</li>
+<li><p>减少头文件中#include文件数量，将减少构建时间。使用前置声明 + 指针（引用）。stl容器不允许前置声明。</p>
+</li>
+<li><p>C++调用C函数使用以下声明</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">...</span><br><span class="line">..</span><br><span class="line">C function declarations</span><br><span class="line">..</span><br><span class="line">...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>避免在“ .hpp”包含文件中使用“命名空间”。如果文件包含在源代码中，则程序员可能不再使用命名空间中定义的变量，并且可能会遇到变量名冲突。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>类和结构体</p>
+<ul>
+<li><p>对于类和结构定义，标准实践以大写字母开头。基类通常会在类名后附加后缀“ Base”。确保将虚拟（不是纯虚拟，因此不是“ = 0”）添加到基类析构函数中，以便同时调用这两个析构函数。</p>
+</li>
+<li><p>示例类内容</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">     <span class="comment">// Constructors:</span></span><br><span class="line">     <span class="comment">// Destructor:</span></span><br><span class="line">     <span class="comment">// Functions: modifiers (set), selectors (get)</span></span><br><span class="line">     <span class="comment">// itterators:</span></span><br><span class="line">     <span class="comment">// Attributes visible by scope of instantiation and use</span></span><br><span class="line">  <span class="keyword">protected</span>:</span><br><span class="line">     <span class="comment">// Attributes visible to descendents</span></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">     <span class="comment">// Local attributes</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>如果可能，应将与机器相关的代码放置在单独的文件中，以简化移植任务。</li>
+</ul>
+<ul>
+<li>函数<ul>
+<li>Names: Use complement names for complement functions: get/set, add/remove, create/destroy, start/stop, insert/delete, increment/decrement, begin/end, first/last, up/down, min/max, next/previous, open/close, show/hide, suspend/resume, etc.</li>
+<li>在“ .cpp”文件中列出函数的顺序与在“ .hpp”类声明中声明的顺序相同。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>使用案例</li>
+</ul>
+<h1 id="Camel-case"><a href="#Camel-case" class="headerlink" title="Camel-case"></a>Camel-case</h1><h1 id="C-variable-naming-convention-and-style"><a href="#C-variable-naming-convention-and-style" class="headerlink" title="C++ variable naming convention and style"></a>C++ variable naming convention and style</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">Prefix</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">m_ my_</td>
+<td style="text-align:left">Variable is a member of class. Some use the prefix “<code>my</code>“ for class member variables and “<code>our</code>“ for class member static variables. (Also “m” and “ms” for member and member-static) I have also seen the use of “<em>“ as both a prefix and as a suffix to denote a class member variable. If using mixed languages remember that many FORTRAN compilers use a “</em>“ suffix. Due to C++ name mangling there will probably be no conflict when using this notation. It is a common practice but theoretically could pose a problem with mixed languages. See <a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialMixingFortranAndC.html" target="_blank" rel="noopener">Mixing FORTRAN and C</a> YoLinux tutorial.</td>
+</tr>
+<tr>
+<td style="text-align:left">_ (underscore)</td>
+<td style="text-align:left">Variable not intended to be exposed externally to the user. Internal workings only. Most often used by compiler and library authors.Sometimes used (not preferred) as a suffix to repressent a class member variable.Sometimes used as variable prefix for function arguments. When used with function arguments, it can represent in/out/inout:_variable: Function input variable. More explicit: <code>_inVariable</code>variable_: Function output variable. More explicit: <code>outVariable_</code><em>variable</em>: Input/output by function. More explicit: <code>_inoutVariable_</code>Note: Dangerous when mixing C with FORTRAN as FUNCTION subroutines as suffixed with “_” in the object code. See <code>nm</code> to view object symbols. See the <a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=g77" target="_blank" rel="noopener">g77/f77</a> compiler flag “<code>-fno-underscore</code>“.</td>
+</tr>
+<tr>
+<td style="text-align:left">__</td>
+<td style="text-align:left">Marks an use as extension to ANSI C++. Often not compiler independant. Usually reserved for use by compiler writers so it is best to <strong>avoid the double underscore</strong>.Note: Be careful when mixing with FORTRAN as “__” is often generated in FORTRAN object symbol names. See the f77 compiler flag “<code>-fno-second-underscore</code>“. Also used in Microsoft “Managed C++” directives.</td>
+</tr>
+<tr>
+<td style="text-align:left">a</td>
+<td style="text-align:left">array</td>
+</tr>
+<tr>
+<td style="text-align:left">c n</td>
+<td style="text-align:left">count / number of</td>
+</tr>
+<tr>
+<td style="text-align:left">cb</td>
+<td style="text-align:left">count bytes / number of bytes</td>
+</tr>
+<tr>
+<td style="text-align:left">d</td>
+<td style="text-align:left">Data type double</td>
+</tr>
+<tr>
+<td style="text-align:left">dw</td>
+<td style="text-align:left">Data type double word</td>
+</tr>
+<tr>
+<td style="text-align:left">e</td>
+<td style="text-align:left">an enumeration or element of an array</td>
+</tr>
+<tr>
+<td style="text-align:left">b f is has should</td>
+<td style="text-align:left">boolean (flag) Example: isFound Note: accessor functions can also use these same prefixes: <code>bool isBoolean{ return mBoolean; }</code></td>
+</tr>
+<tr>
+<td style="text-align:left">g_  g gbl Gbl</td>
+<td style="text-align:left">global variable. Also used is the “::” operator. i.e. <code>::*variable*</code></td>
+</tr>
+<tr>
+<td style="text-align:left">s s_</td>
+<td style="text-align:left">Static variable</td>
+</tr>
+<tr>
+<td style="text-align:left">h</td>
+<td style="text-align:left">handle</td>
+</tr>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">index to an array or STL iterator</td>
+</tr>
+<tr>
+<td style="text-align:left">l</td>
+<td style="text-align:left">long data type. i.e. “long int”</td>
+</tr>
+<tr>
+<td style="text-align:left">p ptr</td>
+<td style="text-align:left">pointer. Sometimes “Ptr” used as suffix.</td>
+</tr>
+<tr>
+<td style="text-align:left">lp</td>
+<td style="text-align:left">pointer to long data type</td>
+</tr>
+<tr>
+<td style="text-align:left">ch</td>
+<td style="text-align:left">C character</td>
+</tr>
+<tr>
+<td style="text-align:left">sz</td>
+<td style="text-align:left">Zero terminated string. char[]</td>
+</tr>
+<tr>
+<td style="text-align:left">str</td>
+<td style="text-align:left">C++ GNU template data type “string”</td>
+</tr>
+<tr>
+<td style="text-align:left">u</td>
+<td style="text-align:left">unsigned</td>
+</tr>
+<tr>
+<td style="text-align:left">ev</td>
+<td style="text-align:left">event</td>
+</tr>
+<tr>
+<td style="text-align:left">min</td>
+<td style="text-align:left">Lowest value</td>
+</tr>
+<tr>
+<td style="text-align:left">first</td>
+<td style="text-align:left">First element</td>
+</tr>
+<tr>
+<td style="text-align:left">lim</td>
+<td style="text-align:left">array limit</td>
+</tr>
+<tr>
+<td style="text-align:left">cmd</td>
+<td style="text-align:left">Command</td>
+</tr>
+<tr>
+<td style="text-align:left">cmp</td>
+<td style="text-align:left">Compare</td>
+</tr>
+<tr>
+<td style="text-align:left">init</td>
+<td style="text-align:left">Initialize</td>
+</tr>
+<tr>
+<td style="text-align:left">intr</td>
+<td style="text-align:left">Interrupt</td>
+</tr>
+<tr>
+<td style="text-align:left">msg</td>
+<td style="text-align:left">Message</td>
+</tr>
+<tr>
+<td style="text-align:left">rx</td>
+<td style="text-align:left">Recieve</td>
+</tr>
+<tr>
+<td style="text-align:left">tx</td>
+<td style="text-align:left">Transmit</td>
+</tr>
+<tr>
+<td style="text-align:left">C</td>
+<td style="text-align:left">Prefix for a Class name. Notation used by Microsoft MFC. Example: <code>CAbcXyz abcXyz</code> Note: The instatiation begins with a lower case letter while the class definition begins with a capital letter.</td>
+</tr>
+<tr>
+<td style="text-align:left">_t _Type</td>
+<td style="text-align:left">Type definition (typedef - <strong>suffix</strong>). Prefix with capital letter.</td>
+</tr>
+<tr>
+<td style="text-align:left">_Enum</td>
+<td style="text-align:left">Enumeration type definition suffix.</td>
+</tr>
+<tr>
+<td style="text-align:left">_ds</td>
+<td style="text-align:left">Data structure suffix.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Introductory-File-Header-Comments"><a href="#Introductory-File-Header-Comments" class="headerlink" title="Introductory File Header Comments"></a>Introductory File Header Comments</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">dOxygen tag</th>
+<th style="text-align:left">Rendering</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">@file <em>file-name</em></td>
+<td style="text-align:left">Prints <em>file-name</em> as header of page.</td>
+</tr>
+<tr>
+<td style="text-align:left">@brief <em>Brief description goes here.</em></td>
+<td style="text-align:left">Description appears in HTML document generated.</td>
+</tr>
+<tr>
+<td style="text-align:left">@details <em>Brief description goes here.</em></td>
+<td style="text-align:left">Description of function which appears in HTML document generated.</td>
+</tr>
+<tr>
+<td style="text-align:left">@author <em>name1</em> @author <em>name2</em></td>
+<td style="text-align:left"><strong>Author:*</strong><code>name1</code><em> </em><code>name2</code>*</td>
+</tr>
+<tr>
+<td style="text-align:left">@version <em>Version number</em></td>
+<td style="text-align:left"><strong>Version:*</strong><code>Version number()</code>*</td>
+</tr>
+<tr>
+<td style="text-align:left">@depricated <em>explanation</em></td>
+<td style="text-align:left"><strong>Depricated:*</strong><code>explanation</code>*</td>
+</tr>
+<tr>
+<td style="text-align:left">@class <em>CAaaBbb</em></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">@see <em>FunctionA()</em></td>
+<td style="text-align:left"><strong>See also:*</strong><code>FunctionA()</code>*</td>
+</tr>
+<tr>
+<td style="text-align:left">@param[in] <em>variableA DescriptionA</em> @param[out] <em>variableB DescriptionB</em> @param[in,out] <em>variableC DescriptionC</em> Note: <code>in</code> and <code>out</code> are dOxygen specific and not used in Javadoc.</td>
+<td style="text-align:left"><strong>Parameters:*</strong><code>variableA DescriptionAvariableB DescriptionBvariableC DescriptionC</code>*</td>
+</tr>
+<tr>
+<td style="text-align:left">@return <em>variableA</em></td>
+<td style="text-align:left"><strong>Returns:*</strong><code>variableA</code>*</td>
+</tr>
+<tr>
+<td style="text-align:left">@bug <em>Description of bug goes here</em></td>
+<td style="text-align:left"><strong>Bug:*</strong><code>Description of bug goes here</code>*</td>
+</tr>
+<tr>
+<td style="text-align:left">@warning <em>Warning message goes here</em></td>
+<td style="text-align:left"><strong>Warning:*</strong><code>Warning message goes here</code>*</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*	COPYRIGHT NOTICE</span></span><br><span class="line"><span class="comment">*	Copyright (c) 2020, Asiainfo Technologies(China),Inc.   （版权声明）</span></span><br><span class="line"><span class="comment">*	All rights reserved.</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* @file	cdk_file.h</span></span><br><span class="line"><span class="comment">* @brief	 </span></span><br><span class="line"><span class="comment">*				文件目录处理</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* @version 1.1	（版本声明）</span></span><br><span class="line"><span class="comment">* @author		（作者，eg：xxx）</span></span><br><span class="line"><span class="comment">* @date		    （文件创建日期，eg：Aug 12, 2014）</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  @brief</span></span><br><span class="line"><span class="comment">  		目录处理类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Directory</span> :</span> <span class="keyword">public</span> SupportErrorMsg</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	  构造一个目录类</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	Directory();</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	  构造一个目录类</span></span><br><span class="line"><span class="comment">	  @param[in] strPath		目录路径，支持有环境变量，例如:$(HOME)/ipc</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	Directory(<span class="keyword">const</span> aistring &amp; strPath);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="dOxygen-and-C-Automated-Documentation-Generation"><a href="#dOxygen-and-C-Automated-Documentation-Generation" class="headerlink" title="dOxygen and C++ Automated Documentation Generation"></a>dOxygen and C++ Automated Documentation Generation</h1><h1 id="C-Code-Review-Checklist"><a href="#C-Code-Review-Checklist" class="headerlink" title="C++ Code Review Checklist"></a>C++ Code Review Checklist</h1><p>代码同行评审应该寻找：</p>
+<ul>
+<li>标头：许可证或版权信息</li>
+<li>注释：使用doxygen标签注释函数，功能描述，输入/出参数</li>
+<li>遵循编码标准：变量命名，缩进，括号样式…</li>
+<li>使用标准API：不要重复发明和添加代码维护</li>
+<li>使用标准：日志文件格式标准，ISO或ANSI标准</li>
+<li>错误检查和处理。数据完整性检查：范围检查。</li>
+<li>资源泄漏：内存，数据库连接，文件，套接字……为每个逻辑路径（包括错误处理）释放。</li>
+<li>安全性：缓冲区利用，明文网络通信，….</li>
+<li>线程安全：全局变量。</li>
+<li>逻辑和控制结构：无限循环条件，正确的循环计数器，使用前初始化的变量，数学/算法，…</li>
+<li>性能：内存，浪费的操作，同步调用…</li>
+<li>回归测试，包括不良数据和错误。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="扫地小道童 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="扫地小道童 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/05/24/c-struct-union-enum/" rel="next" title="c++ struct-union-enum">
+                <i class="fa fa-chevron-left"></i> c++ struct-union-enum
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/05/25/c-Test/" rel="prev" title="c++ Test">
+                c++ Test <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">扫地小道童</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">146</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-Coding-Standards-and-Practices"><span class="nav-number">1.</span> <span class="nav-text">C++ Coding Standards and Practices</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Camel-case"><span class="nav-number">2.</span> <span class="nav-text">Camel-case</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-variable-naming-convention-and-style"><span class="nav-number">3.</span> <span class="nav-text">C++ variable naming convention and style</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introductory-File-Header-Comments"><span class="nav-number">4.</span> <span class="nav-text">Introductory File Header Comments</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dOxygen-and-C-Automated-Documentation-Generation"><span class="nav-number">5.</span> <span class="nav-text">dOxygen and C++ Automated Documentation Generation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-Code-Review-Checklist"><span class="nav-number">6.</span> <span class="nav-text">C++ Code Review Checklist</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">扫地小道童</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qtaCLPFG2dC4WHDCx7CXHF86-gzGzoHsz", "o0aO4phM2twpBXHNnXD4keF5");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

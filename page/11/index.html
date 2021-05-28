@@ -294,6 +294,555 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/开源库应用-tcmalloc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/21/开源库应用-tcmalloc/" itemprop="url">开源库应用--tcmalloc</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-21T14:07:13+08:00">
+                2018-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/3rd/" itemprop="url" rel="index">
+                    <span itemprop="name">3rd</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/21/开源库应用-tcmalloc/" class="leancloud_visitors" data-flag-title="开源库应用--tcmalloc">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="glibc"><a href="#glibc" class="headerlink" title="glibc"></a>glibc</h1><p>每一种分配器都宣称自己快（fast）、可拓展（scalable）、效率高（memory efficient）</p>
+<p><strong>数据结构</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">头部</th>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Arena header</td>
+<td style="text-align:left">malloc_state</td>
+<td style="text-align:left">包括bins、top chunk、last remainder chunk等</td>
+</tr>
+<tr>
+<td style="text-align:left">Heap Header</td>
+<td style="text-align:left">heap_info</td>
+<td style="text-align:left">每个thread arena 维护一个或多个堆</td>
+</tr>
+<tr>
+<td style="text-align:left">Chunk header</td>
+<td style="text-align:left">malloc_chunk</td>
+<td style="text-align:left">每个堆被分为若干 chunk, 每个都有自己的 chunk header</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2018/11/21/开源库应用-tcmalloc/1.png" alt=""><br><img src="/2018/11/21/开源库应用-tcmalloc/2.png" alt=""></p>
+<h1 id="tcmalloc"><a href="#tcmalloc" class="headerlink" title="tcmalloc"></a>tcmalloc</h1><p>tcmalloc是一个内存分配器，管理堆内存，主要影响malloc和free，用于降低频繁分配、释放内存造成的损耗,<br>并且有效的控制内存碎片。</p>
+<h1 id="解决了什么问题"><a href="#解决了什么问题" class="headerlink" title="解决了什么问题"></a>解决了什么问题</h1><h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/开源库应用-libevent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/21/开源库应用-libevent/" itemprop="url">开源库应用--libevent</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-21T11:22:13+08:00">
+                2018-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/3rd/" itemprop="url" rel="index">
+                    <span itemprop="name">3rd</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/21/开源库应用-libevent/" class="leancloud_visitors" data-flag-title="开源库应用--libevent">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="使用简介"><a href="#使用简介" class="headerlink" title="使用简介"></a>使用简介</h1><ol>
+<li>初始化 event_init()/event_base_new()</li>
+<li>通过event对象对文件描述符进行监控 event_set()/event_add()/event_dispatch() </li>
+<li>读写I/O事件 bufferevent_enable()/bufferevent_disable(), bufferevent_read()/bufferevent_write() </li>
+<li>定时事件 evtimer_set()/ evtimer_add()/ evtimer_del() </li>
+<li>对文件描述符指定超时时间 timeout_set()/timeout_add()/timeout_del() </li>
+<li>异步DNS evdns_init()/evdns_resolve_ipv4()/evdns_resolve_reverse() </li>
+<li>http server evhttp_new()/evhttp_bind_socket()/evhttp_set_cb()/evhttp_set_gencb() </li>
+<li>rpc server and clients</li>
+</ol>
+<h1 id="设计原理"><a href="#设计原理" class="headerlink" title="设计原理"></a>设计原理</h1><p><img src="/2018/11/21/开源库应用-libevent/1.png" alt=""></p>
+<p>基于Reactor模式</p>
+<blockquote>
+<p>Handle 事件源, 如Linux下的文件描述符<br>Event Handle 为事件处理提供一组有效接口, 对应绑定一个事件源<br>Reactor 事件管理接口, 内部使用Event Demultiplexer注册/注销事件, 运行事件循环, 当事件就绪时, 调用对应回调函数<br>Event Demultiplexer 事件多路分发机制, 由select,poll,epoll等实现</p>
+</blockquote>
+<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><h2 id="event"><a href="#event" class="headerlink" title="event"></a>event</h2><p>用event_new创建时设置好监听事件/回调函数, 或event_set设置</p>
+<div><div class="fold_hider"><div class="close hider_title">点击显代码</div></div><div class="fold">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">struct event &#123;</span><br><span class="line">	struct event_callback ev_evcallback;  // 回调函数, event_base 调用</span><br><span class="line"></span><br><span class="line">	/* for managing timeouts */</span><br><span class="line">	union &#123;</span><br><span class="line">		TAILQ_ENTRY(event) ev_next_with_common_timeout;</span><br><span class="line">		int min_heap_idx;			   // 索引值指明该event结构体在堆的位置</span><br><span class="line">	&#125; ev_timeout_pos;                  // 定时事件</span><br><span class="line">	evutil_socket_t ev_fd;             // 文件描述符 或 信号</span><br><span class="line"></span><br><span class="line">	struct event_base *ev_base;        // 管理者指针</span><br><span class="line"></span><br><span class="line">	union &#123;                                 // 用union节省内存, 只会用一种类型事件</span><br><span class="line">		/* used for io events */</span><br><span class="line">		struct &#123;</span><br><span class="line">			LIST_ENTRY (event) ev_io_next;  // 双向链表, 可以有多个文件描述符</span><br><span class="line">			struct timeval ev_timeout;</span><br><span class="line">		&#125; ev_io;</span><br><span class="line"></span><br><span class="line">		/* used by signal events */</span><br><span class="line">		struct &#123;</span><br><span class="line">			LIST_ENTRY (event) ev_signal_next;</span><br><span class="line">			short ev_ncalls;</span><br><span class="line">			/* Allows deletes in callback */</span><br><span class="line">			short *ev_pncalls;</span><br><span class="line">		&#125; ev_signal;</span><br><span class="line">	&#125; ev_;        // I/O 或 信号事件</span><br><span class="line"></span><br><span class="line">	short ev_events;     // 关注的事件类型 I/O事件(EV_READ/EV_WRITE/EV_CLOSED)...</span><br><span class="line">	short ev_res;		/* result passed to event callback */</span><br><span class="line">	struct timeval ev_timeout;  // 超时时间</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct event_callback &#123;</span><br><span class="line">	TAILQ_ENTRY(event_callback) evcb_active_next;</span><br><span class="line">	short evcb_flags;        // event 的状态跟踪, 已经初始化等状态</span><br><span class="line">	ev_uint8_t evcb_pri;	/* smaller numbers are higher priority */</span><br><span class="line">	ev_uint8_t evcb_closure;  // 回调函数类型, 在初始化event时赋值</span><br><span class="line">	/* allows us to adopt for different types of events */</span><br><span class="line">        union &#123;</span><br><span class="line">		void (*evcb_callback)(evutil_socket_t, short, void *);</span><br><span class="line">		void (*evcb_selfcb)(struct event_callback *, void *);</span><br><span class="line">		void (*evcb_evfinalize)(struct event *, void *);</span><br><span class="line">		void (*evcb_cbfinalize)(struct event_callback *, void *);</span><br><span class="line">	&#125; evcb_cb_union;</span><br><span class="line">	void *evcb_arg;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+<h2 id="event-base"><a href="#event-base" class="headerlink" title="event_base"></a>event_base</h2><p>根据event_config创建event_base</p>
+<div><div class="fold_hider"><div class="close hider_title">点击显代码</div></div><div class="fold">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">struct event_config &#123;</span><br><span class="line">	TAILQ_HEAD(event_configq, event_config_entry) entries;  // 字符串, 避免使用指定的I/O复用函数</span><br><span class="line"></span><br><span class="line">	int n_cpus_hint;                           // CPU个数，仅提示</span><br><span class="line">	struct timeval max_dispatch_interval;      </span><br><span class="line">	int max_dispatch_callbacks;					// </span><br><span class="line">	int limit_callbacks_after_prio;				// </span><br><span class="line">	enum event_method_feature require_features; // 边缘触发/只用epoll等特性设置</span><br><span class="line">	enum event_base_config_flag flags;          // 其他标记</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">enum event_base_config_flag &#123;</span><br><span class="line">	EVENT_BASE_FLAG_NOLOCK = 0x01,         // event_base 不分配锁, 多线程不安全</span><br><span class="line">	EVENT_BASE_FLAG_IGNORE_ENV = 0x02,     // 不检测EVENT_*环境变量, </span><br><span class="line">	EVENT_BASE_FLAG_STARTUP_IOCP = 0x04,   // Windows必需的IOCP分发逻辑</span><br><span class="line">	EVENT_BASE_FLAG_NO_CACHE_TIME = 0x08,  // timeout判断使用缓存时间, 否则每次通过系统时间获取(性能相对低)</span><br><span class="line">	EVENT_BASE_FLAG_EPOLL_USE_CHANGELIST = 0x10,  // 若使用epoll, changelist可以更快的修改套接字监听状态</span><br><span class="line">	EVENT_BASE_FLAG_PRECISE_TIMER = 0x20   // USING_TIMERFD</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct event_base &#123;</span><br><span class="line"></span><br><span class="line">	const struct eventop *evsel;  // 从全局 eventop 中选择对应的I/O复用函数</span><br><span class="line">	void *evbase;                 // eventop 参数的对象</span><br><span class="line">	struct event_changelist changelist;  // 变更</span><br><span class="line">	</span><br><span class="line">	struct event_io_map io;          // I/O 事件列表</span><br><span class="line">	struct event_signal_map sigmap;  // 信号事件列表</span><br><span class="line">	struct min_heap timeheap;        // 最小堆超时</span><br><span class="line">	</span><br><span class="line">	struct evcallback_list *activequeues;  // 需要执行的回调函数队列</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct event_base *</span><br><span class="line">event_base_new_with_config(const struct event_config *cfg)</span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">	for (i = 0; eventops[i] &amp;&amp; !base-&gt;evbase; i++) &#123;</span><br><span class="line">		if (cfg != NULL) &#123;</span><br><span class="line">			/* determine if this backend should be avoided */</span><br><span class="line">			if (event_config_is_avoided_method(cfg,</span><br><span class="line">				eventops[i]-&gt;name))</span><br><span class="line">				continue;</span><br><span class="line">			if ((eventops[i]-&gt;features &amp; cfg-&gt;require_features)</span><br><span class="line">			    != cfg-&gt;require_features)</span><br><span class="line">				continue;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		/* also obey the environment variables */</span><br><span class="line">		if (should_check_environment &amp;&amp;</span><br><span class="line">		    event_is_method_disabled(eventops[i]-&gt;name))</span><br><span class="line">			continue;</span><br><span class="line"></span><br><span class="line">		base-&gt;evsel = eventops[i];  // 选择I/O复用函数</span><br><span class="line"></span><br><span class="line">		base-&gt;evbase = base-&gt;evsel-&gt;init(base);</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+<h2 id="event-add"><a href="#event-add" class="headerlink" title="event_add"></a>event_add</h2><div><div class="fold_hider"><div class="close hider_title">点击显代码</div></div><div class="fold">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">int</span><br><span class="line">event_add_nolock_(struct event *ev, const struct timeval *tv,</span><br><span class="line">    int tv_is_absolute)</span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">	if ((ev-&gt;ev_events &amp; (EV_READ|EV_WRITE|EV_CLOSED|EV_SIGNAL)) &amp;&amp;</span><br><span class="line">	    !(ev-&gt;ev_flags &amp; (EVLIST_INSERTED|EVLIST_ACTIVE|EVLIST_ACTIVE_LATER))) &#123;</span><br><span class="line">		if (ev-&gt;ev_events &amp; (EV_READ|EV_WRITE|EV_CLOSED))</span><br><span class="line">			res = evmap_io_add_(base, ev-&gt;ev_fd, ev);          // 添加到I/O map, 一个fd可以有多个event</span><br><span class="line">		else if (ev-&gt;ev_events &amp; EV_SIGNAL)</span><br><span class="line">			res = evmap_signal_add_(base, (int)ev-&gt;ev_fd, ev); // 添加到信号 map</span><br><span class="line">		if (res != -1)</span><br><span class="line">			event_queue_insert_inserted(base, ev);             // 把event注册到event_base中</span><br><span class="line">		if (res == 1) &#123;</span><br><span class="line">			/* evmap says we need to notify the main thread. */</span><br><span class="line">			notify = 1;</span><br><span class="line">			res = 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 改变event 的状态, event_base中事件个数</span><br><span class="line">static void</span><br><span class="line">event_queue_insert_inserted(struct event_base *base, struct event *ev)</span><br><span class="line">&#123;</span><br><span class="line">	EVENT_BASE_ASSERT_LOCKED(base);</span><br><span class="line"></span><br><span class="line">	if (EVUTIL_FAILURE_CHECK(ev-&gt;ev_flags &amp; EVLIST_INSERTED)) &#123;</span><br><span class="line">		event_errx(1, &quot;%s: %p(fd &quot;EV_SOCK_FMT&quot;) already inserted&quot;, __func__,</span><br><span class="line">		    ev, EV_SOCK_ARG(ev-&gt;ev_fd));</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	INCR_EVENT_COUNT(base, ev-&gt;ev_flags);</span><br><span class="line"></span><br><span class="line">	ev-&gt;ev_flags |= EVLIST_INSERTED;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+<h2 id="event-base-dispatch"><a href="#event-base-dispatch" class="headerlink" title="event_base_dispatch"></a>event_base_dispatch</h2><div><div class="fold_hider"><div class="close hider_title">点击显代码</div></div><div class="fold">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">int</span><br><span class="line">event_base_loop(struct event_base *base, int flags)</span><br><span class="line">&#123;</span><br><span class="line">		...</span><br><span class="line">		event_queue_make_later_events_active(base);</span><br><span class="line"></span><br><span class="line">		clear_time_cache(base);</span><br><span class="line"></span><br><span class="line">		res = evsel-&gt;dispatch(base, tv_p);  // 调用系统的I/O复用函数, 添加到激活队列</span><br><span class="line"></span><br><span class="line">		if (res == -1) &#123;</span><br><span class="line">			event_debug((&quot;%s: dispatch returned unsuccessfully.&quot;,</span><br><span class="line">				__func__));</span><br><span class="line">			retval = -1;</span><br><span class="line">			goto done;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		update_time_cache(base);</span><br><span class="line"></span><br><span class="line">		timeout_process(base);</span><br><span class="line">		</span><br><span class="line">		if (N_ACTIVE_CALLBACKS(base)) &#123;</span><br><span class="line">			int n = event_process_active(base);      // 先从队列中删除, 再执行回调函数</span><br><span class="line">			if ((flags &amp; EVLOOP_ONCE)</span><br><span class="line">			    &amp;&amp; N_ACTIVE_CALLBACKS(base) == 0</span><br><span class="line">			    &amp;&amp; n != 0)</span><br><span class="line">				done = 1;</span><br><span class="line">		&#125; else if (flags &amp; EVLOOP_NONBLOCK)</span><br><span class="line">			done = 1;</span><br><span class="line">	&#125;</span><br><span class="line">		...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div></div>
+<h2 id="TAILQ-HEAD"><a href="#TAILQ-HEAD" class="headerlink" title="TAILQ_HEAD"></a>TAILQ_HEAD</h2><div><div class="fold_hider"><div class="close hider_title">点击显代码</div></div><div class="fold">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">&#123;% endfold %&#125;</span><br><span class="line"></span><br><span class="line">## HT_HEAD</span><br><span class="line"></span><br><span class="line">&#123;% fold 点击显代码 %&#125;</span><br></pre></td></tr></table></figure>
+<p><code>`</code></p>
+
+</div></div>
+<p>## </p>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><p>memcache</p>
+<p>spserver</p>
+<p>chrome</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/开源库应用-boost/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="扫地小道童">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="扫地小道童">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/21/开源库应用-boost/" itemprop="url">开源库应用--boost</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-21T11:19:10+08:00">
+                2018-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/3rd/" itemprop="url" rel="index">
+                    <span itemprop="name">3rd</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/21/开源库应用-boost/" class="leancloud_visitors" data-flag-title="开源库应用--boost">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.boost.org/doc/libs/1_58_0/doc/html/boost_asio/tutorial.html" target="_blank" rel="noopener">教程地址</a></p>
+<h1 id="thread"><a href="#thread" class="headerlink" title="thread"></a>thread</h1><h1 id="system"><a href="#system" class="headerlink" title="system"></a>system</h1><h1 id="asio"><a href="#asio" class="headerlink" title="asio"></a>asio</h1><p>linux异步IO的两种方式<br><a href="https://www.cnblogs.com/sky-heaven/p/10689748.html" target="_blank" rel="noopener">https://www.cnblogs.com/sky-heaven/p/10689748.html</a></p>
+<p>boost<br>Boost asio 官方教程<br><a href="https://cloud.tencent.com/developer/article/1056970" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1056970</a></p>
+<p>应用案例<br><a href="https://blog.csdn.net/guotianqing/article/details/100730340" target="_blank" rel="noopener">https://blog.csdn.net/guotianqing/article/details/100730340</a><br><a href="https://blog.csdn.net/weixin_39952182/article/details/112124885" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39952182/article/details/112124885</a></p>
+<p>教程<br><a href="https://www.boost.org/doc/libs/1_58_0/doc/html/boost_asio/tutorial.html" target="_blank" rel="noopener">https://www.boost.org/doc/libs/1_58_0/doc/html/boost_asio/tutorial.html</a></p>
+<p>全部类<br><a href="https://www.boost.org/doc/libs/1_58_0/doc/html/boost_asio/" target="_blank" rel="noopener">https://www.boost.org/doc/libs/1_58_0/doc/html/boost_asio/</a></p>
+<p>io_service<br><a href="https://www.boost.org/doc/libs/1_58_0/doc/html/boost_asio/reference/io_service.html" target="_blank" rel="noopener">https://www.boost.org/doc/libs/1_58_0/doc/html/boost_asio/reference/io_service.html</a><br>种类：<br>io_service 提供核心I / O功能。<br>  id 用于唯一标识服务的类<br>  service 所有io_service服务的基类<br>  strand 提供序列化的处理程序执行<br>  work 在有工作要做时通知io_service的类<br>  fork_event 相关的事件通知</p>
+<p>成员函数：<br>  dispatch 请求io_service调用给定的处理程序<br>  poll 运行io_service对象的事件处理循环以执行就绪的处理程序<br>  reset 重置io_service以为后续的run（）调用做准备<br>  run 运行io_service对象的事件处理循环<br>  post 请求io_service调用给定的处理程序并立即返回<br>  stop 停止io_service对象的事件处理循环<br>  wrap 创建一个新的处理程序，该处理程序自动在io_service上分派包装的处理程序</p>
+<p>友元：<br>  add_service 将服务对象添加到io_service<br>  has_service 确定io_service是否包含指定的服务类型<br>  use_service 获取与给定类型相对应的服务对象</p>
+<p>io_service类为异步I / O对象的用户提供了核心I / O功能，包括：<br>boost::asio::ip::tcp::socket<br>boost::asio::ip::tcp::acceptor<br>boost::asio::ip::udp::socket<br>deadline_timer.</p>
+<p>线程安全:<br>不同的对象，安全。</p>
+<p>同步和异步操作<br>I / O对象上的同步操作隐式地为单个操作运行io_service对象。必须调用io_service函数run（），run_one（），poll（）或poll_one（）才能使io_service代表C ++程序执行异步操作。<br>异步操作已完成的通知是通过关联的处理程序的调用传递的。处理程序仅由当前调用io_service的run（），run_one（），poll（）或poll_one（）的任何重载的线程调用</p>
+<p>处理程序引发的异常的影响:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">boost::asio::io_service io_service;</span><br><span class="line">...</span><br><span class="line">for (;;)</span><br><span class="line">&#123;</span><br><span class="line">  try</span><br><span class="line">  &#123;</span><br><span class="line">    io_service.run();</span><br><span class="line">    break; // run() exited normally</span><br><span class="line">  &#125;</span><br><span class="line">  catch (my_exception&amp; e)</span><br><span class="line">  &#123;</span><br><span class="line">    // Deal with exception as appropriate.</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>阻止io_service耗尽工作:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">boost::asio::io_service io_service;</span><br><span class="line">auto_ptr&lt;boost::asio::io_service::work&gt; work(</span><br><span class="line">    new boost::asio::io_service::work(io_service));</span><br><span class="line">...</span><br><span class="line">work.reset(); // Allow run() to exit.</span><br></pre></td></tr></table></figure></p>
+<p>The io_service class and I/O services<br>io_service类实现可扩展的，类型安全的，多态的I / O服务集，并按服务类型索引。必须先初始化io_service类的对象，然后才能使用I / O对象（例如套接字，解析器和计时器）。这些I / O对象的特征在于具有接受io_service＆参数的构造函数。</p>
+<h2 id="将参数绑定到处理程序"><a href="#将参数绑定到处理程序" class="headerlink" title="将参数绑定到处理程序"></a>将参数绑定到处理程序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>对函数和函数指针使用绑定<br>对函数对象使用绑定<br>使用绑定和指向成员的指针<br>使用嵌套绑定进行功能组合<br>运算符重载（Boost 1.33中的新增功能）</p>
+<h2 id="使用类成员函数作为处理程序"><a href="#使用类成员函数作为处理程序" class="headerlink" title="使用类成员函数作为处理程序"></a>使用类成员函数作为处理程序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="同步多线程程序中的处理程序"><a href="#同步多线程程序中的处理程序" class="headerlink" title="同步多线程程序中的处理程序"></a>同步多线程程序中的处理程序</h2><p>同一个io_service, 不同的服务对象,  你</p>
+<p>async_read<br><a href="https://www.boost.org/doc/libs/1_58_0/doc/html/boost_asio/reference/async_read/overload1.html" target="_blank" rel="noopener">https://www.boost.org/doc/libs/1_58_0/doc/html/boost_asio/reference/async_read/overload1.html</a><br>回调触发<br>The supplied buffers are full. That is, the bytes transferred is equal to the sum of the buffer sizes.<br>An error occurred.</p>
+<p>buffer<br><a href="https://www.boost.org/doc/libs/1_58_0/doc/html/boost_asio/reference/buffer.html" target="_blank" rel="noopener">https://www.boost.org/doc/libs/1_58_0/doc/html/boost_asio/reference/buffer.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/分布式存储简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -894,7 +1443,7 @@
           <h1 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h1><blockquote>
 <p>阻止编译器为了提高速度将一个变量缓存到寄存器内而不写回<br>阻止编译器操作volatile变量的指令顺序</p>
 </blockquote>
-<!--�79-->
+<!--�96-->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/19/c-关键字/#more" rel="contents">
@@ -1406,475 +1955,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/16/个人能力总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/16/个人能力总结/" itemprop="url">个人能力总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-16T09:44:23+08:00">
-                2018-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/面试/" itemprop="url" rel="index">
-                    <span itemprop="name">面试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/11/16/个人能力总结/" class="leancloud_visitors" data-flag-title="个人能力总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>优缺点阐述，也作为个人能力提升的计划。<br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/16/个人能力总结/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/缓存算法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/14/缓存算法/" itemprop="url">缓存算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T11:13:22+08:00">
-                2018-11-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/分布式系统/" itemprop="url" rel="index">
-                    <span itemprop="name">分布式系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/11/14/缓存算法/" class="leancloud_visitors" data-flag-title="缓存算法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="LRU算法"><a href="#LRU算法" class="headerlink" title="LRU算法"></a>LRU算法</h1><h2 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h2><p>全称Least Recently Used, 也就是最近最少使用, 是一种内存管理算法, 最早应用于Linux系统。<br>基于一种假设：长期不被使用的数据, 在未来用到的几率不大。因此当数据占据一定阈值时，移除<br>掉最近最少被使用的数据。</p>
-<p>哈希表是由若干个Key-Value所组成。在“逻辑”上，Key-Value是无所谓排列顺序的。<br>在哈希链表当中，这些Key-Value不再是彼此无关的存在，而是被一个链条串了起来。每一个<br>Key-Value都具有它的前驱Key-Value、后继Key-Value，就像双向链表中的节点一样。</p>
-<p><img src="/2018/11/14/缓存算法/1.png" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/数据库设计三范式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="扫地小道童">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="扫地小道童">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/13/数据库设计三范式/" itemprop="url">数据库设计三范式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T15:04:28+08:00">
-                2018-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/11/13/数据库设计三范式/" class="leancloud_visitors" data-flag-title="数据库设计三范式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="数据库设计三范式"><a href="#数据库设计三范式" class="headerlink" title="数据库设计三范式"></a>数据库设计三范式</h1><p>为了建立冗余小、结构合理的数据库，设计数据库必须遵循一定的原则。实际工最常用的三范式：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/13/数据库设计三范式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1925,7 +2005,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">143</span>
+                  <span class="site-state-item-count">146</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
