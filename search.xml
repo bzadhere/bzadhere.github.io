@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[win10-2-linux]]></title>
+    <url>%2F2021%2F06%2F03%2Fwin10-2-linux%2F</url>
+    <content type="text"><![CDATA[1. 应用软件比较 Win10 Ubuntu Desc TO-DO edge Y 浏览器 同步书签/插件 brave Y 浏览器 N Chromium Y 浏览器 N rar Y 压缩 N 7-Zip p7zip 压缩 N googlepinyin Y 输入法 N Tim Y work 同步聊天记录 WeChart Y work 同步聊天记录 Foxmail Y work 同步邮件 SecureCRT Y work 配置同步 VS Code Y work 配置/插件同步 Typora Y work 配置/插件同步 PLSQL Developer N work 配置同步 有道云 N work N FileZilla Y work N VirtualBox Y work 配置/镜像同步 svn Y work 路径地址同步 git Y work N DB Browser for SQLite Y work Beekeeper Studio替代 wireshark Y work N StarUML Y work N Nodejs Y work N NeatDownloadManager N 下载 N Advanced SystemCar N 安全 N 火绒 N 安全 N Geek Uninstaller N 卸载 N Snipaste N 截图 N KeePass2 Y/N 密码 同步文件 EveryThing N 搜索 N 茄子快传 N 传输 N WinMTR N 网络检查 N 稻壳阅读器 N PDF阅读 N Kindle N 阅读 N veryCapture N 截图识别 N 射手影音 N 播放器 N Anki Y 单词工具 云同步 File Converter N 转换工具 N Bandicam N 屏幕录制 N WebTorrent Y 视频播放 N zj58 N 小票打印 N 189cloud Y 天翼网盘 N NotePad++ Y/N 编辑器 Snapcraft 安装 PDFPatche N PDF编辑 N 2. Win10备份两台电脑如何直接用一根网线传数据-百度经验 (baidu.com) 3. U盘 安装下载工具： Rufus - 轻松创建USB启动盘 Create a bootable USB stick on Windows | Ubuntu Install Ubuntu desktop | Ubuntu 4. Wubi 安装Wubi - Community Help Wiki (ubuntu.com) ubuntu wubi安装_使用Wubi安装程序在Windows上轻松安装Ubuntu Linux_culinxia2707的博客-CSDN博客 5. 硬盘更换XPS13 (9360) 更换固态硬盘_哔哩哔哩_bilibili 6. 其他数据恢复软件,硬盘分区工具,系统备份软件 - DiskGenius官方网站]]></content>
+      <categories>
+        <category>软件安装</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[c++ 可变参数]]></title>
     <url>%2F2021%2F05%2F28%2Fc-%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%2F</url>
     <content type="text"><![CDATA[C++学习之可变参数的函数与模板 | 神奕的博客 (songlee24.github.io) 【C++基础之二十】可变参数的函数_偶尔e网事-CSDN博客_c++ 可变参数函数 C++的可变参数模板 - 知乎 (zhihu.com)]]></content>
