@@ -908,7 +908,7 @@
 <p>线程ID<br>寄存器，栈指针<br>栈上的局部变量，返回地址<br>信号集<br>调度属性，如优先级<br>返回值：errno</p>
 </blockquote>
 <p><img src="/2018/10/24/Posix线程编程指南/image-20210521153443974.png" alt="image-20210521153443974"></p>
-<h2 id="线程创建和终止"><a href="#线程创建和终止" class="headerlink" title="线程创建和终止"></a>线程创建和终止</h2><!--�22-->
+<h2 id="线程创建和终止"><a href="#线程创建和终止" class="headerlink" title="线程创建和终止"></a>线程创建和终止</h2><!--�38-->
 <p>Arguments:</p>
 <ul>
 <li><code>thread</code> - returns the thread id. (unsigned long int defined in bits/pthreadtypes.h)</li>
@@ -926,7 +926,7 @@
 <li><code>void * (*start_routine)</code> - pointer to the function to be threaded. Function has a single argument: pointer to void.</li>
 <li><code>*arg</code> - pointer to argument of function. To pass multiple arguments, send a pointer to a structure.</li>
 </ul>
-<!--�23-->
+<!--�39-->
 <ul>
 <li>Arguments:<ul>
 <li><code>th</code> - thread suspended until the thread identified by th terminates, either by calling pthread_exit() or by being cancelled.</li>
@@ -934,7 +934,7 @@
 </ul>
 </li>
 </ul>
-<!--�24-->
+<!--�40-->
 <ul>
 <li><p>Arguments:</p>
 <ul>
