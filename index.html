@@ -1139,32 +1139,6 @@
 <p><a href="http://www.possibility.com/Cpp/CppCodingStandard.html" target="_blank" rel="noopener">C++ Coding Standard (possibility.com)</a></p>
 <p><a href="http://geosoft.no/development/cppstyle.html" target="_blank" rel="noopener">C++ Programming Style Guidelines (geosoft.no)</a></p>
 <p>唉，差距…</p>
-<hr>
-<h1 id="C-Coding-Standards-and-Practices"><a href="#C-Coding-Standards-and-Practices" class="headerlink" title="C++ Coding Standards and Practices"></a>C++ Coding Standards and Practices</h1><ul>
-<li><p>文件名</p>
-<ul>
-<li><p>每个源代码文件应include一个文件。每个include文件应描述单个类或紧密集成的类集。通用指南适用于包含（.h和.hpp）文件的包含定义和非实例化的文件。因此，包含文件可以在多个文件中使用。源文件（.C或.cpp）定义了在编译时将其加载到内存中的代码。它实例化包含文件中定义的定义。</p>
-<p>例如，一个类定义将包含在“ .hpp”包含文件中。全局变量将在“ .cpp”文件而不是“ .hpp”文件中实例化。这是因为如果多次使用了包含文件，则将多次定义全局变量。 “ extern”语句适用于包含文件，因为它不声明变量的内存，而只是识别其存在。</p>
-</li>
-<li><p>文件名应反映类名。虽然类名通常以大写字母开头，但是包含文件和源文件通常以小写字母开头。即文件classBase.hpp将包含ClassBase {}的定义，而classBase.cpp将包含其功能的源代码。</p>
-</li>
-<li><p>类名称应遵循以下格式：CXxClassID，其中“ Xx”表示组件。 （即Mn main，Fm文件管理器，Cp命令处理器）每个单词的第一个字符应大写。命名文件时，请不要使用“ C”前缀。</p>
-</li>
-<li><p>当在另一个包含文件或源文件中引用一个包含文件时，请勿包含完整路径。这避免了由依赖于操作系统的引用目录路径的方法所造成的可移植性问题。使用编译器命令行标志包括路径。 （即-I /路径名）</p>
-</li>
-<li><p>对于所有项目包含文件，请使用双引号（“”）；对于操作系统或编译器提供的包含文件，请使用尖括号（&lt;&gt;）。</p>
-</li>
-<li><p>为了简化脚本的使用和制作文件，文件名（和目录路径）不应包含空格，括号“（”或大多数操作系统不支持的疯狂字符。</p>
-</li>
-</ul>
-</li>
-<li><p>文件格式</p>
-<ul>
-<li>Command: <code>dos2unix filename.cpp</code></li>
-<li>In vim: <code>:1,$ s/{ctrl-V}{ctrl-M}//</code></li>
-</ul>
-</li>
-</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/05/25/c-Coding-Practices/#more" rel="contents">
@@ -1321,7 +1295,7 @@
 
       
         
-          <h1 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h1><h2 id="C-Struct-Examples"><a href="#C-Struct-Examples" class="headerlink" title="C++ Struct Examples:"></a><strong>C++ Struct Examples:</strong></h2><!--�6-->
+          <h1 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h1><h2 id="C-Struct-Examples"><a href="#C-Struct-Examples" class="headerlink" title="C++ Struct Examples:"></a><strong>C++ Struct Examples:</strong></h2><!--�70-->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/05/24/c-struct-union-enum/#more" rel="contents">
