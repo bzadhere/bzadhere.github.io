@@ -547,6 +547,12 @@
 <td>N</td>
 </tr>
 <tr>
+<td>打印机</td>
+<td>Y</td>
+<td>work</td>
+<td>配置同步</td>
+</tr>
+<tr>
 <td></td>
 <td></td>
 <td></td>
@@ -1126,8 +1132,7 @@
 
       
         
-          
-            <hr>
+          <hr>
 <p><strong>Links</strong></p>
 <p><a href="http://www.doc.ic.ac.uk/lab/cplus/c++.rules/" target="_blank" rel="noopener">Programming in C++, Rules and Recommendations (ic.ac.uk)</a></p>
 <p><a href="https://wiki.sei.cmu.edu/confluence/pages/viewpage.action?pageId=88046682" target="_blank" rel="noopener">SEI CERT C++ Coding Standard - SEI CERT C++ Coding Standard - Confluence (cmu.edu)</a></p>
@@ -1160,282 +1165,13 @@
 </ul>
 </li>
 </ul>
-<ul>
-<li>文件头<ul>
-<li>版权声明</li>
-<li>注释放在文件顶部</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>头文件</p>
-<ul>
-<li><p>避免重复引用 <code>#ifndef class_name_h/#define class_name_h</code></p>
-</li>
-<li><p>减少头文件中#include文件数量，将减少构建时间。使用前置声明 + 指针（引用）。stl容器不允许前置声明。</p>
-</li>
-<li><p>C++调用C函数使用以下声明</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">...</span><br><span class="line">..</span><br><span class="line">C function declarations</span><br><span class="line">..</span><br><span class="line">...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>避免在“ .hpp”包含文件中使用“命名空间”。如果文件包含在源代码中，则程序员可能不再使用命名空间中定义的变量，并且可能会遇到变量名冲突。</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>类和结构体</p>
-<ul>
-<li><p>对于类和结构定义，标准实践以大写字母开头。基类通常会在类名后附加后缀“ Base”。确保将虚拟（不是纯虚拟，因此不是“ = 0”）添加到基类析构函数中，以便同时调用这两个析构函数。</p>
-</li>
-<li><p>示例类内容</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">     <span class="comment">// Constructors:</span></span><br><span class="line">     <span class="comment">// Destructor:</span></span><br><span class="line">     <span class="comment">// Functions: modifiers (set), selectors (get)</span></span><br><span class="line">     <span class="comment">// itterators:</span></span><br><span class="line">     <span class="comment">// Attributes visible by scope of instantiation and use</span></span><br><span class="line">  <span class="keyword">protected</span>:</span><br><span class="line">     <span class="comment">// Attributes visible to descendents</span></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">     <span class="comment">// Local attributes</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>如果可能，应将与机器相关的代码放置在单独的文件中，以简化移植任务。</li>
-</ul>
-<ul>
-<li>函数<ul>
-<li>Names: Use complement names for complement functions: get/set, add/remove, create/destroy, start/stop, insert/delete, increment/decrement, begin/end, first/last, up/down, min/max, next/previous, open/close, show/hide, suspend/resume, etc.</li>
-<li>在“ .cpp”文件中列出函数的顺序与在“ .hpp”类声明中声明的顺序相同。</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>使用案例</li>
-</ul>
-<h1 id="Camel-case"><a href="#Camel-case" class="headerlink" title="Camel-case"></a>Camel-case</h1><h1 id="C-variable-naming-convention-and-style"><a href="#C-variable-naming-convention-and-style" class="headerlink" title="C++ variable naming convention and style"></a>C++ variable naming convention and style</h1><table>
-<thead>
-<tr>
-<th style="text-align:left">Prefix</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">m_ my_</td>
-<td style="text-align:left">Variable is a member of class. Some use the prefix “<code>my</code>“ for class member variables and “<code>our</code>“ for class member static variables. (Also “m” and “ms” for member and member-static) I have also seen the use of “<em>“ as both a prefix and as a suffix to denote a class member variable. If using mixed languages remember that many FORTRAN compilers use a “</em>“ suffix. Due to C++ name mangling there will probably be no conflict when using this notation. It is a common practice but theoretically could pose a problem with mixed languages. See <a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialMixingFortranAndC.html" target="_blank" rel="noopener">Mixing FORTRAN and C</a> YoLinux tutorial.</td>
-</tr>
-<tr>
-<td style="text-align:left">_ (underscore)</td>
-<td style="text-align:left">Variable not intended to be exposed externally to the user. Internal workings only. Most often used by compiler and library authors.Sometimes used (not preferred) as a suffix to repressent a class member variable.Sometimes used as variable prefix for function arguments. When used with function arguments, it can represent in/out/inout:_variable: Function input variable. More explicit: <code>_inVariable</code>variable_: Function output variable. More explicit: <code>outVariable_</code><em>variable</em>: Input/output by function. More explicit: <code>_inoutVariable_</code>Note: Dangerous when mixing C with FORTRAN as FUNCTION subroutines as suffixed with “_” in the object code. See <code>nm</code> to view object symbols. See the <a href="http://man.yolinux.com/cgi-bin/man2html?cgi_command=g77" target="_blank" rel="noopener">g77/f77</a> compiler flag “<code>-fno-underscore</code>“.</td>
-</tr>
-<tr>
-<td style="text-align:left">__</td>
-<td style="text-align:left">Marks an use as extension to ANSI C++. Often not compiler independant. Usually reserved for use by compiler writers so it is best to <strong>avoid the double underscore</strong>.Note: Be careful when mixing with FORTRAN as “__” is often generated in FORTRAN object symbol names. See the f77 compiler flag “<code>-fno-second-underscore</code>“. Also used in Microsoft “Managed C++” directives.</td>
-</tr>
-<tr>
-<td style="text-align:left">a</td>
-<td style="text-align:left">array</td>
-</tr>
-<tr>
-<td style="text-align:left">c n</td>
-<td style="text-align:left">count / number of</td>
-</tr>
-<tr>
-<td style="text-align:left">cb</td>
-<td style="text-align:left">count bytes / number of bytes</td>
-</tr>
-<tr>
-<td style="text-align:left">d</td>
-<td style="text-align:left">Data type double</td>
-</tr>
-<tr>
-<td style="text-align:left">dw</td>
-<td style="text-align:left">Data type double word</td>
-</tr>
-<tr>
-<td style="text-align:left">e</td>
-<td style="text-align:left">an enumeration or element of an array</td>
-</tr>
-<tr>
-<td style="text-align:left">b f is has should</td>
-<td style="text-align:left">boolean (flag) Example: isFound Note: accessor functions can also use these same prefixes: <code>bool isBoolean{ return mBoolean; }</code></td>
-</tr>
-<tr>
-<td style="text-align:left">g_  g gbl Gbl</td>
-<td style="text-align:left">global variable. Also used is the “::” operator. i.e. <code>::*variable*</code></td>
-</tr>
-<tr>
-<td style="text-align:left">s s_</td>
-<td style="text-align:left">Static variable</td>
-</tr>
-<tr>
-<td style="text-align:left">h</td>
-<td style="text-align:left">handle</td>
-</tr>
-<tr>
-<td style="text-align:left">i</td>
-<td style="text-align:left">index to an array or STL iterator</td>
-</tr>
-<tr>
-<td style="text-align:left">l</td>
-<td style="text-align:left">long data type. i.e. “long int”</td>
-</tr>
-<tr>
-<td style="text-align:left">p ptr</td>
-<td style="text-align:left">pointer. Sometimes “Ptr” used as suffix.</td>
-</tr>
-<tr>
-<td style="text-align:left">lp</td>
-<td style="text-align:left">pointer to long data type</td>
-</tr>
-<tr>
-<td style="text-align:left">ch</td>
-<td style="text-align:left">C character</td>
-</tr>
-<tr>
-<td style="text-align:left">sz</td>
-<td style="text-align:left">Zero terminated string. char[]</td>
-</tr>
-<tr>
-<td style="text-align:left">str</td>
-<td style="text-align:left">C++ GNU template data type “string”</td>
-</tr>
-<tr>
-<td style="text-align:left">u</td>
-<td style="text-align:left">unsigned</td>
-</tr>
-<tr>
-<td style="text-align:left">ev</td>
-<td style="text-align:left">event</td>
-</tr>
-<tr>
-<td style="text-align:left">min</td>
-<td style="text-align:left">Lowest value</td>
-</tr>
-<tr>
-<td style="text-align:left">first</td>
-<td style="text-align:left">First element</td>
-</tr>
-<tr>
-<td style="text-align:left">lim</td>
-<td style="text-align:left">array limit</td>
-</tr>
-<tr>
-<td style="text-align:left">cmd</td>
-<td style="text-align:left">Command</td>
-</tr>
-<tr>
-<td style="text-align:left">cmp</td>
-<td style="text-align:left">Compare</td>
-</tr>
-<tr>
-<td style="text-align:left">init</td>
-<td style="text-align:left">Initialize</td>
-</tr>
-<tr>
-<td style="text-align:left">intr</td>
-<td style="text-align:left">Interrupt</td>
-</tr>
-<tr>
-<td style="text-align:left">msg</td>
-<td style="text-align:left">Message</td>
-</tr>
-<tr>
-<td style="text-align:left">rx</td>
-<td style="text-align:left">Recieve</td>
-</tr>
-<tr>
-<td style="text-align:left">tx</td>
-<td style="text-align:left">Transmit</td>
-</tr>
-<tr>
-<td style="text-align:left">C</td>
-<td style="text-align:left">Prefix for a Class name. Notation used by Microsoft MFC. Example: <code>CAbcXyz abcXyz</code> Note: The instatiation begins with a lower case letter while the class definition begins with a capital letter.</td>
-</tr>
-<tr>
-<td style="text-align:left">_t _Type</td>
-<td style="text-align:left">Type definition (typedef - <strong>suffix</strong>). Prefix with capital letter.</td>
-</tr>
-<tr>
-<td style="text-align:left">_Enum</td>
-<td style="text-align:left">Enumeration type definition suffix.</td>
-</tr>
-<tr>
-<td style="text-align:left">_ds</td>
-<td style="text-align:left">Data structure suffix.</td>
-</tr>
-</tbody>
-</table>
-<h1 id="Introductory-File-Header-Comments"><a href="#Introductory-File-Header-Comments" class="headerlink" title="Introductory File Header Comments"></a>Introductory File Header Comments</h1><table>
-<thead>
-<tr>
-<th style="text-align:left">dOxygen tag</th>
-<th style="text-align:left">Rendering</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">@file <em>file-name</em></td>
-<td style="text-align:left">Prints <em>file-name</em> as header of page.</td>
-</tr>
-<tr>
-<td style="text-align:left">@brief <em>Brief description goes here.</em></td>
-<td style="text-align:left">Description appears in HTML document generated.</td>
-</tr>
-<tr>
-<td style="text-align:left">@details <em>Brief description goes here.</em></td>
-<td style="text-align:left">Description of function which appears in HTML document generated.</td>
-</tr>
-<tr>
-<td style="text-align:left">@author <em>name1</em> @author <em>name2</em></td>
-<td style="text-align:left"><strong>Author:*</strong><code>name1</code><em> </em><code>name2</code>*</td>
-</tr>
-<tr>
-<td style="text-align:left">@version <em>Version number</em></td>
-<td style="text-align:left"><strong>Version:*</strong><code>Version number()</code>*</td>
-</tr>
-<tr>
-<td style="text-align:left">@depricated <em>explanation</em></td>
-<td style="text-align:left"><strong>Depricated:*</strong><code>explanation</code>*</td>
-</tr>
-<tr>
-<td style="text-align:left">@class <em>CAaaBbb</em></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">@see <em>FunctionA()</em></td>
-<td style="text-align:left"><strong>See also:*</strong><code>FunctionA()</code>*</td>
-</tr>
-<tr>
-<td style="text-align:left">@param[in] <em>variableA DescriptionA</em> @param[out] <em>variableB DescriptionB</em> @param[in,out] <em>variableC DescriptionC</em> Note: <code>in</code> and <code>out</code> are dOxygen specific and not used in Javadoc.</td>
-<td style="text-align:left"><strong>Parameters:*</strong><code>variableA DescriptionAvariableB DescriptionBvariableC DescriptionC</code>*</td>
-</tr>
-<tr>
-<td style="text-align:left">@return <em>variableA</em></td>
-<td style="text-align:left"><strong>Returns:*</strong><code>variableA</code>*</td>
-</tr>
-<tr>
-<td style="text-align:left">@bug <em>Description of bug goes here</em></td>
-<td style="text-align:left"><strong>Bug:*</strong><code>Description of bug goes here</code>*</td>
-</tr>
-<tr>
-<td style="text-align:left">@warning <em>Warning message goes here</em></td>
-<td style="text-align:left"><strong>Warning:*</strong><code>Warning message goes here</code>*</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*	COPYRIGHT NOTICE</span></span><br><span class="line"><span class="comment">*	Copyright (c) 2020, Asiainfo Technologies(China),Inc.   （版权声明）</span></span><br><span class="line"><span class="comment">*	All rights reserved.</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* @file	cdk_file.h</span></span><br><span class="line"><span class="comment">* @brief	 </span></span><br><span class="line"><span class="comment">*				文件目录处理</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* @version 1.1	（版本声明）</span></span><br><span class="line"><span class="comment">* @author		（作者，eg：xxx）</span></span><br><span class="line"><span class="comment">* @date		    （文件创建日期，eg：Aug 12, 2014）</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  @brief</span></span><br><span class="line"><span class="comment">  		目录处理类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Directory</span> :</span> <span class="keyword">public</span> SupportErrorMsg</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	  构造一个目录类</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	Directory();</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	  构造一个目录类</span></span><br><span class="line"><span class="comment">	  @param[in] strPath		目录路径，支持有环境变量，例如:$(HOME)/ipc</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	Directory(<span class="keyword">const</span> aistring &amp; strPath);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="dOxygen-and-C-Automated-Documentation-Generation"><a href="#dOxygen-and-C-Automated-Documentation-Generation" class="headerlink" title="dOxygen and C++ Automated Documentation Generation"></a>dOxygen and C++ Automated Documentation Generation</h1><h1 id="C-Code-Review-Checklist"><a href="#C-Code-Review-Checklist" class="headerlink" title="C++ Code Review Checklist"></a>C++ Code Review Checklist</h1><p>代码同行评审应该寻找：</p>
-<ul>
-<li>标头：许可证或版权信息</li>
-<li>注释：使用doxygen标签注释函数，功能描述，输入/出参数</li>
-<li>遵循编码标准：变量命名，缩进，括号样式…</li>
-<li>使用标准API：不要重复发明和添加代码维护</li>
-<li>使用标准：日志文件格式标准，ISO或ANSI标准</li>
-<li>错误检查和处理。数据完整性检查：范围检查。</li>
-<li>资源泄漏：内存，数据库连接，文件，套接字……为每个逻辑路径（包括错误处理）释放。</li>
-<li>安全性：缓冲区利用，明文网络通信，….</li>
-<li>线程安全：全局变量。</li>
-<li>逻辑和控制结构：无限循环条件，正确的循环计数器，使用前初始化的变量，数学/算法，…</li>
-<li>性能：内存，浪费的操作，同步调用…</li>
-<li>回归测试，包括不良数据和错误。</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/05/25/c-Coding-Practices/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1585,34 +1321,14 @@
 
       
         
-          
-            <h1 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h1><h2 id="C-Struct-Examples"><a href="#C-Struct-Examples" class="headerlink" title="C++ Struct Examples:"></a><strong>C++ Struct Examples:</strong></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">DataElement</span> &#123;</span></span><br><span class="line">       <span class="built_in">string</span> SVal;</span><br><span class="line">       <span class="keyword">int</span>    iVal;</span><br><span class="line">       <span class="keyword">bool</span>   hasData;</span><br><span class="line"></span><br><span class="line">       DataElement()   <span class="comment">// Example of a constructor used in a structure.</span></span><br><span class="line">       &#123;</span><br><span class="line">          iVal=<span class="number">-1</span>;</span><br><span class="line">          hasData=<span class="number">0</span>;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125; *RealData;</span><br><span class="line"></span><br><span class="line">    RealData = <span class="keyword">new</span> DataElement [ <span class="number">5</span> ];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Assignment</span></span><br><span class="line">    RealData[<span class="number">0</span>].SVal = <span class="string">"Value loaded into first structure element."</span>;</span><br><span class="line">    RealData[<span class="number">0</span>].hasData = <span class="number">1</span>; <span class="comment">// True</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"First element  0: "</span> &lt;&lt; RealData[<span class="number">0</span>].SVal &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"                  "</span> &lt;&lt; RealData[<span class="number">0</span>].hasData &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Second element 1: "</span> &lt;&lt; RealData[<span class="number">1</span>].SVal &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"                  "</span> &lt;&lt; RealData[<span class="number">1</span>].hasData &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// Show effect of contructor</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"                  "</span> &lt;&lt; RealData[<span class="number">1</span>].iVal    &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// Show effect of contructor</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> [] RealData;   <span class="comment">// Or:  delete [5] RealData;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="The-same-example-using-typedef-and-a-C-initializer"><a href="#The-same-example-using-typedef-and-a-C-initializer" class="headerlink" title="The same example using typedef and a C++ initializer:"></a><strong>The same example using typedef and a C++ initializer:</strong></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dataElement</span> &#123;</span></span><br><span class="line">   <span class="built_in">string</span> SVal;</span><br><span class="line">   <span class="keyword">int</span>    iVal;</span><br><span class="line">   <span class="keyword">bool</span>   hasData;</span><br><span class="line"></span><br><span class="line">   dataElement()   <span class="comment">// Example of a constructor used in a structure.</span></span><br><span class="line">      : iVal(<span class="number">-1</span>), hasData(<span class="number">0</span>)</span><br><span class="line">   &#123;&#125;</span><br><span class="line">&#125; DataElement;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">    DataElement *RealData;</span><br><span class="line">    RealData = <span class="keyword">new</span> DataElement [ <span class="number">5</span> ];</span><br><span class="line"></span><br><span class="line">    RealData[<span class="number">0</span>].SVal = <span class="string">"Value loaded into first structure element."</span>;</span><br><span class="line">    RealData[<span class="number">0</span>].hasData = <span class="number">1</span>; <span class="comment">// True</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"First element  0: "</span> &lt;&lt; RealData[<span class="number">0</span>].SVal &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"                  "</span> &lt;&lt; RealData[<span class="number">0</span>].hasData &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Second element 1: "</span> &lt;&lt; RealData[<span class="number">1</span>].SVal &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"                  "</span> &lt;&lt; RealData[<span class="number">1</span>].hasData &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// Show effect of contructor</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"                  "</span> &lt;&lt; RealData[<span class="number">1</span>].iVal    &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// Show effect of contructor</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> [] RealData;   <span class="comment">// Or:  delete [5] RealData;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="C-struct-and-Virtual-Functions"><a href="#C-struct-and-Virtual-Functions" class="headerlink" title="C++ struct and Virtual Functions:"></a><strong>C++ struct and Virtual Functions:</strong></h2><p>在内存中，在使用虚拟函数之前，C ++结构的行为将与C结构相同，使用虚函数后编译器将在结构内存中添加指向虚拟表的指针作为前缀。<br>内存顺序：<br>  1）虚函数指针(sizeof 因为有了)<br>  2）基类变量数据<br>  3）类成员变量数据</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AAA</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="keyword">int</span> aaa;</span><br><span class="line">  AAA():aaa(<span class="number">0xff</span>)&#123;&#125;;</span><br><span class="line">  AAA(<span class="keyword">int</span> _aaa)&#123;aaa = _aaa;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">printThis</span><span class="params">()</span></span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"     Object this pointer memory:            "</span> &lt;&lt; hex &lt;&lt; (<span class="keyword">size_t</span>)<span class="keyword">this</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">functionA</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BBB</span> :</span> AAA &#123;</span><br><span class="line">  <span class="keyword">int</span> bbb;</span><br><span class="line">  BBB():bbb(<span class="number">0x0000</span>)&#123;&#125;;</span><br><span class="line">  BBB(<span class="keyword">int</span> _aaa, <span class="keyword">int</span> _bbb)&#123;aaa=_aaa;bbb=_bbb;&#125;;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">functionA</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">AAA <span class="title">aaa</span><span class="params">(<span class="number">0xffff</span>)</span></span>;;</span><br><span class="line">    BBB bbb;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// AAA Print pointers - memory address of object and first member of object</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"AAA: "</span> &lt;&lt; <span class="keyword">sizeof</span>(AAA) &lt;&lt; <span class="string">" bytes."</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"     Object memory address location &amp;aaa:   "</span> &lt;&lt; hex &lt;&lt; (<span class="keyword">size_t</span>)&amp;aaa &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"     First member variable Memory aaa.aaa:  "</span> &lt;&lt; hex &lt;&lt; (<span class="keyword">size_t</span>)&amp;aaa.aaa &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    aaa.printThis();  <span class="comment">// Print object this pointer</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"BBB: "</span> &lt;&lt; <span class="keyword">sizeof</span>(BBB) &lt;&lt; <span class="string">" bytes."</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"     Object memory address location &amp;bbb:   "</span> &lt;&lt; hex &lt;&lt; (<span class="keyword">size_t</span>)&amp;bbb &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"     First inherited member memory bbb.aaa: "</span> &lt;&lt; hex &lt;&lt; (<span class="keyword">size_t</span>)&amp;bbb.aaa &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"     First member variable Memory bbb.bbb:  "</span> &lt;&lt; hex &lt;&lt; (<span class="keyword">size_t</span>)&amp;bbb.bbb &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    bbb.printThis();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//------------------------------------------------------------------------------------</span></span><br><span class="line">AAA: <span class="number">16</span> bytes.</span><br><span class="line">     Object memory address location &amp;aaa:   <span class="number">7f</span>ff4b1d7fb0</span><br><span class="line">     First member variable Memory aaa.aaa:  <span class="number">7f</span>ff4b1d7fb8  -- <span class="number">8</span> bytes offset <span class="keyword">for</span> vtable pointer</span><br><span class="line">     Object <span class="keyword">this</span> pointer memory:            <span class="number">7f</span>ff4b1d7fb0</span><br><span class="line">BBB: <span class="number">10</span> bytes.</span><br><span class="line">     Object memory address location &amp;bbb:   <span class="number">7f</span>ff4b1d7fc0</span><br><span class="line">     First inherited member memory bbb.aaa: <span class="number">7f</span>ff4b1d7fc8  -- <span class="number">8</span> byte offset <span class="keyword">for</span> vtable pointer</span><br><span class="line">     First member variable Memory bbb.bbb:  <span class="number">7f</span>ff4b1d7fcc  -- <span class="number">4</span> bytes additional offset <span class="keyword">for</span> actual size of AAA</span><br><span class="line">     Object <span class="keyword">this</span> pointer memory:            <span class="number">7f</span>ff4b1d7fc0</span><br></pre></td></tr></table></figure>
-<h2 id="C-structure-notes"><a href="#C-structure-notes" class="headerlink" title="C++ structure notes:"></a>C++ structure notes:</h2><ul>
-<li><p>可以有构造和析构函数，</p>
-</li>
-<li><p>无法将构造函数声明为virtual</p>
-</li>
-<li>成员变量默认public</li>
-</ul>
-<h1 id="union"><a href="#union" class="headerlink" title="union"></a>union</h1><h2 id="Potential-Pitfall"><a href="#Potential-Pitfall" class="headerlink" title="Potential Pitfall"></a>Potential Pitfall</h2><p>潜在的坑：如果要在联合中使用结构，则不能将其与构造函数一起使用。对结构中构造函数的C ++识别将其转换为在“ C”联合中无效的C ++类。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dataElement</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   <span class="keyword">int</span>    iVal1;</span><br><span class="line">   <span class="keyword">int</span>    iVal2;</span><br><span class="line">   dataElement() : iVal1(<span class="number">1</span>), iVal2(<span class="number">2</span>)&#123;&#125;;</span><br><span class="line">&#125; DataElement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">union</span></span><br><span class="line">&#123;</span><br><span class="line">   DataElement de;</span><br><span class="line">   <span class="keyword">int</span> iVal[<span class="number">2</span>];</span><br><span class="line">&#125; UAA;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    UAA rdata;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Array output: %d %d \n"</span>,</span><br><span class="line">           rdata.iVal[<span class="number">0</span>], rdata.iVal[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line"><span class="comment">// --------------</span></span><br><span class="line">union2.cpp: 在函数‘int main()’中:</span><br><span class="line">union2.cpp:<span class="number">18</span>:<span class="number">9</span>: 错误：使用了被删除的函数‘UAA::UAA()’</span><br><span class="line">     UAA rdata;</span><br><span class="line">         ^</span><br><span class="line">union2.cpp:<span class="number">11</span>:<span class="number">1</span>: 附注：‘UAA::UAA()’ is implicitly deleted because the <span class="keyword">default</span> definition would be ill-formed:</span><br><span class="line"> &#123;</span><br><span class="line"> ^</span><br><span class="line">union2.cpp:<span class="number">12</span>:<span class="number">16</span>: 错误：<span class="keyword">union</span> member ‘UAA::de’ with non-trivial ‘dataElement::dataElement()’</span><br><span class="line">    DataElement de;</span><br><span class="line">                ^</span><br><span class="line">/data01/zjgrp/zjdev/ob_rel/etc/NGCmake:1289: recipe for target 'build/union2.o' failed</span><br><span class="line">gmake: *** [build/union2.o] Error <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h2 id="C-union-notes"><a href="#C-union-notes" class="headerlink" title="C++ union notes:"></a>C++ union notes:</h2><ul>
-<li>可以有构造函数初始化</li>
-<li>可以有析构函数</li>
-<li>成员函数不能声明为虚函数</li>
-<li>成员变量默认public</li>
-<li>数据成员不能声明为static</li>
-<li>不能作为基类</li>
-</ul>
-<p>只有一个数据成员会生效，给哪个成员赋值，哪个成员生效，size也对应变化。</p>
-<h1 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h1><h2 id="C-C-Enumeration-Syntax-and-Example"><a href="#C-C-Enumeration-Syntax-and-Example" class="headerlink" title="C / C++ Enumeration Syntax and Example:"></a><strong>C / C++ Enumeration Syntax and Example:</strong></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">enum</span></span><br><span class="line">   &#123;</span><br><span class="line">      monday, tuesday, wednesday, thursday, friday, saturday, sunday</span><br><span class="line">   &#125; day;</span><br><span class="line"></span><br><span class="line">   day = wednesday;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(day == saturday || day == sunday)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Day is a weekend day"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">if</span>(day == wednesday)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Day is hump day - middle of the work week"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output=&gt; Day is hump day - middle of the work week</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//----------------------------------------------------</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">enum</span></span><br><span class="line">   &#123;</span><br><span class="line">      saturday = <span class="number">0</span>,</span><br><span class="line">      sunday = <span class="number">0</span>,</span><br><span class="line">      monday,</span><br><span class="line">      tuesday,</span><br><span class="line">      wednesday,</span><br><span class="line">      thursday,</span><br><span class="line">      friday</span><br><span class="line">   &#125;  DAY;</span><br><span class="line"></span><br><span class="line">   DAY day = sunday;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(day == <span class="number">0</span>)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Day is a weekend day"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">if</span>(day == wednesday)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Day is hump day - middle of the work week"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output=&gt; Day is a weekend day</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//----------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">typedef</span> <span class="keyword">enum</span></span><br><span class="line">   &#123;</span><br><span class="line">      thirteen = <span class="number">10</span>,</span><br><span class="line">      fourteen,</span><br><span class="line">      fifteen,</span><br><span class="line">      sixteen,</span><br><span class="line">      seventeen,</span><br><span class="line">      eighteen,</span><br><span class="line">      nineteen</span><br><span class="line">   &#125; TEENS;</span><br><span class="line"></span><br><span class="line">   TEENS teen = seventeen;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(teen == seventeen)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; seventeen &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output=&gt; 14</span></span><br></pre></td></tr></table></figure>
-<h2 id="C-Enumeration-Class"><a href="#C-Enumeration-Class" class="headerlink" title="C++ Enumeration Class:"></a>C++ Enumeration Class:</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> DAY_HPP__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DAY_HPP__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Day</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">   <span class="keyword">enum</span> Enum</span><br><span class="line">   &#123;</span><br><span class="line">      sunday = <span class="number">0</span>,</span><br><span class="line">      monday,</span><br><span class="line">      tuesday,</span><br><span class="line">      wednesday,</span><br><span class="line">      thursday,</span><br><span class="line">      friday,</span><br><span class="line">      saturday,</span><br><span class="line">      InvalidDay</span><br><span class="line">   &#125;;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Constructors</span></span><br><span class="line">   Day(<span class="keyword">void</span>);</span><br><span class="line">   Day(Enum ee);</span><br><span class="line">   <span class="function"><span class="keyword">explicit</span> <span class="title">Day</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; ss)</span></span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Overloaded assignment operators</span></span><br><span class="line">   Day&amp; <span class="keyword">operator</span> = (<span class="keyword">const</span> Day&amp; cc);</span><br><span class="line">   Day&amp; <span class="keyword">operator</span> = (<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; ss);</span><br><span class="line">   Day&amp; <span class="keyword">operator</span> = (Enum ee);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Overloaded comparison operators</span></span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;  (<span class="keyword">const</span> Day&amp; cc) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;  (Enum ee) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;= (<span class="keyword">const</span> Day&amp; cc) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;= (Enum ee) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&gt;  (<span class="keyword">const</span> Day&amp; cc) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&gt;  (Enum ee) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&gt;= (<span class="keyword">const</span> Day&amp; cc) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>&gt;= (Enum ee) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>== (<span class="keyword">const</span> Day&amp; cc) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>== (<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; ss) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>== (<span class="keyword">const</span> Enum ee) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>!= (<span class="keyword">const</span> Day&amp; cc) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>!= (<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; ss) <span class="keyword">const</span>;</span><br><span class="line">   <span class="keyword">bool</span> <span class="keyword">operator</span>!= (<span class="keyword">const</span> Enum ee) <span class="keyword">const</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Accessor functions</span></span><br><span class="line">   <span class="keyword">inline</span> <span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">getString</span> <span class="params">(<span class="keyword">void</span>)</span> <span class="keyword">const</span></span>;</span><br><span class="line">   <span class="function"><span class="keyword">inline</span> Enum        <span class="title">getEnum</span>   <span class="params">(<span class="keyword">void</span>)</span> <span class="keyword">const</span></span>;</span><br><span class="line">   <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span>         <span class="title">getValue</span>  <span class="params">(<span class="keyword">void</span>)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">   <span class="comment">// Static functions</span></span><br><span class="line">   <span class="function"><span class="keyword">static</span> Enum        <span class="title">fromString</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span> ss)</span></span>;</span><br><span class="line">   <span class="keyword">static</span> <span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">toString</span><span class="params">(Enum ee)</span></span>;</span><br><span class="line">   <span class="function"><span class="keyword">static</span> <span class="keyword">int</span>         <span class="title">toValue</span><span class="params">(Enum ee)</span></span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Data members</span></span><br><span class="line">   Enum        m_enum;</span><br><span class="line">   <span class="built_in">std</span>::<span class="built_in">string</span> m_string;</span><br><span class="line">   <span class="keyword">int</span>         m_value;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line">    </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"CDay.hpp"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   Day day;</span><br><span class="line"></span><br><span class="line">   day = <span class="string">"Saturday"</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(day == Day::saturday || day == Day::sunday)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Day is a weekend day"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// output=&gt; Day is a weekend day</span></span><br></pre></td></tr></table></figure>
-<h2 id="Other-Methodologies"><a href="#Other-Methodologies" class="headerlink" title="Other Methodologies:"></a>Other Methodologies:</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Enumerations: Assign enumerations using the scope from which they are declared</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   <span class="keyword">enum</span> Month &#123; January, February &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Month tmpMonth = ClassName::January;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do not use: Month tmpMonth = ClassName::Month::January;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Associated string array:</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span></span><br><span class="line">&#123;</span><br><span class="line">   monday, tuesday, wednesday, thursday, friday, saturday, sunday</span><br><span class="line">&#125; Day;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *day_str[]=&#123; <span class="string">"Monday"</span>,<span class="string">"Tuesday"</span>,<span class="string">"Wednesday"</span>,<span class="string">"Thursday"</span>,<span class="string">"Friday"</span>,<span class="string">"Saturday"</span>, <span class="string">"Sunday"</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   Day day = saturday;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(day == saturday || day == sunday)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; day_str[day] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// C define macros:</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SUNDAY    0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MONDAY    1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TUESDAY   2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WEDNESDAY 3</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> THURSDAY  4</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FRIDAY    5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SATURDAY  6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">int</span> day;</span><br><span class="line"></span><br><span class="line">   day = SATURDAY;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>(day == SATURDAY || day == SUNDAY)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Day is a weekend day"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//-----------------------------------------------------</span></span><br><span class="line"><span class="comment">//限定作用域的枚举类型. </span></span><br><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Phone</span> :</span> <span class="keyword">int</span>&#123; <span class="comment">//这里的:int指出了该enum的潜在类型. </span></span><br><span class="line"> Iphone,</span><br><span class="line"> Nokia,</span><br><span class="line"> Moto</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 限定类型</span></span><br><span class="line"><span class="keyword">enum</span> AttachType : <span class="keyword">unsigned</span> <span class="keyword">char</span> &#123;</span><br><span class="line">	ATTACH_NONE=<span class="number">0x00</span>,				</span><br><span class="line">	ATTACH_CELL=<span class="number">0x01</span>,	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不限定</span></span><br><span class="line"><span class="keyword">enum</span> color &#123; red, yellow, green &#125;;</span><br><span class="line"><span class="keyword">enum</span> &#123; floatPrec = <span class="number">6</span>, doublePrec = <span class="number">10</span> &#125;;</span><br></pre></td></tr></table></figure>
-
-          
+          <h1 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h1><h2 id="C-Struct-Examples"><a href="#C-Struct-Examples" class="headerlink" title="C++ Struct Examples:"></a><strong>C++ Struct Examples:</strong></h2><!--�6-->
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/05/24/c-struct-union-enum/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
